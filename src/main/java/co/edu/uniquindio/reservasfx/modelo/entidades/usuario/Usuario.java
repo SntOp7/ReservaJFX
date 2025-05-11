@@ -11,6 +11,7 @@ public abstract class Usuario {
     private String cedula;
     private String nombre;
     private String telefono;
+    private String direccion;
     private String email;
     private String contrasenia;
     private boolean activo;

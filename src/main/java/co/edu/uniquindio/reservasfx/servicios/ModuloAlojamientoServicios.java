@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 public class ModuloAlojamientoServicios implements IAlojamiento {
 
+    private EmpresaServicio empresaServicio = EmpresaServicio.getInstancia();
     private final HabitacionServicios habitacionServicios;
     private final AlojamientoServicios alojamientoServicios;
 

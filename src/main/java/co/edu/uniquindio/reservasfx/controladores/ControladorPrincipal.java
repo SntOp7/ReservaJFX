@@ -19,7 +19,7 @@ public class ControladorPrincipal {
     private final Sesion sesion;
 
     private ControladorPrincipal() {
-        empresa = new EmpresaServicio();
+        empresa = EmpresaServicio.getInstancia();
         sesion = Sesion.getInstancia();
     }
 

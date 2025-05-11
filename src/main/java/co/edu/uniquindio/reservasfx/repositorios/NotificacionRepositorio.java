@@ -14,4 +14,14 @@ public class NotificacionRepositorio {
     public void agregar(Notificacion notificacion) {
         notificaciones.add(notificacion);
     }
+
+    public ArrayList<Notificacion> obtenerNotificacionesPorCedula(String cedulaCliente) {
+        ArrayList<Notificacion> notificacionesPorCedula = new ArrayList<>();
+        for (Notificacion notificacion : notificaciones) {
+            if (notificacion.getCedulaCliente().equals(cedulaCliente) && !notificacion.isLeida()) {
+                notificacionesPorCedula.add(notificacion);
+            }
+        }
+        return notificacionesPorCedula;
+    }
 }

@@ -37,21 +37,20 @@ public class UsuarioRepositorio {
     }
 
     public Cliente buscarCliente(String cedula) {
-        return clientes.stream().filter(cliente -> cliente.getCedula().equals(cedula)).findFirst().get();
+        return clientes.stream().filter(cliente -> cliente.getCedula().equals(cedula)).findFirst().orElse(null);
     }
 
-    public Usuario iniciarSesion(String email, String contrasenia) {
+    public Usuario buscarUsuarioPorEmail(String email) {
         Usuario usuario = clientes.stream()
-                .filter(s -> s.getEmail().equals(email) && s.getContrasenia().equals(contrasenia))
+                .filter(s -> s.getEmail().equals(email))
                 .findFirst()
                 .orElse(null);
         if (usuario == null) {
             usuario = administradores.stream()
-                    .filter(s -> s.getEmail().equals(email) && s.getContrasenia().equals(contrasenia))
+                    .filter(s -> s.getEmail().equals(email))
                     .findFirst()
                     .orElse(null);
         }
         return usuario;
     }
-
 }
