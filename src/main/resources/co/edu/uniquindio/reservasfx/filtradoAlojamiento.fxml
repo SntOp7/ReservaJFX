@@ -174,37 +174,37 @@
                                     <RowConstraints maxHeight="175.0" minHeight="175.0" prefHeight="175.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <StackPane fx:id="primerStack" maxHeight="206.0" prefHeight="206.0" prefWidth="545.0" style="-fx-background-color: #ffffff; -fx-border-color: #dddddd; -fx-border-radius: 5; -fx-background-radius: 5;">
+                                    <StackPane fx:id="primerStack" maxHeight="206.0" prefHeight="206.0" prefWidth="545.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-radius: 5; -fx-background-radius: 5;">
                                        <padding>
                                           <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                                        </padding>
                                     </StackPane>
 
-                                    <StackPane fx:id="segundoStack" maxHeight="175.0" prefHeight="175.0" prefWidth="534.0" style="-fx-background-color: #ffffff; -fx-border-color: #dddddd; -fx-border-radius: 5; -fx-background-radius: 5;" GridPane.columnIndex="1">
+                                    <StackPane fx:id="segundoStack" maxHeight="175.0" prefHeight="175.0" prefWidth="534.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-radius: 5; -fx-background-radius: 5;" GridPane.columnIndex="1">
                                        <padding>
                                           <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                                        </padding>
                                     </StackPane>
 
-                                    <StackPane fx:id="tercerStack" maxHeight="175.0" prefHeight="175.0" prefWidth="542.0" style="-fx-background-color: #ffffff; -fx-border-color: #dddddd; -fx-border-radius: 5; -fx-background-radius: 5;" GridPane.rowIndex="1">
+                                    <StackPane fx:id="tercerStack" maxHeight="175.0" prefHeight="175.0" prefWidth="542.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-radius: 5; -fx-background-radius: 5;" GridPane.rowIndex="1">
                                        <padding>
                                           <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                                        </padding>
                                     </StackPane>
 
-                                    <StackPane fx:id="cuartoStack" maxHeight="175.0" prefHeight="175.0" prefWidth="534.0" style="-fx-background-color: #ffffff; -fx-border-color: #dddddd; -fx-border-radius: 5; -fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <StackPane fx:id="cuartoStack" maxHeight="175.0" prefHeight="175.0" prefWidth="534.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-radius: 5; -fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <padding>
                                           <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                                        </padding>
                                     </StackPane>
 
-                                    <StackPane fx:id="quintoStack" maxHeight="175.0" prefHeight="175.0" prefWidth="542.0" style="-fx-background-color: #ffffff; -fx-border-color: #dddddd; -fx-border-radius: 5; -fx-background-radius: 5;" GridPane.rowIndex="2">
+                                    <StackPane fx:id="quintoStack" maxHeight="175.0" prefHeight="175.0" prefWidth="542.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-radius: 5; -fx-background-radius: 5;" GridPane.rowIndex="2">
                                        <padding>
                                           <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                                        </padding>
                                     </StackPane>
 
-                                    <StackPane fx:id="sextoStack" maxHeight="175.0" prefHeight="175.0" prefWidth="534.0" style="-fx-background-color: #ffffff; -fx-border-color: #dddddd; -fx-border-radius: 5; -fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <StackPane fx:id="sextoStack" maxHeight="175.0" prefHeight="175.0" prefWidth="534.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-radius: 5; -fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <padding>
                                           <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                                        </padding>
