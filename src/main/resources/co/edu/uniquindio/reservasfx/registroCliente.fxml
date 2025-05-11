@@ -29,14 +29,14 @@
             </background>
 
             <top>
-                <HBox alignment="CENTER_LEFT" prefHeight="76.0" prefWidth="1900.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff);">
+                <HBox alignment="CENTER_LEFT" prefHeight="76.0" prefWidth="1900.0" style="-fx-background-color: #ffffff;">
                     <children>
 
                         <StackPane prefHeight="60.0" prefWidth="60.0">
                             <children>
                                 <Circle fill="#ffffff33" radius="25.0" />
                                 <Circle fill="#ffffff66" radius="18.0" />
-                                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="69.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@img/bookYourStay.png" />
                                     </image>
@@ -47,7 +47,7 @@
                             </HBox.margin>
                         </StackPane>
 
-                        <Label prefHeight="78.0" prefWidth="441.0" text="BookYourStay" textFill="WHITE">
+                        <Label prefHeight="78.0" prefWidth="441.0" text="BookYourStay">
                             <font>
                                 <Font name="Segoe UI Bold" size="24.0" />
                             </font>
