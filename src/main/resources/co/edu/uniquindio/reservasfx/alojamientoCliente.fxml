@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <!-- Fondo principal con degradado azul elegante -->
+        <Rectangle arcHeight="0.0" arcWidth="0.0" height="700.0" stroke="BLACK" strokeType="INSIDE" width="900.0">
+            <fill>
+                <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
+                    <stops>
+                        <Stop color="#0d2e67" />
+                        <Stop color="#1c5cb4" offset="0.5" />
+                        <Stop color="#071940" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+
+        <!-- Elementos decorativos de fondo superior -->
+        <Group>
+            <children>
+                <Circle fill="#ffffff10" layoutX="150.0" layoutY="120.0" radius="60.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                <Circle fill="#ffffff15" layoutX="750.0" layoutY="80.0" radius="40.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                <Polygon fill="#ffffff10" points="50.0, 300.0, 120.0, 350.0, 50.0, 400.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                <Polygon fill="#ffffff10" points="850.0, 200.0, 800.0, 250.0, 850.0, 300.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                <Line endX="300.0" endY="120.0" startX="200.0" startY="120.0" stroke="#ffffff20" strokeWidth="3.0" />
+                <Line endX="700.0" endY="200.0" startX="600.0" startY="200.0" stroke="#ffffff20" strokeWidth="3.0" />
+            </children>
+        </Group>
+
+        <!-- Sección superior con imagen principal y datos -->
+        <VBox layoutY="20.0" prefHeight="450.0" prefWidth="900.0">
+            <children>
+                <HBox alignment="CENTER" prefHeight="420.0" prefWidth="900.0" spacing="30.0">
+                    <children>
+                        <!-- Panel de imágenes con navegación -->
+                        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="440.0" spacing="15.0">
+                            <children>
+                                <!-- Marco decorativo para imagen principal -->
+                                <StackPane>
+                                    <children>
+                                        <!-- Marco decorativo exterior -->
+                                        <Rectangle arcHeight="15.0" arcWidth="15.0" height="320.0" width="420.0">
+                                            <fill>
+                                                <LinearGradient endX="1.0" endY="1.0">
+                                                    <stops>
+                                                        <Stop color="BLACK" />
+                                                        <Stop color="WHITE" offset="0.5" />
+                                                        <Stop color="#2200ff" offset="1.0" />
+                                                    </stops>
+                                                </LinearGradient>
+                                            </fill>
+                                            <effect>
+                                                <DropShadow color="#00000080" height="15.0" radius="7.0" width="15.0" />
+                                            </effect>
+                                        </Rectangle>
+
+                                        <!-- Marco interior con sombra -->
+                                        <Rectangle arcHeight="10.0" arcWidth="10.0" height="305.0" width="405.0">
+                                            <fill>
+                                                <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
+                                                    <stops>
+                                                        <Stop color="#000a26" />
+                                                        <Stop color="#0d2a63" offset="1.0" />
+                                                    </stops>
+                                                </LinearGradient>
+                                            </fill>
+                                        </Rectangle>
+
+                                        <!-- Imagen principal -->
+                                        <ImageView fx:id="mainImage" fitHeight="290.0" fitWidth="390.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@img/panelImagen.png" />
+                                            </image>
+                                            <effect>
+                                                <DropShadow color="#00000060" height="10.0" radius="4.5" width="10.0" />
+                                            </effect>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+
+                                <!-- Miniaturas con navegación -->
+                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="400.0" spacing="15.0">
+                                    <children>
+                                        <!-- Botón izquierdo con efecto sofisticado -->
+                                        <Button fx:id="leftButton" minHeight="40.0" minWidth="40.0" mnemonicParsing="false">
+                                            <graphic>
+                                                <StackPane>
+                                                    <children>
+                                                        <Circle radius="20.0">
+                                                            <fill>
+                                                                <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
+                                                                    <stops>
+                                                                        <Stop color="#c78428" />
+                                                                        <Stop color="#f0a23c" offset="0.5" />
+                                                                        <Stop color="#b05f0b" offset="1.0" />
+                                                                    </stops>
+                                                                </LinearGradient>
+                                                            </fill>
+                                                            <effect>
+                                                                <DropShadow color="#00000080" height="10.0" radius="4.5" width="10.0" />
+                                                            </effect>
+                                                        </Circle>
+                                                        <Polygon points="-10.0, 0.0, 0.0, -10.0, 0.0, 10.0" stroke="WHITE" strokeType="INSIDE">
+                                                            <fill>
+                                                                <LinearGradient endX="1.0" endY="0.0" startX="0.0" startY="0.0">
+                                                                    <stops>
+                                                                        <Stop color="WHITE" />
+                                                                        <Stop color="#dcdcdc" offset="1.0" />
+                                                                    </stops>
+                                                                </LinearGradient>
+                                                            </fill>
+                                                        </Polygon>
+                                                    </children>
+                                                </StackPane>
+                                            </graphic>
+                                        </Button>
+
+                                        <!-- Contenedor de miniaturas con marcos elegantes -->
+                                        <HBox fx:id="thumbnailContainer" alignment="CENTER" prefHeight="100.0" prefWidth="300.0" spacing="10.0">
+                                            <children>
+                                                <!-- Miniatura 1 -->
+                                                <StackPane>
+                                                    <children>
+                                                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="90.0" width="90.0">
+                                                            <fill>
+                                                                <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
+                                                                    <stops>
+                                                                        <Stop color="#c0c0c0" />
+                                                                        <Stop color="#f8f8f8" offset="0.5" />
+                                                                        <Stop color="#c0c0c0" offset="1.0" />
+                                                                    </stops>
+                                                                </LinearGradient>
+                                                            </fill>
+                                                        </Rectangle>
+                                                        <Rectangle arcHeight="3.0" arcWidth="3.0" height="82.0" width="82.0">
+                                                            <fill>
+                                                                <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
+                                                                    <stops>
+                                                                        <Stop color="#071940" />
+                                                                        <Stop color="#0d2e67" offset="1.0" />
+                                                                    </stops>
+                                                                </LinearGradient>
+                                                            </fill>
+                                                        </Rectangle>
+                                                        <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@img/panelImagen.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                    <effect>
+                                                        <DropShadow color="#00000080" height="8.0" radius="3.5" width="8.0" />
+                                                    </effect>
+                                                </StackPane>
+
+                                                <!-- Miniatura 2 -->
+                                                <StackPane>
+                                                    <children>
+                                                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="90.0" width="90.0">
+                                                            <fill>
+                                                                <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
+                                                                    <stops>
+                                                                        <Stop color="#c0c0c0" />
+                                                                        <Stop color="#f8f8f8" offset="0.5" />
+                                                                        <Stop color="#c0c0c0" offset="1.0" />
+                                                                    </stops>
+                                                                </LinearGradient>
+                                                            </fill>
+                                                        </Rectangle>
+                                                        <Rectangle arcHeight="3.0" arcWidth="3.0" height="82.0" width="82.0">
+                                                            <fill>
+                                                                <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
+                                                                    <stops>
+                                                                        <Stop color="#071940" />
+                                                                        <Stop color="#0d2e67" offset="1.0" />
+                                                                    </stops>
+                                                                </LinearGradient>
+                                                            </fill>
+                                                        </Rectangle>
+                                                        <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@img/panelImagen.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                    <effect>
+                                                        <DropShadow color="#00000080" height="8.0" radius="3.5" width="8.0" />
+                                                    </effect>
+                                                </StackPane>
+
+                                                <!-- Miniatura 3 -->
+                                                <StackPane>
+                                                    <children>
+                                                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="90.0" width="90.0">
+                                                            <fill>
+                                                                <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
+                                                                    <stops>
+                                                                        <Stop color="#c0c0c0" />
+                                                                        <Stop color="#f8f8f8" offset="0.5" />
+                                                                        <Stop color="#c0c0c0" offset="1.0" />
+                                                                    </stops>
+                                                                </LinearGradient>
+                                                            </fill>
+                                                        </Rectangle>
+                                                        <Rectangle arcHeight="3.0" arcWidth="3.0" height="82.0" width="82.0">
+                                                            <fill>
+                                                                <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
+                                                                    <stops>
+                                                                        <Stop color="#071940" />
+                                                                        <Stop color="#0d2e67" offset="1.0" />
+                                                                    </stops>
+                                                                </LinearGradient>
+                                                            </fill>
+                                                        </Rectangle>
+                                                        <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@img/panelImagen.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                    <effect>
+                                                        <DropShadow color="#00000080" height="8.0" radius="3.5" width="8.0" />
+                                                    </effect>
+                                                </StackPane>
+                                            </children>
+                                        </HBox>
+
+                                        <!-- Botón derecho con efecto sofisticado -->
+                                        <Button fx:id="rightButton" minHeight="40.0" minWidth="40.0" mnemonicParsing="false">
+                                            <graphic>
+                                                <StackPane>
+                                                    <children>
+                                                        <Circle radius="20.0">
+                                                            <fill>
+                                                                <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
+                                                                    <stops>
+                                                                        <Stop color="#c78428" />
+                                                                        <Stop color="#f0a23c" offset="0.5" />
+                                                                        <Stop color="#b05f0b" offset="1.0" />
+                                                                    </stops>
+                                                                </LinearGradient>
+                                                            </fill>
+                                                            <effect>
+                                                                <DropShadow color="#00000080" height="10.0" radius="4.5" width="10.0" />
+                                                            </effect>
+                                                        </Circle>
+                                                        <Polygon points="10.0, 0.0, 0.0, -10.0, 0.0, 10.0" stroke="WHITE" strokeType="INSIDE">
+                                                            <fill>
+                                                                <LinearGradient endX="1.0" endY="0.0" startX="0.0" startY="0.0">
+                                                                    <stops>
+                                                                        <Stop color="WHITE" />
+                                                                        <Stop color="#dcdcdc" offset="1.0" />
+                                                                    </stops>
+                                                                </LinearGradient>
+                                                            </fill>
+                                                        </Polygon>
+                                                    </children>
+                                                </StackPane>
+                                            </graphic>
+                                        </Button>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <!-- Panel de información y botones con marco elegante -->
+                        <VBox alignment="CENTER_LEFT" prefHeight="400.0" prefWidth="400.0" spacing="20.0">
+                            <children>
+                                <!-- Marco decorativo para el contenido -->
+                                <StackPane>
+                                    <children>
+                                        <Rectangle arcHeight="15.0" arcWidth="15.0" height="380.0" width="409.0">
+                                            <fill>
+                                                <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
+                                                    <stops>
+                                                        <Stop color="#18387080" />
+                                                        <Stop color="#18387060" offset="1.0" />
+                                                    </stops>
+                                                </LinearGradient>
+                                            </fill>
+                                            <effect>
+                                                <DropShadow color="#00000080" height="15.0" radius="7.0" width="15.0" />
+                                            </effect>
+                                        </Rectangle>
+
+                                        <!-- Contenido de información -->
+                                        <VBox alignment="CENTER" prefHeight="425.0" prefWidth="502.0" spacing="20.0">
+                                            <children>
+                                                <!-- Nombre del alojamiento con efecto elegante -->
+                                                <Text fx:id="nombreText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
+                                                    <font>
+                                                        <Font name="Georgia Bold" size="36.0" />
+                                                    </font>
+                                                    <effect>
+                                                        <DropShadow color="#00000080" height="3.0" radius="1.0" width="3.0" />
+                                                    </effect>
+                                                </Text>
+
+                                                <!-- Separador decorativo -->
+                                                <Line endX="300.0" startX="0.0" strokeWidth="2.0">
+                                                    <effect>
+                                                        <Glow level="0.3" />
+                                                    </effect>
+                                       <stroke>
+                                          <LinearGradient endX="1.0" endY="1.0">
+                                             <stops>
+                                                <Stop color="#3e2da1" />
+                                                <Stop color="WHITE" offset="1.0" />
+                                             </stops>
+                                          </LinearGradient>
+                                       </stroke>
+                                                </Line>
+
+                                                <!-- Información del alojamiento con iconos -->
+                                                <VBox spacing="15.0">
+                                                    <children>
+                                                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                            <children>
+                                                                <Circle fill="#c78428" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+                                                                <Text fx:id="ciudadText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad">
+                                                                    <font>
+                                                                        <Font name="Georgia" size="16.0" />
+                                                                    </font>
+                                                                </Text>
+                                                            </children>
+                                                        </HBox>
+
+                                                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                            <children>
+                                                                <Circle fill="#c78428" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+                                                                <Text fx:id="descripcionText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripción" wrappingWidth="300.0">
+                                                                    <font>
+                                                                        <Font name="Georgia" size="16.0" />
+                                                                    </font>
+                                                                </Text>
+                                                            </children>
+                                                        </HBox>
+
+                                                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                            <children>
+                                                                <Circle fill="#c78428" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+                                                                <Text fx:id="precioText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio">
+                                                                    <font>
+                                                                        <Font name="Georgia" size="16.0" />
+                                                                    </font>
+                                                                </Text>
+                                                            </children>
+                                                        </HBox>
+
+                                                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                            <children>
+                                                                <Circle fill="#c78428" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+                                                                <Text fx:id="capacidadText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacidad">
+                                                                    <font>
+                                                                        <Font name="Georgia" size="16.0" />
+                                                                    </font>
+                                                                </Text>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
+
+                                                <!-- Separador decorativo -->
+                                                <Line endX="300.0" startX="0.0" strokeWidth="2.0">
+                                                    <effect>
+                                                        <Glow level="0.3" />
+                                                    </effect>
+                                       <stroke>
+                                          <LinearGradient endX="1.0" endY="1.0">
+                                             <stops>
+                                                <Stop color="WHITE" />
+                                                <Stop color="#524cff" offset="1.0" />
+                                             </stops>
+                                          </LinearGradient>
+                                       </stroke>
+                                                </Line>
+
+                                                <!-- Botones de acción con efectos premium -->
+                                                <HBox alignment="CENTER" prefHeight="60.0" prefWidth="400.0" spacing="20.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(from 20% 0% to 100% 100%, #8BC34A,#2E7D32);" text="Reservar" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                                             <effect>
+                                                <Lighting diffuseConstant="2.0" specularConstant="0.47" specularExponent="37.07" surfaceScale="10.0">
+                                                   <bumpInput>
+                                                      <Shadow height="22.94" radius="5.235" width="0.0" />
+                                                   </bumpInput>
+                                                   <light>
+                                                      <Light.Distant color="#ffffffb8" />
+                                                   </light>
+                                                </Lighting>
+                                             </effect></Button>
+                                          <Button mnemonicParsing="false" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(from 20% 0% to 100% 100%, #FF7043,#D32F2F);" text="Volver" textFill="WHITE">
+                                             <effect>
+                                                <Lighting diffuseConstant="0.93" specularConstant="1.23" specularExponent="40.0" surfaceScale="2.84">
+                                                   <bumpInput>
+                                                      <Shadow />
+                                                   </bumpInput>
+                                                   <light>
+                                                      <Light.Distant />
+                                                   </light>
+                                                </Lighting>
+                                             </effect></Button>
+                                       </children>
+                                                </HBox>
+                                            </children>
+                                            <padding>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                            </padding>
+                                        </VBox>
+                                    </children>
+                                </StackPane>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+
+        <!-- Sección inferior con TabPane -->
+        <VBox layoutY="470.0" prefHeight="230.0" prefWidth="900.0">
+            <children>
+                <!-- Barra de navegación con degradado elegante -->
+                <HBox alignment="CENTER" prefHeight="60.0" prefWidth="900.0">
+                    <children>
+
+                        <!-- Tres TabPane independientes con estilo premium -->
+                        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="900.0" spacing="20.0" style="-fx-background-color: #ffffff;">
+                            <children>
+                        <TabPane prefHeight="60.0" prefWidth="977.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Información Adicional" />
+                            <Tab text="Reseñas de Huéspedes">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </Tab>
+                              <Tab text="Ofertas Especiales">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                 </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+
+                <!-- Contenido de pestañas en un StackPane con ScrollPane y fondo elegante -->
+                <StackPane prefHeight="170.0" prefWidth="900.0">
+                    <children>
+                        <!-- Fondo para el área de contenido -->
+                        <Rectangle arcHeight="0.0" arcWidth="0.0" height="170.0" width="900.0">
+                            <fill>
+                                <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
+                                    <stops>
+                                        <Stop color="#c4e0ff" />
+                                        <Stop color="#a0c4ff" offset="0.5" />
+                                        <Stop color="#7095d1" offset="1.0" />
+                                    </stops>
+                                </LinearGradient>
+                            </fill>
+                            <effect>
+                                <InnerShadow choke="0.2" color="#00000040" height="10.0" radius="4.5" width="10.0" />
+                            </effect>
+                        </Rectangle>
+
+                        <!-- Elementos decorativos de fondo -->
+                        <Group>
+                            <children>
+                                <Circle fill="#1e90ff22" layoutX="100.0" layoutY="85.0" radius="25.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                <Circle fill="#1e90ff22" layoutX="800.0" layoutY="40.0" radius="30.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                <Circle fill="#1e90ff22" layoutX="750.0" layoutY="130.0" radius="20.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                <Polygon fill="#1e90ff22" points="200.0, 20.0, 230.0, 40.0, 200.0, 60.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                <Polygon fill="#1e90ff22" points="600.0, 120.0, 630.0, 140.0, 600.0, 160.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                <Line endX="600.0" endY="50.0" startX="500.0" startY="50.0" stroke="#1e90ff22" strokeWidth="3.0" />
+                                <Line endX="300.0" endY="140.0" startX="200.0" startY="140.0" stroke="#1e90ff22" strokeWidth="3.0" />
+                                <Line endX="400.0" endY="100.0" startX="380.0" startY="130.0" stroke="#1e90ff22" strokeWidth="2.0" />
+                                <Line endX="700.0" endY="30.0" startX="680.0" startY="60.0" stroke="#1e90ff22" strokeWidth="2.0" />
+                            </children>
+                        </Group>
+
+                        <!-- Contenedor para mostrar contenido según tab seleccionado -->
+                        <StackPane fx:id="contentPane" prefHeight="170.0" prefWidth="880.0">
+                            <children>
+
+                                <!-- Panel de ofertas (inicialmente oculto) -->
+                                <ScrollPane fx:id="offersScrollPane" fitToWidth="true" prefHeight="170.0" prefWidth="880.0" visible="false" />
+                            </children>
+                        </StackPane>
+                    </children>
+                </StackPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
