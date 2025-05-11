@@ -17,33 +17,34 @@ public interface IEmpresa {
     void registrarCliente(String cedula, String nombre, String telefono, String direccion, String email, String contrasenia,
                           boolean activacion) throws Exception;
 
-    void editarCliente(String cedula, String nombre, String telefono, String email, String contrasenia) throws Exception;
+    void editarCliente(String cedula, String nombre, String telefono, String direcccion, String email) throws Exception;
 
     void eliminarCliente(String cedula) throws Exception;
 
-    void registrarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion, double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception;
+    void registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String id, String nombre, Ciudad ciudad, String descripcion,
+                              double precioPorNoche, int capacidadMaxima, String imagenPrincipal, ArrayList<TipoServicio> servicios,
+                              ArrayList<String> imagenes, double costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception;
 
-    void editarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion,
-                           double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios,
-                           String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento,
-                           ArrayList<Habitacion> habitaciones) throws Exception;
+    void editarAlojamiento(String nombre, String descripcion, double precioPorNoche, int capacidadMaxima,
+                           String imagenPrincipal,  ArrayList<TipoServicio> servicios, ArrayList<String> imagenes,
+                           double costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception;
 
-    void eliminarAlojamiento(String nombre) throws Exception;
+    void eliminarAlojamiento(String id) throws Exception;
 
-    void registrarReserva(Cliente cliente, Alojamiento alojamiento, LocalDate fechaInicio, LocalDate fechaFin,
+    void realizarReserva(String cedulaCliente, String idAlojamiento, LocalDate fechaInicio, LocalDate fechaFin,
                           int numeroHuespedes) throws Exception;
 
-    void cancelarReserva(String cedulaCliente) throws Exception;
+    void cancelarReserva(String id) throws Exception;
 
-    void registrarCalificacion(String nombreCliente, String nombreAlojamiento, String comentario, int valoracion) throws Exception;
+    void registrarOferta(OfertaEspecial ofertaEspecial, String id, String idAlojamiento, String nombre, String descripcion,
+                         LocalDate fechaInicio, LocalDate fechaFin, double porcentajeDescuento) throws Exception;
 
-    void registrarOferta(OfertaEspecial ofertaEspecial, String descripcion, LocalDate fechaInicio,
-                         LocalDate fechaFin, double porcentajeDescuento) throws Exception;
+    void editarOferta(String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin,
+                      double porcentajeDescuento) throws Exception;
 
-    void editarOferta(OfertaEspecial ofertaEspecial, String nombre, String descripcion, LocalDate fechaInicio,
-                      LocalDate fechaFin, double porcentajeDescuento) throws Exception;
+    void eliminarOferta(String id) throws Exception;
 
-    void eliminarOferta(String nombre) throws Exception;
+    void enviarCalificacion(String nombreCliente, String nombreAlojamiento, String comentario, int valoracion) throws Exception;
 
-    Usuario iniciarSesion(String email, String contrasenia) throws Exception;
+    void enviarNotificacion(String cedulaCliente, String titulo, String mensaje) throws Exception;
 }

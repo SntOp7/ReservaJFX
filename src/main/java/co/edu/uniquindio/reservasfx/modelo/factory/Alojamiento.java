@@ -4,8 +4,6 @@ import co.edu.uniquindio.reservasfx.modelo.enums.Ciudad;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-
 @Getter
 @Setter
 public abstract class Alojamiento {
@@ -16,5 +14,4 @@ public abstract class Alojamiento {
     private double precioPorNoche;
     private int capacidadMaxima;
     private String imagenPrincipal;
-    private int visitas;
 }

@@ -11,11 +11,12 @@ import java.time.LocalDate;
 @Setter
 @Builder
 public class Oferta {
-    OfertaEspecial ofertaEspecial;
-    String idAlojamiento;
-    String nombre;
-    String descripcion;
-    LocalDate fechaInicio;
-    LocalDate fechaFin;
-    double porcentajeDescuento;
+    private OfertaEspecial ofertaEspecial;
+    private String id;
+    private String idAlojamiento;
+    private String nombre;
+    private String descripcion;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
+    private double porcentajeDescuento;
 }

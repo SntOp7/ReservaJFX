@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @Setter
 @Builder
 public class Reserva {
+    private String id;
     private String cedulaCliente;
     private String idAlojamiento;
     private LocalDate fechaInicio;
