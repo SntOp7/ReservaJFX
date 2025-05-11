@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 @Builder
 public class Notificacion {
-    private String cedulaCliente;
+    private String nombreCliente;
     private String titulo;
     private String mensaje;
     private LocalDateTime fecha;

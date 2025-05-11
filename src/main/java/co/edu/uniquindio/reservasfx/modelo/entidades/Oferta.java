@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @Builder
 public class Oferta {
     OfertaEspecial ofertaEspecial;
+    String idAlojamiento;
     String nombre;
     String descripcion;
     LocalDate fechaInicio;

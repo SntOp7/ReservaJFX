@@ -14,8 +14,8 @@ import java.time.LocalDate;
 @Setter
 @Builder
 public class Reserva {
-    private Cliente cliente;
-    private Alojamiento alojamiento;
+    private String cedulaCliente;
+    private String idAlojamiento;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private int numeroHuespedes;
