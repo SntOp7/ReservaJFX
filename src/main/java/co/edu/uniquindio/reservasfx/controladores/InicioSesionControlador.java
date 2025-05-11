@@ -25,7 +25,7 @@ public class InicioSesionControlador {
         String correo = correoTxt.getText();
         String contrasenia = passwordTxt.getText();
         try {
-            Usuario usuario = controlador.getEmpresa().iniciarSesion(correo, contrasenia);
+            Usuario usuario = controlador.getEmpresa().getModuloUsuarioServicios().iniciarSesion(correo, contrasenia);
             if (usuario == null) {
                 controlador.crearAlerta("No se encontro un usuario con ese correo y contraseña", Alert.AlertType.ERROR);
             } else {

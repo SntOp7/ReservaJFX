@@ -1,10 +1,12 @@
 package co.edu.uniquindio.reservasfx.servicios.modulo.usuario;
 
+import co.edu.uniquindio.reservasfx.modelo.entidades.BilleteraVirtual;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Usuario;
 import co.edu.uniquindio.reservasfx.repositorios.UsuarioRepositorio;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class UsuarioServicios {
 
@@ -15,50 +17,86 @@ public class UsuarioServicios {
     }
 
     public void registrarCliente(String cedula, String nombre, String telefono, String direccion, String email, String contrasenia, boolean activacion) throws Exception {
+        verificarCampos(cedula, nombre, telefono, direccion, email);
+        if (contrasenia == null || contrasenia.isEmpty()) throw new Exception("La contraseña es obligatoria");
+        if (usuarioRepositorio.buscarCliente(cedula) != null) throw new Exception("Ya existe un usuario con dicha cedula");
+
+        Cliente cliente = new Cliente(cedula, nombre, telefono, email, contrasenia, activacion);
+        BilleteraVirtual billeteraVirtual = new BilleteraVirtual(UUID.randomUUID().toString(), 0);
+        cliente.setBilletera(billeteraVirtual);
+        usuarioRepositorio.agregar(cliente);
+    }
+
+    public void editarCliente(String cedula, String nombre, String telefono, String direcccion, String email) throws Exception {
+        verificarCampos(cedula, nombre, telefono, direcccion, email);
+        Cliente cliente = usuarioRepositorio.buscarCliente(cedula);
+        if (cliente == null) throw new Exception("El cliente no existe");
+        cliente.setCedula(cedula);
+        cliente.setNombre(nombre);
+        cliente.setTelefono(telefono);
+        cliente.setDireccion(direcccion);
+        cliente.setEmail(email);
+        usuarioRepositorio.editar(cliente);
+    }
+
+    private void verificarCampos(String cedula, String nombre, String telefono, String direcccion, String email) throws Exception {
         if (cedula == null || cedula.isEmpty()) throw new Exception("La cedula es obligatoria");
         if (nombre == null || nombre.isEmpty()) throw new Exception("El nombre es obligatorio");
         if (telefono == null || telefono.isEmpty()) throw new Exception("El telefono es obligatorio");
-        if (direccion == null || direccion.isEmpty()) throw new Exception("La direccion es obligatoria");
+        if (direcccion == null || direcccion.isEmpty()) throw new Exception("La direccion es obligatoria");
         if (email == null || email.isEmpty()) throw new Exception("El email es obligatorio");
-        if (contrasenia == null || contrasenia.isEmpty()) throw new Exception("La contraseña es obligatoria");
 
         if (cedula.length() != 10) throw new Exception("La cedula debe tener 10 digitos");
         if (!telefono.matches("^3\\d{9}$")) throw new Exception("Verifique el numero de telefono");
         if (!email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) throw new Exception("Verifique el formato del email");
-
-        Cliente cliente = new Cliente(cedula, nombre, telefono, email, contrasenia, activacion);
-        usuarioRepositorio.agregar(cliente);
-    }
-
-    public void editarCliente(String cedula, String nombre, String telefono, String email, String contrasenia) throws Exception {
-        Cliente clienteExistente = buscarCliente(cedula);
-
-        if (clienteExistente == null) {
-            throw new Exception("Habitación no encontrada");
-        }
-
-        Cliente cliente = new Cliente(cedula, nombre, telefono, email, contrasenia, true);
-
-        usuarioRepositorio.editar(cliente);
     }
 
     public void eliminarCliente(String cedula) throws Exception {
-        Cliente cliente = buscarCliente(cedula);
+        Cliente cliente = usuarioRepositorio.buscarCliente(cedula);
         if (cliente == null) throw new Exception("El cliente no existe");
         usuarioRepositorio.eliminar(cliente);
     }
 
-    public ArrayList<Cliente> getClientes() {
-        return usuarioRepositorio.getClientes();
-    }
-
-    public Cliente buscarCliente(String cedula) {
-        return usuarioRepositorio.buscarCliente(cedula);
-    }
-
     public Usuario iniciarSesion(String email, String contrasenia) throws Exception {
         if (email == null || email.isEmpty()) throw new Exception("El email es obligatorio");
-        if (contrasenia == null || contrasenia.isEmpty()) throw  new Exception("la contrasenia es obligatoria");
-        return usuarioRepositorio.iniciarSesion(email, contrasenia);
+        if (contrasenia == null || contrasenia.isEmpty()) throw new Exception("La contraseña es obligatoria");
+
+        Usuario usuario = usuarioRepositorio.buscarUsuarioPorEmail(email);
+
+        if (usuario == null) throw new Exception("El usuario no existe");
+        if (!usuario.getContrasenia().equals(contrasenia)) throw new Exception("La contraseña es incorrecta");
+
+        return usuario;
+    }
+
+    public Usuario buscarUsuarioPorEmail(String email) {
+        return usuarioRepositorio.buscarUsuarioPorEmail(email);
+    }
+
+    public void cambiarContrasenia(String email, String codigoCorrecto, String codigoIngresado, String contraseniaNueva,
+                                   String contraseniaVerificacion) throws Exception {
+        if (codigoIngresado == null || codigoIngresado.isEmpty()) throw new Exception("El codigo es obligatorio");
+        if (contraseniaNueva == null || contraseniaNueva.isEmpty()) throw new Exception("La contraseña nueva es obligatoria");
+        if (contraseniaVerificacion == null || contraseniaVerificacion.isEmpty())
+            throw new Exception("La verificacion de la nueva contraseña es obligatoria");
+
+        Usuario usuario = usuarioRepositorio.buscarUsuarioPorEmail(email);
+        if (usuario == null) throw new Exception("El usuario no existe");
+
+        if (!contraseniaNueva.equals(contraseniaVerificacion)) throw new Exception("Debes verificar la nueva contraseña");
+        if (!codigoCorrecto.equals(codigoIngresado)) throw new Exception("El código de verificación es incorrecto");
+
+        usuario.setContrasenia(contraseniaNueva);
+    }
+
+    public void activarCuentaCliente(String cedula, String codigoCorrecto, String codigoIngresado) throws Exception {
+        if (codigoIngresado == null || codigoIngresado.isEmpty()) throw new Exception("El codigo es obligatorio");
+
+        Cliente cliente = usuarioRepositorio.buscarCliente(cedula);
+        if (cliente == null) throw new Exception("El cliente no existe");
+
+        if (!codigoCorrecto.equals(codigoIngresado)) throw new Exception("El código de activación es incorrecto");
+
+        cliente.setActivo(true);
     }
 }

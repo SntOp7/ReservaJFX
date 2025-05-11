@@ -48,4 +48,20 @@ public class Constantes {
     public static String RECORDATORIO_RESERVA(String nombreAlojamiento) {
         return "Tu estancia en " + nombreAlojamiento + " comienza en 24 horas. ¡Te esperamos!";
     }
+
+    public static String ENVIO_CODIGO(String codigo, String nombre) {
+        return "Hola " + nombre + "\n" +
+                "\n" +
+                "Hemos recibido una solicitud en BookYourStay.\n" +
+                "\n" +
+                "Tu código de verificación es: " + codigo + "\n" +
+                "\n" +
+                "Ingresa este código en la plataforma para completar tu proceso. \n" +
+                "Este código es confidencial. No lo compartas con nadie.\n" +
+                "\n" +
+                "Si tú no realizaste esta solicitud, puedes ignorar este mensaje.\n" +
+                "\n" +
+                "Gracias por confiar en nosotros,\n" +
+                "El equipo de BookYourStay";
+    }
 }

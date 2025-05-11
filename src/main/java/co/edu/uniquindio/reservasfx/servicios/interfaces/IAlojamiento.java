@@ -1,5 +1,6 @@
 package co.edu.uniquindio.reservasfx.servicios.interfaces;
 
+import co.edu.uniquindio.reservasfx.modelo.entidades.Calificacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
 import co.edu.uniquindio.reservasfx.modelo.enums.Ciudad;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoAlojamiento;
@@ -27,6 +28,8 @@ public interface IAlojamiento {
     void obtenerAlojamientosOferta(ArrayList<Alojamiento> alojamientos);
 
     void obtenerAlojamientosPreferencias(ArrayList<Alojamiento> alojamientos);
+
+    ArrayList<Calificacion> obtenerCalificacionesAlojamiento(String idAlojamiento) throws Exception;
 
     void registrarHAbitacion(String idHotel, int numero, double precio, int capacidad, String descripcion, String imagen) throws Exception;
 
