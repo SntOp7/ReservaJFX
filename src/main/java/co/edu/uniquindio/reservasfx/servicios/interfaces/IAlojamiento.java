@@ -11,29 +11,36 @@ import java.util.ArrayList;
 
 public interface IAlojamiento {
 
-    void registrarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion,
-                              double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios,
-                              String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento,
-                              ArrayList<Habitacion> habitaciones) throws Exception;
+    void registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion,
+                              double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal,
+                              ArrayList<String> imagenes, double costoAseoYMantenimiento) throws Exception;
 
-    void editarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion,
-                           double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios,
-                           String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento,
-                           ArrayList<Habitacion> habitaciones) throws Exception;
+    void editarAlojamiento(String nombre, String descripcion, double precioPorNoche, int capacidadMaxima,
+                           ArrayList<TipoServicio> servicios, String imagenPrincipal, ArrayList<String> imagenes,
+                           double costoAseoYMantenimiento) throws Exception;
 
-    void eliminarAlojamiento(String nombre) throws Exception;
+    void eliminarAlojamiento(String id) throws Exception;
 
-    void obtenerAlojamientosPopulares(ArrayList<Alojamiento> alojamientos);
+    ArrayList<Alojamiento> obtenerAlojamientos() throws Exception;
 
-    void obtenerAlojamientosOferta(ArrayList<Alojamiento> alojamientos);
+    ArrayList<Alojamiento> obtenerAlojamientosAleatorios() throws Exception;
 
-    void obtenerAlojamientosPreferencias(ArrayList<Alojamiento> alojamientos);
+    ArrayList<Alojamiento> obtenerAlojamientosPopulares() throws Exception;
 
-    ArrayList<Calificacion> obtenerCalificacionesAlojamiento(String idAlojamiento) throws Exception;
+    ArrayList<Alojamiento> obtenerAlojamientosRentables() throws Exception;
 
-    void registrarHAbitacion(String idHotel, int numero, double precio, int capacidad, String descripcion, String imagen) throws Exception;
+    ArrayList<Alojamiento> obtenerAlojamientosOfertados() throws Exception;
 
-    void editarHabitacion(String idHotel, int numero, double precio, int capacidad, String descripcion, String imagen) throws Exception;
+    ArrayList<Alojamiento> obtenerAlojamientosPreferenciasCliente(String cedulaCliente) throws Exception;
+
+    ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(String cedulaCliente) throws Exception;
+
+    ArrayList<Alojamiento> obtenerAlojamientosPorFiltro(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad,
+                                                        double precioMin, double precioMax) throws Exception;
+
+    void registrarHabitacion(int numero, double precio, int capacidad, String descripcion, String imagen) throws Exception;
+
+    void editarHabitacion(double precio, String descripcion, String imagen) throws Exception;
 
     void eliminarHabitacion(String idHotel, int numero) throws Exception;
 }

@@ -17,57 +17,87 @@ import java.util.ArrayList;
 
 public class ModuloAlojamientoServicios implements IAlojamiento {
 
-    private EmpresaServicio empresaServicio = EmpresaServicio.getInstancia();
     private final HabitacionServicios habitacionServicios;
     private final AlojamientoServicios alojamientoServicios;
 
     public ModuloAlojamientoServicios() {
         habitacionServicios = new HabitacionServicios();
-        alojamientoServicios = new AlojamientoServicios(habitacionServicios);
+        alojamientoServicios = new AlojamientoServicios();
     }
 
     @Override
-    public void registrarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion, double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception {
-        alojamientoServicios.registrarAlojamiento(id, tipoAlojamiento, nombre, ciudad, descripcion, precioPorNoche, capacidadMaxima, servicios, imagenPrincipal, imagenes, costoAseoYMantenimiento, habitaciones);
+    public void registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion,
+                                     double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios,
+                                     String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento) throws Exception {
+        alojamientoServicios.registrarAlojamiento(tipoAlojamiento, nombre, ciudad, descripcion, precioPorNoche, capacidadMaxima,
+                servicios, imagenPrincipal, imagenes, costoAseoYMantenimiento);
     }
 
     @Override
-    public void editarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion, double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception{
-        alojamientoServicios.editarAlojamiento(tipoAlojamiento, nombre, ciudad, descripcion, precioPorNoche, capacidadMaxima, servicios, imagenPrincipal, imagenes, costoAseoYMantenimiento, habitaciones);
+    public void editarAlojamiento(String nombre, String descripcion, double precioPorNoche, int capacidadMaxima,
+                                  ArrayList<TipoServicio> servicios, String imagenPrincipal, ArrayList<String> imagenes,
+                                  double costoAseoYMantenimiento) throws Exception {
+        alojamientoServicios.editarAlojamiento(nombre, descripcion, precioPorNoche, capacidadMaxima, servicios,
+                imagenPrincipal, imagenes, costoAseoYMantenimiento);
     }
 
     @Override
-    public void eliminarAlojamiento(String nombre) throws Exception {
-        alojamientoServicios.eliminarAlojamiento(nombre);
+    public void eliminarAlojamiento(String id) throws Exception {
+        alojamientoServicios.eliminarAlojamiento(id);
     }
 
     @Override
-    public void obtenerAlojamientosPopulares(ArrayList<Alojamiento> alojamientos) {
-        alojamientoServicios.obtenerAlojamientosPopulares(alojamientos);
+    public ArrayList<Alojamiento> obtenerAlojamientos() throws Exception {
+        return alojamientoServicios.obtenerAlojamientos();
     }
 
     @Override
-    public void obtenerAlojamientosOferta(ArrayList<Alojamiento> alojamientos) {
-        alojamientoServicios.obtenerAlojamientosOferta(alojamientos);
+    public ArrayList<Alojamiento> obtenerAlojamientosAleatorios() throws Exception {
+        return alojamientoServicios.obtenerAlojamientosAleatorios();
     }
 
     @Override
-    public void obtenerAlojamientosPreferencias(ArrayList<Alojamiento> alojamientos) {
-        alojamientoServicios.obtenerAlojamientosPreferencias(alojamientos);
+    public ArrayList<Alojamiento> obtenerAlojamientosPopulares() throws Exception {
+        return alojamientoServicios.obtenerAlojamientosPopulares();
     }
 
     @Override
-    public void registrarHAbitacion(String idHotel, int numero, double precio, int capacidad, String descripcion, String imagen) throws Exception {
-        habitacionServicios.registrarHabitacion(idHotel, numero, precio, capacidad, descripcion, imagen);
+    public ArrayList<Alojamiento> obtenerAlojamientosRentables() throws Exception {
+        return alojamientoServicios.obtenerAlojamientosRentables();
     }
 
     @Override
-    public void editarHabitacion(String idHotel, int numero, double precio, int capacidad, String descripcion, String imagen) throws Exception {
-        habitacionServicios.editarHabitacion(idHotel, numero, precio, capacidad, descripcion, imagen);
+    public ArrayList<Alojamiento> obtenerAlojamientosOfertados() throws Exception {
+        return alojamientoServicios.obtenerAlojamientosOfertados();
+    }
+
+    @Override
+    public ArrayList<Alojamiento> obtenerAlojamientosPreferenciasCliente(String cedulaCliente) throws Exception {
+        return alojamientoServicios.obtenerAlojamientosPreferenciasCliente(cedulaCliente);
+    }
+
+    @Override
+    public ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(String cedulaCliente) throws Exception {
+        return alojamientoServicios.obtenerAlojamientosPorDeseosCliente(cedulaCliente);
+    }
+
+    @Override
+    public ArrayList<Alojamiento> obtenerAlojamientosPorFiltro(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, double precioMin, double precioMax) throws Exception {
+        return alojamientoServicios.obtenerAlojamientosPorFiltro(tipoAlojamiento, nombre, ciudad, precioMin, precioMax);
+    }
+
+    @Override
+    public void registrarHabitacion(int numero, double precio, int capacidad, String descripcion, String imagen) throws Exception {
+
+    }
+
+    @Override
+    public void editarHabitacion(double precio, String descripcion, String imagen) throws Exception {
+
     }
 
     @Override
     public void eliminarHabitacion(String idHotel, int numero) throws Exception {
-        habitacionServicios.eliminarHabitacion(idHotel, numero);
+
     }
 }

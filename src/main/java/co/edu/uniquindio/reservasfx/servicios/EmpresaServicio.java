@@ -51,18 +51,17 @@ public class EmpresaServicio implements IEmpresa {
     @Override
     public void registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion,
                                      double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios,
-                                     String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento,
-                                     ArrayList<Habitacion> habitaciones) throws Exception {
+                                     String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento) throws Exception {
         moduloAlojamientoServicios.registrarAlojamiento(tipoAlojamiento, nombre, ciudad, descripcion, precioPorNoche,
-                capacidadMaxima, servicios, imagenPrincipal, imagenes, costoAseoYMantenimiento, habitaciones);
+                capacidadMaxima, servicios, imagenPrincipal, imagenes, costoAseoYMantenimiento);
     }
 
     @Override
     public void editarAlojamiento(String nombre, String descripcion, double precioPorNoche, int capacidadMaxima,
                                   ArrayList<TipoServicio> servicios, String imagenPrincipal, ArrayList<String> imagenes,
-                                  double costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception {
+                                  double costoAseoYMantenimiento) throws Exception {
         moduloAlojamientoServicios.editarAlojamiento(nombre, descripcion, precioPorNoche, capacidadMaxima, servicios,
-                imagenPrincipal, imagenes, costoAseoYMantenimiento, habitaciones);
+                imagenPrincipal, imagenes, costoAseoYMantenimiento);
     }
 
     @Override

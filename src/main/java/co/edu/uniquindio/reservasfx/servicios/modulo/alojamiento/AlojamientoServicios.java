@@ -20,14 +20,11 @@ public class AlojamientoServicios {
     private final AlojamientoRepositorio alojamientoRepositorio;
     private final ServicioRepositorio servicioRepositorio;
     private final ImagenRepositorio imagenRepositorio;
-    private final HabitacionServicios habitacionServicios;
-    private ArrayList<Alojamiento> alojamientos;
 
 
-    public AlojamientoServicios(HabitacionServicios habitacionServicios) {
-        this.habitacionServicios = habitacionServicios;
-        this.servicioRepositorio = new ServicioRepositorio();
-        this.imagenRepositorio = new ImagenRepositorio();
+    public AlojamientoServicios() {
+        servicioRepositorio = new ServicioRepositorio();
+        imagenRepositorio = new ImagenRepositorio();
         alojamientoRepositorio = new AlojamientoRepositorio();
     }
 
