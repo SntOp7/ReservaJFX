@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.Group?>
+
+<StackPane fx:id="mainStackPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="704.0" minWidth="1010.0" style="-fx-border-radius: 50px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.InicioSesionControlador">
+    <children>
+
+          <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="704.0" minWidth="1010.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+              <background>
+                  <Background>
+                      <fills>
+                          <BackgroundFill>
+                              <fill>
+                                  <Color opacity="0.05" />
+                              </fill>
+                          </BackgroundFill>
+                      </fills>
+                  </Background>
+              </background>
+
+
+              <top>
+                  <StackPane minHeight="100.0" prefHeight="100.0" BorderPane.alignment="CENTER">
+                      <children>
+
+                          <Rectangle fill="TRANSPARENT" height="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1010.0" StackPane.alignment="TOP_CENTER">
+                              <StackPane.margin>
+                                  <Insets />
+                              </StackPane.margin>
+                          </Rectangle>
+
+
+                          <Rectangle height="100.0" stroke="TRANSPARENT" strokeType="INSIDE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" StackPane.alignment="TOP_CENTER">
+                              <fill>
+                                  <LinearGradient endX="1.0" endY="0.0">
+                                      <stops>
+                                          <Stop color="#2c3e50" />
+                                          <Stop color="#1a5276" offset="0.5" />
+                                          <Stop color="#2980b9" offset="1.0" />
+                                      </stops>
+                                  </LinearGradient>
+                              </fill>
+                          </Rectangle>
+
+                          
+                                <Path mouseTransparent="true" stroke="TRANSPARENT" StackPane.alignment="TOP_CENTER">
+                              <fill>
+                                  <LinearGradient endX="1.0" endY="0.0">
+                                      <stops>
+                                          <Stop color="#2c3e50" />
+                                          <Stop color="#1a5276" offset="0.5" />
+                                          <Stop color="#2980b9" offset="1.0" />
+                                      </stops>
+                                  </LinearGradient>
+                              </fill>
+                              <elements>
+                                  <MoveTo x="0" y="0" />
+                                  <LineTo x="1900" y="0" />
+                                  <LineTo x="1900" y="90" />
+                                  <CubicCurveTo controlX1="840" controlX2="673" controlY1="70" controlY2="100" x="505" y="85" />
+                                  <CubicCurveTo controlX1="337" controlX2="168" controlY1="70" controlY2="110" x="0" y="80" />
+                                  <LineTo x="0" y="0" />
+                                  <ClosePath />
+                              </elements>
+                              <effect>
+                                  <DropShadow color="#00000033" height="15" radius="7" width="15" />
+                              </effect>
+                          </Path>
+
+                          <Group>
+                              <children>
+                                  <Circle centerX="84" centerY="35" fill="white" opacity="0.3" radius="2.5" />
+                                  <Circle centerX="126" centerY="49" fill="white" opacity="0.2" radius="1.7" />
+                                  <Circle centerX="151" centerY="28" fill="white" opacity="0.4" radius="1.3" />
+                                  <Circle centerX="924" centerY="42" fill="white" opacity="0.3" radius="2.5" />
+                                  <Circle centerX="882" centerY="21" fill="white" opacity="0.2" radius="1.7" />
+                                  <Circle centerX="957" centerY="56" fill="white" opacity="0.4" radius="1.3" />
+                              </children>
+                          </Group>
+
+                          <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                              <children>
+                                  <HBox alignment="CENTER" spacing="20.0">
+                                      <children>
+                                          <StackPane>
+                                              <children>
+                                                  <Circle fill="#ffffff15" radius="35" />
+                                                  <Circle fill="#ffffff30" radius="30">
+                                                      <effect>
+                                                          <DropShadow color="#00000040" radius="8" />
+                                                      </effect>
+                                                  </Circle>
+                                                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                                      <image>
+                                                          <Image url="@img/sesionIniciar.png" />
+                                                      </image>
+                                                      <effect>
+                                                          <Glow level="0.3" />
+                                                      </effect>
+                                                  </ImageView>
+                                              </children>
+                                          </StackPane>
+
+                                          <VBox alignment="CENTER" spacing="3">
+                                              <children>
+                                                  <Label alignment="CENTER" contentDisplay="CENTER" text="BIENVENID@" textFill="#e0f7fa">
+                                                      <font>
+                                                          <Font name="Montserrat Light" size="14.0" />
+                                                      </font>
+                                                  </Label>
+                                                  <Label alignment="CENTER" contentDisplay="CENTER" text="Iniciar Sesión" textFill="WHITE">
+                                                      <font>
+                                                          <Font name="Montserrat SemiBold" size="36.0" />
+                                                      </font>
+                                                      <effect>
+                                                          <DropShadow color="#00000066" height="4" radius="1.5" width="4" />
+                                                      </effect>
+                                                  </Label>
+                                              </children>
+                                          </VBox>
+                                      </children>
+                                  </HBox>
+                              </children>
+                          </HBox>
+                      </children>
+                  </StackPane>
+              </top>
+
+              <center>
+
+                  <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+                      <children>
+                          
+                          <Group StackPane.alignment="CENTER">
+                              <children>
+                                  <Path fill="#3498db10" translateX="-889.0" StackPane.alignment="TOP_LEFT">
+                                      <elements>
+                                          <MoveTo x="0" y="0" />
+                                          <CubicCurveTo controlX1="168" controlX2="252" controlY1="70" controlY2="35" x="336" y="105" />
+                                          <CubicCurveTo controlX1="420" controlX2="168" controlY1="175" controlY2="140" x="0" y="210" />
+                                          <LineTo x="0" y="0" />
+                                          <ClosePath />
+                                      </elements>
+                                  </Path>
+
+                                  <Path fill="#2c3e5010" StackPane.alignment="BOTTOM_RIGHT">
+                                      <elements>
+                                          <MoveTo x="1010" y="511" />
+                                          <CubicCurveTo controlX1="840" controlX2="756" controlY1="441" controlY2="476" x="672" y="406" />
+                                          <CubicCurveTo controlX1="588" controlX2="840" controlY1="336" controlY2="371" x="1010" y="301" />
+                                          <LineTo x="1010" y="511" />
+                                          <ClosePath />
+                                      </elements>
+                                  </Path>
+                                  <Circle centerX="126" centerY="406" fill="#2c3e50" opacity="0.07" radius="51.0" />
+                                  <Circle centerX="924" centerY="105" fill="#3498db" opacity="0.05" radius="65.0" />
+                                  <Circle centerX="882" centerY="70" fill="#2c3e50" opacity="0.07" radius="49" />
+
+                                  <Line endX="252" endY="210" opacity="0.1" startX="0" startY="245" stroke="#3498db" strokeWidth="1" />
+                                  <Line endX="1010" endY="280" opacity="0.1" startX="756" startY="315" stroke="#3498db" strokeWidth="1" />
+                              </children>
+                          </Group>
+
+                          <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20.0">
+                              <padding>
+                                  <Insets bottom="40.0" left="40.0" right="40.0" top="20.0" />
+                              </padding>
+                              <children>
+                                  <StackPane>
+                                      <effect>
+                                          <DropShadow color="#00000026" height="25" radius="12" width="25" />
+                                      </effect>
+                                      <children>
+                                          <Rectangle arcHeight="25.0" arcWidth="25.0" fill="white" height="365.0" stroke="#ffffff50" strokeWidth="1" width="460.0">
+                                              <effect>
+                                                  <BoxBlur height="1.0" iterations="3" width="1.0" />
+                                              </effect>
+                                          </Rectangle>
+
+                                          <VBox alignment="TOP_CENTER" maxWidth="420.0" spacing="20">
+                                              <padding>
+                                                  <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+                                              </padding>
+                                              <children>
+                                                  <Label text="Acceso a tu cuenta" textFill="#2c3e50">
+                                                      <font>
+                                                          <Font name="Montserrat SemiBold" size="20.0" />
+                                                      </font>
+                                                  </Label>
+
+                                                  <StackPane>
+                                                      <children>
+                                                          <Rectangle height="2.5" width="80.0">
+                                                              <fill>
+                                                                  <LinearGradient endX="1.0" endY="0.0">
+                                                                      <stops>
+                                                                          <Stop color="#3498db" />
+                                                                          <Stop color="#2980b9" offset="1.0" />
+                                                                      </stops>
+                                                                  </LinearGradient>
+                                                              </fill>
+                                                          </Rectangle>
+                                                      </children>
+                                                  </StackPane>
+
+                                                  <VBox spacing="22">
+                                                      <padding>
+                                                          <Insets top="10.0" />
+                                                      </padding>
+                                                      <children>
+                                                          <VBox spacing="8">
+                                                              <children>
+                                                                  <Label text="Correo Electrónico" textFill="#34495e">
+                                                                      <font>
+                                                                          <Font name="Montserrat Medium" size="13.0" />
+                                                                      </font>
+                                                                  </Label>
+                                                                  <StackPane>
+                                                                      <children>
+                                                                          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#f8f9fa" height="45.0" stroke="#e2e8f000" strokeWidth="1.0" width="340.0">
+                                                                              <effect>
+                                                                                  <InnerShadow choke="0.2" color="#00000010" height="8" radius="3.5" width="8" />
+                                                                              </effect>
+                                                                          </Rectangle>
+
+                                                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3498db" height="2.0" translateY="20.0" visible="false" width="340.0">
+                                                                              <effect>
+                                                                                  <Glow level="0.3" />
+                                                                              </effect>
+                                                                          </Rectangle>
+
+                                                                          <HBox alignment="CENTER_LEFT" maxWidth="Infinity" spacing="10">
+                                                                              <padding>
+                                                                                  <Insets left="12.0" />
+                                                                              </padding>
+                                                                              <children>
+                                                                                  <StackPane maxHeight="20" maxWidth="20">
+                                                                                      <children>
+                                                                                          <Circle fill="#3498db20" radius="10" />
+                                                                                          <Region prefHeight="14.0" prefWidth="14.0" style="-fx-background-color: #3498db; -fx-shape: 'M20,4 L4,4 C2.9,4 2,4.9 2,6 L2,18 C2,19.1 2.9,20 4,20 L20,20 C21.1,20 22,19.1 22,18 L22,6 C22,4.9 21.1,4 20,4 Z M20,8 L12,13 L4,8 L4,6 L12,11 L20,6 L20,8 Z';" />
+                                                                                      </children>
+                                                                                  </StackPane>
+
+                                                                                  <TextField fx:id="correoTxt" maxWidth="Infinity" prefHeight="42.0" prefWidth="300.0" promptText="nombre@correo.com" style="-fx-background-color: transparent; -fx-font-size: 13px;" HBox.hgrow="ALWAYS" />
+                                                                              </children>
+                                                                          </HBox>
+                                                                      </children>
+                                                                  </StackPane>
+                                                              </children>
+                                                          </VBox>
+
+                                                          <VBox spacing="8">
+                                                              <children>
+                                                                  <Label text="Contraseña" textFill="#34495e">
+                                                                      <font>
+                                                                          <Font name="Montserrat Medium" size="13.0" />
+                                                                      </font>
+                                                                  </Label>
+                                                                  <StackPane>
+                                                                      <children>
+                                                                          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#f8f9fa" height="45.0" stroke="#e2e8f000" strokeWidth="1.0" width="340.0">
+                                                                              <effect>
+                                                                                  <InnerShadow choke="0.2" color="#00000010" height="8" radius="3.5" width="8" />
+                                                                              </effect>
+                                                                          </Rectangle>
+
+                                                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3498db" height="2.0" translateY="20.0" visible="false" width="340.0">
+                                                                              <effect>
+                                                                                  <Glow level="0.3" />
+                                                                              </effect>
+                                                                          </Rectangle>
+
+                                                                          <HBox alignment="CENTER_LEFT" maxWidth="Infinity" spacing="10">
+                                                                              <padding>
+                                                                                  <Insets left="12.0" />
+                                                                              </padding>
+                                                                              <children>
+                                                                                  <StackPane maxHeight="20" maxWidth="20">
+                                                                                      <children>
+                                                                                          <Circle fill="#3498db20" radius="10" />
+                                                                                          <Region prefHeight="14.0" prefWidth="14.0" style="-fx-background-color: #3498db; -fx-shape: 'M18,8 L17,8 L17,6 C17,3.24 14.76,1 12,1 C9.24,1 7,3.24 7,6 L7,8 L6,8 C4.9,8 4,8.9 4,10 L4,20 C4,21.1 4.9,22 6,22 L18,22 C19.1,22 20,21.1 20,20 L20,10 C20,8.9 19.1,8 18,8 Z M12,17 C10.9,17 10,16.1 10,15 C10,13.9 10.9,13 12,13 C13.1,13 14,13.9 14,15 C14,16.1 13.1,17 12,17 Z M15,8 L9,8 L9,6 C9,4.34 10.34,3 12,3 C13.66,3 15,4.34 15,6 L15,8 Z';" />
+                                                                                      </children>
+                                                                                  </StackPane>
+
+                                                                                  <PasswordField fx:id="passwordTxt" maxWidth="Infinity" prefHeight="42.0" prefWidth="275.0" promptText="••••••••••••" style="-fx-background-color: transparent; -fx-font-size: 13px;" HBox.hgrow="ALWAYS" />
+
+                                                                                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
+                                                                                      <graphic>
+                                                                                          <Region prefHeight="20.0" prefWidth="44.0" style="-fx-background-color: #95a5a6; -fx-shape: 'M12,6 C15.79,6 19.17,8.13 20.82,11.5 C19.17,14.87 15.79,17 12,17 C8.21,17 4.83,14.87 3.18,11.5 C4.83,8.13 8.21,6 12,6 Z M12,4 C7,4 2.73,7.11 1,11.5 C2.73,15.89 7,19 12,19 C17,19 21.27,15.89 23,11.5 C21.27,7.11 17,4 12,4 Z M12,9 C13.38,9 14.5,10.12 14.5,11.5 C14.5,12.88 13.38,14 12,14 C10.62,14 9.5,12.88 9.5,11.5 C9.5,10.12 10.62,9 12,9 Z M12,7 C9.52,7 7.5,9.02 7.5,11.5 C7.5,13.98 9.52,16 12,16 C14.48,16 16.5,13.98 16.5,11.5 C16.5,9.02 14.48,7 12,7 Z';" />
+                                                                                      </graphic>
+                                                                                  </Button>
+                                                                              </children>
+                                                                          </HBox>
+                                                                      </children>
+                                                                  </StackPane>
+                                                              </children>
+                                                          </VBox>
+                                                      </children>
+                                                  </VBox>
+
+                                                  <StackPane>
+                                                      <children>
+                                                          <Button fx:id="btnIngresarSesion" defaultButton="true" maxWidth="Infinity" mnemonicParsing="false" onAction="#ingresarSesionAction" prefHeight="45.0" prefWidth="340.0" style="-fx-background-color: linear-gradient(to right, #3498db, #2980b9); -fx-background-radius: 25; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="INICIAR SESIÓN">
+                                                              <effect>
+                                                                  <DropShadow color="#00000040" height="8" radius="3.5" width="8" />
+                                                              </effect>
+                                                              <font>
+                                                                  <Font name="Montserrat Bold" size="14.0" />
+                                                              </font>
+                                                          </Button>
+                                                      </children>
+                                                  </StackPane>
+                                              </children>
+                                          </VBox>
+                                      </children>
+                                  </StackPane>
+
+                                  <VBox alignment="CENTER" spacing="15">
+                                      <children>
+                                          <HBox alignment="CENTER" spacing="12">
+                                              <children>
+                                                  <Line endX="50.0" startX="0.0" stroke="#00000020" />
+                                                  <Label text="O continúa" textFill="#34495e">
+                                                      <font>
+                                                          <Font name="Montserrat" size="11.0" />
+                                                      </font>
+                                                  </Label>
+                                                  <Line endX="50.0" startX="0.0" stroke="#00000020" />
+                                              </children>
+                                          </HBox>
+
+                                          <HBox alignment="CENTER" spacing="8">
+                                              <children>
+                                                  <Label text="¿No tienes una cuenta?" textFill="#34495e">
+                                                      <font>
+                                                          <Font name="Montserrat" size="13.0" />
+                                                      </font>
+                                                  </Label>
+                                                  <Hyperlink fx:id="registroHyp" onAction="#registroHypAction" text="Regístrate ahora" textFill="#3498db">
+                                                      <font>
+                                                          <Font name="Montserrat SemiBold" size="13.0" />
+                                                      </font>
+                                                  </Hyperlink>
+                                              </children>
+                                          </HBox>
+                              <HBox alignment="CENTER" spacing="8">
+                                 <children>
+                                    <Label text="¿Olvidaste tu contraseña?" textFill="#34495e">
+                                       <font>
+                                          <Font name="Montserrat" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Hyperlink fx:id="recuperacionHyp" onAction="#recuperacionHypAction" text="Recupera el acceso" textFill="#3498db">
+                                       <font>
+                                          <Font name="Montserrat SemiBold" size="13.0" />
+                                       </font>
+                                    </Hyperlink>
+                                 </children>
+                              </HBox>
+                                      </children>
+                                  </VBox>
+                              </children>
+                          </VBox>
+                      </children>
+                  </StackPane>
+              </center>
+
+              <bottom>
+                  <StackPane minHeight="80.0" prefHeight="80.0" BorderPane.alignment="CENTER">
+                      <children>
+                          <Rectangle fill="TRANSPARENT" height="80.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1010.0" StackPane.alignment="BOTTOM_CENTER" />
+
+
+                          <Rectangle height="80.0" stroke="TRANSPARENT" strokeType="INSIDE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" StackPane.alignment="BOTTOM_CENTER">
+                              <fill>
+                                  <LinearGradient endX="1.0" endY="0.0">
+                                      <stops>
+                                          <Stop color="#2c3e50" />
+                                          <Stop color="#1a5276" offset="0.5" />
+                                          <Stop color="#2980b9" offset="1.0" />
+                                      </stops>
+                                  </LinearGradient>
+                              </fill>
+                          </Rectangle>
+
+                      
+                          <Path mouseTransparent="true" stroke="TRANSPARENT" StackPane.alignment="BOTTOM_CENTER">
+                              <fill>
+                                  <LinearGradient endX="1.0" endY="0.0">
+                                      <stops>
+                                          <Stop color="#2c3e50" />
+                                          <Stop color="#1a5276" offset="0.5" />
+                                          <Stop color="#2980b9" offset="1.0" />
+                                      </stops>
+                                  </LinearGradient>
+                              </fill>
+                              <elements>
+                                  <MoveTo x="0" y="80" />
+                                  <LineTo x="1900" y="80" />
+                                  <LineTo x="1900" y="0" />
+                                  <CubicCurveTo controlX1="840" controlX2="673" controlY1="20" controlY2="7" x="505" y="28" />
+                                  <CubicCurveTo controlX1="337" controlX2="168" controlY1="49" controlY2="14" x="0" y="0" />
+                                  <LineTo x="0" y="80" />
+                                  <ClosePath />
+                              </elements>
+                          </Path>
+
+                          <Group>
+                              <children>
+                                  <Circle centerX="168" centerY="21" fill="white" opacity="0.3" radius="2.5" />
+                                  <Circle centerX="210" centerY="35" fill="white" opacity="0.2" radius="1.7" />
+                                  <Circle centerX="235" centerY="14" fill="white" opacity="0.4" radius="1.3" />
+                                  <Circle centerX="756" centerY="28" fill="white" opacity="0.3" radius="2.5" />
+                                  <Circle centerX="798" centerY="14" fill="white" opacity="0.2" radius="1.7" />
+                                  <Circle centerX="840" centerY="42" fill="white" opacity="0.4" radius="1.3" />
+                              </children>
+                          </Group>
+                      </children>
+                  </StackPane>
+              </bottom>
+          </BorderPane>
+    </children>
+</StackPane>

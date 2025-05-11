@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.media.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane maxHeight="703.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="703.0" prefWidth="1603.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.CuentaUsuarioControlador">
+   <children>
+      <BorderPane prefHeight="703.0" prefWidth="1603.0">
+         <bottom>
+            <HBox alignment="CENTER" maxHeight="70.0" prefHeight="70.0" prefWidth="1603.0" spacing="25.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff);" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="© 2025 Sistema de Reservas BookYourStay | Todos los Derechos Reservados" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </bottom>
+         <center>
+            <SplitPane dividerPositions="0.24921923797626483" maxHeight="553.0" prefHeight="553.0" prefWidth="1603.0">
+               <items>
+                  <VBox alignment="TOP_CENTER" layoutX="69.0" layoutY="57.0" maxHeight="553.0" prefHeight="553.0" prefWidth="303.0" spacing="15.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF;">
+                     <children>
+                        <Pane maxHeight="243.0" prefHeight="243.0" prefWidth="388.0" style="-fx-border-color: #FFFFFF;">
+                           <children>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="612.0" prefWidth="388.0" spacing="25.0">
+                                       <children>
+                                          <Pane>
+                                             <children>
+                                                <ImageView fitHeight="160.0" fitWidth="361.0" layoutX="115.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/usuario.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Circle fill="#1fff39" layoutX="149.0" layoutY="122.0" radius="15.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                             </children>
+                                          </Pane>
+                                          <Label prefHeight="31.0" prefWidth="164.0" text="Hola Usuario ">
+                                             <font>
+                                                <Font name="Berlin Sans FB" size="28.0" />
+                                             </font>
+                                          </Label>
+                                          <Button mnemonicParsing="false" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff);" text="Actualizar Datos" textFill="WHITE">
+                                             <font>
+                                                <Font name="Berlin Sans FB" size="15.0" />
+                                             </font>
+                                          </Button>
+                                          <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff); -fx-background-radius: 50px;" text="Reservas Realizadas" textFill="WHITE">
+                                             <font>
+                                                <Font name="Berlin Sans FB" size="15.0" />
+                                             </font>
+                                          </Button>
+                                          <Button mnemonicParsing="false" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff); -fx-background-radius: 50px;" text="Billetera" textFill="WHITE" />
+                                          <ImageView fitHeight="106.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@img/bookYourStay.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </VBox>
+                                 </children></VBox>
+                              <Circle fill="#1f4a72" layoutX="14.0" layoutY="120.0" opacity="0.62" radius="70.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                              <Circle fill="#7724d6" layoutX="294.0" layoutY="130.0" opacity="0.53" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                              <Circle fill="#1fd6ff" layoutX="306.0" layoutY="105.0" opacity="0.53" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                           </children>
+                        </Pane>
+                     </children>
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </VBox>
+                  <StackPane>
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="1160.0" spacing="20.0" />
+                     </children>
+                  </StackPane>
+               </items>
+            </SplitPane>
+         </center>
+         <top>
+            <HBox maxHeight="80.0" prefHeight="80.0" prefWidth="1603.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="78.0" prefWidth="534.33">
+                     <children>
+                        <Pane prefHeight="78.0" prefWidth="596.0" style="-fx-background-color: #FFFFFF;" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="78.0" prefWidth="534.33">
+                     <children>
+                        <Label text="Tu Cuenta ">
+                           <font>
+                              <Font name="Berlin Sans FB" size="40.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="78.0" prefWidth="534.33">
+                     <children>
+                        <Pane prefHeight="78.0" prefWidth="749.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</StackPane>

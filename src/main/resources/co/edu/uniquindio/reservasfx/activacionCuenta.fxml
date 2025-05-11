@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+
+<StackPane style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.ActivacionCuentaControlador">
+    <padding>
+        <Insets topRightBottomLeft="20" />
+    </padding>
+    <children>
+
+
+        <Rectangle arcHeight="30" arcWidth="30" height="600" width="500">
+            <fill>
+                <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
+                    <stops>
+                        <Stop color="#f0f2f5" />
+                        <Stop color="#e4e9f2" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+            <effect>
+                <DropShadow color="#00000055" radius="15" spread="0.05" />
+            </effect>
+        </Rectangle>
+
+        <VBox alignment="CENTER" maxWidth="450" spacing="8.0">
+            <children>
+
+                <StackPane>
+                    <children>
+                        <Rectangle arcHeight="30" arcWidth="30" height="200" width="450" AnchorPane.topAnchor="0.0">
+                            <fill>
+                                <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
+                                    <stops>
+                                        <Stop color="#4375CD" />
+                                        <Stop color="#2C5BA9" offset="1.0" />
+                                    </stops>
+                                </LinearGradient>
+                            </fill>
+                            <effect>
+                                <DropShadow color="#00000033" offsetY="3" radius="10" spread="0.03" />
+                            </effect>
+                        </Rectangle>
+
+
+                        <Circle fill="WHITE" opacity="0.1" radius="100" translateX="-170" translateY="-80" />
+                        <Circle fill="WHITE" opacity="0.1" radius="60" translateX="180" translateY="50" />
+
+                        <VBox alignment="CENTER" spacing="15">
+                            <padding>
+                                <Insets topRightBottomLeft="30" />
+                            </padding>
+                            <children>
+
+                                <Label text="Activa tu Cuenta" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="28" />
+                                    </font>
+                                    <effect>
+                                        <DropShadow color="#00000066" offsetY="2" radius="3" spread="0.0" />
+                                    </effect>
+                                </Label>
+
+                                <Text fill="WHITE" textAlignment="CENTER" wrappingWidth="350">
+                                    <font>
+                                        <Font size="16" />
+                                    </font>
+                                    <text>Si el correo que ingresaste coincide, se te ha enviado un correo con un código de activación a tu dirección.</text>
+                                    <effect>
+                                        <DropShadow color="#00000044" offsetY="1" radius="2" spread="0.0" />
+                                    </effect>
+                                </Text>
+                            </children>
+                        </VBox>
+                    </children>
+                </StackPane>
+
+
+                <StackPane>
+                    <children>
+                        <Rectangle arcHeight="30" arcWidth="30" height="280" width="450">
+                            <fill>
+                                <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
+                                    <stops>
+                                        <Stop color="WHITE" />
+                                        <Stop color="#F8F9FB" offset="1.0" />
+                                    </stops>
+                                </LinearGradient>
+                            </fill>
+                            <effect>
+                                <DropShadow color="#00000033" offsetY="3" radius="10" spread="0.0" />
+                            </effect>
+                        </Rectangle>
+
+                        <VBox alignment="CENTER" spacing="30">
+                            <padding>
+                                <Insets topRightBottomLeft="30" />
+                            </padding>
+                            <children>
+
+                                <VBox alignment="CENTER" spacing="5">
+                                    <children>
+                                        <Label text="Ingrese el código" textFill="#333333">
+                                            <font>
+                                                <Font size="18" />
+                                            </font>
+                                        </Label>
+
+                                        <Label text="Para completar el proceso de activación" textFill="#777777">
+                                            <font>
+                                                <Font size="13" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+
+                                <TextField fx:id="codeTextField" alignment="CENTER" maxWidth="300" promptText="Código de activación" style="-fx-background-color: #F4F4F4;">
+                                    <font>
+                                        <Font name="Berlin Sans FB" size="16.0" />
+                                    </font>
+                                </TextField>
+
+                                <HBox alignment="CENTER" spacing="20">
+                                    <children>
+                                        <Button fx:id="acceptButton" prefHeight="45" prefWidth="150" text="Aceptar">
+                                            <style>
+                                                -fx-background-color: linear-gradient(to bottom, #F39C49, #E67E22);
+                                                -fx-background-radius: 22.5;
+                                                -fx-text-fill: white;
+                                                -fx-cursor: hand;
+                                                -fx-font-size: 15px;
+                                                -fx-font-weight: bold;-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff);</style>
+                                            <effect>
+                                                <DropShadow color="#E67E2244" offsetY="3" radius="10" spread="0.1" />
+                                            </effect>
+                                        </Button>
+
+                                        <Button fx:id="cancelButton" prefHeight="45" prefWidth="150" text="Cancelar">
+                                            <style>
+                                                -fx-background-color: linear-gradient(to bottom, #F39C49, #E67E22);
+                                                -fx-background-radius: 22.5;
+                                                -fx-text-fill: white;
+                                                -fx-cursor: hand;
+                                                -fx-font-size: 15px;
+                                                -fx-font-weight: bold;-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff);</style>
+                                            <effect>
+                                                <DropShadow color="#E67E2244" offsetY="3" radius="10" spread="0.1" />
+                                            </effect>
+                                        </Button>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </StackPane>
+
+            </children>
+        </VBox>
+    </children>
+</StackPane>
