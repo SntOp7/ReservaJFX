@@ -16,41 +16,36 @@ public class HabitacionServicios  {
     public void registrarHabitacion(String idHotel, int numero, double precio, int capacidad, String descripcion, String imagen) throws Exception {
         if (idHotel == null || idHotel.isEmpty()) throw new Exception("El id es obligatorio");
         if (numero == 0) throw new Exception("El numero es obligatorio");
-        if (precio == 0) throw new Exception("El precio es obligatorio");
-        if (capacidad == 0) throw new Exception("La capacidad es obligatoria");
-        if (descripcion == null || descripcion.isEmpty()) throw new Exception("La descripcion es obligatoria");
-        if (imagen == null || imagen.isEmpty()) throw new Exception("La imagen es obligatoria");
+        verificarCampos(precio, capacidad, descripcion, imagen);
 
-        Habitacion habitacion = buscarHabitacion(idHotel, numero);
-        if (habitacion == null) throw new Exception("La habitacion ya existe");
         if (buscarHabitacion(idHotel, numero) != null) throw new Exception("Una Habitacion ya existe con ese numero");
+
+        Habitacion habitacion = Habitacion.builder().numero(numero).idHotel(idHotel).precio(precio).capacidad(capacidad)
+                .descripcion(descripcion).imagen(imagen).build();
         habitacionRepositorio.agregar(habitacion);
     }
 
-    public void editarHabitacion(String idHotel, int numero, double nuevoPrecio, int nuevaCapacidad, String imagen, String descipcion) throws Exception {
-        Habitacion habitacionExistente = buscarHabitacion(idHotel, numero);
+    public void editarHabitacion(String idHotel, int numero, double precio, int capacidad, String descripcion, String imagen) throws Exception {
+        verificarCampos(precio, capacidad, descripcion, imagen);
+        Habitacion habitacion = buscarHabitacion(idHotel, numero);
+        habitacion.setPrecio(precio);
+        habitacion.setCapacidad(capacidad);
+        habitacion.setDescripcion(descripcion);
+        habitacion.setImagen(imagen);
+        habitacionRepositorio.editar(habitacion);
+    }
 
-        if (habitacionExistente == null) {
-            throw new Exception("Habitación no encontrada");
-        }
-
-        Habitacion habitacionEditada = Habitacion.builder()
-                .numero(numero)
-                .idHotel(idHotel)
-                .capacidad(nuevaCapacidad)
-                .precio(nuevoPrecio)
-                .imagen(imagen)
-                .descripcion(descipcion)
-                .build();
-
-        habitacionRepositorio.editar(habitacionEditada);
+    private void verificarCampos(double precio, int capacidad, String descripcion, String imagen) throws Exception {
+        if (precio <= 0) throw new Exception("El precio debe ser mayor a 0");
+        if (capacidad <= 0) throw new Exception("La capacidad debe ser mayor a 0");
+        if (descripcion == null || descripcion.isEmpty()) throw new Exception("La descripcion es obligatoria");
+        if (imagen == null || imagen.isEmpty()) throw new Exception("La imagen es obligatoria");
     }
 
     public void eliminarHabitacion(String idHotel, int numero) throws Exception {
         Habitacion habitacion = buscarHabitacion(idHotel, numero);
         if (habitacion == null) throw new Exception("La Habitacion no existe");
         habitacionRepositorio.eliminar(habitacion);
-
     }
 
     public  Habitacion buscarHabitacion(String idHotel, int numero) throws Exception {

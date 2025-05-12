@@ -2,6 +2,8 @@ package co.edu.uniquindio.reservasfx.servicios.interfaces;
 
 import co.edu.uniquindio.reservasfx.modelo.entidades.Calificacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
+import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Imagen;
+import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Servicio;
 import co.edu.uniquindio.reservasfx.modelo.enums.Ciudad;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoAlojamiento;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoServicio;
@@ -15,9 +17,9 @@ public interface IAlojamiento {
                               double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal,
                               ArrayList<String> imagenes, double costoAseoYMantenimiento) throws Exception;
 
-    void editarAlojamiento(String nombre, String descripcion, double precioPorNoche, int capacidadMaxima,
-                           ArrayList<TipoServicio> servicios, String imagenPrincipal, ArrayList<String> imagenes,
-                           double costoAseoYMantenimiento) throws Exception;
+    void editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion,
+                           double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal,
+                           ArrayList<String> imagenes, double costoAseoYMantenimiento) throws Exception;
 
     void eliminarAlojamiento(String id) throws Exception;
 
@@ -38,9 +40,9 @@ public interface IAlojamiento {
     ArrayList<Alojamiento> obtenerAlojamientosPorFiltro(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad,
                                                         double precioMin, double precioMax) throws Exception;
 
-    void registrarHabitacion(int numero, double precio, int capacidad, String descripcion, String imagen) throws Exception;
+    void registrarHabitacion(String idHotel, int numero, double precio, int capacidad, String descripcion, String imagen) throws Exception;
 
-    void editarHabitacion(double precio, String descripcion, String imagen) throws Exception;
+    void editarHabitacion(String idHotel, int numero, double precio, int capacidad, String descripcion, String imagen) throws Exception;
 
     void eliminarHabitacion(String idHotel, int numero) throws Exception;
 }

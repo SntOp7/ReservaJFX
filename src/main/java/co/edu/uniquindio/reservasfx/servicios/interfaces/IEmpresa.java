@@ -1,10 +1,12 @@
 package co.edu.uniquindio.reservasfx.servicios.interfaces;
 
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
+import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.enums.Ciudad;
 import co.edu.uniquindio.reservasfx.modelo.enums.OfertaEspecial;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoServicio;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoAlojamiento;
+import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.servicios.ModuloAlojamientoServicios;
 import co.edu.uniquindio.reservasfx.servicios.ModuloComercialServicios;
 import co.edu.uniquindio.reservasfx.servicios.ModuloUsuarioServicios;
@@ -17,7 +19,7 @@ public interface IEmpresa {
     void registrarCliente(String cedula, String nombre, String telefono, String direccion, String email, String contrasenia,
                           boolean activacion) throws Exception;
 
-    void editarCliente(String cedula, String nombre, String telefono, String direcccion, String email) throws Exception;
+    void editarCliente(Cliente antiguo, String cedula, String nombre, String telefono, String direcccion, String email) throws Exception;
 
     void eliminarCliente(String cedula) throws Exception;
 
@@ -25,7 +27,7 @@ public interface IEmpresa {
                               double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal,
                               ArrayList<String> imagenes, double costoAseoYMantenimiento) throws Exception;
 
-    void editarAlojamiento(String nombre, String descripcion, double precioPorNoche, int capacidadMaxima,
+    void editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion, double precioPorNoche, int capacidadMaxima,
                            ArrayList<TipoServicio> servicios, String imagenPrincipal, ArrayList<String> imagenes,
                            double costoAseoYMantenimiento) throws Exception;
 

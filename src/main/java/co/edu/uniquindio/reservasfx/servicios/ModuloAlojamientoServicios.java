@@ -1,6 +1,8 @@
 package co.edu.uniquindio.reservasfx.servicios;
 
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
+import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Imagen;
+import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Servicio;
 import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.enums.Ciudad;
@@ -34,10 +36,10 @@ public class ModuloAlojamientoServicios implements IAlojamiento {
     }
 
     @Override
-    public void editarAlojamiento(String nombre, String descripcion, double precioPorNoche, int capacidadMaxima,
-                                  ArrayList<TipoServicio> servicios, String imagenPrincipal, ArrayList<String> imagenes,
-                                  double costoAseoYMantenimiento) throws Exception {
-        alojamientoServicios.editarAlojamiento(nombre, descripcion, precioPorNoche, capacidadMaxima, servicios,
+    public void editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion,
+                                  double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios,
+                                  String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento) throws Exception {
+        alojamientoServicios.editarAlojamiento(id, tipoAlojamiento, nombre, descripcion, precioPorNoche, capacidadMaxima, servicios,
                 imagenPrincipal, imagenes, costoAseoYMantenimiento);
     }
 
@@ -82,22 +84,24 @@ public class ModuloAlojamientoServicios implements IAlojamiento {
     }
 
     @Override
-    public ArrayList<Alojamiento> obtenerAlojamientosPorFiltro(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, double precioMin, double precioMax) throws Exception {
+    public ArrayList<Alojamiento> obtenerAlojamientosPorFiltro(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad,
+                                                               double precioMin, double precioMax) throws Exception {
         return alojamientoServicios.obtenerAlojamientosPorFiltro(tipoAlojamiento, nombre, ciudad, precioMin, precioMax);
     }
 
     @Override
-    public void registrarHabitacion(int numero, double precio, int capacidad, String descripcion, String imagen) throws Exception {
-
+    public void registrarHabitacion(String idHotel, int numero, double precio, int capacidad, String descripcion,
+                                    String imagen) throws Exception {
+        habitacionServicios.registrarHabitacion(idHotel, numero, precio, capacidad, descripcion, imagen);
     }
 
     @Override
-    public void editarHabitacion(double precio, String descripcion, String imagen) throws Exception {
-
+    public void editarHabitacion(String idHotel, int numero, double precio, int capacidad, String descripcion, String imagen) throws Exception {
+        habitacionServicios.editarHabitacion(idHotel, numero, precio, capacidad, descripcion, imagen);
     }
 
     @Override
     public void eliminarHabitacion(String idHotel, int numero) throws Exception {
-
+        habitacionServicios.eliminarHabitacion(idHotel, numero);
     }
 }

@@ -34,8 +34,8 @@ public class ModuloUsuarioServicios implements IUsuario {
     }
 
     @Override
-    public void editarCliente(String cedula, String nombre, String telefono, String direcccion, String email) throws Exception {
-        usuarioServicios.editarCliente(cedula, nombre, telefono, direcccion, email);
+    public void editarCliente(Cliente antiguo, String cedula, String nombre, String telefono, String direcccion, String email) throws Exception {
+        usuarioServicios.editarCliente(antiguo, cedula, nombre, telefono, direcccion, email);
     }
 
     @Override

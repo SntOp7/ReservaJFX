@@ -2,10 +2,12 @@ package co.edu.uniquindio.reservasfx.servicios;
 
 
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
+import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.enums.Ciudad;
 import co.edu.uniquindio.reservasfx.modelo.enums.OfertaEspecial;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoServicio;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoAlojamiento;
+import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.servicios.interfaces.IEmpresa;
 
 import java.time.LocalDate;
@@ -39,8 +41,8 @@ public class EmpresaServicio implements IEmpresa {
     }
 
     @Override
-    public void editarCliente(String cedula, String nombre, String telefono, String direccion, String email) throws Exception {
-        moduloUsuarioServicios.editarCliente(cedula, nombre, telefono, direccion, email);
+    public void editarCliente(Cliente antiguo, String cedula, String nombre, String telefono, String direccion, String email) throws Exception {
+        moduloUsuarioServicios.editarCliente(antiguo, cedula, nombre, telefono, direccion, email);
     }
 
     @Override
@@ -57,10 +59,10 @@ public class EmpresaServicio implements IEmpresa {
     }
 
     @Override
-    public void editarAlojamiento(String nombre, String descripcion, double precioPorNoche, int capacidadMaxima,
+    public void editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion, double precioPorNoche, int capacidadMaxima,
                                   ArrayList<TipoServicio> servicios, String imagenPrincipal, ArrayList<String> imagenes,
                                   double costoAseoYMantenimiento) throws Exception {
-        moduloAlojamientoServicios.editarAlojamiento(nombre, descripcion, precioPorNoche, capacidadMaxima, servicios,
+        moduloAlojamientoServicios.editarAlojamiento(id, tipoAlojamiento, nombre, descripcion, precioPorNoche, capacidadMaxima, servicios,
                 imagenPrincipal, imagenes, costoAseoYMantenimiento);
     }
 

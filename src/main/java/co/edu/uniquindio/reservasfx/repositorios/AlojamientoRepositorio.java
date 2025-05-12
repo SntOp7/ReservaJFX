@@ -25,7 +25,17 @@ public class AlojamientoRepositorio {
         alojamientos.remove(alojamiento);
     }
 
-    public Alojamiento buscarAlojamiento(String nombre) {
-        return alojamientos.stream().filter(a -> a.equals(nombre)).findFirst().orElse(null);
+    public Alojamiento buscarAlojamientoPorNombre(String nombre) {
+        return alojamientos.stream()
+                .filter(a -> a.getNombre().equals(nombre))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Alojamiento buscarAlojamientoPorId(String id) {
+        return alojamientos.stream()
+                .filter(a -> a.getId().equals(id))
+                .findFirst()
+                .orElse(null);
     }
 }

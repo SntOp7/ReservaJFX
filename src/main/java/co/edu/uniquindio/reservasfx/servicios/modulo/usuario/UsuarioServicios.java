@@ -27,16 +27,26 @@ public class UsuarioServicios {
         usuarioRepositorio.agregar(cliente);
     }
 
-    public void editarCliente(String cedula, String nombre, String telefono, String direcccion, String email) throws Exception {
+    public void editarCliente(Cliente clienteAntiguo, String cedula, String nombre, String telefono, String direcccion,
+                              String email) throws Exception {
         verificarCampos(cedula, nombre, telefono, direcccion, email);
-        Cliente cliente = usuarioRepositorio.buscarCliente(cedula);
-        if (cliente == null) throw new Exception("El cliente no existe");
-        cliente.setCedula(cedula);
-        cliente.setNombre(nombre);
-        cliente.setTelefono(telefono);
-        cliente.setDireccion(direcccion);
-        cliente.setEmail(email);
-        usuarioRepositorio.editar(cliente);
+        if (clienteAntiguo.getCedula().equals(cedula)) {
+            Cliente cliente = usuarioRepositorio.buscarCliente(cedula);
+            cliente.setNombre(nombre);
+            cliente.setTelefono(telefono);
+            cliente.setDireccion(direcccion);
+            cliente.setEmail(email);
+            usuarioRepositorio.editar(cliente);
+        } else if (usuarioRepositorio.buscarCliente(cedula) != null) {
+            throw new Exception("Ya existe un usuario con la misma cedula");
+        } else {
+            clienteAntiguo.setCedula(cedula);
+            clienteAntiguo.setNombre(nombre);
+            clienteAntiguo.setTelefono(telefono);
+            clienteAntiguo.setDireccion(direcccion);
+            clienteAntiguo.setEmail(email);
+            usuarioRepositorio.editar(clienteAntiguo);
+        }
     }
 
     private void verificarCampos(String cedula, String nombre, String telefono, String direcccion, String email) throws Exception {

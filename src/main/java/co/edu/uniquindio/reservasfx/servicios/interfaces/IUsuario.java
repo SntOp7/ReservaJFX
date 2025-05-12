@@ -13,7 +13,7 @@ public interface IUsuario {
     void registrarCliente(String cedula, String nombre, String telefono, String direccion, String email, String contrasenia,
                           boolean activacion) throws Exception;
 
-    void editarCliente(String cedula, String nombre, String telefono, String direcccion, String email) throws Exception;
+    void editarCliente(Cliente antiguo, String cedula, String nombre, String telefono, String direcccion, String email) throws Exception;
 
     void eliminarCliente(String cedula) throws Exception;
 

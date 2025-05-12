@@ -1,19 +1,21 @@
 package co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento;
 
-import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
+import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Imagen;
+import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Servicio;
 import co.edu.uniquindio.reservasfx.modelo.enums.Ciudad;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoAlojamiento;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoServicio;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.modelo.factory.AlojamientoFactory;
+import co.edu.uniquindio.reservasfx.modelo.factory.Apartamento;
 import co.edu.uniquindio.reservasfx.modelo.factory.Casa;
 import co.edu.uniquindio.reservasfx.repositorios.AlojamientoRepositorio;
 import co.edu.uniquindio.reservasfx.repositorios.ImagenRepositorio;
 import co.edu.uniquindio.reservasfx.repositorios.ServicioRepositorio;
-import co.edu.uniquindio.reservasfx.servicios.ModuloAlojamientoServicios;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.UUID;
 
 public class AlojamientoServicios {
 
@@ -28,102 +30,149 @@ public class AlojamientoServicios {
         alojamientoRepositorio = new AlojamientoRepositorio();
     }
 
-    public void registrarAlojamiento(String id,TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion, double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception{
-        if (id == null || id.isEmpty()) throw new Exception("EL id es obligatorio");
+    public void registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion,
+                                     double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios,
+                                     String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento) throws Exception {
+
+        if (ciudad == null) throw new Exception("La ciudad es obligatoria");
+        verificarCampos(tipoAlojamiento, nombre, descripcion, precioPorNoche, capacidadMaxima, servicios, imagenPrincipal,
+                costoAseoYMantenimiento);
+
+        String id = UUID.randomUUID().toString();
+        Alojamiento alojamiento = switch (tipoAlojamiento) {
+            case CASA -> AlojamientoFactory.crearCasa(id, nombre, ciudad, descripcion, precioPorNoche,
+                    capacidadMaxima, imagenPrincipal, costoAseoYMantenimiento);
+            case APARTAMENTO -> AlojamientoFactory.crearApartamento(id, nombre, ciudad, descripcion, precioPorNoche,
+                    capacidadMaxima, imagenPrincipal, costoAseoYMantenimiento);
+            case HOTEL -> AlojamientoFactory.crearHotel(id, nombre, ciudad, descripcion, precioPorNoche,
+                    capacidadMaxima, imagenPrincipal);
+        };
+        registrarServicios(id, servicios);
+        registrarImagenes(id, imagenes);
+        alojamientoRepositorio.agregar(alojamiento);
+    }
+
+    public void registrarServicios(String idAlojamiento, ArrayList<TipoServicio> servicios) {
+        for (TipoServicio tipoServicio : servicios) {
+            Servicio servicio = new Servicio(idAlojamiento, tipoServicio);
+            servicioRepositorio.agregar(servicio);
+        }
+    }
+
+    public void registrarImagenes(String idAlojamiento, ArrayList<String> imagenes) {
+        if (imagenes == null) return;
+        for (String imagen : imagenes) {
+            Imagen imagenAlojamiento = new Imagen(idAlojamiento, imagen);
+            imagenRepositorio.agregar(imagenAlojamiento);
+        }
+    }
+
+    public void editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion,
+                                  double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios,
+                                  String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento) throws Exception {
+
+        verificarCampos(tipoAlojamiento, nombre, descripcion, precioPorNoche, capacidadMaxima, servicios, imagenPrincipal,
+                costoAseoYMantenimiento);
+        Alojamiento alojamiento = alojamientoRepositorio.buscarAlojamientoPorId(id);
+        alojamiento.setNombre(nombre);
+        alojamiento.setDescripcion(descripcion);
+        alojamiento.setPrecioPorNoche(precioPorNoche);
+        alojamiento.setCapacidadMaxima(capacidadMaxima);
+        alojamiento.setImagenPrincipal(imagenPrincipal);
+        editarServicios(alojamiento.getId(), servicios);
+        editarImagenes(alojamiento.getId(), imagenes);
+        if (tipoAlojamiento.equals(TipoAlojamiento.CASA)) {
+            ((Casa) alojamiento).setCostoAseoYMantenimiento(costoAseoYMantenimiento);
+        } else if (tipoAlojamiento.equals((TipoAlojamiento.APARTAMENTO))) {
+            ((Apartamento) alojamiento).setCostoAseoYMantenimiento(costoAseoYMantenimiento);
+        }
+        alojamientoRepositorio.editar(alojamiento);
+    }
+
+    public void editarServicios(String idAlojamiento, ArrayList<TipoServicio> servicios) {
+        eliminarServicios(idAlojamiento);
+        for (TipoServicio tipoServicio : servicios) {
+            Servicio servicio = new Servicio(idAlojamiento, tipoServicio);
+            servicioRepositorio.agregar(servicio);
+        }
+    }
+
+    public void editarImagenes(String idAlojamiento, ArrayList<String> imagenes) {
+        if (imagenes == null) return;
+        eliminarImagenes(idAlojamiento);
+        for (String imagen : imagenes) {
+            Imagen imagenAlojamiento = new Imagen(idAlojamiento, imagen);
+            imagenRepositorio.agregar(imagenAlojamiento);
+        }
+    }
+
+    public void verificarCampos(TipoAlojamiento tipoAlojamiento, String nombre, String descripcion, double precioPorNoche,
+                                 int capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal,
+                                 double costoAseoYMantenimiento) throws Exception {
+
         if (tipoAlojamiento == null) throw new Exception("El tipo de alojamiento es obligatorio");
         if (nombre == null || nombre.isEmpty()) throw new Exception("El nombre es obligatorio");
-        if (ciudad == null) throw new Exception("La ciudad es obligatoria");
         if (descripcion == null || descripcion.isEmpty()) throw new Exception("La descripción es obligatoria");
         if (precioPorNoche <= 0) throw new Exception("El precio por noche debe ser mayor a 0");
         if (capacidadMaxima <= 0) throw new Exception("La capacidad máxima debe ser mayor a 0");
         if (imagenPrincipal == null || imagenPrincipal.isEmpty()) throw new Exception("La imagen principal es obligatoria");
+        if (servicios == null || servicios.isEmpty()) throw new Exception("Debe tener al menos un servicio");
 
-        Alojamiento alojamiento;
-
-        switch (tipoAlojamiento) {
-            case CASA:
-                alojamiento = AlojamientoFactory.crearCasa(id, nombre, ciudad, descripcion, precioPorNoche,
-                        capacidadMaxima, imagenPrincipal, costoAseoYMantenimiento);
-                break;
-            case APARTAMENTO:
-                alojamiento = AlojamientoFactory.crearApartamento(id, nombre, ciudad, descripcion, precioPorNoche,
-                        capacidadMaxima, imagenPrincipal, costoAseoYMantenimiento);
-                break;
-            case HOTEL:
-                alojamiento = AlojamientoFactory.crearHotel(id, nombre, ciudad, descripcion, precioPorNoche,
-                        capacidadMaxima, imagenPrincipal);
-                break;
-            default:
-                throw new Exception("Tipo de alojamiento no soportado");
+        if (tipoAlojamiento.equals(TipoAlojamiento.CASA) || tipoAlojamiento.equals(TipoAlojamiento.APARTAMENTO)) {
+            if (costoAseoYMantenimiento <= 0) throw new Exception("El costo de aseo y mantenimiento debe ser mayor a 0");
         }
-
-        alojamientoRepositorio.agregar(alojamiento);
-
-    }
-
-
-    public void editarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion, double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception{
-        Alojamiento existente = buscarAlojamiento(nombre);
-        if (existente == null) throw new Exception("El alojamiento no existe");
-
-        String id = existente.getId();
-        alojamientos.remove(existente);
-
-        Alojamiento actualizado;
-
-        switch (tipoAlojamiento) {
-            case CASA:
-                actualizado = AlojamientoFactory.crearCasa(id, nombre, ciudad, descripcion, precioPorNoche,
-                        capacidadMaxima, imagenPrincipal, costoAseoYMantenimiento);
-                break;
-            case APARTAMENTO:
-                actualizado = AlojamientoFactory.crearApartamento(id, nombre, ciudad, descripcion, precioPorNoche,
-                        capacidadMaxima, imagenPrincipal, costoAseoYMantenimiento);
-                break;
-            case HOTEL:
-                actualizado = AlojamientoFactory.crearHotel(id, nombre, ciudad, descripcion, precioPorNoche,
-                        capacidadMaxima, imagenPrincipal);
-                break;
-            default:
-                throw new Exception("Tipo de alojamiento no soportado");
-        }
-
-       alojamientoRepositorio.editar(actualizado);
-
     }
 
     public void eliminarAlojamiento(String nombre) throws Exception {
         Alojamiento alojamiento = buscarAlojamiento(nombre);
         if (alojamiento == null) throw new Exception("El alojamiento no existe");
         alojamientoRepositorio.eliminar(alojamiento);
+        eliminarServicios(alojamiento.getId());
+        eliminarImagenes(alojamiento.getId());
     }
 
-    public void obtenerAlojamientosPopulares(ArrayList<Alojamiento> alojamientos) {
-        alojamientos.stream()
-                .sorted(Comparator.comparingInt(Alojamiento::getVisitas).reversed())
-                .limit(5)
-                .forEach(alojamientos::add);
+    public void eliminarServicios(String idAlojamiento) {
+        servicioRepositorio.eliminarServiciosAlojamiento(idAlojamiento);
     }
 
-    public void obtenerAlojamientosOferta(ArrayList<Alojamiento> alojamientos) {
-        double umbral = 100000; // ejemplo: 100.000 por noche
-        for (Alojamiento a : alojamientos) {
-            if (a.getPrecioPorNoche() < umbral) {
-                alojamientos.add(a);
-            }
-        }
-    }
-
-    public void obtenerAlojamientosPreferencias(ArrayList<Alojamiento> alojamientos) {
-        Ciudad ciudadPreferida = Ciudad.MEDELLIN;
-        for (Alojamiento a : alojamientos) {
-            if (a.getCiudad() == ciudadPreferida && a instanceof Casa casa && casa.getCapacidadMaxima() > 4) {
-                alojamientos.add(a);
-            }
-        }
+    public void eliminarImagenes(String idAlojamiento) {
+        imagenRepositorio.eliminarImagenesAlojamiento(idAlojamiento);
     }
 
     public Alojamiento buscarAlojamiento(String nombre) {
-        return alojamientoRepositorio.buscarAlojamiento(nombre);
+        return alojamientoRepositorio.buscarAlojamientoPorNombre(nombre);
+    }
+
+    public ArrayList<Alojamiento> obtenerAlojamientos() {
+        return alojamientoRepositorio.getAlojamientos();
+    }
+
+    public ArrayList<Alojamiento> obtenerAlojamientosAleatorios() {
+        return null;
+    }
+
+    public ArrayList<Alojamiento> obtenerAlojamientosPopulares() {
+        return null;
+    }
+
+    public ArrayList<Alojamiento> obtenerAlojamientosRentables() {
+        return null;
+    }
+
+    public ArrayList<Alojamiento> obtenerAlojamientosOfertados() {
+        return null;
+    }
+
+    public ArrayList<Alojamiento> obtenerAlojamientosPreferenciasCliente(String cedulaCliente) {
+        return null;
+    }
+
+    public ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(String cedulaCliente) {
+        return null;
+    }
+
+    public ArrayList<Alojamiento> obtenerAlojamientosPorFiltro(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad,
+                                                               double precioMin, double precioMax) {
+        return null;
     }
 }
