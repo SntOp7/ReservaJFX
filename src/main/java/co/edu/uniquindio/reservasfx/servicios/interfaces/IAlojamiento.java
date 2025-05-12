@@ -1,15 +1,20 @@
 package co.edu.uniquindio.reservasfx.servicios.interfaces;
 
 import co.edu.uniquindio.reservasfx.modelo.entidades.Calificacion;
+import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Imagen;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Servicio;
+import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
+import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
 import co.edu.uniquindio.reservasfx.modelo.enums.Ciudad;
+import co.edu.uniquindio.reservasfx.modelo.enums.Mes;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoAlojamiento;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoServicio;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public interface IAlojamiento {
 
@@ -27,15 +32,13 @@ public interface IAlojamiento {
 
     ArrayList<Alojamiento> obtenerAlojamientosAleatorios() throws Exception;
 
-    ArrayList<Alojamiento> obtenerAlojamientosPopulares() throws Exception;
+    ArrayList<Alojamiento> obtenerAlojamientosPopulares(Ciudad ciudad, LinkedList<Reserva> reservas) throws Exception;
 
-    ArrayList<Alojamiento> obtenerAlojamientosRentables() throws Exception;
+    ArrayList<Alojamiento> obtenerAlojamientosOfertados(LinkedList<Oferta> ofertas) throws Exception;
 
-    ArrayList<Alojamiento> obtenerAlojamientosOfertados() throws Exception;
+    ArrayList<Alojamiento> obtenerAlojamientosPreferenciasCliente(LinkedList<Reserva> reservasCliente) throws Exception;
 
-    ArrayList<Alojamiento> obtenerAlojamientosPreferenciasCliente(String cedulaCliente) throws Exception;
-
-    ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(String cedulaCliente) throws Exception;
+    ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(LinkedList<Deseo> deseosCliente) throws Exception;
 
     ArrayList<Alojamiento> obtenerAlojamientosPorFiltro(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad,
                                                         double precioMin, double precioMax) throws Exception;

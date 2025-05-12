@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class ModuloComercialServicios implements IComercial {
 
-    private EmpresaServicio empresaServicio = EmpresaServicio.getInstancia();
     private final ReservaServicios reservaServicios;
     private final OfertaServicios ofertaServicios;
 

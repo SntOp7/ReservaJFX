@@ -1,11 +1,14 @@
 package co.edu.uniquindio.reservasfx.servicios;
 
+import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Imagen;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Servicio;
 import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
+import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
 import co.edu.uniquindio.reservasfx.modelo.enums.Ciudad;
+import co.edu.uniquindio.reservasfx.modelo.enums.Mes;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoAlojamiento;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoServicio;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
@@ -16,6 +19,7 @@ import co.edu.uniquindio.reservasfx.servicios.modulo.comercial.ReservaServicios;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class ModuloAlojamientoServicios implements IAlojamiento {
 
@@ -59,28 +63,23 @@ public class ModuloAlojamientoServicios implements IAlojamiento {
     }
 
     @Override
-    public ArrayList<Alojamiento> obtenerAlojamientosPopulares() throws Exception {
-        return alojamientoServicios.obtenerAlojamientosPopulares();
+    public ArrayList<Alojamiento> obtenerAlojamientosPopulares(Ciudad ciudad, LinkedList<Reserva> reservas) throws Exception {
+        return alojamientoServicios.obtenerAlojamientosPopulares(ciudad, reservas);
     }
 
     @Override
-    public ArrayList<Alojamiento> obtenerAlojamientosRentables() throws Exception {
-        return alojamientoServicios.obtenerAlojamientosRentables();
+    public ArrayList<Alojamiento> obtenerAlojamientosOfertados(LinkedList<Oferta> ofertas) throws Exception {
+        return alojamientoServicios.obtenerAlojamientosOfertados(ofertas);
     }
 
     @Override
-    public ArrayList<Alojamiento> obtenerAlojamientosOfertados() throws Exception {
-        return alojamientoServicios.obtenerAlojamientosOfertados();
+    public ArrayList<Alojamiento> obtenerAlojamientosPreferenciasCliente(LinkedList<Reserva> reservasCliente) throws Exception {
+        return alojamientoServicios.obtenerAlojamientosPreferenciasCliente(reservasCliente);
     }
 
     @Override
-    public ArrayList<Alojamiento> obtenerAlojamientosPreferenciasCliente(String cedulaCliente) throws Exception {
-        return alojamientoServicios.obtenerAlojamientosPreferenciasCliente(cedulaCliente);
-    }
-
-    @Override
-    public ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(String cedulaCliente) throws Exception {
-        return alojamientoServicios.obtenerAlojamientosPorDeseosCliente(cedulaCliente);
+    public ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(LinkedList<Deseo> deseosCliente) throws Exception {
+        return alojamientoServicios.obtenerAlojamientosPorDeseosCliente(deseosCliente);
     }
 
     @Override

@@ -4,6 +4,7 @@ import co.edu.uniquindio.reservasfx.config.Constantes;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Calificacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Notificacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
+import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Usuario;
 import co.edu.uniquindio.reservasfx.servicios.interfaces.IUsuario;
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.CalificacionServicios;
@@ -11,7 +12,6 @@ import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.NotificacionServici
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.UsuarioServicios;
 import co.edu.uniquindio.reservasfx.utils.EnvioEmail;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class ModuloUsuarioServicios implements IUsuario {
@@ -95,5 +95,20 @@ public class ModuloUsuarioServicios implements IUsuario {
     @Override
     public void marcarNotificacionComoLeida(Notificacion notificacion) throws Exception {
         notificacionServicios.marcarNotificacionComoLeida(notificacion);
+    }
+
+    @Override
+    public void guardarDeseo(String cedulaCliente, String idAlojamiento) throws Exception {
+        usuarioServicios.guardarDeseo(cedulaCliente, idAlojamiento);
+    }
+
+    @Override
+    public void eliminarDeseo(String cedulaCliente, String idAlojamiento) throws Exception {
+        usuarioServicios.eliminarDeseo(cedulaCliente, idAlojamiento);
+    }
+
+    @Override
+    public ArrayList<Deseo> obtenerDeseosCliente(String cedulaCliente) throws Exception {
+        return usuarioServicios.obtenerDeseosCliente(cedulaCliente);
     }
 }

@@ -2,7 +2,9 @@ package co.edu.uniquindio.reservasfx.servicios.modulo.usuario;
 
 import co.edu.uniquindio.reservasfx.modelo.entidades.BilleteraVirtual;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
+import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Usuario;
+import co.edu.uniquindio.reservasfx.repositorios.DeseoRepositorio;
 import co.edu.uniquindio.reservasfx.repositorios.UsuarioRepositorio;
 
 import java.util.ArrayList;
@@ -11,9 +13,11 @@ import java.util.UUID;
 public class UsuarioServicios {
 
     private final UsuarioRepositorio usuarioRepositorio;
+    private final DeseoRepositorio deseoRepositorio;
 
     public UsuarioServicios() {
         usuarioRepositorio = new UsuarioRepositorio();
+        deseoRepositorio = new DeseoRepositorio();
     }
 
     public void registrarCliente(String cedula, String nombre, String telefono, String direccion, String email, String contrasenia, boolean activacion) throws Exception {
@@ -108,5 +112,20 @@ public class UsuarioServicios {
         if (!codigoCorrecto.equals(codigoIngresado)) throw new Exception("El código de activación es incorrecto");
 
         cliente.setActivo(true);
+    }
+
+    public void guardarDeseo(String cedulaCliente, String idAlojamiento) {
+        Deseo deseo = new Deseo(cedulaCliente, idAlojamiento);
+        deseoRepositorio.agregar(deseo);
+    }
+
+    public void eliminarDeseo(String cedulaCliente, String idAlojamiento) throws Exception {
+        Deseo deseo = deseoRepositorio.buscarDeseo(cedulaCliente, idAlojamiento);
+        if (deseo == null) throw new Exception("El deseo no existe");
+        deseoRepositorio.eliminar(deseo);
+    }
+
+    public ArrayList<Deseo> obtenerDeseosCliente(String cedulaCliente) {
+        return deseoRepositorio.obtenerDeseosPorCedula(cedulaCliente);
     }
 }

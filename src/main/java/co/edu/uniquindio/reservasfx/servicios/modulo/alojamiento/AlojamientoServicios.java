@@ -1,8 +1,12 @@
 package co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento;
 
+import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Imagen;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Servicio;
+import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
+import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
 import co.edu.uniquindio.reservasfx.modelo.enums.Ciudad;
+import co.edu.uniquindio.reservasfx.modelo.enums.Mes;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoAlojamiento;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoServicio;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
@@ -13,9 +17,7 @@ import co.edu.uniquindio.reservasfx.repositorios.AlojamientoRepositorio;
 import co.edu.uniquindio.reservasfx.repositorios.ImagenRepositorio;
 import co.edu.uniquindio.reservasfx.repositorios.ServicioRepositorio;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.UUID;
+import java.util.*;
 
 public class AlojamientoServicios {
 
@@ -143,36 +145,50 @@ public class AlojamientoServicios {
         return alojamientoRepositorio.buscarAlojamientoPorNombre(nombre);
     }
 
-    public ArrayList<Alojamiento> obtenerAlojamientos() {
-        return alojamientoRepositorio.getAlojamientos();
+    public ArrayList<Alojamiento> obtenerAlojamientos() throws Exception {
+        ArrayList<Alojamiento> alojamientos = alojamientoRepositorio.getAlojamientos();
+        if (validarListaVacia(alojamientos)) throw new Exception("No hay alojamientos registrados de momento");
+        return alojamientos;
     }
 
-    public ArrayList<Alojamiento> obtenerAlojamientosAleatorios() {
-        return null;
+    public ArrayList<Alojamiento> obtenerAlojamientosAleatorios() throws Exception {
+        ArrayList<Alojamiento> alojamientos = alojamientoRepositorio.obtenerAlojamientosAleatorios();
+        if (validarListaVacia(alojamientos)) throw new Exception("No hay alojamientos que mostrar de momento");
+        return alojamientos;
     }
 
-    public ArrayList<Alojamiento> obtenerAlojamientosPopulares() {
-        return null;
+    public ArrayList<Alojamiento> obtenerAlojamientosPopulares(Ciudad ciudad, LinkedList<Reserva> reservas) throws Exception {
+        ArrayList<Alojamiento> alojamientos = alojamientoRepositorio.obtenerAlojamientosPopulares(ciudad, reservas);
+        if (validarListaVacia(alojamientos)) throw new Exception("No hay alojamientos populares de momento");
+        return alojamientos;
     }
 
-    public ArrayList<Alojamiento> obtenerAlojamientosRentables() {
-        return null;
+    public ArrayList<Alojamiento> obtenerAlojamientosOfertados(LinkedList<Oferta> ofertas) throws Exception {
+        ArrayList<Alojamiento> alojamientos = alojamientoRepositorio.obtenerAlojamientosOfertados(ofertas);
+        if (validarListaVacia(alojamientos)) throw new Exception("No hay alojamientos ofertados de momento");
+        return alojamientos;
     }
 
-    public ArrayList<Alojamiento> obtenerAlojamientosOfertados() {
-        return null;
+    public ArrayList<Alojamiento> obtenerAlojamientosPreferenciasCliente(LinkedList<Reserva> reservasCliente) throws Exception {
+        ArrayList<Alojamiento> alojamientos = alojamientoRepositorio.obtenerAlojamientosPreferenciasCliente(reservasCliente);
+        if (validarListaVacia(alojamientos)) {
+            alojamientos = obtenerAlojamientosAleatorios();
+        }
+        return alojamientos;
     }
 
-    public ArrayList<Alojamiento> obtenerAlojamientosPreferenciasCliente(String cedulaCliente) {
-        return null;
-    }
-
-    public ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(String cedulaCliente) {
-        return null;
+    public ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(LinkedList<Deseo> deseosCliente) throws Exception {
+        ArrayList<Alojamiento> alojamientos = alojamientoRepositorio.obtenerAlojamientosPorDeseosCliente(deseosCliente);
+        if (validarListaVacia(alojamientos)) throw new Exception("No hay alojamientos agregados a tu lista de deseos de momento");
+        return alojamientos;
     }
 
     public ArrayList<Alojamiento> obtenerAlojamientosPorFiltro(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad,
                                                                double precioMin, double precioMax) {
         return null;
+    }
+
+    public boolean validarListaVacia(ArrayList<Alojamiento> lista) {
+        return lista == null || lista.isEmpty();
     }
 }

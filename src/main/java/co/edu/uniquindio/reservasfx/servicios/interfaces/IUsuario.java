@@ -3,6 +3,7 @@ package co.edu.uniquindio.reservasfx.servicios.interfaces;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Calificacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Notificacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
+import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Usuario;
 
 import java.time.LocalDateTime;
@@ -35,4 +36,10 @@ public interface IUsuario {
     ArrayList<Notificacion> obtenerNotificacionesNoLeidas(String cedulaCliente) throws Exception;
 
     void marcarNotificacionComoLeida(Notificacion notificacion) throws Exception;
+
+    void guardarDeseo(String cedulaCliente, String idAlojamiento) throws Exception;
+
+    void eliminarDeseo(String cedulaCliente, String idAlojamiento) throws Exception;
+
+    ArrayList<Deseo> obtenerDeseosCliente(String cedulaCliente) throws Exception;
 }
