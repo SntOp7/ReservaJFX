@@ -9,7 +9,7 @@ import lombok.Setter;
 public class Cliente extends Usuario {
     private BilleteraVirtual billetera;
 
-    public Cliente(String cedula, String nombreCompleto, String telefono, String email, String contrasena, boolean activo) {
-        super(cedula, nombreCompleto, telefono, email, contrasena, activo);
+    public Cliente(String cedula, String nombreCompleto, String telefono, String direccion, String email, String contrasena, boolean activo) {
+        super(cedula, nombreCompleto, telefono, direccion, email, contrasena, activo);
     }
 }
