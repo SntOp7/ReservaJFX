@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="480.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.ReservasRealizadasControlador">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Pane layoutX="15.0" layoutY="15.0" prefHeight="451.0" prefWidth="1118.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff); -fx-background-radius: 50px;">
+               <children>
+                  <Circle layoutX="164.0" layoutY="431.0" radius="225.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop color="#ffffffcc" />
+                              <Stop color="TRANSPARENT" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="553.0" layoutY="370.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#1f93ff00" />
+                              <Stop color="#1f93ff43" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="959.0" layoutY="225.0" radius="225.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop color="#ffffffcc" />
+                              <Stop color="TRANSPARENT" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="114.0" layoutY="109.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#1f93ff00" />
+                              <Stop color="#1f93ff43" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="164.0" layoutY="270.0" radius="44.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#1f93ff00" />
+                              <Stop color="#1f93ff43" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="246.0" layoutY="206.0" radius="44.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#1f93ff00" />
+                              <Stop color="#1f93ff43" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="271.0" layoutY="109.0" radius="44.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#1f93ff00" />
+                              <Stop color="#1f93ff1a" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+                  <CubicCurve controlX1="-50.0" controlX2="50.0" controlY1="-100.0" controlY2="100.0" endX="150.0" layoutX="378.0" layoutY="-1.0" startX="-150.0" stroke="BLACK" strokeWidth="0.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#1f93ffcb" />
+                              <Stop color="#1f93ff00" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </CubicCurve>
+                  <CubicCurve controlX1="-50.0" controlX2="50.0" controlY1="-100.0" controlY2="100.0" endX="150.0" layoutX="546.0" layoutY="-2.0" startX="-150.0" stroke="BLACK" strokeWidth="0.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#1f93ffcb" />
+                              <Stop color="#1f93ff00" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </CubicCurve>
+                  <CubicCurve controlX1="-50.0" controlX2="50.0" controlY1="-100.0" controlY2="100.0" endX="150.0" layoutX="703.0" layoutY="-3.0" startX="-150.0" stroke="BLACK" strokeWidth="0.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#1f93ffcb" />
+                              <Stop color="#1f93ff00" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </CubicCurve>
+                  <CubicCurve controlX1="-50.0" controlX2="50.0" controlY1="-100.0" controlY2="100.0" endX="150.0" layoutX="853.0" layoutY="-4.0" startX="-150.0" stroke="BLACK" strokeWidth="0.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#1f93ffcb" />
+                              <Stop color="#1f93ff00" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </CubicCurve>
+                  <TableView fx:id="tablaReservas" layoutX="133.0" layoutY="97.0" prefHeight="307.0" prefWidth="840.0">
+                    <columns>
+                      <TableColumn fx:id="nombreColumn" prefWidth="159.0" text="Nombre Alojamiento " />
+                      <TableColumn fx:id="fechaInicioColumn" prefWidth="121.0" text="Fecha Inicio" />
+                        <TableColumn fx:id="fechaFinColumn" prefWidth="140.0" text="Fecha Fin" />
+                        <TableColumn fx:id="huespedesColumn" prefWidth="140.0" text="Huéspedes" />
+                        <TableColumn fx:id="totalPagadoColumn" prefWidth="140.0" text="Total/Pagado" />
+                        <TableColumn fx:id="estadoColumn" prefWidth="140.0" text="Estado Reserva" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="410.0" layoutY="14.0" text="Reservas Realizadas" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB" size="36.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="59.0" fitWidth="61.0" layoutX="325.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/reserva.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="79.0" fitWidth="88.0" layoutX="724.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="59.0" fitWidth="61.0" layoutX="724.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/reserva.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</StackPane>
