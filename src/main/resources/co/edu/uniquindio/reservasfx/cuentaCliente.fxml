@@ -34,7 +34,7 @@
                            <children>
                               <VBox alignment="CENTER">
                                  <children>
-                                    <VBox alignment="CENTER" prefHeight="612.0" prefWidth="388.0" spacing="25.0">
+                                    <VBox alignment="CENTER" prefHeight="612.0" prefWidth="388.0" spacing="20.0">
                                        <children>
                                           <Pane>
                                              <children>
@@ -62,7 +62,8 @@
                                              </font>
                                           </Button>
                                           <Button fx:id="billeteraBtn" mnemonicParsing="false" onAction="#billeteraBtnAction" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff); -fx-background-radius: 50px;" text="Billetera" textFill="WHITE" />
-                                          <ImageView fitHeight="106.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true">
+                                          <Button fx:id="eliminarCuentaBtn" mnemonicParsing="false" onAction="#eliminarCuentaBtnAction" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff); -fx-background-radius: 50px;" text="Eliminar Cuenta" textFill="WHITE" />
+                                          <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@img/bookYourStay.png" />
                                              </image>
