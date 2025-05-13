@@ -1,5 +1,6 @@
 package co.edu.uniquindio.reservasfx.modelo.entidades;
 
+import co.edu.uniquindio.reservasfx.modelo.enums.EstadoOferta;
 import co.edu.uniquindio.reservasfx.modelo.enums.OfertaEspecial;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,4 +20,5 @@ public class Oferta {
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private double porcentajeDescuento;
+    private EstadoOferta estado;
 }

@@ -15,7 +15,7 @@
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
        
-        <Rectangle arcHeight="0.0" arcWidth="0.0" height="700.0" stroke="BLACK" strokeType="INSIDE" width="900.0">
+        <Rectangle arcHeight="0.0" arcWidth="0.0" height="740.0" stroke="BLACK" strokeType="INSIDE" width="900.0">
             <fill>
                 <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
                     <stops>
@@ -40,9 +40,9 @@
         </Group>
 
 
-        <VBox layoutY="20.0" prefHeight="450.0" prefWidth="900.0">
+        <VBox layoutY="20.0" prefHeight="150.0" prefWidth="900.0">
             <children>
-                <HBox alignment="CENTER" prefHeight="420.0" prefWidth="900.0" spacing="30.0">
+                <HBox alignment="CENTER" prefHeight="521.0" prefWidth="900.0" spacing="30.0">
                     <children>
 
                         <VBox alignment="CENTER" prefHeight="400.0" prefWidth="440.0" spacing="15.0">
@@ -276,12 +276,12 @@
                         </VBox>
 
 
-                        <VBox alignment="CENTER_LEFT" prefHeight="400.0" prefWidth="400.0" spacing="20.0">
+                        <VBox alignment="CENTER_LEFT" prefHeight="509.0" prefWidth="440.0" spacing="20.0">
                             <children>
 
-                                <StackPane>
+                                <StackPane prefHeight="510.0" prefWidth="439.0">
                                     <children>
-                                        <Rectangle arcHeight="15.0" arcWidth="15.0" height="380.0" width="409.0">
+                                        <Rectangle arcHeight="15.0" arcWidth="15.0" height="446.0" width="409.0">
                                             <fill>
                                                 <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
                                                     <stops>
@@ -296,7 +296,7 @@
                                         </Rectangle>
 
 
-                                        <VBox alignment="CENTER" prefHeight="425.0" prefWidth="502.0" spacing="20.0">
+                                        <VBox alignment="CENTER" prefHeight="410.0" prefWidth="409.0" spacing="15.0">
                                             <children>
 
                                                 <Text fx:id="nombreText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
@@ -307,21 +307,6 @@
                                                         <DropShadow color="#00000080" height="3.0" radius="1.0" width="3.0" />
                                                     </effect>
                                                 </Text>
-
-
-                                                <Line endX="300.0" startX="0.0" strokeWidth="2.0">
-                                                    <effect>
-                                                        <Glow level="0.3" />
-                                                    </effect>
-                                       <stroke>
-                                          <LinearGradient endX="1.0" endY="1.0">
-                                             <stops>
-                                                <Stop color="#3e2da1" />
-                                                <Stop color="WHITE" offset="1.0" />
-                                             </stops>
-                                          </LinearGradient>
-                                       </stroke>
-                                                </Line>
 
 
                                                 <VBox spacing="15.0">
@@ -371,21 +356,44 @@
                                                         </HBox>
                                                     </children>
                                                 </VBox>
-
-
-                                                <Line endX="300.0" startX="0.0" strokeWidth="2.0">
-                                                    <effect>
-                                                        <Glow level="0.3" />
-                                                    </effect>
-                                       <stroke>
-                                          <LinearGradient endX="1.0" endY="1.0">
-                                             <stops>
-                                                <Stop color="WHITE" />
-                                                <Stop color="#524cff" offset="1.0" />
-                                             </stops>
-                                          </LinearGradient>
-                                       </stroke>
-                                                </Line>
+                                    <Label text="Realiza tu Reserva" textFill="WHITE">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Circle fill="#372ac7" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+                                          <Text fx:id="fechaInicioText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Inicio">
+                                             <font>
+                                                <Font name="Berlin Sans FB" size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <DatePicker fx:id="fechaInicioDate" style="-fx-background-radius: 0;" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Circle fill="#372ac7" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+                                          <Text fx:id="fechaFinText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Fin ">
+                                             <font>
+                                                <Font name="Berlin Sans FB" size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <DatePicker fx:id="fechaFinDate" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Circle fill="#372ac7" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+                                          <Text fx:id="huespedesText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Huéspedes">
+                                             <font>
+                                                <Font name="Berlin Sans FB" size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField promptText="Número de Huéspedes" />
+                                       </children>
+                                    </HBox>
 
 
                                                 <HBox alignment="CENTER" prefHeight="60.0" prefWidth="400.0" spacing="20.0">
@@ -436,7 +444,7 @@
         </VBox>
 
 
-        <VBox layoutY="470.0" prefHeight="230.0" prefWidth="900.0">
+        <VBox layoutY="470.0" prefHeight="75.0" prefWidth="900.0">
             <children>
                 <!-- Barra de navegación con degradado elegante -->
                 <HBox alignment="CENTER" prefHeight="60.0" prefWidth="900.0">
@@ -449,7 +457,7 @@
                           <tabs>
                             <Tab fx:id="adicionalTab" text="Información Adicional">
                                  <content>
-                                    <StackPane prefHeight="150.0" prefWidth="200.0" />
+                                    <StackPane prefHeight="341.0" prefWidth="900.0" />
                                  </content></Tab>
                             <Tab fx:id="reseniaHuespedTab" text="Reseñas de Huéspedes">
                               <content>

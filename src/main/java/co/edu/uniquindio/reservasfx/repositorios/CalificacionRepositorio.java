@@ -21,14 +21,14 @@ public class CalificacionRepositorio {
         guardarDatos(calificaciones);
     }
 
-    public ArrayList<Calificacion> obtenerCalificacionesPorNombre(String nombreAlojamiento) {
-        ArrayList<Calificacion> calificacionesPorNombre = new ArrayList<>();
+    public ArrayList<Calificacion> obtenerCalificacionesPorId(String id) {
+        ArrayList<Calificacion> calificacionesPorId = new ArrayList<>();
         for (Calificacion calificacion : calificaciones) {
-            if (calificacion.getNombreAlojamiento().equals(nombreAlojamiento)) {
-                calificacionesPorNombre.add(calificacion);
+            if (calificacion.getIdAlojamiento().equals(id)) {
+                calificacionesPorId.add(calificacion);
             }
         }
-        return calificacionesPorNombre;
+        return calificacionesPorId;
     }
 
     public void guardarDatos(ArrayList<Calificacion> calificaciones) {

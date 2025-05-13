@@ -8,8 +8,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Calificacion {
-    private String nombreCliente;
-    private String nombreAlojamiento;
+    private String cedulaCliente;
+    private String idAlojamiento;
     private String comentario;
     private int valoracion;
 }

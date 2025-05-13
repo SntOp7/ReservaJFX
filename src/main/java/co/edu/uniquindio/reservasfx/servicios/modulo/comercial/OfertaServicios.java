@@ -1,12 +1,14 @@
 package co.edu.uniquindio.reservasfx.servicios.modulo.comercial;
 
 import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
-import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
+import co.edu.uniquindio.reservasfx.modelo.enums.EstadoOferta;
 import co.edu.uniquindio.reservasfx.modelo.enums.OfertaEspecial;
 import co.edu.uniquindio.reservasfx.repositorios.OfertaRepositorio;
-import co.edu.uniquindio.reservasfx.servicios.ModuloComercialServicios;
+import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.NotificacionServicios;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.UUID;
 
 public class OfertaServicios {
 
@@ -16,33 +18,66 @@ public class OfertaServicios {
         ofertaRepositorio = new OfertaRepositorio();
     }
 
-    public void registrarOferta(OfertaEspecial ofertaEspecial, String descripcion, LocalDate fechaInicio, LocalDate fechaFin, double porcentajeDescuento) throws Exception {
-        if (ofertaEspecial == null ) throw new Exception("La oferta es obligatoria");
-        if (descripcion == null || descripcion.isEmpty()) throw new Exception("La descripcion es obligatoria");
-        if (fechaInicio == null) throw new Exception("La fecha de inicio es obligatoria");
-        if (fechaFin == null) throw new Exception("La fecha de fin es obligatoria");
-        if (porcentajeDescuento == 0) throw new Exception("El porcentaje de descuento es obligatorio");
+    public void registrarOferta(OfertaEspecial ofertaEspecial, String idAlojamiento, String nombre, String descripcion,
+                                LocalDate fechaInicio, LocalDate fechaFin, double porcentajeDescuento) throws Exception {
 
-        Oferta oferta = Oferta.builder().ofertaEspecial(ofertaEspecial).descripcion(descripcion).fechaInicio(fechaInicio).fechaFin(fechaFin).porcentajeDescuento(porcentajeDescuento).build();
+        if (ofertaEspecial == null ) throw new Exception("La oferta es obligatoria");
+        verificarCampos(nombre, descripcion, fechaInicio, fechaFin, porcentajeDescuento);
+        EstadoOferta estadoOferta = obtenerEstadoOferta(fechaInicio, fechaFin);
+        Oferta oferta = Oferta.builder().ofertaEspecial(ofertaEspecial).id(UUID.randomUUID().toString()).
+                idAlojamiento(idAlojamiento).nombre(nombre).descripcion(descripcion).fechaInicio(fechaInicio).
+                fechaFin(fechaFin).porcentajeDescuento(porcentajeDescuento).estado(estadoOferta).build();
 
         ofertaRepositorio.agregar(oferta);
     }
 
-    public void editarOferta(OfertaEspecial ofertaEspecial, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin, double porcentajeDescuento) {
-
-        Oferta ofertaEditada = Oferta.builder().ofertaEspecial(ofertaEspecial).descripcion(descripcion).fechaInicio(fechaInicio).fechaFin(fechaFin).porcentajeDescuento(porcentajeDescuento).build();
-
-
-        ofertaRepositorio.editar(ofertaEditada);
+    private EstadoOferta obtenerEstadoOferta(LocalDate fechaInicio, LocalDate fechaFin) {
+        if (fechaInicio.isAfter(LocalDate.now())) return EstadoOferta.PROXIMA;
+        if (fechaInicio.isEqual(LocalDate.now())) return EstadoOferta.ACTIVA;
+        return null;
     }
 
-    public void eliminarOferta(String nombre) throws Exception {
-        Oferta oferta = buscarOferta(nombre);
+    public void editarOferta(String id, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin,
+                             double porcentajeDescuento) throws Exception {
+        verificarCampos(nombre, descripcion, fechaInicio, fechaFin, porcentajeDescuento);
+        Oferta oferta = ofertaRepositorio.buscarOfertaPorId(id);
+        oferta.setNombre(nombre);
+        oferta.setDescripcion(descripcion);
+        oferta.setFechaInicio(fechaInicio);
+        oferta.setFechaFin(fechaFin);
+        oferta.setPorcentajeDescuento(porcentajeDescuento);
+        ofertaRepositorio.editar(oferta);
+    }
+
+    private void verificarCampos(String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin, double porcentajeDescuento) throws Exception {
+        if (nombre == null || nombre.isEmpty()) throw new Exception("El nombre es obligatorio");
+        if (descripcion == null || descripcion.isEmpty()) throw new Exception("La descripcion es obligatoria");
+        if (fechaInicio == null) throw new Exception("La fecha de inicio es obligatoria");
+        if (fechaFin == null) throw new Exception("La fecha de fin es obligatoria");
+        if (fechaInicio.isBefore(LocalDate.now())) throw new Exception("La fecha de inicio no puede ser en el pasado");
+        if (fechaFin.isBefore(fechaInicio)) throw new Exception("La fecha de fin no puede ser anterior a la fecha de inicio");
+        if (porcentajeDescuento == 0) throw new Exception("El porcentaje de descuento es obligatorio");
+    }
+
+    public void eliminarOferta(String id) throws Exception {
+        Oferta oferta = buscarOferta(id);
         if (oferta == null) throw new Exception("La Oferta no existe");
         ofertaRepositorio.eliminar(oferta);
     }
 
-    public Oferta buscarOferta(String nombre){
-        return ofertaRepositorio.buscarOferta(nombre);
+    public Oferta buscarOferta(String id){
+        return ofertaRepositorio.buscarOfertaPorId(id);
+    }
+
+    public ArrayList<Oferta> obtenerOfertas(String idAlojamiento) {
+        return ofertaRepositorio.obtenerOfertasAlojamiento(idAlojamiento);
+    }
+
+    public ArrayList<Oferta> obtenerOfertasActivasAlojamiento(String idAlojamiento) {
+        return ofertaRepositorio.obtenerOfertasActivasAlojamiento(idAlojamiento);
+    }
+
+    public void actualizarEstadoOfertas() {
+        ofertaRepositorio.actualizarEstadoOfertas();
     }
 }

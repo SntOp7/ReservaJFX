@@ -1,9 +1,8 @@
 package co.edu.uniquindio.reservasfx.servicios.interfaces;
 
+import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
 import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
-import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.enums.OfertaEspecial;
-import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.modelo.vo.EstadisticasAlojamiento;
 import co.edu.uniquindio.reservasfx.modelo.vo.EstadisticasTipoAlojamiento;
 
@@ -26,6 +25,14 @@ public interface IComercial {
                       double porcentajeDescuento) throws Exception;
 
     void eliminarOferta(String id) throws Exception;
+
+    ArrayList<Oferta> obtenerOfertasAlojamiento(String idAlojamiento) throws Exception;
+
+    ArrayList<Oferta> obtenerOfertasActivasAlojamiento(String idAlojamiento) throws Exception;
+
+    void actualizarEstadoReservas() throws Exception;
+
+    void actualizarEstadoOfertas() throws Exception;
 
     EstadisticasAlojamiento obtenerEstadisticasAlojamiento(String idAlojamiento) throws Exception;
 

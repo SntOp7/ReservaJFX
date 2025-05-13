@@ -24,7 +24,7 @@ public class ReservaRepositorio {
     }
 
     public void cancelar(Reserva reserva) {
-        reservas.remove(reserva);
+        reserva.setEstado(EstadoReserva.CANCELADA);
         guardarDatos(reservas);
     }
 
@@ -33,6 +33,26 @@ public class ReservaRepositorio {
                 filter(r -> r.getId().equals(id)).
                 findFirst().
                 orElse(null);
+    }
+
+    public ArrayList<Reserva> obtenerReservasCliente(String cedulaCliente) {
+        ArrayList<Reserva> reservasPorCliente = new ArrayList<>();
+        for (Reserva reserva : reservas) {
+            if (reserva.getCedulaCliente().equals(cedulaCliente)) {
+                reservasPorCliente.add(reserva);
+            }
+        }
+        return reservasPorCliente;
+    }
+
+    public ArrayList<Reserva> obtenerReservasPorAlojamiento(String idAlojamiento) {
+        ArrayList<Reserva> reservasPorAlojamiento = new ArrayList<>();
+        for (Reserva reserva : reservas) {
+            if (reserva.getIdAlojamiento().equals(idAlojamiento)) {
+                reservasPorAlojamiento.add(reserva);
+            }
+        }
+        return reservasPorAlojamiento;
     }
 
     public void guardarDatos(ArrayList<Reserva> reservas) {

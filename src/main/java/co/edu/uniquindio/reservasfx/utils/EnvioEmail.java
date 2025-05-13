@@ -40,10 +40,8 @@ public class EnvioEmail {
 
     public static void enviarNotificacionConQR(String destinatario, String asunto, String mensaje, String codigoFactura) {
         try {
-            // Generar QR como imagen en memoria
             byte[] qrBytes = generarQR(codigoFactura);
 
-            // Convertir imagen a base64 para incrustarla en el HTML
             String base64Qr = Base64.getEncoder().encodeToString(qrBytes);
             String imagenQrHtml = "<img src='data:image/png;base64," + base64Qr + "'/>";
 
@@ -53,7 +51,6 @@ public class EnvioEmail {
                     "<p><strong>QR:</strong><br/>" + imagenQrHtml + "</p>" +
                     "</body></html>";
 
-            // Crear correo con HTML y QR incrustado
             Email email = EmailBuilder.startingBlank()
                     .from("lbrtinstantaneo@gmail.com")
                     .to(destinatario)

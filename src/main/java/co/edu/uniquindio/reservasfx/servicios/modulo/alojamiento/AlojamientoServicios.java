@@ -143,6 +143,11 @@ public class AlojamientoServicios {
 
     public Alojamiento buscarAlojamiento(String nombre) {
         return alojamientoRepositorio.buscarAlojamientoPorNombre(nombre);
+
+    }
+
+    public Alojamiento buscarAlojamientoPorId(String id) {
+        return alojamientoRepositorio.buscarAlojamientoPorId(id);
     }
 
     public ArrayList<Alojamiento> obtenerAlojamientos() throws Exception {

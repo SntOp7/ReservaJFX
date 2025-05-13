@@ -1,5 +1,6 @@
 package co.edu.uniquindio.reservasfx.servicios;
 
+import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
 import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.enums.OfertaEspecial;
@@ -7,8 +8,11 @@ import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.modelo.vo.EstadisticasAlojamiento;
 import co.edu.uniquindio.reservasfx.modelo.vo.EstadisticasTipoAlojamiento;
 import co.edu.uniquindio.reservasfx.servicios.interfaces.IComercial;
+import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.AlojamientoServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.comercial.OfertaServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.comercial.ReservaServicios;
+import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.NotificacionServicios;
+import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.UsuarioServicios;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,14 +23,18 @@ public class ModuloComercialServicios implements IComercial {
     private final OfertaServicios ofertaServicios;
 
     public ModuloComercialServicios() {
-        reservaServicios = new ReservaServicios();
+        UsuarioServicios usuarioServicio = EmpresaServicio.getInstancia().getModuloUsuarioServicios().getUsuarioServicios();
+        AlojamientoServicios alojamientoServicios = EmpresaServicio.getInstancia().getModuloAlojamientoServicios().getAlojamientoServicios();
+        NotificacionServicios notificacionServicios = EmpresaServicio.getInstancia().getModuloUsuarioServicios().getNotificacionServicios();
+        reservaServicios = new ReservaServicios(usuarioServicio, alojamientoServicios, notificacionServicios);
         ofertaServicios = new OfertaServicios();
     }
 
     @Override
     public void realizarReserva(String cedulaCliente, String idAlojamiento, LocalDate fechaInicio, LocalDate fechaFin,
                                 int numeroHuespedes) throws Exception {
-        reservaServicios.realizarReserva(cedulaCliente, idAlojamiento, fechaInicio, fechaFin, numeroHuespedes);
+        reservaServicios.realizarReserva(cedulaCliente, idAlojamiento, fechaInicio, fechaFin, numeroHuespedes,
+                obtenerOfertasAlojamiento(idAlojamiento));
     }
 
     @Override
@@ -55,6 +63,26 @@ public class ModuloComercialServicios implements IComercial {
     @Override
     public void eliminarOferta(String id) throws Exception {
         ofertaServicios.eliminarOferta(id);
+    }
+
+    @Override
+    public ArrayList<Oferta> obtenerOfertasAlojamiento(String idAlojamiento) throws Exception {
+        return ofertaServicios.obtenerOfertas(idAlojamiento);
+    }
+
+    @Override
+    public ArrayList<Oferta> obtenerOfertasActivasAlojamiento(String idAlojamiento) throws Exception {
+        return ofertaServicios.obtenerOfertasActivasAlojamiento(idAlojamiento);
+    }
+
+    @Override
+    public void actualizarEstadoReservas() throws Exception {
+        reservaServicios.actualizarEstadoReservas();
+    }
+
+    @Override
+    public void actualizarEstadoOfertas() throws Exception {
+        ofertaServicios.actualizarEstadoOfertas();
     }
 
     @Override
