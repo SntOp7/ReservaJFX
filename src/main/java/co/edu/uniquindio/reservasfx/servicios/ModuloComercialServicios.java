@@ -4,6 +4,8 @@ import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.enums.OfertaEspecial;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
+import co.edu.uniquindio.reservasfx.modelo.vo.EstadisticasAlojamiento;
+import co.edu.uniquindio.reservasfx.modelo.vo.EstadisticasTipoAlojamiento;
 import co.edu.uniquindio.reservasfx.servicios.interfaces.IComercial;
 import co.edu.uniquindio.reservasfx.servicios.modulo.comercial.OfertaServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.comercial.ReservaServicios;
@@ -22,32 +24,46 @@ public class ModuloComercialServicios implements IComercial {
     }
 
     @Override
-    public void registrarOferta(OfertaEspecial ofertaEspecial, String descripcion, LocalDate fechaInicio, LocalDate fechaFin, double porcentajeDescuento) throws Exception {
-        ofertaServicios.registrarOferta(ofertaEspecial, descripcion, fechaInicio, fechaFin, porcentajeDescuento);
+    public void realizarReserva(String cedulaCliente, String idAlojamiento, LocalDate fechaInicio, LocalDate fechaFin,
+                                int numeroHuespedes) throws Exception {
+        reservaServicios.realizarReserva(cedulaCliente, idAlojamiento, fechaInicio, fechaFin, numeroHuespedes);
     }
 
     @Override
-    public void editarOferta(OfertaEspecial ofertaEspecial, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin, double porcentajeDescuento) {
-        ofertaServicios.editarOferta(ofertaEspecial, nombre, descripcion, fechaInicio, fechaFin, porcentajeDescuento);
+    public void cancelarReserva(String id) throws Exception {
+        reservaServicios.cancelarReserva(id);
     }
 
     @Override
-    public void eliminarOferta(String nombre) throws Exception {
-        ofertaServicios.eliminarOferta(nombre);
+    public ArrayList<Reserva> obtenerReservasCliente(String cedulaCliente) throws Exception {
+        return reservaServicios.obtenerReservasCliente(cedulaCliente);
     }
 
     @Override
-    public void registrarReserva(Cliente cliente, Alojamiento alojamiento, LocalDate fechaInicio, LocalDate fechaFin, int numeroHuespedes) throws Exception {
-        reservaServicios.registrarReserva(cliente, alojamiento, fechaInicio, fechaFin, numeroHuespedes);
+    public void registrarOferta(OfertaEspecial ofertaEspecial, String idAlojamiento, String nombre, String descripcion,
+                                LocalDate fechaInicio, LocalDate fechaFin, double porcentajeDescuento) throws Exception {
+        ofertaServicios.registrarOferta(ofertaEspecial, idAlojamiento, nombre, descripcion, fechaInicio, fechaFin,
+                porcentajeDescuento);
     }
 
     @Override
-    public void cancelarReserva(String cedulaCliente) throws Exception {
-        reservaServicios.cancelarReserva(cedulaCliente);
+    public void editarOferta(String id, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin,
+                             double porcentajeDescuento) throws Exception {
+        ofertaServicios.editarOferta(id, nombre, descripcion, fechaInicio, fechaFin, porcentajeDescuento);
     }
 
     @Override
-    public ArrayList<Reserva> getReservas() {
-        return reservaServicios.getReservas();
+    public void eliminarOferta(String id) throws Exception {
+        ofertaServicios.eliminarOferta(id);
+    }
+
+    @Override
+    public EstadisticasAlojamiento obtenerEstadisticasAlojamiento(String idAlojamiento) throws Exception {
+        return reservaServicios.obtenerEstadisticasAlojamiento(idAlojamiento);
+    }
+
+    @Override
+    public EstadisticasTipoAlojamiento obtenerRentabilidadTipoAlojamiento(int mes) throws Exception {
+        return reservaServicios.obtenerRentabilidadTipoAlojamiento(mes);
     }
 }

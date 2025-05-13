@@ -41,7 +41,7 @@ public interface IEmpresa {
     void registrarOferta(OfertaEspecial ofertaEspecial, String idAlojamiento, String nombre, String descripcion,
                          LocalDate fechaInicio, LocalDate fechaFin, double porcentajeDescuento) throws Exception;
 
-    void editarOferta(String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin,
+    void editarOferta(String id, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin,
                       double porcentajeDescuento) throws Exception;
 
     void eliminarOferta(String id) throws Exception;

@@ -4,24 +4,30 @@ import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.enums.OfertaEspecial;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
+import co.edu.uniquindio.reservasfx.modelo.vo.EstadisticasAlojamiento;
+import co.edu.uniquindio.reservasfx.modelo.vo.EstadisticasTipoAlojamiento;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public interface IComercial {
 
-    void registrarOferta(OfertaEspecial ofertaEspecial, String descripcion, LocalDate fechaInicio,
-                         LocalDate fechaFin, double porcentajeDescuento) throws Exception;
+    void realizarReserva(String cedulaCliente, String idAlojamiento, LocalDate fechaInicio, LocalDate fechaFin,
+                         int numeroHuespedes) throws Exception;
 
-    void editarOferta(OfertaEspecial ofertaEspecial, String nombre, String descripcion, LocalDate fechaInicio,
-                      LocalDate fechaFin, double porcentajeDescuento);
+    void cancelarReserva(String id) throws Exception;
 
-    void eliminarOferta(String nombre) throws Exception;
+    ArrayList<Reserva> obtenerReservasCliente(String cedulaCliente) throws Exception;
 
-    void registrarReserva(Cliente cliente, Alojamiento alojamiento, LocalDate fechaInicio, LocalDate fechaFin,
-                          int numeroHuespedes) throws Exception;
+    void registrarOferta(OfertaEspecial ofertaEspecial, String idAlojamiento, String nombre, String descripcion,
+                         LocalDate fechaInicio, LocalDate fechaFin, double porcentajeDescuento) throws Exception;
 
-    void cancelarReserva(String cedulaCliente) throws Exception;
+    void editarOferta(String id, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin,
+                      double porcentajeDescuento) throws Exception;
 
-    ArrayList<Reserva> getReservas();
+    void eliminarOferta(String id) throws Exception;
+
+    EstadisticasAlojamiento obtenerEstadisticasAlojamiento(String idAlojamiento) throws Exception;
+
+    EstadisticasTipoAlojamiento obtenerRentabilidadTipoAlojamiento(int mes) throws Exception;
 }
