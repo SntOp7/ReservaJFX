@@ -39,7 +39,7 @@ public class UsuarioRepositorio {
     }
 
     public void listarAdministrador() {
-        Administrador admin1 = new Administrador("123456789", "AdminApp", "987654321", "admin@gmail.com", "admin", true);
+        Administrador admin1 = new Administrador("123456789", "AdminApp", "987654321", "Calarca - Quindio","admin@gmail.com", "admin", true);
         administradores.add(admin1);
         guardarDatosAd(administradores);
     }
