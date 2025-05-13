@@ -1,10 +1,14 @@
 package co.edu.uniquindio.reservasfx.servicios.modulo.comercial;
 
+import co.edu.uniquindio.reservasfx.config.Constantes;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
+import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.enums.EstadoOferta;
 import co.edu.uniquindio.reservasfx.modelo.enums.OfertaEspecial;
 import co.edu.uniquindio.reservasfx.repositorios.OfertaRepositorio;
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.NotificacionServicios;
+import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.UsuarioServicios;
+import org.simplejavamail.api.internal.clisupport.model.Cli;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -13,9 +17,13 @@ import java.util.UUID;
 public class OfertaServicios {
 
     private final OfertaRepositorio ofertaRepositorio;
+    private final UsuarioServicios usuarioServicios;
+    private final NotificacionServicios notificacionServicios;
 
-    public OfertaServicios() {
+    public OfertaServicios(UsuarioServicios usuarioServicios, NotificacionServicios notificacionServicios) {
         ofertaRepositorio = new OfertaRepositorio();
+        this.usuarioServicios = usuarioServicios;
+        this.notificacionServicios = notificacionServicios;
     }
 
     public void registrarOferta(OfertaEspecial ofertaEspecial, String idAlojamiento, String nombre, String descripcion,
@@ -29,6 +37,10 @@ public class OfertaServicios {
                 fechaFin(fechaFin).porcentajeDescuento(porcentajeDescuento).estado(estadoOferta).build();
 
         ofertaRepositorio.agregar(oferta);
+        for (Cliente cliente : usuarioServicios.obtenerClientes()) {
+            notificacionServicios.enviarNotificacion(cliente.getCedula(), "Nueva Oferta",
+                    Constantes.NUEVA_OFERTA(idAlojamiento));
+        }
     }
 
     private EstadoOferta obtenerEstadoOferta(LocalDate fechaInicio, LocalDate fechaFin) {

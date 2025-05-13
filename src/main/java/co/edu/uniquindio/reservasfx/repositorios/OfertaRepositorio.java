@@ -7,6 +7,7 @@ import co.edu.uniquindio.reservasfx.modelo.enums.EstadoOferta;
 import co.edu.uniquindio.reservasfx.utils.Persistencia;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class OfertaRepositorio {
@@ -60,8 +61,13 @@ public class OfertaRepositorio {
 
     public void actualizarEstadoOfertas() {
         for (Oferta oferta : ofertas) {
-
+            if (oferta.getFechaInicio().isEqual(LocalDate.now()) || oferta.getFechaInicio().isAfter(LocalDate.now())) {
+                oferta.setEstado(EstadoOferta.ACTIVA);
+            } else if (LocalDate.now().isAfter(oferta.getFechaFin())) {
+                oferta.setEstado(EstadoOferta.CADUCADA);
+            }
         }
+        guardarDatos(ofertas);
     }
 
     public void guardarDatos(ArrayList<Oferta> ofertas) {

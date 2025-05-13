@@ -6,6 +6,7 @@ module co.edu.uniquindio.reservasfx {
     requires org.simplejavamail;
     requires com.google.zxing;
     requires com.google.zxing.javase;
+    requires java.desktop;
 
     opens co.edu.uniquindio.reservasfx to javafx.fxml;
     exports co.edu.uniquindio.reservasfx.app;
