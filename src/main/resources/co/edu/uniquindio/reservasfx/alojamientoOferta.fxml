@@ -89,7 +89,7 @@
 
                                 <HBox alignment="CENTER_LEFT" spacing="10.0">
                                     <children>
-                                        <Label text="Nombre" textFill="#5f5fa8">
+                                        <Label fx:id="nombreLbl" text="Nombre" textFill="#5f5fa8">
                                             <font>
                                                 <Font name="System Bold" size="38.0" />
                                             </font>
@@ -130,7 +130,7 @@
                                                 </StackPane>
                                                 <VBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="130.0">
                                                     <children>
-                                                        <Label text="Precio:" textFill="#707070">
+                                                        <Label fx:id="precioLbl" text="Precio:" textFill="#707070">
                                                             <font>
                                                                 <Font name="System Bold" size="14.0" />
                                                             </font>
@@ -149,7 +149,7 @@
                                                 </StackPane>
                                                 <VBox alignment="CENTER_LEFT">
                                                     <children>
-                                                        <Label prefHeight="19.0" prefWidth="129.0" text="Capacidad:" textFill="#707070">
+                                                        <Label fx:id="capacidadLbl" prefHeight="19.0" prefWidth="129.0" text="Capacidad:" textFill="#707070">
                                                             <font>
                                                                 <Font name="System Bold" size="14.0" />
                                                             </font>
@@ -168,7 +168,7 @@
                                                 </StackPane>
                                                 <VBox alignment="CENTER_LEFT">
                                                     <children>
-                                                        <Label prefHeight="20.0" prefWidth="134.0" text="Ubicación:" textFill="#707070">
+                                                        <Label fx:id="ubicacionLbl" prefHeight="20.0" prefWidth="134.0" text="Ubicación:" textFill="#707070">
                                                             <font>
                                                                 <Font name="System Bold" size="14.0" />
                                                             </font>

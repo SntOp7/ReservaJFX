@@ -46,22 +46,22 @@
                                                 <Circle fill="#1fff39" layoutX="149.0" layoutY="122.0" radius="15.0" stroke="TRANSPARENT" strokeType="INSIDE" />
                                              </children>
                                           </Pane>
-                                          <Label prefHeight="31.0" prefWidth="164.0" text="Hola Usuario ">
+                                          <Label fx:id="bienvenidaLbl" prefHeight="31.0" prefWidth="164.0" text="Hola Usuario ">
                                              <font>
                                                 <Font name="Berlin Sans FB" size="28.0" />
                                              </font>
                                           </Label>
-                                          <Button mnemonicParsing="false" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff);" text="Actualizar Datos" textFill="WHITE">
+                                          <Button fx:id="actualizxarDatosBtn" mnemonicParsing="false" onAction="#actualizxarDatosBtnAction" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff);" text="Actualizar Datos" textFill="WHITE">
                                              <font>
                                                 <Font name="Berlin Sans FB" size="15.0" />
                                              </font>
                                           </Button>
-                                          <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff); -fx-background-radius: 50px;" text="Reservas Realizadas" textFill="WHITE">
+                                          <Button fx:id="reservasRealizadasBtn" alignment="CENTER" mnemonicParsing="false" onAction="#reservasRealizadasBtnAction" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff); -fx-background-radius: 50px;" text="Reservas Realizadas" textFill="WHITE">
                                              <font>
                                                 <Font name="Berlin Sans FB" size="15.0" />
                                              </font>
                                           </Button>
-                                          <Button mnemonicParsing="false" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff); -fx-background-radius: 50px;" text="Billetera" textFill="WHITE" />
+                                          <Button fx:id="billeteraBtn" mnemonicParsing="false" onAction="#billeteraBtnAction" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff); -fx-background-radius: 50px;" text="Billetera" textFill="WHITE" />
                                           <ImageView fitHeight="106.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@img/bookYourStay.png" />

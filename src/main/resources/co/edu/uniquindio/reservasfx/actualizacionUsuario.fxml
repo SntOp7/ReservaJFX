@@ -313,12 +313,12 @@
                   <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
                </padding>
                <children>
-                  <Button fx:id="aceptarBtn" mnemonicParsing="false" onAction="#aceptarAction" prefHeight="40.0" prefWidth="120.0" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(to right bottom, #3a7bd5, #00d2ff); -fx-text-fill: white; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);" text="Actualizar">
+                  <Button fx:id="actualizarBtn" mnemonicParsing="false" onAction="#actualizarAction" prefHeight="40.0" prefWidth="120.0" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(to right bottom, #3a7bd5, #00d2ff); -fx-text-fill: white; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);" text="Actualizar">
                      <font>
                         <Font name="Segoe UI" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="cancelarBtn" mnemonicParsing="false" onAction="#cancelarAction" prefHeight="40.0" prefWidth="176.0" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(to right bottom, #9b59b6, #00d2ff); -fx-text-fill: white; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);" text="Cambiar Contraseña">
+                  <Button fx:id="cambioContraseniaBtn" mnemonicParsing="false" onAction="#cambioContraseniaAction" prefHeight="40.0" prefWidth="176.0" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(to right bottom, #9b59b6, #00d2ff); -fx-text-fill: white; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);" text="Cambiar Contraseña">
                      <font>
                         <Font name="Segoe UI" size="14.0" />
                      </font>

@@ -211,15 +211,7 @@
                                     </StackPane>
                                  </children>
                               </GridPane>
-                              <HBox alignment="CENTER" prefHeight="40.0" prefWidth="1160.0" spacing="20.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(to right, #484967, #5F6c77, #172D52);" text="Ver más resultados" textFill="WHITE">
-                                       <font>
-                                          <Font name="Berlin Sans FB" size="14.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="0.0" prefWidth="1168.0" spacing="20.0" />
                            </children>
                            <padding>
                               <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
