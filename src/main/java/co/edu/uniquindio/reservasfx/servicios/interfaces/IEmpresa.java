@@ -1,6 +1,7 @@
 package co.edu.uniquindio.reservasfx.servicios.interfaces;
 
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
+import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.enums.Ciudad;
 import co.edu.uniquindio.reservasfx.modelo.enums.OfertaEspecial;
@@ -46,7 +47,8 @@ public interface IEmpresa {
 
     void eliminarOferta(String id) throws Exception;
 
-    void enviarCalificacion(String nombreCliente, String nombreAlojamiento, String comentario, int valoracion) throws Exception;
+    void enviarCalificacion(String cedulaCliente, String idAlojamiento, String comentario, int valoracion,
+                            ArrayList<Reserva> reservasCliente) throws Exception;
 
     void enviarNotificacion(String cedulaCliente, String titulo, String mensaje) throws Exception;
 

@@ -3,6 +3,7 @@ package co.edu.uniquindio.reservasfx.repositorios;
 import co.edu.uniquindio.reservasfx.config.Constantes;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
+import co.edu.uniquindio.reservasfx.modelo.enums.EstadoOferta;
 import co.edu.uniquindio.reservasfx.utils.Persistencia;
 
 import java.io.IOException;
@@ -45,6 +46,22 @@ public class OfertaRepositorio {
             }
         }
         return ofertasPorAlojamiento;
+    }
+
+    public ArrayList<Oferta> obtenerOfertasActivasAlojamiento(String idAlojamiento) {
+        ArrayList<Oferta> ofertasPorAlojamiento = new ArrayList<>();
+        for (Oferta oferta : ofertas) {
+            if (oferta.getIdAlojamiento().equals(idAlojamiento) && oferta.getEstado().equals(EstadoOferta.ACTIVA)) {
+                ofertasPorAlojamiento.add(oferta);
+            }
+        }
+        return ofertasPorAlojamiento;
+    }
+
+    public void actualizarEstadoOfertas() {
+        for (Oferta oferta : ofertas) {
+
+        }
     }
 
     public void guardarDatos(ArrayList<Oferta> ofertas) {

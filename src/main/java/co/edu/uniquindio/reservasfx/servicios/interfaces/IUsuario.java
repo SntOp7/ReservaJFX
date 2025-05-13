@@ -2,6 +2,7 @@ package co.edu.uniquindio.reservasfx.servicios.interfaces;
 
 import co.edu.uniquindio.reservasfx.modelo.entidades.Calificacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Notificacion;
+import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Usuario;
@@ -27,9 +28,10 @@ public interface IUsuario {
 
     void activarCuentaCliente(String cedula, String codigoCorrecto, String codigoIngresado) throws Exception;
 
-    void enviarCalificacion(String nombreCliente, String nombreAlojamiento, String comentario, int valoracion) throws Exception;
+    void enviarCalificacion(String cedulaCliente, String idAlojamiento, String comentario, int valoracion,
+                            ArrayList<Reserva> reservasCliente) throws Exception;
 
-    ArrayList<Calificacion> obtenerCalificacionesAlojamiento(String nombreAlojamiento) throws Exception;
+    ArrayList<Calificacion> obtenerCalificacionesAlojamiento(String idAlojamiento) throws Exception;
 
     void enviarNotificacion(String cedulaCliente, String titulo, String mensaje) throws Exception;
 

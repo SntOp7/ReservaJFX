@@ -11,6 +11,7 @@ import co.edu.uniquindio.reservasfx.servicios.interfaces.IComercial;
 import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.AlojamientoServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.comercial.OfertaServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.comercial.ReservaServicios;
+import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.NotificacionServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.UsuarioServicios;
 
 import java.time.LocalDate;
@@ -24,7 +25,8 @@ public class ModuloComercialServicios implements IComercial {
     public ModuloComercialServicios() {
         UsuarioServicios usuarioServicio = EmpresaServicio.getInstancia().getModuloUsuarioServicios().getUsuarioServicios();
         AlojamientoServicios alojamientoServicios = EmpresaServicio.getInstancia().getModuloAlojamientoServicios().getAlojamientoServicios();
-        reservaServicios = new ReservaServicios(usuarioServicio, alojamientoServicios);
+        NotificacionServicios notificacionServicios = EmpresaServicio.getInstancia().getModuloUsuarioServicios().getNotificacionServicios();
+        reservaServicios = new ReservaServicios(usuarioServicio, alojamientoServicios, notificacionServicios);
         ofertaServicios = new OfertaServicios();
     }
 
@@ -63,8 +65,24 @@ public class ModuloComercialServicios implements IComercial {
         ofertaServicios.eliminarOferta(id);
     }
 
+    @Override
     public ArrayList<Oferta> obtenerOfertasAlojamiento(String idAlojamiento) throws Exception {
         return ofertaServicios.obtenerOfertas(idAlojamiento);
+    }
+
+    @Override
+    public ArrayList<Oferta> obtenerOfertasActivasAlojamiento(String idAlojamiento) throws Exception {
+        return ofertaServicios.obtenerOfertasActivasAlojamiento(idAlojamiento);
+    }
+
+    @Override
+    public void actualizarEstadoReservas() throws Exception {
+        reservaServicios.actualizarEstadoReservas();
+    }
+
+    @Override
+    public void actualizarEstadoOfertas() throws Exception {
+        ofertaServicios.actualizarEstadoOfertas();
     }
 
     @Override
