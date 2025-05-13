@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51ed1073-804c-4f43-b406-dbd702544cb9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/cliente3.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/cliente3.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="51ed1073-804c-4f43-b406-dbd702544cb9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,7 +16,6 @@
         <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
-        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -100,7 +96,6 @@
       <workItem from="1746547675722" duration="17639000" />
       <workItem from="1747015306311" duration="7899000" />
       <workItem from="1747080390583" duration="10496000" />
-      <workItem from="1747150060071" duration="15702000" />
     </task>
     <servers />
   </component>
