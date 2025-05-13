@@ -92,9 +92,9 @@ public class EmpresaServicio implements IEmpresa {
     }
 
     @Override
-    public void editarOferta(String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin,
-                             double porcentajeDescuento) {
-        moduloComercialServicios.editarOferta(nombre, descripcion, fechaInicio, fechaFin, porcentajeDescuento);
+    public void editarOferta(String id, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin,
+                             double porcentajeDescuento) throws Exception {
+        moduloComercialServicios.editarOferta(id, nombre, descripcion, fechaInicio, fechaFin, porcentajeDescuento);
     }
 
     @Override

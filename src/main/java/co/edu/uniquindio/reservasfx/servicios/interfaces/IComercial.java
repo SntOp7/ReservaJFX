@@ -26,6 +26,14 @@ public interface IComercial {
 
     void eliminarOferta(String id) throws Exception;
 
+    ArrayList<Oferta> obtenerOfertasAlojamiento(String idAlojamiento) throws Exception;
+
+    ArrayList<Oferta> obtenerOfertasActivasAlojamiento(String idAlojamiento) throws Exception;
+
+    void actualizarEstadoReservas() throws Exception;
+
+    void actualizarEstadoOfertas() throws Exception;
+
     EstadisticasAlojamiento obtenerEstadisticasAlojamiento(String idAlojamiento) throws Exception;
 
     EstadisticasTipoAlojamiento obtenerRentabilidadTipoAlojamiento(int mes) throws Exception;

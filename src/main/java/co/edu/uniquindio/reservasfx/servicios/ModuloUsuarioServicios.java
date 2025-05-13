@@ -59,7 +59,7 @@ public class ModuloUsuarioServicios implements IUsuario {
         Usuario usuario = usuarioServicios.buscarUsuarioPorEmail(email);
         String mensaje = Constantes.ENVIO_CODIGO(codigo, usuario.getNombre());
         if (cambioContrasenia) {
-            enviarNotificacion(usuario.getCedula(), "Código de Verificación", Constantes.CODIGO_VERIFICACION(codigo));
+            enviarNotificacion(usuario.getCedula(), "Código de Verificación", Constantes.CODIGO_VERIFICACION());
         }
         EnvioEmail.enviarNotificacion(email, "Código de verificación para solicitud en BookYourStay", mensaje);
         return codigo;

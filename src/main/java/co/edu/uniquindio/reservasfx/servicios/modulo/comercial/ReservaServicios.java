@@ -1,17 +1,22 @@
 package co.edu.uniquindio.reservasfx.servicios.modulo.comercial;
 
+import co.edu.uniquindio.reservasfx.config.Constantes;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
 import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Factura;
 import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
+import co.edu.uniquindio.reservasfx.modelo.enums.EstadoReserva;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.modelo.vo.EstadisticasAlojamiento;
 import co.edu.uniquindio.reservasfx.modelo.vo.EstadisticasTipoAlojamiento;
 import co.edu.uniquindio.reservasfx.repositorios.ReservaRepositorio;
 import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.AlojamientoServicios;
+import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.NotificacionServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.UsuarioServicios;
+import co.edu.uniquindio.reservasfx.utils.EnvioEmail;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -21,11 +26,14 @@ public class ReservaServicios {
     private final ReservaRepositorio reservaRepositorio;
     private final UsuarioServicios usuarioServicios;
     private final AlojamientoServicios alojamientoServicios;
+    private final NotificacionServicios notificacionServicios;
 
-    public ReservaServicios(UsuarioServicios usuarioServicios, AlojamientoServicios alojamientoServicios) {
+    public ReservaServicios(UsuarioServicios usuarioServicios, AlojamientoServicios alojamientoServicios,
+                            NotificacionServicios notificacionServicios) {
         reservaRepositorio = new ReservaRepositorio();
         this.usuarioServicios = usuarioServicios;
         this.alojamientoServicios = alojamientoServicios;
+        this.notificacionServicios = notificacionServicios;
     }
 
     public void realizarReserva(String cedulaCliente, String idAlojamiento, LocalDate fechaInicio, LocalDate fechaFin,
@@ -33,56 +41,85 @@ public class ReservaServicios {
 
         if (fechaInicio == null) throw new Exception("La fecha de inicio es obligatoria");
         if (fechaFin == null) throw new Exception("La fecha de fin es obligatoria");
+        if (fechaInicio.isBefore(LocalDate.now())) throw new Exception("La fecha de inicio no puede ser en el pasado");
         if (fechaFin.isBefore(fechaInicio)) throw new Exception("La fecha de fin no puede ser anterior a la fecha de inicio");
         if (numeroHuespedes <= 0) throw new Exception("El número de huéspedes debe ser mayor a cero");
 
-        Cliente cliente = usuarioServicios.buscarClientePorCedula(cedulaCliente);
         Alojamiento alojamiento = alojamientoServicios.buscarAlojamientoPorId(idAlojamiento);
 
-        if (!tieneSaldoSuficiente(cliente, alojamiento, fechaInicio, fechaFin, ofertasAlojamiento))
-            throw new Exception("El cliente no tiene saldo suficiente para realizar la reserva");
-        if (!alojamientoTieneCapacidad(alojamiento, numeroHuespedes))
-            throw new Exception("El alojamiento no tiene capacidad suficiente para el número de huéspedes");
-        if (!alojamientoDisponible(alojamiento, fechaInicio, fechaFin))
-            throw new Exception("El alojamiento no está disponible en las fechas seleccionadas");
-        if (!ofertaEsValida(ofertasAlojamiento, fechaInicio, fechaFin))
-            throw new Exception("La oferta no es válida para las fechas seleccionadas");
+        if (numeroHuespedes > alojamiento.getCapacidadMaxima())
+            throw new Exception("El número de huéspedes excede la capacidad máxima del alojamiento");
+
+        Reserva reservaConflicto = obtenerReservaConflicto(alojamiento.getId(), fechaInicio, fechaFin);
+        if (reservaConflicto != null) {
+            LocalDate fechaDisponible = reservaConflicto.getFechaFin().plusDays(1);
+            throw new Exception("El alojamiento ya está reservado en las fechas seleccionadas. Estará disponible a partir del " + fechaDisponible);
+        }
+
+        Cliente cliente = usuarioServicios.buscarClientePorCedula(cedulaCliente);
+
+        double subtotal = calcularSubtotal(alojamiento.getPrecioPorNoche(), fechaInicio, fechaFin);
+        double total = calcularTotalConOfertas(subtotal, ofertasAlojamiento);
+
+        if (cliente.getBilletera().getSaldo() < total) {
+            throw new Exception("El cliente no tiene saldo suficiente en su billetera para realizar la reserva");
+        }
+
+        String idFactura = UUID.randomUUID().toString();
+
+        Factura factura = Factura.builder()
+                .id(idFactura)
+                .subtotal(subtotal)
+                .total(total)
+                .fecha(LocalDateTime.now())
+                .codigoQR(idFactura)
+                .build();
+
+        Reserva reserva = Reserva.builder()
+                .id(UUID.randomUUID().toString())
+                .cedulaCliente(cedulaCliente)
+                .idAlojamiento(idAlojamiento)
+                .fechaInicio(fechaInicio)
+                .fechaFin(fechaFin)
+                .numeroHuespedes(numeroHuespedes)
+                .factura(factura)
+                .estado(EstadoReserva.ACTIVA)
+                .build();
+
+        reservaRepositorio.agregar(reserva);
+
+        String asunto = "Confirmación de Reserva - BookYourStay";
+        String mensaje = Constantes.ENVIO_DETALLES_RESERVA(cliente, factura, alojamiento, fechaInicio, fechaFin);
+        EnvioEmail.enviarNotificacionConQR(cliente.getEmail(), asunto, mensaje, idFactura);
+        notificacionServicios.enviarNotificacion(cedulaCliente, "Reserva Realizada",
+                Constantes.RESERVA_EXITOSA(alojamiento.getNombre()));
     }
 
-    private boolean tieneSaldoSuficiente(Cliente cliente, Alojamiento alojamiento, LocalDate inicio, LocalDate fin,
-                                          ArrayList<Oferta> ofertas) {
-        double precioBase = alojamiento.getPrecioPorNoche() * ChronoUnit.DAYS.between(inicio, fin);
-        double descuento = calcularDescuento(ofertas, inicio, fin);
-        double total = precioBase - (precioBase * descuento);
-        return cliente.getBilletera().getSaldo() >= total;
+    private double calcularSubtotal(double precioPorNoche, LocalDate inicio, LocalDate fin) {
+        long dias = ChronoUnit.DAYS.between(inicio, fin);
+        return dias * precioPorNoche;
     }
 
-    private double calcularDescuento(ArrayList<Oferta> ofertas, LocalDate inicio, LocalDate fin) {
+    private double calcularTotalConOfertas(double subtotal, ArrayList<Oferta> ofertas) {
+        double totalDescuento = 0;
         for (Oferta oferta : ofertas) {
-            if ((oferta.getFechaInicio().isEqual(inicio) || oferta.getFechaInicio().isBefore(inicio)) &&
-                    (oferta.getFechaFin().isEqual(fin) || oferta.getFechaFin().isAfter(fin))) {
-                return oferta.getPorcentajeDescuento();
+            totalDescuento += subtotal * (oferta.getPorcentajeDescuento() / 100.0);
+        }
+        return subtotal - totalDescuento;
+    }
+
+    private Reserva obtenerReservaConflicto(String idAlojamiento, LocalDate inicio, LocalDate fin) {
+        ArrayList<Reserva> reservas = reservaRepositorio.obtenerReservasPorAlojamiento(idAlojamiento);
+        for (Reserva r : reservas) {
+            if (r.getEstado() != EstadoReserva.CANCELADA && fechasSeTraslapan(r.getFechaInicio(), r.getFechaFin(), inicio, fin)) {
+                return r;
             }
         }
-        return 0;
+        return null;
     }
 
-    private boolean alojamientoTieneCapacidad(Alojamiento alojamiento, int huespedes) {
-        return alojamiento.getCapacidadMaxima() >= huespedes;
-    }
-
-    private boolean alojamientoDisponible(Alojamiento alojamiento, LocalDate inicio, LocalDate fin) {
-        return true;
-    }
-
-    private boolean ofertaEsValida(ArrayList<Oferta> ofertas, LocalDate inicio, LocalDate fin) {
-        for (Oferta oferta : ofertas) {
-            if ((oferta.getFechaInicio().isEqual(inicio) || oferta.getFechaInicio().isBefore(inicio)) &&
-                    (oferta.getFechaFin().isEqual(fin) || oferta.getFechaFin().isAfter(fin))) {
-                return true;
-            }
-        }
-        return false;
+    private boolean fechasSeTraslapan(LocalDate inicioExistente, LocalDate finExistente, LocalDate nuevoInicio, LocalDate nuevoFin) {
+        return !(nuevoFin.isBefore(inicioExistente) || nuevoInicio.isAfter(finExistente));
     }
 
     public void cancelarReserva(String id) throws Exception {
@@ -99,5 +136,8 @@ public class ReservaServicios {
     }
 
     public EstadisticasTipoAlojamiento obtenerRentabilidadTipoAlojamiento(int mes) {
+    }
+
+    public void actualizarEstadoReservas() {
     }
 }
