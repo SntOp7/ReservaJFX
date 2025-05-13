@@ -3,14 +3,17 @@ package co.edu.uniquindio.reservasfx.servicios;
 import co.edu.uniquindio.reservasfx.config.Constantes;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Calificacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Notificacion;
+import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Usuario;
 import co.edu.uniquindio.reservasfx.servicios.interfaces.IUsuario;
+import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.AlojamientoServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.CalificacionServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.NotificacionServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.UsuarioServicios;
 import co.edu.uniquindio.reservasfx.utils.EnvioEmail;
+import com.google.zxing.common.reedsolomon.ReedSolomonDecoder;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -74,13 +77,14 @@ public class ModuloUsuarioServicios implements IUsuario {
     }
 
     @Override
-    public void enviarCalificacion(String nombreCliente, String nombreAlojamiento, String comentario, int valoracion) throws Exception {
-        calificacionServicios.enviarCalificacion(nombreCliente, nombreAlojamiento, comentario, valoracion);
+    public void enviarCalificacion(String cedulaCliente, String idAlojamiento, String comentario, int valoracion,
+                                   ArrayList<Reserva> reservasCliente) throws Exception {
+        calificacionServicios.enviarCalificacion(cedulaCliente, idAlojamiento, comentario, valoracion, reservasCliente);
     }
 
     @Override
-    public ArrayList<Calificacion> obtenerCalificacionesAlojamiento(String nombreAlojamiento) throws Exception {
-        return calificacionServicios.obtenerCalificacionesAlojamiento(nombreAlojamiento);
+    public ArrayList<Calificacion> obtenerCalificacionesAlojamiento(String idAlojamiento) throws Exception {
+        return calificacionServicios.obtenerCalificacionesAlojamiento(idAlojamiento);
     }
 
     @Override
