@@ -72,7 +72,7 @@ public class ReservaServicios {
     }
 
     private boolean alojamientoDisponible(Alojamiento alojamiento, LocalDate inicio, LocalDate fin) {
-        return alojamientoServicios.estaDisponible(alojamiento.getId(), inicio, fin);
+        return true;
     }
 
     private boolean ofertaEsValida(ArrayList<Oferta> ofertas, LocalDate inicio, LocalDate fin) {

@@ -55,4 +55,8 @@ public class ReservaRepositorio {
         }
         return new ArrayList<>();
     }
+
+    public ArrayList<Reserva> obtenerReservasCliente(String cedulaCliente) {
+        return null;
+    }
 }
