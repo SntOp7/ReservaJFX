@@ -1,18 +1,23 @@
 package co.edu.uniquindio.reservasfx.repositorios;
 
+import co.edu.uniquindio.reservasfx.config.Constantes;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Notificacion;
+import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
+import co.edu.uniquindio.reservasfx.utils.Persistencia;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class NotificacionRepositorio {
     private ArrayList<Notificacion> notificaciones;
 
     public NotificacionRepositorio() {
-        notificaciones = new ArrayList<>();
+        this.notificaciones = leerDatos();
     }
 
     public void agregar(Notificacion notificacion) {
         notificaciones.add(notificacion);
+        guardarDatos(notificaciones);
     }
 
     public ArrayList<Notificacion> obtenerNotificacionesPorCedula(String cedulaCliente) {
@@ -23,5 +28,26 @@ public class NotificacionRepositorio {
             }
         }
         return notificacionesPorCedula;
+    }
+
+    public void guardarDatos(ArrayList<Notificacion> notificaciones) {
+        try {
+            Persistencia.serializarObjeto(Constantes.RUTA_NOTIFICACIONES, notificaciones);
+        } catch (IOException e) {
+            System.err.println("Error guardando notificaciones: " + e.getMessage());
+        }
+    }
+
+
+    public ArrayList<Notificacion> leerDatos() {
+        try {
+            Object datos = Persistencia.deserializarObjeto(Constantes.RUTA_NOTIFICACIONES);
+            if (datos != null) {
+                return (ArrayList<Notificacion>) datos;
+            }
+        } catch (Exception e) {
+            System.err.println("Error cargando notificaciones: " + e.getMessage());
+        }
+        return new ArrayList<>();
     }
 }

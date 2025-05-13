@@ -64,4 +64,27 @@ public class Constantes {
                 "Gracias por confiar en nosotros,\n" +
                 "El equipo de BookYourStay";
     }
+
+    public static final String RUTA_ALOJAMIENTOS = "data/alojamientos.data";
+
+    public static final String RUTA_CALIFICACIONES = "data/calificaciones.data";
+
+    public static final String RUTA_DESEOS = "data/deseos.data";
+
+    public static final String RUTA_HABITACIONES = "data/habitaciones.data";
+
+    public static final String RUTA_IMAGENES = "data/imagenes.data";
+
+    public static final String RUTA_NOTIFICACIONES = "data/notificaciones.data";
+
+    public static final String RUTA_OFERTAS = "data/ofertas.data";
+
+    public static final String RUTA_RESERVAS = "data/reservas.data";
+
+    public static final String RUTA_SERVICIOS = "data/servicios.data";
+
+    public static final String RUTA_CLIENTES = "data/clientes.data";
+
+    public static final String RUTA_ADMINISTRADORES = "data/administradores.data";
+
 }

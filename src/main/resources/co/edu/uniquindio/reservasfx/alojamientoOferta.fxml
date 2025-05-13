@@ -12,7 +12,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
 
-<StackPane prefHeight="685.0" prefWidth="960.0" style="-fx-background-color: linear-gradient(to bottom right, #f5f7fa, #e8ecf1);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.AlojamientoOfertaControlador">
+<StackPane prefHeight="685.0" prefWidth="960.0" style="-fx-background-color: linear-gradient(to bottom right, #f5f7fa, #e8ecf1);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.OfertaAlojamientoControlador">
     <children>
 
         <Circle fill="#5f5fa810" radius="200" translateX="-350" translateY="-250" />

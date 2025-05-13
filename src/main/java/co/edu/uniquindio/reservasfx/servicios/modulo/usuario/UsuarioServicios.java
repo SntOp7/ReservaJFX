@@ -128,4 +128,11 @@ public class UsuarioServicios {
     public ArrayList<Deseo> obtenerDeseosCliente(String cedulaCliente) {
         return deseoRepositorio.obtenerDeseosPorCedula(cedulaCliente);
     }
+
+    public void recargarBilleteraCliente(String cedulaCliente, double monto) throws Exception {
+        Cliente cliente = usuarioRepositorio.buscarCliente(cedulaCliente);
+        if (cliente == null) throw new Exception("El cliente no existe");
+        cliente.getBilletera().setSaldo(cliente.getBilletera().getSaldo() + monto);
+        usuarioRepositorio.editar(cliente);
+    }
 }

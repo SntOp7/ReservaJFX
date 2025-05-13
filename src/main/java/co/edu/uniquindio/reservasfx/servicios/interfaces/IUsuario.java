@@ -42,4 +42,6 @@ public interface IUsuario {
     void eliminarDeseo(String cedulaCliente, String idAlojamiento) throws Exception;
 
     ArrayList<Deseo> obtenerDeseosCliente(String cedulaCliente) throws Exception;
+
+    void recargarBilleteraCliente(String cedulaCliente, double monto) throws Exception;
 }
