@@ -34,7 +34,7 @@ public class UsuarioServicios {
         if (contrasenia == null || contrasenia.isEmpty()) throw new Exception("La contraseña es obligatoria");
         if (usuarioRepositorio.buscarCliente(cedula) != null) throw new Exception("Ya existe un usuario con dicha cedula");
 
-        Cliente cliente = new Cliente(cedula, nombre, telefono, email, contrasenia, activacion);
+        Cliente cliente = new Cliente(cedula, nombre, telefono, direccion, email, contrasenia, activacion);
         BilleteraVirtual billeteraVirtual = new BilleteraVirtual(UUID.randomUUID().toString(), 0);
         cliente.setBilletera(billeteraVirtual);
         usuarioRepositorio.agregar(cliente);
