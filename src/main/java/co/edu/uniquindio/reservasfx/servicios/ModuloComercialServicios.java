@@ -22,12 +22,12 @@ public class ModuloComercialServicios implements IComercial {
     private final ReservaServicios reservaServicios;
     private final OfertaServicios ofertaServicios;
 
-    public ModuloComercialServicios() {
-        UsuarioServicios usuarioServicio = EmpresaServicio.getInstancia().getModuloUsuarioServicios().getUsuarioServicios();
-        AlojamientoServicios alojamientoServicios = EmpresaServicio.getInstancia().getModuloAlojamientoServicios().getAlojamientoServicios();
-        NotificacionServicios notificacionServicios = EmpresaServicio.getInstancia().getModuloUsuarioServicios().getNotificacionServicios();
+    public ModuloComercialServicios(EmpresaServicio empresaServicio) {
+        UsuarioServicios usuarioServicio = empresaServicio.getModuloUsuarioServicios().getUsuarioServicios();
+        AlojamientoServicios alojamientoServicios = empresaServicio.getModuloAlojamientoServicios().getAlojamientoServicios();
+        NotificacionServicios notificacionServicios = empresaServicio.getModuloUsuarioServicios().getNotificacionServicios();
         reservaServicios = new ReservaServicios(usuarioServicio, alojamientoServicios, notificacionServicios);
-        ofertaServicios = new OfertaServicios();
+        ofertaServicios = new OfertaServicios(usuarioServicio, notificacionServicios);
     }
 
     @Override

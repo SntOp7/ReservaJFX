@@ -1,12 +1,10 @@
 package co.edu.uniquindio.reservasfx.servicios.modulo.usuario;
 
+import co.edu.uniquindio.reservasfx.config.Constantes;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Calificacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
-import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
-import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Usuario;
 import co.edu.uniquindio.reservasfx.modelo.enums.EstadoReserva;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
-import co.edu.uniquindio.reservasfx.repositorios.AlojamientoRepositorio;
 import co.edu.uniquindio.reservasfx.repositorios.CalificacionRepositorio;
 import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.AlojamientoServicios;
 
@@ -15,14 +13,19 @@ import java.util.ArrayList;
 public class CalificacionServicios {
 
     private final CalificacionRepositorio calificacionRepositorio;
+    private final NotificacionServicios notificacionServicios;
+    private final AlojamientoServicios alojamientoServicios;
 
-    public CalificacionServicios() {
+    public CalificacionServicios(NotificacionServicios notificacionServicios, AlojamientoServicios alojamientoServicios) {
         calificacionRepositorio = new CalificacionRepositorio();
+        this.notificacionServicios = notificacionServicios;
+        this.alojamientoServicios = alojamientoServicios;
     }
 
     public void enviarCalificacion(String cedulaCliente, String idAlojamiento, String comentario, int valoracion,
                                    ArrayList<Reserva> reservasCliente) throws Exception {
 
+        Alojamiento alojamiento = alojamientoServicios.buscarAlojamientoPorId(idAlojamiento);
         if (comentario == null || comentario.trim().isEmpty()) throw new Exception("El comentario es obligatorio");
         if (valoracion < 0 || valoracion > 5) throw new Exception("La valoración debe estar entre 0 y 5");
 
@@ -32,6 +35,8 @@ public class CalificacionServicios {
 
         Calificacion calificacion = new Calificacion(cedulaCliente, idAlojamiento, comentario, valoracion);
         calificacionRepositorio.agregar(calificacion);
+        notificacionServicios.enviarNotificacion(cedulaCliente, "Reseña Publicada",
+                Constantes.CALIFICACION_PUBLICADA(alojamiento.getNombre()));
     }
 
     private boolean clienteTuvoReservaCompletadaEnAlojamiento(ArrayList<Reserva> reservasCliente, String idAlojamiento) {

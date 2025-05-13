@@ -25,10 +25,11 @@ public class ModuloUsuarioServicios implements IUsuario {
     private final CalificacionServicios calificacionServicios;
     private final NotificacionServicios notificacionServicios;
 
-    public ModuloUsuarioServicios() {
-        usuarioServicios = new UsuarioServicios();
-        calificacionServicios = new CalificacionServicios();
+    public ModuloUsuarioServicios(EmpresaServicio empresaServicio) {
+        AlojamientoServicios alojamientoServicios = empresaServicio.getModuloAlojamientoServicios().getAlojamientoServicios();
         notificacionServicios = new NotificacionServicios();
+        usuarioServicios = new UsuarioServicios(notificacionServicios, alojamientoServicios);
+        calificacionServicios = new CalificacionServicios(notificacionServicios, alojamientoServicios);
     }
 
     @Override

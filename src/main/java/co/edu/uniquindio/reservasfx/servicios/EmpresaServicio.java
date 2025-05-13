@@ -16,23 +16,14 @@ import java.util.ArrayList;
 
 public class EmpresaServicio implements IEmpresa {
 
-    public static EmpresaServicio INSTANCIA;
-
     private final ModuloUsuarioServicios moduloUsuarioServicios;
     private final ModuloComercialServicios moduloComercialServicios;
     private final ModuloAlojamientoServicios moduloAlojamientoServicios;
 
-    private EmpresaServicio() {
-        moduloUsuarioServicios = new ModuloUsuarioServicios();
-        moduloComercialServicios = new ModuloComercialServicios();
+    public EmpresaServicio() {
         moduloAlojamientoServicios = new ModuloAlojamientoServicios();
-    }
-
-    public static EmpresaServicio getInstancia() {
-        if (INSTANCIA == null) {
-            INSTANCIA = new EmpresaServicio();
-        }
-        return INSTANCIA;
+        moduloUsuarioServicios = new ModuloUsuarioServicios(this);
+        moduloComercialServicios = new ModuloComercialServicios(this);
     }
 
     @Override

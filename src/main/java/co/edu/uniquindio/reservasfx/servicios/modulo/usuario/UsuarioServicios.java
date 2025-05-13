@@ -1,12 +1,17 @@
 package co.edu.uniquindio.reservasfx.servicios.modulo.usuario;
 
+import co.edu.uniquindio.reservasfx.config.Constantes;
 import co.edu.uniquindio.reservasfx.modelo.entidades.BilleteraVirtual;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Usuario;
+import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.repositorios.DeseoRepositorio;
 import co.edu.uniquindio.reservasfx.repositorios.UsuarioRepositorio;
+import co.edu.uniquindio.reservasfx.servicios.EmpresaServicio;
+import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.AlojamientoServicios;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -14,10 +19,14 @@ public class UsuarioServicios {
 
     private final UsuarioRepositorio usuarioRepositorio;
     private final DeseoRepositorio deseoRepositorio;
+    private final NotificacionServicios notificacionServicios;
+    private final AlojamientoServicios alojamientoServicios;
 
-    public UsuarioServicios() {
+    public UsuarioServicios(NotificacionServicios notificacionServicios, AlojamientoServicios alojamientoServicios) {
         usuarioRepositorio = new UsuarioRepositorio();
         deseoRepositorio = new DeseoRepositorio();
+        this.notificacionServicios = notificacionServicios;
+        this.alojamientoServicios = alojamientoServicios;
     }
 
     public void registrarCliente(String cedula, String nombre, String telefono, String direccion, String email, String contrasenia, boolean activacion) throws Exception {
@@ -25,7 +34,7 @@ public class UsuarioServicios {
         if (contrasenia == null || contrasenia.isEmpty()) throw new Exception("La contraseña es obligatoria");
         if (usuarioRepositorio.buscarCliente(cedula) != null) throw new Exception("Ya existe un usuario con dicha cedula");
 
-        Cliente cliente = new Cliente(cedula, nombre, telefono, email, contrasenia, activacion);
+        Cliente cliente = new Cliente(cedula, nombre, telefono, direccion, email, contrasenia, activacion);
         BilleteraVirtual billeteraVirtual = new BilleteraVirtual(UUID.randomUUID().toString(), 0);
         cliente.setBilletera(billeteraVirtual);
         usuarioRepositorio.agregar(cliente);
@@ -51,6 +60,8 @@ public class UsuarioServicios {
             clienteAntiguo.setEmail(email);
             usuarioRepositorio.editar(clienteAntiguo);
         }
+        notificacionServicios.enviarNotificacion(cedula, "Actualización de Datos",
+                Constantes.ACTUALIZACION_DATOS_CLIENTE());
     }
 
     private void verificarCampos(String cedula, String nombre, String telefono, String direcccion, String email) throws Exception {
@@ -105,6 +116,8 @@ public class UsuarioServicios {
         if (!codigoCorrecto.equals(codigoIngresado)) throw new Exception("El código de verificación es incorrecto");
 
         usuario.setContrasenia(contraseniaNueva);
+        notificacionServicios.enviarNotificacion(usuario.getContrasenia(), "Cambio Contraseña",
+                Constantes.CAMBIO_CONTRASENA());
     }
 
     public void activarCuentaCliente(String cedula, String codigoCorrecto, String codigoIngresado) throws Exception {
@@ -118,15 +131,21 @@ public class UsuarioServicios {
         cliente.setActivo(true);
     }
 
-    public void guardarDeseo(String cedulaCliente, String idAlojamiento) {
+    public void guardarDeseo(String cedulaCliente, String idAlojamiento) throws Exception {
         Deseo deseo = new Deseo(cedulaCliente, idAlojamiento);
         deseoRepositorio.agregar(deseo);
+        Alojamiento alojamiento = alojamientoServicios.buscarAlojamientoPorId(idAlojamiento);
+        notificacionServicios.enviarNotificacion(cedulaCliente, "Deseo Agregado",
+                Constantes.DESEO_AGREGADO(alojamiento.getNombre()));
     }
 
     public void eliminarDeseo(String cedulaCliente, String idAlojamiento) throws Exception {
         Deseo deseo = deseoRepositorio.buscarDeseo(cedulaCliente, idAlojamiento);
         if (deseo == null) throw new Exception("El deseo no existe");
         deseoRepositorio.eliminar(deseo);
+        Alojamiento alojamiento = alojamientoServicios.buscarAlojamientoPorId(idAlojamiento);
+        notificacionServicios.enviarNotificacion(cedulaCliente, "Deseo Removido",
+                Constantes.DESEO_REMOVIDO(alojamiento.getNombre()));
     }
 
     public ArrayList<Deseo> obtenerDeseosCliente(String cedulaCliente) {
@@ -138,5 +157,9 @@ public class UsuarioServicios {
         if (cliente == null) throw new Exception("El cliente no existe");
         cliente.getBilletera().setSaldo(cliente.getBilletera().getSaldo() + monto);
         usuarioRepositorio.editar(cliente);
+    }
+
+    public ArrayList<Cliente> obtenerClientes() {
+        return usuarioRepositorio.getClientes();
     }
 }

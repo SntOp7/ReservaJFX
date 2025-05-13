@@ -7,10 +7,13 @@ import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.enums.EstadoReserva;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.utils.Persistencia;
+import lombok.Getter;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
+@Getter
 public class ReservaRepositorio {
     private ArrayList<Reserva> reservas;
 
@@ -53,6 +56,15 @@ public class ReservaRepositorio {
             }
         }
         return reservasPorAlojamiento;
+    }
+
+    public void actualizarEstadoReservas() {
+        for (Reserva reserva : reservas) {
+            if (LocalDate.now().isAfter(reserva.getFechaFin())) {
+                reserva.setEstado(EstadoReserva.FINALIZADA);
+            }
+        }
+        guardarDatos(reservas);
     }
 
     public void guardarDatos(ArrayList<Reserva> reservas) {
