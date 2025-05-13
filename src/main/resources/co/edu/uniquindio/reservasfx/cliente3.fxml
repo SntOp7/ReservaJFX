@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="550.0" prefWidth="898.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.Cliente3">
+    <children>
+        <Pane prefHeight="530.0" prefWidth="898.0">
+            <children>
+            <Ellipse layoutX="212.0" layoutY="150.0" radiusX="198.0" radiusY="129.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#1f93fffb" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Ellipse>
+            <Circle layoutX="171.0" layoutY="484.0" radius="93.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <fill>
+                  <RadialGradient centerX="0.48863636363636365" centerY="0.47572815533980584" radius="0.5">
+                     <stops>
+                        <Stop color="#1f93ff" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Circle>
+            <Circle layoutX="735.0" layoutY="332.0" radius="93.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <fill>
+                  <RadialGradient centerX="0.48863636363636365" centerY="0.47572815533980584" radius="0.5">
+                     <stops>
+                        <Stop color="#1f93ff" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Circle>
+            <Ellipse layoutX="635.0" layoutY="139.0" radiusX="100.0" radiusY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#1f93fffb" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Ellipse>
+                <Label layoutX="397.0" layoutY="14.0" text="Reseñas">
+                    <font>
+                        <Font name="Berlin Sans FB" size="42.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="126.0" fitWidth="124.0" layoutX="40.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@img/usuario.png" />
+                    </image>
+                </ImageView>
+                <TextField fx:id="valoracionTxt" layoutX="180.0" layoutY="98.0" promptText="Agrega una valoración " style="-fx-background-radius: 50px;" />
+                <TextField fx:id="comentarioTxt" layoutX="180.0" layoutY="139.0" promptText="Agrega un comentario" style="-fx-background-radius: 50px;" />
+                <Button fx:id="enviarReseniaBtn" layoutX="218.0" layoutY="186.0" mnemonicParsing="false" onAction="#enviarReseniaBtnAction" style="-fx-background-color: #00913F; -fx-background-radius: 50PX;" text="Enviar Reseña" />
+                <Label layoutX="397.0" layoutY="256.0" text="Otras Reseñas">
+                    <font>
+                        <Font name="Berlin Sans FB" size="18.0" />
+                    </font>
+                </Label>
+                <VBox layoutX="153.0" layoutY="298.0" prefHeight="200.0" prefWidth="592.0">
+                    <children>
+                        <ScrollPane prefHeight="240.0" prefWidth="592.0">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="590.0">
+                                    <children>
+                                        <GridPane prefHeight="500.0" prefWidth="570.0" vgap="10.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="90.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="90.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="90.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="90.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="90.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                               
+                                                <Pane prefHeight="100.0" prefWidth="570.0" style="-fx-background-color: #f0f0f0; -fx-background-radius: 10px;">
+                                                    <children>
+                                                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@img/usuario.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <Label layoutX="90.0" layoutY="15.0" text="Usuario 1">
+                                                            <font>
+                                                                <Font name="System Bold" size="14.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label layoutX="90.0" layoutY="40.0" text="⭐⭐⭐⭐" />
+                                                        <Label layoutX="90.0" layoutY="65.0" text="¡Excelente servicio! Lo recomiendo totalmente." wrapText="true" />
+                                                    </children>
+                                                </Pane>
+
+
+                                                <Pane prefHeight="100.0" prefWidth="570.0" style="-fx-background-color: #f0f0f0; -fx-background-radius: 10px;" GridPane.rowIndex="1">
+                                                    <children>
+                                                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@img/usuario.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <Label layoutX="90.0" layoutY="15.0" text="Usuario 2">
+                                                            <font>
+                                                                <Font name="System Bold" size="14.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label layoutX="90.0" layoutY="40.0" text="⭐⭐⭐" />
+                                                        <Label layoutX="90.0" layoutY="65.0" text="Buena experiencia en general, pero podría mejorar." wrapText="true" />
+                                                    </children>
+                                                </Pane>
+
+
+                                                <Pane prefHeight="100.0" prefWidth="570.0" style="-fx-background-color: #f0f0f0; -fx-background-radius: 10px;" GridPane.rowIndex="2">
+                                                    <children>
+                                                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@img/usuario.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <Label layoutX="90.0" layoutY="15.0" text="Usuario 3">
+                                                            <font>
+                                                                <Font name="System Bold" size="14.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label layoutX="90.0" layoutY="40.0" text="⭐⭐⭐⭐⭐" />
+                                                        <Label layoutX="90.0" layoutY="65.0" text="Todo perfecto desde la reserva hasta la atención." wrapText="true" />
+                                                    </children>
+                                                </Pane>
+
+
+                                                <Pane prefHeight="100.0" prefWidth="570.0" style="-fx-background-color: #f0f0f0; -fx-background-radius: 10px;" GridPane.rowIndex="3">
+                                                    <children>
+                                                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@img/usuario.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <Label layoutX="90.0" layoutY="15.0" text="Usuario 4">
+                                                            <font>
+                                                                <Font name="System Bold" size="14.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label layoutX="90.0" layoutY="40.0" text="⭐⭐" />
+                                                        <Label layoutX="90.0" layoutY="65.0" text="Hubo algunos problemas con mi reserva." wrapText="true" />
+                                                    </children>
+                                                </Pane>
+
+
+                                                <Pane prefHeight="100.0" prefWidth="570.0" style="-fx-background-color: #f0f0f0; -fx-background-radius: 10px;" GridPane.rowIndex="4">
+                                                    <children>
+                                                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@img/usuario.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <Label layoutX="90.0" layoutY="15.0" text="Usuario 5">
+                                                            <font>
+                                                                <Font name="System Bold" size="14.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label layoutX="90.0" layoutY="40.0" text="⭐⭐⭐⭐" />
+                                                        <Label layoutX="90.0" layoutY="65.0" text="Muy buen servicio, repetiré sin duda." wrapText="true" />
+                                                    </children>
+                                                </Pane>
+                                            </children>
+                                        </GridPane>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </VBox>
+            <ImageView fitHeight="220.0" fitWidth="232.0" layoutX="525.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/bookYourStay.png" />
+               </image>
+            </ImageView>
+            <Arc layoutX="821.0" layoutY="114.0" length="270.0" radiusX="100.0" radiusY="100.0" startAngle="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" type="ROUND">
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#1f93fffb" />
+                        <Stop color="#1f93ff00" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Arc>
+            <Circle layoutX="789.0" layoutY="438.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#1f93fffb" />
+                        <Stop color="#2197ff00" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Circle>
+            <Circle layoutX="837.0" layoutY="398.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#1f93fffb" />
+                        <Stop color="#2197ff00" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Circle>
+            <Circle layoutX="859.0" layoutY="336.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#1f93fffb" />
+                        <Stop color="#2197ff00" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Circle>
+            <Polygon layoutX="868.0" layoutY="124.0" rotate="270.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+              <points>
+                <Double fx:value="-50.0" />
+                <Double fx:value="40.0" />
+                <Double fx:value="50.0" />
+                <Double fx:value="40.0" />
+                <Double fx:value="0.0" />
+                <Double fx:value="-60.0" />
+              </points>
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#1f93fffb" />
+                        <Stop color="#1f93ff00" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Polygon>
+            <Circle layoutX="465.0" layoutY="139.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#1f93fffb" />
+                        <Stop color="#2197ff00" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Circle>
+            <QuadCurve controlX="-50.0" controlY="-100.0" endX="50.0" layoutX="50.0" layoutY="548.0" startX="-50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#1f93fffb" />
+                        <Stop color="#2197ff00" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </QuadCurve>
+            <CubicCurve controlX1="-50.0" controlX2="50.0" controlY1="-100.0" controlY2="100.0" endX="150.0" layoutY="366.0" rotate="90.0" startX="-150.0" stroke="BLACK" strokeWidth="0.0">
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#1f93fffb" />
+                        <Stop color="#2197ff00" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </CubicCurve>
+            </children>
+        </Pane>
+    </children>
+</StackPane>

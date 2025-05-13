@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51ed1073-804c-4f43-b406-dbd702544cb9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../concesionario/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../concesionario/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../concesionario/src/main/java/co/edu/uniquindio/poo/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../concesionario/src/test/java/co/edu/uniquindio/poo/AppTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../concesionario/target/classes/co/edu/uniquindio/poo/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../concesionario/target/test-classes/co/edu/uniquindio/poo/AppTest.class" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/cliente1.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/cliente2.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/cliente3.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/cliente4.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/costoAdicional.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/img/costo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/img/habitacion.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/img/oferta1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/img/oferta2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/alojamientoCliente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/alojamientoCliente.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +28,7 @@
         <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -103,6 +109,7 @@
       <workItem from="1746547675722" duration="17639000" />
       <workItem from="1747015306311" duration="7899000" />
       <workItem from="1747080390583" duration="10496000" />
+      <workItem from="1747150060071" duration="14520000" />
     </task>
     <servers />
   </component>
