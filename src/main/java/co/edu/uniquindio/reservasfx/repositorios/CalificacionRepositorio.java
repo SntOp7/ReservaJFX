@@ -1,7 +1,10 @@
 package co.edu.uniquindio.reservasfx.repositorios;
 
+import co.edu.uniquindio.reservasfx.config.Constantes;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Calificacion;
+import co.edu.uniquindio.reservasfx.utils.Persistencia;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class CalificacionRepositorio {
@@ -9,11 +12,13 @@ public class CalificacionRepositorio {
     private ArrayList<Calificacion> calificaciones;
 
     public CalificacionRepositorio() {
-        calificaciones = new ArrayList<>();
+
+        this.calificaciones = leerDatos();
     }
 
     public void agregar(Calificacion calificacion) {
         calificaciones.add(calificacion);
+        guardarDatos(calificaciones);
     }
 
     public ArrayList<Calificacion> obtenerCalificacionesPorNombre(String nombreAlojamiento) {
@@ -25,4 +30,26 @@ public class CalificacionRepositorio {
         }
         return calificacionesPorNombre;
     }
+
+    public void guardarDatos(ArrayList<Calificacion> calificaciones) {
+        try {
+            Persistencia.serializarObjeto(Constantes.RUTA_CALIFICACIONES, calificaciones);
+        } catch (IOException e) {
+            System.err.println("Error guardando calificaciones: " + e.getMessage());
+        }
+    }
+
+
+    public ArrayList<Calificacion> leerDatos() {
+        try {
+            Object datos = Persistencia.deserializarObjeto(Constantes.RUTA_CALIFICACIONES);
+            if (datos != null) {
+                return (ArrayList<Calificacion>) datos;
+            }
+        } catch (Exception e) {
+            System.err.println("Error cargando calificaciones: " + e.getMessage());
+        }
+        return new ArrayList<>();
+    }
+
 }

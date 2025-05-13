@@ -10,8 +10,11 @@ import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.modelo.factory.Apartamento;
 import co.edu.uniquindio.reservasfx.modelo.factory.Casa;
 import co.edu.uniquindio.reservasfx.modelo.factory.Hotel;
+import co.edu.uniquindio.reservasfx.utils.Persistencia;
+import co.edu.uniquindio.reservasfx.config.Constantes;
 import lombok.Getter;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -20,19 +23,25 @@ public class AlojamientoRepositorio {
     public ArrayList<Alojamiento> alojamientos;
 
     public AlojamientoRepositorio() {
-        alojamientos = new ArrayList<>();
+        this.alojamientos = leerDatosAlojamiento();
     }
 
     public void agregar(Alojamiento alojamiento) {
         alojamientos.add(alojamiento);
+        guardarDatos(alojamientos);
+
     }
 
     public void editar(Alojamiento alojamiento) {
         alojamientos.set(alojamientos.indexOf(alojamiento), alojamiento);
+        guardarDatos(alojamientos);
+
     }
 
     public void eliminar(Alojamiento alojamiento) {
         alojamientos.remove(alojamiento);
+        guardarDatos(alojamientos);
+
     }
 
     public Alojamiento buscarAlojamientoPorNombre(String nombre) {
@@ -141,4 +150,26 @@ public class AlojamientoRepositorio {
         }
         return alojamientosDeseados;
     }
+
+    public void guardarDatos(ArrayList<Alojamiento> alojamientos) {
+        try {
+            Persistencia.serializarObjeto(Constantes.RUTA_ALOJAMIENTOS, alojamientos);
+        } catch (IOException e) {
+            System.err.println("Error guardando alojamientos: " + e.getMessage());
+        }
+    }
+
+
+    public ArrayList<Alojamiento> leerDatosAlojamiento() {
+        try {
+            Object datos = Persistencia.deserializarObjeto(Constantes.RUTA_ALOJAMIENTOS);
+            if (datos != null) {
+                return (ArrayList<Alojamiento>) datos;
+            }
+        } catch (Exception e) {
+            System.err.println("Error cargando alojamientos: " + e.getMessage());
+        }
+        return new ArrayList<>();
+    }
+
 }
