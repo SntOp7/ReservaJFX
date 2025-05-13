@@ -22,17 +22,10 @@ public class ReservaRepositorio {
         reservas.remove(reserva);
     }
 
-    public Reserva buscarReserva(String cedulaCliente) {
-        return reservas.stream().filter(e -> e.getCliente().getCedula().equals(cedulaCliente)).findFirst().orElse(null);
-    }
-
-    public ArrayList<Reserva> getReservas() {
-        ArrayList<Reserva> reservas = new ArrayList<>();
-        for(Reserva reserva : reservas) {
-            if (reserva.getEstado().equals(EstadoReserva.ACTIVA)) {
-                reservas.add(reserva);
-            }
-        }
-        return reservas;
+    public Reserva buscarReservaPorId(String id) {
+        return reservas.stream().
+                filter(r -> r.getId().equals(id)).
+                findFirst().
+                orElse(null);
     }
 }
