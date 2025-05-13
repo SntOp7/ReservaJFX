@@ -12,7 +12,7 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.paint.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.AlojamientoClienteControlador">
     <children>
         <!-- Fondo principal con degradado azul elegante -->
         <Rectangle arcHeight="0.0" arcWidth="0.0" height="700.0" stroke="BLACK" strokeType="INSIDE" width="900.0">
