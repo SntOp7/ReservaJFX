@@ -11,12 +11,13 @@ import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.CalificacionServici
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.NotificacionServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.UsuarioServicios;
 import co.edu.uniquindio.reservasfx.utils.EnvioEmail;
+import lombok.Getter;
 
 import java.util.ArrayList;
 
+@Getter
 public class ModuloUsuarioServicios implements IUsuario {
 
-    private EmpresaServicio empresaServicio = EmpresaServicio.getInstancia();
     private final UsuarioServicios usuarioServicios;
     private final CalificacionServicios calificacionServicios;
     private final NotificacionServicios notificacionServicios;

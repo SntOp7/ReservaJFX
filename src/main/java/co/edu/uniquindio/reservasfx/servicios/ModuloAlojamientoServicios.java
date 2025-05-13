@@ -16,15 +16,17 @@ import co.edu.uniquindio.reservasfx.servicios.interfaces.IAlojamiento;
 import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.AlojamientoServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.HabitacionServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.comercial.ReservaServicios;
+import lombok.Getter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+@Getter
 public class ModuloAlojamientoServicios implements IAlojamiento {
 
-    private final HabitacionServicios habitacionServicios;
     private final AlojamientoServicios alojamientoServicios;
+    private final HabitacionServicios habitacionServicios;
 
     public ModuloAlojamientoServicios() {
         habitacionServicios = new HabitacionServicios();

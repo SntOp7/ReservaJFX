@@ -71,6 +71,10 @@ public class UsuarioServicios {
         usuarioRepositorio.eliminar(cliente);
     }
 
+    public Cliente buscarClientePorCedula(String cedula) {
+        return usuarioRepositorio.buscarCliente(cedula);
+    }
+
     public Usuario iniciarSesion(String email, String contrasenia) throws Exception {
         if (email == null || email.isEmpty()) throw new Exception("El email es obligatorio");
         if (contrasenia == null || contrasenia.isEmpty()) throw new Exception("La contraseña es obligatoria");

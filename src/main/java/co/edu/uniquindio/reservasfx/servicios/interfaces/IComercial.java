@@ -1,9 +1,8 @@
 package co.edu.uniquindio.reservasfx.servicios.interfaces;
 
+import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
 import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
-import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.enums.OfertaEspecial;
-import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.modelo.vo.EstadisticasAlojamiento;
 import co.edu.uniquindio.reservasfx.modelo.vo.EstadisticasTipoAlojamiento;
 

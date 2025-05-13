@@ -30,8 +30,21 @@ public class OfertaRepositorio {
         guardarDatos(ofertas);
     }
 
-    public Oferta buscarOferta(String nombre){
-        return ofertas.stream().filter(e -> e.getNombre().equals(nombre)).findFirst().orElse(null);
+    public Oferta buscarOfertaPorId(String id){
+        return ofertas.stream().
+                filter(o -> o.getId().equals(id)).
+                findFirst().
+                orElse(null);
+    }
+
+    public ArrayList<Oferta> obtenerOfertasAlojamiento(String idAlojamiento) {
+        ArrayList<Oferta> ofertasPorAlojamiento = new ArrayList<>();
+        for (Oferta oferta : ofertas) {
+            if (oferta.getIdAlojamiento().equals(idAlojamiento)) {
+                ofertasPorAlojamiento.add(oferta);
+            }
+        }
+        return ofertasPorAlojamiento;
     }
 
     public void guardarDatos(ArrayList<Oferta> ofertas) {
