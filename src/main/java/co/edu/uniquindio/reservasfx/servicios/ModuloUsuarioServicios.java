@@ -111,4 +111,9 @@ public class ModuloUsuarioServicios implements IUsuario {
     public ArrayList<Deseo> obtenerDeseosCliente(String cedulaCliente) throws Exception {
         return usuarioServicios.obtenerDeseosCliente(cedulaCliente);
     }
+
+    @Override
+    public void recargarBilleteraCliente(String cedulaCliente, double monto) throws Exception {
+        usuarioServicios.recargarBilleteraCliente(cedulaCliente, monto);
+    }
 }
