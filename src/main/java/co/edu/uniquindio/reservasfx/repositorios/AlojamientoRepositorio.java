@@ -28,19 +28,19 @@ public class AlojamientoRepositorio {
 
     public void agregar(Alojamiento alojamiento) {
         alojamientos.add(alojamiento);
-        guardarDatos(alojamientos);
+        //guardarDatos(alojamientos);
 
     }
 
     public void editar(Alojamiento alojamiento) {
         alojamientos.set(alojamientos.indexOf(alojamiento), alojamiento);
-        guardarDatos(alojamientos);
+        //guardarDatos(alojamientos);
 
     }
 
     public void eliminar(Alojamiento alojamiento) {
         alojamientos.remove(alojamiento);
-        guardarDatos(alojamientos);
+        //guardarDatos(alojamientos);
 
     }
 

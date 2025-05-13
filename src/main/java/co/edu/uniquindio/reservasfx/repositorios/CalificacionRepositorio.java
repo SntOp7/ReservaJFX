@@ -18,7 +18,7 @@ public class CalificacionRepositorio {
 
     public void agregar(Calificacion calificacion) {
         calificaciones.add(calificacion);
-        guardarDatos(calificaciones);
+        //guardarDatos(calificaciones);
     }
 
     public ArrayList<Calificacion> obtenerCalificacionesPorId(String id) {

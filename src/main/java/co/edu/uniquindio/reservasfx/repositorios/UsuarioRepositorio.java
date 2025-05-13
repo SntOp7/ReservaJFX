@@ -25,23 +25,23 @@ public class UsuarioRepositorio {
 
     public void agregar(Cliente cliente) {
         clientes.add(cliente);
-        guardarDatosCl(clientes);
+        //guardarDatosCl(clientes);
     }
 
     public void editar(Cliente cliente) {
         clientes.set(clientes.indexOf(cliente), cliente);
-        guardarDatosCl(clientes);
+        //guardarDatosCl(clientes);
     }
 
     public void eliminar(Cliente cliente) {
         clientes.remove(cliente);
-        guardarDatosCl(clientes);
+        //guardarDatosCl(clientes);
     }
 
     public void listarAdministrador() {
         Administrador admin1 = new Administrador("123456789", "AdminApp", "987654321", "Calarca - Quindio","admin@gmail.com", "admin", true);
         administradores.add(admin1);
-        guardarDatosAd(administradores);
+        //guardarDatosAd(administradores);
     }
 
     public Cliente buscarCliente(String cedula) {

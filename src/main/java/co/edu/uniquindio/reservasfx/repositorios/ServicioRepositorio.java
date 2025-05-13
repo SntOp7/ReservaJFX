@@ -18,17 +18,17 @@ public class ServicioRepositorio {
 
     public void agregar(Servicio servicio) {
         servicios.add(servicio);
-        guardarDatos(servicios);
+        //guardarDatos(servicios);
     }
 
     public void editar(Servicio servicio) {
         servicios.set(servicios.indexOf(servicio), servicio);
-        guardarDatos(servicios);
+        //guardarDatos(servicios);
     }
 
     public void eliminar(Servicio servicio) {
         servicios.remove(servicio);
-        guardarDatos(servicios);
+        //guardarDatos(servicios);
     }
 
     public void eliminarServiciosAlojamiento(String idAlojamiento) {
@@ -37,7 +37,7 @@ public class ServicioRepositorio {
                 eliminar(servicio);
             }
         }
-        guardarDatos(servicios);
+        //guardarDatos(servicios);
     }
 
     public void guardarDatos(ArrayList<Servicio> servicios) {

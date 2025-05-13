@@ -23,12 +23,12 @@ public class ReservaRepositorio {
 
     public void agregar(Reserva reserva) {
         reservas.add(reserva);
-        guardarDatos(reservas);
+        //guardarDatos(reservas);
     }
 
     public void cancelar(Reserva reserva) {
         reserva.setEstado(EstadoReserva.CANCELADA);
-        guardarDatos(reservas);
+        //guardarDatos(reservas);
     }
 
     public Reserva buscarReservaPorId(String id) {
@@ -64,7 +64,7 @@ public class ReservaRepositorio {
                 reserva.setEstado(EstadoReserva.FINALIZADA);
             }
         }
-        guardarDatos(reservas);
+        //guardarDatos(reservas);
     }
 
     public void guardarDatos(ArrayList<Reserva> reservas) {

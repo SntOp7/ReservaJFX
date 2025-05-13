@@ -18,7 +18,7 @@ public class HabitacionRepositorio {
 
     public void agregar(Habitacion habitacion) {
         habitaciones.add(habitacion);
-        guardarDatos(habitaciones);
+        //guardarDatos(habitaciones);
     }
 
     public Habitacion buscarHabitacion(String idHotel, int numero) {
@@ -30,12 +30,12 @@ public class HabitacionRepositorio {
 
     public void editar(Habitacion habitacion) {
         habitaciones.set(habitaciones.indexOf(habitacion), habitacion);
-        guardarDatos(habitaciones);
+        //guardarDatos(habitaciones);
     }
 
     public void eliminar(Habitacion habitacion) {
         habitaciones.remove(habitacion);
-        guardarDatos(habitaciones);
+        //guardarDatos(habitaciones);
     }
 
     public void guardarDatos(ArrayList<Habitacion> habitaciones) {
