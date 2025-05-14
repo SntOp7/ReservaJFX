@@ -65,8 +65,9 @@ public class EmpresaServicio implements IEmpresa {
 
     @Override
     public void realizarReserva(String cedulaCliente, String idAlojamiento, LocalDate fechaInicio, LocalDate fechaFin,
-                                int numeroHuespedes) throws Exception {
-        moduloComercialServicios.realizarReserva(cedulaCliente, idAlojamiento, fechaInicio, fechaFin, numeroHuespedes);
+                                int numeroHuespedes, int numeroHabitacion) throws Exception {
+        moduloComercialServicios.realizarReserva(cedulaCliente, idAlojamiento, fechaInicio, fechaFin, numeroHuespedes,
+                numeroHabitacion);
     }
 
     @Override

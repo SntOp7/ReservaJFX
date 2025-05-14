@@ -9,6 +9,7 @@ import co.edu.uniquindio.reservasfx.modelo.vo.EstadisticasAlojamiento;
 import co.edu.uniquindio.reservasfx.modelo.vo.EstadisticasTipoAlojamiento;
 import co.edu.uniquindio.reservasfx.servicios.interfaces.IComercial;
 import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.AlojamientoServicios;
+import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.HabitacionServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.comercial.OfertaServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.comercial.ReservaServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.NotificacionServicios;
@@ -25,16 +26,17 @@ public class ModuloComercialServicios implements IComercial {
     public ModuloComercialServicios(EmpresaServicio empresaServicio) {
         UsuarioServicios usuarioServicio = empresaServicio.getModuloUsuarioServicios().getUsuarioServicios();
         AlojamientoServicios alojamientoServicios = empresaServicio.getModuloAlojamientoServicios().getAlojamientoServicios();
+        HabitacionServicios habitacionServicios = empresaServicio.getModuloAlojamientoServicios().getHabitacionServicios();
         NotificacionServicios notificacionServicios = empresaServicio.getModuloUsuarioServicios().getNotificacionServicios();
-        reservaServicios = new ReservaServicios(usuarioServicio, alojamientoServicios, notificacionServicios);
+        reservaServicios = new ReservaServicios(usuarioServicio, alojamientoServicios, habitacionServicios, notificacionServicios);
         ofertaServicios = new OfertaServicios(usuarioServicio, notificacionServicios);
     }
 
     @Override
     public void realizarReserva(String cedulaCliente, String idAlojamiento, LocalDate fechaInicio, LocalDate fechaFin,
-                                int numeroHuespedes) throws Exception {
+                                int numeroHuespedes, int numeroHabitacion) throws Exception {
         reservaServicios.realizarReserva(cedulaCliente, idAlojamiento, fechaInicio, fechaFin, numeroHuespedes,
-                obtenerOfertasAlojamiento(idAlojamiento));
+                obtenerOfertasAlojamiento(idAlojamiento), numeroHabitacion);
     }
 
     @Override

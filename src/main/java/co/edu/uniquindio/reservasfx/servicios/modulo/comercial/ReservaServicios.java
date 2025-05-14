@@ -2,6 +2,7 @@ package co.edu.uniquindio.reservasfx.servicios.modulo.comercial;
 
 import co.edu.uniquindio.reservasfx.config.Constantes;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
+import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Factura;
 import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
@@ -13,7 +14,9 @@ import co.edu.uniquindio.reservasfx.modelo.factory.Hotel;
 import co.edu.uniquindio.reservasfx.modelo.vo.EstadisticasAlojamiento;
 import co.edu.uniquindio.reservasfx.modelo.vo.EstadisticasTipoAlojamiento;
 import co.edu.uniquindio.reservasfx.repositorios.ReservaRepositorio;
+import co.edu.uniquindio.reservasfx.servicios.interfaces.IAlojamiento;
 import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.AlojamientoServicios;
+import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.HabitacionServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.NotificacionServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.UsuarioServicios;
 import co.edu.uniquindio.reservasfx.utils.EnvioEmail;
@@ -29,18 +32,20 @@ public class ReservaServicios {
     private final ReservaRepositorio reservaRepositorio;
     private final UsuarioServicios usuarioServicios;
     private final AlojamientoServicios alojamientoServicios;
+    private final HabitacionServicios habitacionServicios;
     private final NotificacionServicios notificacionServicios;
 
     public ReservaServicios(UsuarioServicios usuarioServicios, AlojamientoServicios alojamientoServicios,
-                            NotificacionServicios notificacionServicios) {
+                            HabitacionServicios habitacionServicios, NotificacionServicios notificacionServicios) {
         reservaRepositorio = new ReservaRepositorio();
         this.usuarioServicios = usuarioServicios;
         this.alojamientoServicios = alojamientoServicios;
+        this.habitacionServicios = habitacionServicios;
         this.notificacionServicios = notificacionServicios;
     }
 
     public void realizarReserva(String cedulaCliente, String idAlojamiento, LocalDate fechaInicio, LocalDate fechaFin,
-                                int numeroHuespedes, ArrayList<Oferta> ofertasAlojamiento) throws Exception {
+                                int numeroHuespedes, ArrayList<Oferta> ofertasAlojamiento, int numeroHabitacion) throws Exception {
 
         if (fechaInicio == null) throw new Exception("La fecha de inicio es obligatoria");
         if (fechaFin == null) throw new Exception("La fecha de fin es obligatoria");
@@ -49,10 +54,11 @@ public class ReservaServicios {
         if (numeroHuespedes <= 0) throw new Exception("El número de huéspedes debe ser mayor a cero");
 
         Alojamiento alojamiento = alojamientoServicios.buscarAlojamientoPorId(idAlojamiento);
-
-        if (numeroHuespedes > alojamiento.getCapacidadMaxima())
-            throw new Exception("El número de huéspedes excede la capacidad máxima del alojamiento");
-
+        if (alojamiento instanceof Hotel) {
+            if (numeroHabitacion == 0) throw new Exception("Debes seleccionar una habitación para realizar la reserva");
+        }
+        if (!verificarCapacidadAlojamiento(alojamiento, numeroHuespedes, numeroHabitacion))
+            throw new Exception("El alojamiento no dispone de la capacidad solicitada");
         Reserva reservaConflicto = obtenerReservaConflicto(alojamiento.getId(), fechaInicio, fechaFin);
         if (reservaConflicto != null) {
             LocalDate fechaDisponible = reservaConflicto.getFechaFin().plusDays(1);
@@ -61,7 +67,7 @@ public class ReservaServicios {
 
         Cliente cliente = usuarioServicios.buscarClientePorCedula(cedulaCliente);
 
-        double subtotal = calcularSubtotal(alojamiento.getPrecioPorNoche(), fechaInicio, fechaFin);
+        double subtotal = calcularSubtotal(alojamiento, fechaInicio, fechaFin);
         double total = calcularTotalConOfertas(subtotal, ofertasAlojamiento);
 
         if (cliente.getBilletera().getSaldo() < total) {
@@ -102,9 +108,31 @@ public class ReservaServicios {
                 Constantes.QR_GENERADO(idFactura));
     }
 
-    private double calcularSubtotal(double precioPorNoche, LocalDate inicio, LocalDate fin) {
+    private boolean verificarCapacidadAlojamiento(Alojamiento alojamiento, int numeroHuespedes,
+                                                  int numeroHabitacion) throws Exception {
+        boolean capacidadDisponible = false;
+        if (alojamiento instanceof Hotel) {
+            Habitacion habitacion = habitacionServicios.buscarHabitacion(alojamiento.getId(), numeroHabitacion);
+            capacidadDisponible = habitacion.getCapacidad() >= numeroHuespedes;
+        } else if (alojamiento instanceof Casa) {
+            capacidadDisponible = alojamiento.getCapacidadMaxima() >= numeroHuespedes;
+        } else if (alojamiento instanceof Apartamento) {
+            capacidadDisponible = alojamiento.getCapacidadMaxima() >= numeroHuespedes;
+        }
+        return capacidadDisponible;
+    }
+
+    private double calcularSubtotal(Alojamiento alojamiento, LocalDate inicio, LocalDate fin) {
         long dias = ChronoUnit.DAYS.between(inicio, fin);
-        return dias * precioPorNoche;
+        double subtotal = 0;
+        if (alojamiento instanceof Hotel) {
+            subtotal = dias * alojamiento.getPrecioPorNoche();
+        } else if (alojamiento instanceof Casa) {
+            subtotal = dias * alojamiento.getPrecioPorNoche() + ((Casa)alojamiento).getCostoAseoYMantenimiento();
+        } else if (alojamiento instanceof Apartamento) {
+            subtotal = dias * alojamiento.getPrecioPorNoche() + ((Apartamento) alojamiento).getCostoAseoYMantenimiento();
+        }
+        return subtotal;
     }
 
     private double calcularTotalConOfertas(double subtotal, ArrayList<Oferta> ofertas) {

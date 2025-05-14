@@ -35,7 +35,7 @@ public interface IEmpresa {
     void eliminarAlojamiento(String id) throws Exception;
 
     void realizarReserva(String cedulaCliente, String idAlojamiento, LocalDate fechaInicio, LocalDate fechaFin,
-                          int numeroHuespedes) throws Exception;
+                          int numeroHuespedes, int numeroHabitacion) throws Exception;
 
     void cancelarReserva(String id) throws Exception;
 

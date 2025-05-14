@@ -21,13 +21,6 @@ public class HabitacionRepositorio {
         //guardarDatos(habitaciones);
     }
 
-    public Habitacion buscarHabitacion(String idHotel, int numero) {
-        return habitaciones.stream()
-                .filter(h -> h.getNumero() == numero && h.getIdHotel().equals(idHotel))
-                .findFirst()
-                .orElse(null);
-    }
-
     public void editar(Habitacion habitacion) {
         habitaciones.set(habitaciones.indexOf(habitacion), habitacion);
         //guardarDatos(habitaciones);
@@ -36,6 +29,23 @@ public class HabitacionRepositorio {
     public void eliminar(Habitacion habitacion) {
         habitaciones.remove(habitacion);
         //guardarDatos(habitaciones);
+    }
+
+    public Habitacion buscarHabitacion(String idHotel, int numero) {
+        return habitaciones.stream()
+                .filter(h -> h.getNumero() == numero && h.getIdHotel().equals(idHotel))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public ArrayList<Habitacion> obtenerHabitacionesPorIdHotel(String idHotel) {
+        ArrayList<Habitacion> habitacionesPorIdHotel = new ArrayList<>();
+        for (Habitacion habitacion : habitaciones) {
+            if (habitacion.getIdHotel().equals(idHotel)) {
+                habitacionesPorIdHotel.add(habitacion);
+            }
+        }
+        return habitacionesPorIdHotel;
     }
 
     public void guardarDatos(ArrayList<Habitacion> habitaciones) {
@@ -58,5 +68,4 @@ public class HabitacionRepositorio {
         }
         return new ArrayList<>();
     }
-
 }

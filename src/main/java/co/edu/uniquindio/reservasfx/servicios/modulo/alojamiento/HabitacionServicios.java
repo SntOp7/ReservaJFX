@@ -5,6 +5,8 @@ import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.repositorios.HabitacionRepositorio;
 import co.edu.uniquindio.reservasfx.servicios.ModuloAlojamientoServicios;
 
+import java.util.ArrayList;
+
 public class HabitacionServicios  {
 
     private final HabitacionRepositorio habitacionRepositorio;
@@ -48,7 +50,11 @@ public class HabitacionServicios  {
         habitacionRepositorio.eliminar(habitacion);
     }
 
-    public  Habitacion buscarHabitacion(String idHotel, int numero) throws Exception {
+    public Habitacion buscarHabitacion(String idHotel, int numero) throws Exception {
         return habitacionRepositorio.buscarHabitacion(idHotel, numero);
+    }
+
+    public ArrayList<Habitacion> obtenerHabitacionesHotel(String idHotel) {
+        return habitacionRepositorio.obtenerHabitacionesPorIdHotel(idHotel);
     }
 }
