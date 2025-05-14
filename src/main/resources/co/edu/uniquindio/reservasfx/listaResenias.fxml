@@ -93,95 +93,11 @@
                                                 <RowConstraints minHeight="90.0" prefHeight="100.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                             <children>
-                                               
-                                                <Pane prefHeight="100.0" prefWidth="570.0" style="-fx-background-color: #f0f0f0; -fx-background-radius: 10px;">
-                                                    <children>
-                                                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                                                            <image>
-                                                                <Image url="@img/usuario.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <Label layoutX="90.0" layoutY="15.0" text="Usuario 1">
-                                                            <font>
-                                                                <Font name="System Bold" size="14.0" />
-                                                            </font>
-                                                        </Label>
-                                                        <Label layoutX="90.0" layoutY="40.0" text="⭐⭐⭐⭐" />
-                                                        <Label layoutX="90.0" layoutY="65.0" text="¡Excelente servicio! Lo recomiendo totalmente." wrapText="true" />
-                                                    </children>
-                                                </Pane>
-
-
-                                                <Pane prefHeight="100.0" prefWidth="570.0" style="-fx-background-color: #f0f0f0; -fx-background-radius: 10px;" GridPane.rowIndex="1">
-                                                    <children>
-                                                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                                                            <image>
-                                                                <Image url="@img/usuario.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <Label layoutX="90.0" layoutY="15.0" text="Usuario 2">
-                                                            <font>
-                                                                <Font name="System Bold" size="14.0" />
-                                                            </font>
-                                                        </Label>
-                                                        <Label layoutX="90.0" layoutY="40.0" text="⭐⭐⭐" />
-                                                        <Label layoutX="90.0" layoutY="65.0" text="Buena experiencia en general, pero podría mejorar." wrapText="true" />
-                                                    </children>
-                                                </Pane>
-
-
-                                                <Pane prefHeight="100.0" prefWidth="570.0" style="-fx-background-color: #f0f0f0; -fx-background-radius: 10px;" GridPane.rowIndex="2">
-                                                    <children>
-                                                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                                                            <image>
-                                                                <Image url="@img/usuario.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <Label layoutX="90.0" layoutY="15.0" text="Usuario 3">
-                                                            <font>
-                                                                <Font name="System Bold" size="14.0" />
-                                                            </font>
-                                                        </Label>
-                                                        <Label layoutX="90.0" layoutY="40.0" text="⭐⭐⭐⭐⭐" />
-                                                        <Label layoutX="90.0" layoutY="65.0" text="Todo perfecto desde la reserva hasta la atención." wrapText="true" />
-                                                    </children>
-                                                </Pane>
-
-
-                                                <Pane prefHeight="100.0" prefWidth="570.0" style="-fx-background-color: #f0f0f0; -fx-background-radius: 10px;" GridPane.rowIndex="3">
-                                                    <children>
-                                                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                                                            <image>
-                                                                <Image url="@img/usuario.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <Label layoutX="90.0" layoutY="15.0" text="Usuario 4">
-                                                            <font>
-                                                                <Font name="System Bold" size="14.0" />
-                                                            </font>
-                                                        </Label>
-                                                        <Label layoutX="90.0" layoutY="40.0" text="⭐⭐" />
-                                                        <Label layoutX="90.0" layoutY="65.0" text="Hubo algunos problemas con mi reserva." wrapText="true" />
-                                                    </children>
-                                                </Pane>
-
-
-                                                <Pane prefHeight="100.0" prefWidth="570.0" style="-fx-background-color: #f0f0f0; -fx-background-radius: 10px;" GridPane.rowIndex="4">
-                                                    <children>
-                                                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                                                            <image>
-                                                                <Image url="@img/usuario.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <Label layoutX="90.0" layoutY="15.0" text="Usuario 5">
-                                                            <font>
-                                                                <Font name="System Bold" size="14.0" />
-                                                            </font>
-                                                        </Label>
-                                                        <Label layoutX="90.0" layoutY="40.0" text="⭐⭐⭐⭐" />
-                                                        <Label layoutX="90.0" layoutY="65.0" text="Muy buen servicio, repetiré sin duda." wrapText="true" />
-                                                    </children>
-                                                </Pane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0" />
+                                    <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                    <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="2" />
+                                    <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="3" />
+                                    <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="4" />
                                             </children>
                                         </GridPane>
                                     </children>
