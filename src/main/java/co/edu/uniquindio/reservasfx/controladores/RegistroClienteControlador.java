@@ -2,7 +2,13 @@ package co.edu.uniquindio.reservasfx.controladores;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class RegistroClienteControlador {
     @FXML
@@ -39,7 +45,7 @@ public class RegistroClienteControlador {
         try {
             controlador.getEmpresa().registrarCliente(cedula, nombre, telefono, direccion, correo, contrasenia, false);
             controlador.crearAlerta("Usuario registrado con exito", Alert.AlertType.INFORMATION);
-            controlador.navegarVentana(registrarseButton, "/activacionCuenta.fxml", "Activacion Cuenta");
+            navegarVentana(registrarseButton, "/activacionCuenta.fxml", "Activacion Cuenta");
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
@@ -53,5 +59,35 @@ public class RegistroClienteControlador {
     @FXML
     void iniciarSesionLinkAction(ActionEvent event) {
         panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/inicioSesion.fxml");
+    }
+
+    public void navegarVentana(Node nodo, String nombreArchivoFxml, String tituloVentana) {
+        try {
+            // Cerrar ventana actual
+            Stage stageClose = (Stage) nodo.getScene().getWindow();
+            stageClose.close();
+
+            // Cargar la nueva vista
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(nombreArchivoFxml));
+            Parent root = loader.load();
+            ActivacionCuentaControlador activacionCuentaControlador = loader.getController();
+            CambioContraseniaControlador cambioContraseniaControlador = loader.getController();
+            String cedulaUs = cedulaTxt.getText();
+            String correoUs = contraseniaField.getText();
+            activacionCuentaControlador.inicializarValores(cedulaUs, correoUs);
+            cambioContraseniaControlador.inicializarValores(correoUs);
+
+            // Crear y mostrar nueva ventana
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.setTitle(tituloVentana);
+            stage.showAndWait();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
