@@ -1,4 +1,6 @@
 package co.edu.uniquindio.reservasfx.controladores;
+import co.edu.uniquindio.reservasfx.modelo.Sesion;
+import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -69,6 +71,14 @@ public class AlojamientoClienteControlador {
     @FXML
     private ImageView imagenPrincipal;
 
+    @FXML
+    private Text huespedesText;
+
+    ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
+    PanePrincipalControlador panePrincipalControlador = PanePrincipalControlador.getInstancia();
+    String rutaAnterior;
+    Sesion sesion = controlador.getSesion();
+
 
     @FXML
     void anteriorBtnAction(ActionEvent event) {
@@ -83,12 +93,17 @@ public class AlojamientoClienteControlador {
 
     @FXML
     void reservarBtnAction(ActionEvent event) {
-
+        String cedula = sesion.getUsuario().getCedula();
+        int numeroHuespedes = Integer.parseInt(huespedesText.getText());
     }
 
     @FXML
     void volverBtnAction(ActionEvent event) {
+        panePrincipalControlador.actualizarInferior(rutaAnterior);
+    }
 
+    void inicializarValores(String ruta){
+        this.rutaAnterior = ruta;
     }
 
 
