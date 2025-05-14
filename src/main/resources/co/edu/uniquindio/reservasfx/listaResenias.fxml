@@ -199,7 +199,10 @@
                   </RadialGradient>
                </fill>
             </CubicCurve>
-            <Button fx:id="anteriorBtn" layoutX="761.0" layoutY="366.0" mnemonicParsing="false" onAction="#anteriorBtnAction" style="-fx-background-color: #FF0000; -fx-background-radius: 50px;" text="Anterior" textFill="#e8e8e8" />
+            <Button fx:id="anteriorBtn" layoutX="761.0" layoutY="366.0" mnemonicParsing="false" onAction="#anteriorBtnAction" style="-fx-background-color: #FF0000; -fx-background-radius: 50px;" text="Anterior" textFill="#e8e8e8">
+               <font>
+                  <Font name="Berlin Sans FB" size="17.0" />
+               </font></Button>
             <Button fx:id="siguienteBtn" layoutX="757.0" layoutY="410.0" mnemonicParsing="false" onAction="#siguienteBtnAction" style="-fx-background-color: #00913F; -fx-background-radius: 50px;" text="Siguiente" textFill="WHITE">
                <font>
                   <Font name="Berlin Sans FB" size="17.0" />
