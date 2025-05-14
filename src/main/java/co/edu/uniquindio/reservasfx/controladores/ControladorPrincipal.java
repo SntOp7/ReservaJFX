@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.Getter;
 
@@ -71,8 +72,9 @@ public class ControladorPrincipal {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setResizable(false);
+            stage.initModality(Modality.WINDOW_MODAL);
             stage.setTitle(tituloVentana);
-            stage.show();
+            stage.showAndWait();
 
         } catch (Exception e) {
             e.printStackTrace();
