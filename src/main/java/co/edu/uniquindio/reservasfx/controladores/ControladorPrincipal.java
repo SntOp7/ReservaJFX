@@ -57,10 +57,10 @@ public class ControladorPrincipal {
         return null;
     }
 
-    public void navegarVentana(Button button, String nombreArchivoFxml, String tituloVentana) {
+    public void navegarVentana(Node nodo, String nombreArchivoFxml, String tituloVentana) {
         try {
             // Cerrar ventana actual
-            Stage stageClose = (Stage) button.getScene().getWindow();
+            Stage stageClose = (Stage) nodo.getScene().getWindow();
             stageClose.close();
 
             // Cargar la nueva vista

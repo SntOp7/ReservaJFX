@@ -16,6 +16,8 @@ public class InicioSesionControlador {
     private Button btnIngresarSesion;
     @FXML
     private PasswordField passwordTxt;
+    @FXML
+    private Hyperlink recuperacionHyp;
 
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
     PanePrincipalControlador panePrincipalControlador = PanePrincipalControlador.getInstancia();
@@ -31,7 +33,7 @@ public class InicioSesionControlador {
             }
             if (!usuario.isActivo()){
                 controlador.crearAlerta("Es necesario acivar la cuenta", Alert.AlertType.ERROR);
-
+                controlador.navegarVentana(null, "/activacionCuenta.fxml", "Activacion de cuenta");
             }else {
                 controlador.getSesion().setUsuario(usuario);
                 controlador.crearAlerta("Bienvenido " + usuario.getNombre(), Alert.AlertType.INFORMATION);
@@ -55,6 +57,6 @@ public class InicioSesionControlador {
 
     @FXML
     void recuperacionHypAction(ActionEvent event) {
-
+        controlador.navegarVentana(recuperacionHyp, "/cambioContrasenia.fxml", "Recuperar Cuenta");
     }
 }

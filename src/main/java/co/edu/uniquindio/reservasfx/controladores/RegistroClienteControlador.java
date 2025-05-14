@@ -39,6 +39,7 @@ public class RegistroClienteControlador {
         try {
             controlador.getEmpresa().registrarCliente(cedula, nombre, telefono, direccion, correo, contrasenia, false);
             controlador.crearAlerta("Usuario registrado con exito", Alert.AlertType.INFORMATION);
+            controlador.navegarVentana(registrarseButton, "/activacionCuenta.fxml", "Activacion Cuenta");
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
