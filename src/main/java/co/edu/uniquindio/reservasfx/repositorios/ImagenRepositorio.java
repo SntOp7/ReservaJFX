@@ -22,11 +22,6 @@ public class ImagenRepositorio {
         //guardarDatos(imagenes);
     }
 
-    public void editar(Imagen imagen) {
-        imagenes.set(imagenes.indexOf(imagen), imagen);
-        //guardarDatos(imagenes);
-    }
-
     public void eliminar(Imagen imagen) {
         imagenes.remove(imagen);
         //guardarDatos(imagenes);
@@ -39,6 +34,16 @@ public class ImagenRepositorio {
             }
         }
         //guardarDatos(imagenes);
+    }
+
+    public ArrayList<Imagen> obtenerImagenesAlojamientoPorId(String idAlojamiento) {
+        ArrayList<Imagen> imagenesPorId = new ArrayList<>();
+        for (Imagen imagen : imagenes) {
+            if (imagen.getIdAlojamiento().equals(idAlojamiento)) {
+                imagenesPorId.add(imagen);
+            }
+        }
+        return imagenesPorId;
     }
 
     public void guardarDatos(ArrayList<Imagen> imagenes) {

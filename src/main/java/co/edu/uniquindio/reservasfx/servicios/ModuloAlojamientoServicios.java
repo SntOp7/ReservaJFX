@@ -12,6 +12,7 @@ import co.edu.uniquindio.reservasfx.modelo.enums.Mes;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoAlojamiento;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoServicio;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
+import co.edu.uniquindio.reservasfx.modelo.factory.Hotel;
 import co.edu.uniquindio.reservasfx.servicios.interfaces.IAlojamiento;
 import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.AlojamientoServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.HabitacionServicios;
@@ -36,17 +37,35 @@ public class ModuloAlojamientoServicios implements IAlojamiento {
     @Override
     public void registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion,
                                      double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios,
-                                     String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento) throws Exception {
-        alojamientoServicios.registrarAlojamiento(tipoAlojamiento, nombre, ciudad, descripcion, precioPorNoche, capacidadMaxima,
-                servicios, imagenPrincipal, imagenes, costoAseoYMantenimiento);
+                                     String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento,
+                                     ArrayList<Habitacion> habitaciones) throws Exception {
+        Alojamiento alojamiento = alojamientoServicios.registrarAlojamiento(tipoAlojamiento, nombre, ciudad, descripcion,
+                precioPorNoche, capacidadMaxima, servicios, imagenPrincipal, imagenes, costoAseoYMantenimiento);
+        if (alojamiento instanceof Hotel) {
+            if (habitaciones == null || habitaciones.isEmpty())
+                throw new Exception("Debe registrar al menos una habitación para el Hotel");
+            for (Habitacion habitacion : habitaciones) {
+                habitacionServicios.registrarHabitacion(alojamiento.getId(), habitacion.getNumero(), habitacion.getPrecio(),
+                        habitacion.getCapacidad(), habitacion.getDescripcion(), habitacion.getImagen());
+            }
+        }
     }
 
     @Override
     public void editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion,
                                   double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios,
-                                  String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento) throws Exception {
-        alojamientoServicios.editarAlojamiento(id, tipoAlojamiento, nombre, descripcion, precioPorNoche, capacidadMaxima, servicios,
-                imagenPrincipal, imagenes, costoAseoYMantenimiento);
+                                  String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento,
+                                  ArrayList<Habitacion> habitaciones) throws Exception {
+        Alojamiento alojamiento = alojamientoServicios.editarAlojamiento(id, tipoAlojamiento, nombre, descripcion,
+                precioPorNoche, capacidadMaxima, servicios, imagenPrincipal, imagenes, costoAseoYMantenimiento);
+        if (alojamiento instanceof Hotel) {
+            if (habitaciones == null || habitaciones.isEmpty())
+                throw new Exception("Debe quedar registrado al menos una Habitación para el Hotel");
+            for (Habitacion habitacion : habitaciones) {
+                habitacionServicios.editarHabitacion(alojamiento.getId(), habitacion.getNumero(), habitacion.getPrecio(),
+                        habitacion.getCapacidad(), habitacion.getDescripcion(), habitacion.getImagen());
+            }
+        }
     }
 
     @Override
@@ -88,6 +107,31 @@ public class ModuloAlojamientoServicios implements IAlojamiento {
     public ArrayList<Alojamiento> obtenerAlojamientosPorFiltro(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad,
                                                                double precioMin, double precioMax) throws Exception {
         return alojamientoServicios.obtenerAlojamientosPorFiltro(tipoAlojamiento, nombre, ciudad, precioMin, precioMax);
+    }
+
+    @Override
+    public ArrayList<Alojamiento> obtenerAlojamientosRango(int min, int max, ArrayList<Alojamiento> totalAlojamientos) throws Exception {
+        ArrayList<Alojamiento> alojamientos = new ArrayList<>();
+        for (int i = min; i <= max; i++) {
+            alojamientos.add(totalAlojamientos.get(i));
+        }
+        return alojamientos;
+    }
+
+    @Override
+    public ArrayList<Servicio> obtenerServiciosAlojamiento(String idAlojamiento) throws Exception {
+        return alojamientoServicios.obtenerServiciosAlojamiento(idAlojamiento);
+    }
+
+    @Override
+    public ArrayList<Imagen> obtenerImagenesAlojamiento(String idAlojamiento) throws Exception {
+        return alojamientoServicios.obtenerImagenesAlojamiento(idAlojamiento);
+    }
+
+
+    @Override
+    public ArrayList<Habitacion> obtenerHabitacionesHotel(String idAlojamiento) throws Exception {
+        return habitacionServicios.obtenerHabitacionesHotel(idAlojamiento);
     }
 
     @Override
