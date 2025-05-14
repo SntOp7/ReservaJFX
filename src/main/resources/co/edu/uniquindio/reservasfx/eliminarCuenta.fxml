@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="400.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.EliminarCuentaControlador">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="170.0" fitWidth="204.0" layoutX="794.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/bookYourStay.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="64.0" layoutX="139.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1011.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#1f93ff" />
+                        <Stop color="#1f93ff00" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="64.0" layoutX="139.0" layoutY="336.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1011.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#1f93ff" />
+                        <Stop color="#1f93ff00" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Circle layoutX="244.0" layoutY="98.0" radius="130.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#1f93ff" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Circle>
+            <Circle layoutX="74.0" layoutY="200.0" radius="220.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#1f93ff" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Circle>
+            <ImageView fitHeight="355.0" fitWidth="316.0" layoutX="-31.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/usuario.png" />
+               </image>
+            </ImageView>
+            <Circle fill="#ff1f1f" layoutX="233.0" layoutY="289.0" radius="61.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <ImageView fitHeight="233.0" fitWidth="283.0" layoutX="354.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/alerta.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="668.0" layoutY="67.0" text="Eliminar Cuenta">
+               <font>
+                  <Font name="Berlin Sans FB" size="57.0" />
+               </font>
+            </Label>
+            <Label layoutX="704.0" layoutY="140.0" text="¿Está segur@ de que quiere eliminar su cuenta?">
+               <font>
+                  <Font name="Berlin Sans FB" size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="aceptarBtn" layoutX="761.0" layoutY="181.0" mnemonicParsing="false" onAction="#aceptarBtnAction" style="-fx-background-radius: 50px; -fx-background-color: #00913F;" text="Aceptar" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="21.0" />
+               </font>
+            </Button>
+            <Button fx:id="cancelarBtn" layoutX="867.0" layoutY="181.0" mnemonicParsing="false" onAction="#cancelarBtnAction" style="-fx-background-radius: 50px; -fx-background-color: #FF0000;" text="Cancelar" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="21.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="102.0" fitWidth="153.0" layoutX="530.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/eliminarUsuario.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</StackPane>
