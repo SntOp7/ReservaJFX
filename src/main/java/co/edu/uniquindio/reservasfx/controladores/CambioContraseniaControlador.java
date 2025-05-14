@@ -41,15 +41,20 @@ public class CambioContraseniaControlador {
     }
 
     @FXML
-    void aceptarBtnAction(ActionEvent event) throws Exception {
-        String codigoIngresado = codigoField.getText();
-        String contraseniaNueva = ContraseniaField.getText();
-        String contraseniaRep = repetirContraseniaField.getText();
-        if (sesion == null){
-            correo = sesion.getUsuario().getEmail();
+    void aceptarBtnAction(ActionEvent event){
+        try{
+            String codigoIngresado = codigoField.getText();
+            String contraseniaNueva = ContraseniaField.getText();
+            String contraseniaRep = repetirContraseniaField.getText();
+            if (sesion == null){
+                correo = sesion.getUsuario().getEmail();
+                controlador.getEmpresa().getModuloUsuarioServicios().cambiarContrasenia(correo, codigoCorrecto, codigoIngresado, contraseniaNueva, contraseniaRep);
+            }
             controlador.getEmpresa().getModuloUsuarioServicios().cambiarContrasenia(correo, codigoCorrecto, codigoIngresado, contraseniaNueva, contraseniaRep);
+        }catch (Exception e){
+            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
-        controlador.getEmpresa().getModuloUsuarioServicios().cambiarContrasenia(correo, codigoCorrecto, codigoIngresado, contraseniaNueva, contraseniaRep);
+
     }
 
     @FXML
@@ -57,7 +62,7 @@ public class CambioContraseniaControlador {
         controlador.cerrarVentana(cancelarBtn);
     }
 
-    public void inicializarValores(String correoUs) throws Exception {
+    public void inicializarValores(String correoUs){
         this.correo = correoUs;
     }
 

@@ -33,9 +33,13 @@ public class ActivacionCuentaControlador {
     }
 
     @FXML
-    void aceptarBtnAction(ActionEvent event) throws Exception {
-        String codigoIng = codeTextField.getText();
-        controlador.getEmpresa().getModuloUsuarioServicios().activarCuentaCliente(cedula, codigoCorrecto, codigoIng);
+    void aceptarBtnAction(ActionEvent event) {
+        try{
+            String codigoIng = codeTextField.getText();
+            controlador.getEmpresa().getModuloUsuarioServicios().activarCuentaCliente(cedula, codigoCorrecto, codigoIng);
+        }catch (Exception e){
+            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 
     @FXML
@@ -43,7 +47,7 @@ public class ActivacionCuentaControlador {
         controlador.cerrarVentana(cancelButton);
     }
 
-    public void inicializarValores(String cedulaUs, String correoUs) throws Exception {
+    public void inicializarValores(String cedulaUs, String correoUs) {
         this.cedula = cedulaUs;
         this.correo = correoUs;
     }
