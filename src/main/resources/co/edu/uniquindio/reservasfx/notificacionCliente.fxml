@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="146.0" prefWidth="609.0" style="-fx-background-radius: 50px; -fx-border-radius: 50px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.NotificacionClienteController">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="126.0" layoutX="113.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="489.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#34a6f775" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Circle layoutX="88.0" layoutY="81.0" radius="89.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#1f93ffb3" />
+                        <Stop color="#ffffff00" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Circle>
+            <ImageView fitHeight="124.0" fitWidth="117.0" layoutX="34.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/notificacionCliente.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="tituloLbl" layoutX="187.0" layoutY="14.0" text="Título ">
+               <font>
+                  <Font name="Berlin Sans FB" size="45.0" />
+               </font>
+            </Label>
+            <Label fx:id="asuntoLbl" layoutX="195.0" layoutY="71.0" text="Asunto">
+               <font>
+                  <Font name="Berlin Sans FB" size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="69.0" fitWidth="46.0" layoutX="556.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/mensaje.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="78.0" fitWidth="74.0" layoutX="535.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/bookYourStay.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</StackPane>
