@@ -2,6 +2,7 @@ package co.edu.uniquindio.reservasfx.controladores;
 
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.StackPane;
 
 public class PanePrincipalControlador {
@@ -25,6 +26,12 @@ public class PanePrincipalControlador {
 
     @FXML
     private void initialize() {
+        try {
+            controlador.getEmpresa().getModuloComercialServicios().actualizarEstadoOfertas();
+            controlador.getEmpresa().getModuloComercialServicios().actualizarEstadoReservas();
+        } catch (Exception e) {
+            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
+        }
         actualizar("/co/edu/uniquindio/reservasfx/headerPrincipal.fxml",
                 "/co/edu/uniquindio/reservasfx/recomendadoAlojamiento.fxml");
     }

@@ -17,7 +17,7 @@ public class NotificacionRepositorio {
 
     public void agregar(Notificacion notificacion) {
         notificaciones.add(notificacion);
-        guardarDatos(notificaciones);
+        //guardarDatos(notificaciones);
     }
 
     public ArrayList<Notificacion> obtenerNotificacionesPorCedula(String cedulaCliente) {

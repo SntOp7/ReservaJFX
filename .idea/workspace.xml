@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51ed1073-804c-4f43-b406-dbd702544cb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data/administradores.data" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/alojamientos.data" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/calificaciones.data" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/clientes.data" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/deseos.data" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/habitaciones.data" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/imagenes.data" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/notificaciones.data" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/ofertas.data" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/reservas.data" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/servicios.data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/Cliente1Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/ReseniaClienteControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/Cliente2Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/LIstaHabitacionesControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/Cliente3Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/ListaReseniasControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/Cliente4Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/ListaOfertasControlador.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

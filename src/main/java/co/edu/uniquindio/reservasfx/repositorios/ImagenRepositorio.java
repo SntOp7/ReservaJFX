@@ -19,17 +19,17 @@ public class ImagenRepositorio {
 
     public void agregar(Imagen imagen) {
         imagenes.add(imagen);
-        guardarDatos(imagenes);
+        //guardarDatos(imagenes);
     }
 
     public void editar(Imagen imagen) {
         imagenes.set(imagenes.indexOf(imagen), imagen);
-        guardarDatos(imagenes);
+        //guardarDatos(imagenes);
     }
 
     public void eliminar(Imagen imagen) {
         imagenes.remove(imagen);
-        guardarDatos(imagenes);
+        //guardarDatos(imagenes);
     }
 
     public void eliminarImagenesAlojamiento(String idAlojamiento) {
@@ -38,7 +38,7 @@ public class ImagenRepositorio {
                 eliminar(imagen);
             }
         }
-        guardarDatos(imagenes);
+        //guardarDatos(imagenes);
     }
 
     public void guardarDatos(ArrayList<Imagen> imagenes) {

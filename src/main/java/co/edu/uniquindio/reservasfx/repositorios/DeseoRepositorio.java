@@ -17,12 +17,12 @@ public class DeseoRepositorio {
 
     public void agregar(Deseo deseo) {
         deseos.add(deseo);
-        guardarDatos(deseos);
+        //guardarDatos(deseos);
     }
 
     public void eliminar(Deseo deseo) {
         deseos.remove(deseo);
-        guardarDatos(deseos);
+        //guardarDatos(deseos);
     }
 
     public Deseo buscarDeseo(String cedula, String idAlojamiento) {
