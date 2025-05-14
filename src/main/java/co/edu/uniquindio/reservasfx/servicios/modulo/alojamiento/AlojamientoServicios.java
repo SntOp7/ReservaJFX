@@ -1,6 +1,7 @@
 package co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento;
 
 import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
+import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Imagen;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Servicio;
 import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
@@ -32,7 +33,7 @@ public class AlojamientoServicios {
         alojamientoRepositorio = new AlojamientoRepositorio();
     }
 
-    public void registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion,
+    public Alojamiento registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion,
                                      double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios,
                                      String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento) throws Exception {
 
@@ -52,6 +53,7 @@ public class AlojamientoServicios {
         registrarServicios(id, servicios);
         registrarImagenes(id, imagenes);
         alojamientoRepositorio.agregar(alojamiento);
+        return alojamiento;
     }
 
     public void registrarServicios(String idAlojamiento, ArrayList<TipoServicio> servicios) {
@@ -69,7 +71,7 @@ public class AlojamientoServicios {
         }
     }
 
-    public void editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion,
+    public Alojamiento editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion,
                                   double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios,
                                   String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento) throws Exception {
 
@@ -89,6 +91,7 @@ public class AlojamientoServicios {
             ((Apartamento) alojamiento).setCostoAseoYMantenimiento(costoAseoYMantenimiento);
         }
         alojamientoRepositorio.editar(alojamiento);
+        return alojamiento;
     }
 
     public void editarServicios(String idAlojamiento, ArrayList<TipoServicio> servicios) {
@@ -193,7 +196,16 @@ public class AlojamientoServicios {
         return null;
     }
 
+
     public boolean validarListaVacia(ArrayList<Alojamiento> lista) {
         return lista == null || lista.isEmpty();
+    }
+
+    public ArrayList<Servicio> obtenerServiciosAlojamiento(String idAlojamiento) {
+        return servicioRepositorio.obtenerServiciosAlojamientoPorId(idAlojamiento);
+    }
+
+    public ArrayList<Imagen> obtenerImagenesAlojamiento(String idAlojamiento) {
+        return imagenRepositorio.obtenerImagenesAlojamientoPorId(idAlojamiento);
     }
 }
