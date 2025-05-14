@@ -79,7 +79,7 @@
                   <Font name="Berlin Sans FB" size="27.0" />
                </font>
             </Label>
-            <TextField layoutX="723.0" layoutY="132.0" prefHeight="31.0" prefWidth="273.0" promptText="Ingrese el monto a recargar" style="-fx-background-radius: 50px;" />
+            <TextField fx:id="recargaField" layoutX="723.0" layoutY="132.0" prefHeight="31.0" prefWidth="273.0" promptText="Ingrese el monto a recargar" style="-fx-background-radius: 50px;" />
             <Button fx:id="recargarBtn" layoutX="744.0" layoutY="199.0" mnemonicParsing="false" onAction="#recargarBtnAction" style="-fx-background-radius: 50px; -fx-background-color: #00913F;" text="Recargar" textFill="WHITE">
                <font>
                   <Font name="Berlin Sans FB" size="24.0" />
