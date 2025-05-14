@@ -28,7 +28,11 @@ public class InicioSesionControlador {
             Usuario usuario = controlador.getEmpresa().getModuloUsuarioServicios().iniciarSesion(correo, contrasenia);
             if (usuario == null) {
                 controlador.crearAlerta("No se encontro un usuario con ese correo y contraseña", Alert.AlertType.ERROR);
-            } else {
+            }
+            if (!usuario.isActivo()){
+                controlador.crearAlerta("Es necesario acivar la cuenta", Alert.AlertType.ERROR);
+
+            }else {
                 controlador.getSesion().setUsuario(usuario);
                 controlador.crearAlerta("Bienvenido " + usuario.getNombre(), Alert.AlertType.INFORMATION);
                 if (usuario instanceof Cliente) {

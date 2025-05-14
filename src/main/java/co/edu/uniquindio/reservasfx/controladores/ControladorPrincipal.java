@@ -5,7 +5,10 @@ import co.edu.uniquindio.reservasfx.servicios.EmpresaServicio;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.Getter;
 
@@ -52,5 +55,29 @@ public class ControladorPrincipal {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void navegarVentana(Button button, String nombreArchivoFxml, String tituloVentana) {
+        try {
+            // Cerrar ventana actual
+            Stage stageClose = (Stage) button.getScene().getWindow();
+            stageClose.close();
+
+            // Cargar la nueva vista
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(nombreArchivoFxml));
+            Parent root = loader.load();
+
+            // Crear y mostrar nueva ventana
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.setTitle(tituloVentana);
+            stage.showAndWait();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
