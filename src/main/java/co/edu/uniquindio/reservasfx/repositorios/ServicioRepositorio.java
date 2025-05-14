@@ -21,11 +21,6 @@ public class ServicioRepositorio {
         //guardarDatos(servicios);
     }
 
-    public void editar(Servicio servicio) {
-        servicios.set(servicios.indexOf(servicio), servicio);
-        //guardarDatos(servicios);
-    }
-
     public void eliminar(Servicio servicio) {
         servicios.remove(servicio);
         //guardarDatos(servicios);
@@ -38,6 +33,16 @@ public class ServicioRepositorio {
             }
         }
         //guardarDatos(servicios);
+    }
+
+    public ArrayList<Servicio> obtenerServiciosAlojamientoPorId(String idAlojamiento) {
+        ArrayList<Servicio> serviciosPorId = new ArrayList<>();
+        for (Servicio servicio : servicios) {
+            if (servicio.getIdAlojamiento().equals(idAlojamiento)) {
+                serviciosPorId.add(servicio);
+            }
+        }
+        return serviciosPorId;
     }
 
     public void guardarDatos(ArrayList<Servicio> servicios) {

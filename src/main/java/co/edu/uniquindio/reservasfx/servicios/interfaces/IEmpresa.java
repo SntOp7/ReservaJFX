@@ -26,11 +26,11 @@ public interface IEmpresa {
 
     void registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion,
                               double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal,
-                              ArrayList<String> imagenes, double costoAseoYMantenimiento) throws Exception;
+                              ArrayList<String> imagenes, double costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception;
 
     void editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion, double precioPorNoche, int capacidadMaxima,
                            ArrayList<TipoServicio> servicios, String imagenPrincipal, ArrayList<String> imagenes,
-                           double costoAseoYMantenimiento) throws Exception;
+                           double costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception;
 
     void eliminarAlojamiento(String id) throws Exception;
 

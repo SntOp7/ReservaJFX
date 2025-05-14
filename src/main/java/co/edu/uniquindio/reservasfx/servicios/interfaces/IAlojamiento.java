@@ -20,11 +20,11 @@ public interface IAlojamiento {
 
     void registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion,
                               double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal,
-                              ArrayList<String> imagenes, double costoAseoYMantenimiento) throws Exception;
+                              ArrayList<String> imagenes, double costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception;
 
     void editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion,
                            double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal,
-                           ArrayList<String> imagenes, double costoAseoYMantenimiento) throws Exception;
+                           ArrayList<String> imagenes, double costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception;
 
     void eliminarAlojamiento(String id) throws Exception;
 
@@ -42,6 +42,14 @@ public interface IAlojamiento {
 
     ArrayList<Alojamiento> obtenerAlojamientosPorFiltro(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad,
                                                         double precioMin, double precioMax) throws Exception;
+
+    ArrayList<Alojamiento> obtenerAlojamientosRango(int min, int max, ArrayList<Alojamiento> totalAlojamientos) throws Exception;
+
+    ArrayList<Servicio> obtenerServiciosAlojamiento(String idAlojamiento) throws Exception;
+
+    ArrayList<Imagen> obtenerImagenesAlojamiento(String idAlojamiento) throws Exception;
+
+    ArrayList<Habitacion> obtenerHabitacionesHotel(String idAlojamiento) throws Exception;
 
     void registrarHabitacion(String idHotel, int numero, double precio, int capacidad, String descripcion, String imagen) throws Exception;
 
