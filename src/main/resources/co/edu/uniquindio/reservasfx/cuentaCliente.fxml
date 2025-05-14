@@ -81,7 +81,7 @@
                         <Insets right="5.0" />
                      </padding>
                   </VBox>
-                  <StackPane>
+                  <StackPane fx:id="StckPanePrincipal">
                      <children>
                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="1160.0" spacing="20.0" />
                      </children>
