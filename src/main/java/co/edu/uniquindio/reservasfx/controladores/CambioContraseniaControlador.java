@@ -1,4 +1,5 @@
 package co.edu.uniquindio.reservasfx.controladores;
+import co.edu.uniquindio.reservasfx.modelo.Sesion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -28,6 +29,7 @@ public class CambioContraseniaControlador {
 
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
     PanePrincipalControlador panePrincipalControlador = PanePrincipalControlador.getInstancia();
+    Sesion sesion = controlador.getSesion();
 
     @FXML
     void initialize(){
@@ -43,6 +45,10 @@ public class CambioContraseniaControlador {
         String codigoIngresado = codigoField.getText();
         String contraseniaNueva = ContraseniaField.getText();
         String contraseniaRep = repetirContraseniaField.getText();
+        if (sesion == null){
+            correo = sesion.getUsuario().getEmail();
+            controlador.getEmpresa().getModuloUsuarioServicios().cambiarContrasenia(correo, codigoCorrecto, codigoIngresado, contraseniaNueva, contraseniaRep);
+        }
         controlador.getEmpresa().getModuloUsuarioServicios().cambiarContrasenia(correo, codigoCorrecto, codigoIngresado, contraseniaNueva, contraseniaRep);
     }
 
