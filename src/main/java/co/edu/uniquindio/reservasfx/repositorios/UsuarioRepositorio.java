@@ -19,7 +19,7 @@ public class UsuarioRepositorio {
 
     public UsuarioRepositorio() {
         this.clientes = leerDatosCl();
-        this.administradores = leerDatosAd();
+        administradores = new ArrayList<>();
         listarAdministrador();
     }
 
@@ -82,25 +82,5 @@ public class UsuarioRepositorio {
         }
         return new ArrayList<>();
     }
-
-    public void guardarDatosAd(ArrayList<Administrador> administradores) {
-        try {
-            Persistencia.serializarObjeto(Constantes.RUTA_ADMINISTRADORES, administradores);
-        } catch (IOException e) {
-            System.err.println("Error guardando administradores: " + e.getMessage());
-        }
-    }
-
-
-    public ArrayList<Administrador> leerDatosAd() {
-        try {
-            Object datos = Persistencia.deserializarObjeto(Constantes.RUTA_ADMINISTRADORES);
-            if (datos != null) {
-                return (ArrayList<Administrador>) datos;
-            }
-        } catch (Exception e) {
-            System.err.println("Error cargando administradores: " + e.getMessage());
-        }
-        return new ArrayList<>();
-    }
+    
 }
