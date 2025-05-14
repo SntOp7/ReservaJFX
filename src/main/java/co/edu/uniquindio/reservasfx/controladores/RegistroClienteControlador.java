@@ -45,7 +45,7 @@ public class RegistroClienteControlador {
         try {
             controlador.getEmpresa().registrarCliente(cedula, nombre, telefono, direccion, correo, contrasenia, false);
             controlador.crearAlerta("Usuario registrado con exito", Alert.AlertType.INFORMATION);
-            navegarVentana(registrarseButton, "/activacionCuenta.fxml", "Activacion Cuenta");
+            navegarVentana(registrarseButton, "/co/edu/uniquindio/reservasfx/activacionCuenta.fxml", "Activacion Cuenta");
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
@@ -71,11 +71,9 @@ public class RegistroClienteControlador {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(nombreArchivoFxml));
             Parent root = loader.load();
             ActivacionCuentaControlador activacionCuentaControlador = loader.getController();
-            CambioContraseniaControlador cambioContraseniaControlador = loader.getController();
             String cedulaUs = cedulaTxt.getText();
             String correoUs = contraseniaField.getText();
             activacionCuentaControlador.inicializarValores(cedulaUs, correoUs);
-            cambioContraseniaControlador.inicializarValores(correoUs);
 
             // Crear y mostrar nueva ventana
             Scene scene = new Scene(root);

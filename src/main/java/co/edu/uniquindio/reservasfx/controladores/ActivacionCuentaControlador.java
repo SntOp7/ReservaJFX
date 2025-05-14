@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 public class ActivacionCuentaControlador {
 
     @FXML
-    private Button cancelButton;
+    private Button cancelarBtn;
 
     @FXML
     private TextField codeTextField;
@@ -44,7 +44,7 @@ public class ActivacionCuentaControlador {
 
     @FXML
     void cancelarBtnAction(ActionEvent event) {
-        controlador.cerrarVentana(cancelButton);
+        controlador.cerrarVentana(cancelarBtn);
     }
 
     public void inicializarValores(String cedulaUs, String correoUs) {
