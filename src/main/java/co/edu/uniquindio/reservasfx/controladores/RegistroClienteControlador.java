@@ -72,7 +72,7 @@ public class RegistroClienteControlador {
             Parent root = loader.load();
             ActivacionCuentaControlador activacionCuentaControlador = loader.getController();
             String cedulaUs = cedulaTxt.getText();
-            String correoUs = contraseniaField.getText();
+            String correoUs = correoTxt.getText();
             activacionCuentaControlador.inicializarValores(cedulaUs, correoUs);
 
             // Crear y mostrar nueva ventana
