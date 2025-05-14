@@ -25,11 +25,6 @@ public class ActivacionCuentaControlador {
 
     @FXML
     void initialize(){
-        try {
-            codigoCorrecto = controlador.getEmpresa().getModuloUsuarioServicios().enviarCodigo(correo, false);
-        } catch (Exception e) {
-            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
-        }
     }
 
     @FXML
@@ -37,6 +32,8 @@ public class ActivacionCuentaControlador {
         try{
             String codigoIng = codeTextField.getText();
             controlador.getEmpresa().getModuloUsuarioServicios().activarCuentaCliente(cedula, codigoCorrecto, codigoIng);
+            controlador.cerrarVentana(cancelarBtn);
+            controlador.crearAlerta("La cuenta se ha activado correctamente", Alert.AlertType.INFORMATION);
         }catch (Exception e){
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
@@ -50,6 +47,14 @@ public class ActivacionCuentaControlador {
     public void inicializarValores(String cedulaUs, String correoUs) {
         this.cedula = cedulaUs;
         this.correo = correoUs;
+
+        try {
+            codigoCorrecto = controlador.getEmpresa().getModuloUsuarioServicios().enviarCodigo(correo, false);
+            System.out.println("Correo para enviar código: " + correo);
+            System.out.println("Código enviado: " + codigoCorrecto);
+        } catch (Exception e) {
+            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 
 }

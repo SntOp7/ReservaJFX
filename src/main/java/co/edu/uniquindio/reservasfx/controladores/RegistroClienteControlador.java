@@ -63,9 +63,6 @@ public class RegistroClienteControlador {
 
     public void navegarVentana(Node nodo, String nombreArchivoFxml, String tituloVentana) {
         try {
-            // Cerrar ventana actual
-            Stage stageClose = (Stage) nodo.getScene().getWindow();
-            stageClose.close();
 
             // Cargar la nueva vista
             FXMLLoader loader = new FXMLLoader(getClass().getResource(nombreArchivoFxml));
