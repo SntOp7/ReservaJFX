@@ -24,6 +24,7 @@ public class AlojamientoRepositorio {
 
     public AlojamientoRepositorio() {
         this.alojamientos = leerDatosAlojamiento();
+        listarAlojamientos();
     }
 
     public void agregar(Alojamiento alojamiento) {
@@ -42,6 +43,41 @@ public class AlojamientoRepositorio {
         alojamientos.remove(alojamiento);
         //guardarDatos(alojamientos);
 
+    }
+
+    public void listarAlojamientos() {
+        alojamientos.add(Casa.builder()
+                        .id("CASA-001")
+                        .nombre("Casa Campestre El Paraíso")
+                        .precioPorNoche(250)
+                        .capacidadMaxima(6)
+                        .ciudad(Ciudad.ARMENIA)
+                        .imagenPrincipal("@img/bookYourStay.png")
+                        .build());
+
+        alojamientos.add(Apartamento.builder()
+                        .id("APT-001")
+                        .nombre("Apartamento Central Loft")
+                        .precioPorNoche(180)
+                        .capacidadMaxima(4)
+                        .ciudad(Ciudad.BOGOTA)
+                        .build());
+
+        alojamientos.add(Hotel.builder()
+                        .id("HOTEL-001")
+                        .nombre("Hotel Boutique Andino")
+                        .precioPorNoche(320)
+                        .capacidadMaxima(2)
+                        .ciudad(Ciudad.MEDELLIN)
+                        .build());
+
+        alojamientos.add(Casa.builder()
+                        .id("CASA-002")
+                        .nombre("Casa Familiar Las Palmas")
+                        .precioPorNoche(220)
+                        .capacidadMaxima(5)
+                        .ciudad(Ciudad.CARTAGENA)
+                        .build());
     }
 
     public Alojamiento buscarAlojamientoPorNombre(String nombre) {

@@ -112,7 +112,8 @@ public class ModuloAlojamientoServicios implements IAlojamiento {
     @Override
     public ArrayList<Alojamiento> obtenerAlojamientosRango(int min, int max, ArrayList<Alojamiento> totalAlojamientos) throws Exception {
         ArrayList<Alojamiento> alojamientos = new ArrayList<>();
-        for (int i = min; i <= max; i++) {
+        int limiteSuperior = Math.min(max, totalAlojamientos.size() - 1);
+        for (int i = min; i <= limiteSuperior; i++) {
             alojamientos.add(totalAlojamientos.get(i));
         }
         return alojamientos;
