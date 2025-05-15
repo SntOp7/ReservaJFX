@@ -31,7 +31,7 @@
 
                         <VBox spacing="20">
                            <children>
-                              <!-- Header with shadow effect -->
+                             
                               <HBox alignment="CENTER">
                                  <children>
                                     <ImageView fitHeight="132.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
