@@ -34,14 +34,14 @@ public class InicioSesionControlador {
             if (!usuario.isActivo()){
                 controlador.crearAlerta("Es necesario acivar la cuenta", Alert.AlertType.ERROR);
                 controlador.navegarVentana(null, "/activacionCuenta.fxml", "Activacion de cuenta");
-            }else {
+            } else {
                 controlador.getSesion().setUsuario(usuario);
                 controlador.crearAlerta("Bienvenido " + usuario.getNombre(), Alert.AlertType.INFORMATION);
                 if (usuario instanceof Cliente) {
                     panePrincipalControlador.actualizar("/co/edu/uniquindio/reservasfx/headerSesion.fxml",
                             "/co/edu/uniquindio/reservasfx/recomendadoAlojamiento.fxml");
                 } if (usuario instanceof Administrador) {
-                    panePrincipalControlador.actualizar("/co/edu/uniquindio/reservasfx/headerSesion.fxml",
+                    panePrincipalControlador.actualizar("/co/edu/uniquindio/reservasfx/headerAdministrador.fxml",
                             "/co/edu/uniquindio/reservasfx/recomendadoAlojamiento.fxml");
                 }
             }
