@@ -35,11 +35,6 @@ public class ActivacionCuentaControlador {
         }
     }
 
-    @FXML
-    void cancelarBtnAction(ActionEvent event) {
-        controlador.cerrarVentana(cancelarBtn);
-    }
-
     public void inicializarValores(String cedulaUs, String correoUs) {
         this.cedula = cedulaUs;
         this.correo = correoUs;

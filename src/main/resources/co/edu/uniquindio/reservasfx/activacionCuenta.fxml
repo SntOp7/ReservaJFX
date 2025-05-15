@@ -141,19 +141,6 @@
                                                 <DropShadow color="#E67E2244" offsetY="3" radius="10" spread="0.1" />
                                             </effect>
                                         </Button>
-
-                                        <Button fx:id="cancelarBtn" onAction="#cancelarBtnAction" prefHeight="45" prefWidth="150" text="Cancelar">
-                                            <style>
-                                                -fx-background-color: linear-gradient(to bottom, #F39C49, #E67E22);
-                                                -fx-background-radius: 22.5;
-                                                -fx-text-fill: white;
-                                                -fx-cursor: hand;
-                                                -fx-font-size: 15px;
-                                                -fx-font-weight: bold;-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff);</style>
-                                            <effect>
-                                                <DropShadow color="#E67E2244" offsetY="3" radius="10" spread="0.1" />
-                                            </effect>
-                                        </Button>
                                     </children>
                                 </HBox>
                             </children>
