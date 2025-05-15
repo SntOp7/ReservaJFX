@@ -1,9 +1,14 @@
 package co.edu.uniquindio.reservasfx.controladores;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Tab;
 import javafx.scene.layout.StackPane;
+
+import java.io.IOException;
 
 public class PanePrincipalControlador {
     @FXML
@@ -55,5 +60,15 @@ public class PanePrincipalControlador {
         inicioSuperiorStack.getChildren().add(nodeSuperior);
         Parent nodeInferior = controlador.cargarPanel(fxmlFileInferior);
         inicioInferiorStack.getChildren().add(nodeInferior);
+    }
+
+    public void cargarEnTab(Tab tab, String rutaFXML) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaFXML));
+            Node contenido = loader.load();
+            tab.setContent(contenido);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
