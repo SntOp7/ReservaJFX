@@ -25,7 +25,7 @@
 
                 <StackPane prefHeight="400.0" prefWidth="900.0">
                     <children>
-                        <ImageView fitHeight="400.0" fitWidth="900.0" pickOnBounds="true" style="-fx-border-radius: 20 20 0 0; -fx-background-radius: 20 20 0 0;">
+                        <ImageView fx:id="imagenAlojamiento" fitHeight="400.0" fitWidth="900.0" pickOnBounds="true" style="-fx-border-radius: 20 20 0 0; -fx-background-radius: 20 20 0 0;">
 
                             <effect>
                                 <ColorAdjust brightness="0.05" contrast="0.1" />

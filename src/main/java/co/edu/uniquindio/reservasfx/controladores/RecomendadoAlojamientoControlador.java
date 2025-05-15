@@ -3,14 +3,28 @@ package co.edu.uniquindio.reservasfx.controladores;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 
 import java.util.ArrayList;
 
 public class RecomendadoAlojamientoControlador {
+    @FXML
+    private StackPane decimoStack;
+    @FXML
+    private Label numeroPaginalbl;
+    @FXML
+    private StackPane sextoStack;
+    @FXML
+    private StackPane novenoStack;
+    @FXML
+    private StackPane primerStack;
+    @FXML
+    private StackPane septimoStack;
     @FXML
     private StackPane cuartoStack;
     @FXML
@@ -18,50 +32,100 @@ public class RecomendadoAlojamientoControlador {
     @FXML
     private StackPane segundoStack;
     @FXML
-    private StackPane decimoStack;
+    private Button siguientePaginaBtn;
     @FXML
     private StackPane tercerStack;
     @FXML
-    private StackPane sextoStack;
-    @FXML
-    private StackPane novenoStack;
-    @FXML
     private StackPane octavoStack;
-    @FXML
-    private StackPane primerStack;
-    @FXML
-    private StackPane septimoStack;
-    @FXML
-    private Button siguientePaginaBtn;
     @FXML
     private StackPane quintoStack;
 
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
+    ArrayList<Alojamiento> alojamientosAleatorios;
+    ArrayList<Alojamiento> alojamientosPagina;
+    int paginaActual;
+    int totalPaginas;
 
     @FXML
     void initialize() {
         try {
-            ArrayList<Alojamiento> alojamientos = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerAlojamientosAleatorios();
-            for (Alojamiento a : alojamientos) {
-                cargarAlojamiento("/co/edu/uniquindio/reservasfx/alojamiento.fxml", cuartoStack);
-            }
+            alojamientosAleatorios = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerAlojamientosAleatorios();
+            paginaActual = 1;
+            totalPaginas = alojamientosAleatorios.size() / 10;
+            totalPaginas = totalPaginas + (alojamientosAleatorios.size() % 10 == 0 ? 0 : 1);
+            numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
+            alojamientosPagina = determinarAlojamientosPagina(alojamientosAleatorios);
+            cargarListaAlojamientos(alojamientosPagina);
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
-    public void cargarAlojamiento(String rutaFXML, StackPane stack) {
-        Parent node = controlador.cargarPanel(rutaFXML);
+    public ArrayList<Alojamiento> determinarAlojamientosPagina(ArrayList<Alojamiento> alojamientos) {
+        ArrayList<Alojamiento> alojamientoArrayList = new ArrayList<>();
+        try {
+            int max = paginaActual * 10 - 1;
+            int min = max - 9;
+            alojamientoArrayList = controlador.getEmpresa()
+                    .getModuloAlojamientoServicios()
+                    .obtenerAlojamientosRango(min, max, alojamientos);
+        } catch (Exception e) {
+            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return alojamientoArrayList;
+    }
+
+    public void cargarListaAlojamientos(ArrayList<Alojamiento> alojamientos) {
+        String rutaFXML = "/co/edu/uniquindio/reservasfx/alojamiento.fxml";
+        StackPane[] stacks = {
+                primerStack, segundoStack, tercerStack, cuartoStack, quintoStack,
+                sextoStack, septimoStack, octavoStack, novenoStack, decimoStack
+        };
+
+        for (int i = 0; i < alojamientos.size() && i < stacks.length; i++) {
+            cargarAlojamiento(rutaFXML, stacks[i], alojamientos.get(i));
+        }
+    }
+
+    public void cargarAlojamiento(String rutaFXML, StackPane stack, Alojamiento alojamiento) {
+        Parent node = cargarPanel(rutaFXML, alojamiento);
         stack.getChildren().setAll(node);
+    }
+
+    public Parent cargarPanel(String fxmlFile, Alojamiento alojamiento) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Parent node = loader.load();
+            AlojamientoControlador alojamientoControlador = loader.getController();
+            alojamientoControlador.inicializarValores(alojamiento);
+            return node;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @FXML
     void paginaAnteriorAction(ActionEvent event) {
-
+        if (paginaActual == 1) {
+            controlador.crearAlerta("No hay más páginas", Alert.AlertType.ERROR);
+        } else {
+            paginaActual--;
+            alojamientosPagina = determinarAlojamientosPagina(alojamientosAleatorios);
+            cargarListaAlojamientos(alojamientosPagina);
+            numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
+        }
     }
 
     @FXML
     void siguientePaginaAction(ActionEvent event) {
-
+        if (paginaActual == totalPaginas) {
+            controlador.crearAlerta("No hay más páginas", Alert.AlertType.ERROR);
+        } else {
+            paginaActual++;
+            alojamientosPagina = determinarAlojamientosPagina(alojamientosAleatorios);
+            cargarListaAlojamientos(alojamientosPagina);
+            numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
+        }
     }
 }
