@@ -4,23 +4,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class HeaderSesionControlador {
+public class HeaderAdministradorControlador {
     @FXML
     private Button casaBtn;
     @FXML
     private Button apartamentoBtn;
     @FXML
+    private Button administracionBtn;
+    @FXML
     private Button cerrarSesionBtn;
     @FXML
     private Button hotelBtn;
     @FXML
-    private Button ofertaBtn;
-    @FXML
-    private Button notificacionBtn;
-    @FXML
     private Button inicioBtn;
     @FXML
-    private Button cuentaBtn;
+    private Button contraseniaBtn;
 
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
     PanePrincipalControlador panePrincipalControlador = PanePrincipalControlador.getInstancia();
@@ -46,13 +44,13 @@ public class HeaderSesionControlador {
     }
 
     @FXML
-    void ofertaBtnAction(ActionEvent event) {
-        panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/recomendadoAlojamiento.fxml");
+    void administracionBtnAction(ActionEvent event) {
+        panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/panelAdministracion.fxml");
     }
 
     @FXML
-    void cuentaBtnAction(ActionEvent event) {
-        panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/cuentaCliente.fxml");
+    void contraseniaBtnAction(ActionEvent event) {
+        controlador.navegarVentana(contraseniaBtn, "/co/edu/uniquindio/reservasfx/cambioContrasenia.fxml", "Cambiar Contraseña");
     }
 
     @FXML
@@ -60,10 +58,5 @@ public class HeaderSesionControlador {
         panePrincipalControlador.actualizar("/co/edu/uniquindio/reservasfx/headerPrincipal.fxml",
                 "/co/edu/uniquindio/reservasfx/recomendadoAlojamiento.fxml");
         controlador.getSesion().setUsuario(null);
-    }
-
-    @FXML
-    void notificacionAction(ActionEvent event) {
-        panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/notificacionesNoLeidas.fxml");
     }
 }

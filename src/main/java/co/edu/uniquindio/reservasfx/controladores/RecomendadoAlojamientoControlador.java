@@ -107,25 +107,21 @@ public class RecomendadoAlojamientoControlador {
 
     @FXML
     void paginaAnteriorAction(ActionEvent event) {
-        if (paginaActual == 1) {
-            controlador.crearAlerta("No hay más páginas", Alert.AlertType.ERROR);
-        } else {
-            paginaActual--;
-            alojamientosPagina = determinarAlojamientosPagina(alojamientosAleatorios);
-            cargarListaAlojamientos(alojamientosPagina);
-            numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
-        }
+        if (paginaActual == 1) return;
+
+        paginaActual--;
+        alojamientosPagina = determinarAlojamientosPagina(alojamientosAleatorios);
+        cargarListaAlojamientos(alojamientosPagina);
+        numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
     }
 
     @FXML
     void siguientePaginaAction(ActionEvent event) {
-        if (paginaActual == totalPaginas) {
-            controlador.crearAlerta("No hay más páginas", Alert.AlertType.ERROR);
-        } else {
-            paginaActual++;
-            alojamientosPagina = determinarAlojamientosPagina(alojamientosAleatorios);
-            cargarListaAlojamientos(alojamientosPagina);
-            numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
-        }
+        if (paginaActual == totalPaginas) return;
+
+        paginaActual++;
+        alojamientosPagina = determinarAlojamientosPagina(alojamientosAleatorios);
+        cargarListaAlojamientos(alojamientosPagina);
+        numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
     }
 }

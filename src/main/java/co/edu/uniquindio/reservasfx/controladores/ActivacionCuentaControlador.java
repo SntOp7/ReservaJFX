@@ -24,16 +24,12 @@ public class ActivacionCuentaControlador {
     PanePrincipalControlador panePrincipalControlador = PanePrincipalControlador.getInstancia();
 
     @FXML
-    void initialize(){
-    }
-
-    @FXML
     void aceptarBtnAction(ActionEvent event) {
         try{
             String codigoIng = codeTextField.getText();
             controlador.getEmpresa().getModuloUsuarioServicios().activarCuentaCliente(cedula, codigoCorrecto, codigoIng);
-            controlador.cerrarVentana(cancelarBtn);
             controlador.crearAlerta("La cuenta se ha activado correctamente", Alert.AlertType.INFORMATION);
+            controlador.cerrarVentana(cancelarBtn);
         }catch (Exception e){
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }

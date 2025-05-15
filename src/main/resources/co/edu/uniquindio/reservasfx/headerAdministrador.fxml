@@ -97,7 +97,7 @@
                             <children>
                                 <VBox alignment="CENTER" spacing="15.0">
                                     <children>
-                                        <Button fx:id="cuentaBtn" onAction="#cuentaBtnAction" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Cambiar Contraseña">
+                                        <Button fx:id="contraseniaBtn" onAction="#contraseniaBtnAction" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Cambiar Contraseña">
                                             <graphic>
                                                 <ImageView fitHeight="28.0" fitWidth="28.0">
                                                     <image>

@@ -20,6 +20,7 @@ public class UsuarioRepositorio {
     public UsuarioRepositorio() {
         this.clientes = leerDatosCl();
         administradores = new ArrayList<>();
+        listarCliente();
         listarAdministrador();
     }
 
@@ -36,6 +37,18 @@ public class UsuarioRepositorio {
     public void eliminar(Cliente cliente) {
         clientes.remove(cliente);
         //guardarDatosCl(clientes);
+    }
+
+    public void listarCliente() {
+        Cliente cliente1 = new Cliente("1030280881", "Juan Hernandez", "3175560537",
+                "Calarca - Quindio","juanse13hg@gmail.com", "juan", true);
+        clientes.add(cliente1);
+        Cliente cliente2 = new Cliente("1094898051", "Sharif Giraldo", "3104553300",
+                "Calarca - Quindio","sharifgiraldo23@gmail.com", "sharif", true);
+        clientes.add(cliente2);
+        Cliente cliente3 = new Cliente("1090274779", "Santiago Ospina", "3023696218",
+                "Armenia - Quindio","santiospi2022@gmail.com", "santiago", true);
+        clientes.add(cliente3);
     }
 
     public void listarAdministrador() {
