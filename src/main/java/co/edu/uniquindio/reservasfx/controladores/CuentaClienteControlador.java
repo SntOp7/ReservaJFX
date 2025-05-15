@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 
 public class CuentaClienteControlador {
 
@@ -15,7 +14,7 @@ public class CuentaClienteControlador {
     private Button billeteraBtn;
 
     @FXML
-    private Button actualizxarDatosBtn;
+    private Button actualizarDatosBtn;
 
     @FXML
     private Button eliminarCuentaBtn;
@@ -43,7 +42,7 @@ public class CuentaClienteControlador {
 
     @FXML
     void billeteraBtnAction(ActionEvent event) {
-        Parent node = cargarPanel("/co/edu/uniquindio/reservasfx/recargarBilletera.fxml");
+        Parent node = cargarPanel("/co/edu/uniquindio/reservasfx/billeteraCliente.fxml");
         StckPanePrincipal.getChildren().setAll(node);
     }
 

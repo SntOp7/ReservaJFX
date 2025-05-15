@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.media.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -51,18 +50,29 @@
                                                 <Font name="Berlin Sans FB" size="28.0" />
                                              </font>
                                           </Label>
-                                          <Button fx:id="actualizxarDatosBtn" mnemonicParsing="false" onAction="#actualizxarDatosBtnAction" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff);" text="Actualizar Datos" textFill="WHITE">
+                                          <Button fx:id="actualizarDatosBtn" mnemonicParsing="false" onAction="#actualizxarDatosBtnAction" prefWidth="200.0" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff);" text="Actualizar Datos" textFill="WHITE">
                                              <font>
                                                 <Font name="Berlin Sans FB" size="15.0" />
                                              </font>
                                           </Button>
-                                          <Button fx:id="reservasRealizadasBtn" alignment="CENTER" mnemonicParsing="false" onAction="#reservasRealizadasBtnAction" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff); -fx-background-radius: 50px;" text="Reservas Realizadas" textFill="WHITE">
+
+                                          <Button fx:id="reservasRealizadasBtn" alignment="CENTER" mnemonicParsing="false" onAction="#reservasRealizadasBtnAction" prefWidth="200.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff); -fx-background-radius: 50px;" text="Reservas Realizadas" textFill="WHITE">
                                              <font>
                                                 <Font name="Berlin Sans FB" size="15.0" />
                                              </font>
                                           </Button>
-                                          <Button fx:id="billeteraBtn" mnemonicParsing="false" onAction="#billeteraBtnAction" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff); -fx-background-radius: 50px;" text="Billetera" textFill="WHITE" />
-                                          <Button fx:id="eliminarCuentaBtn" mnemonicParsing="false" onAction="#eliminarCuentaBtnAction" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff); -fx-background-radius: 50px;" text="Eliminar Cuenta" textFill="WHITE" />
+
+                                          <Button fx:id="billeteraBtn" mnemonicParsing="false" onAction="#billeteraBtnAction" prefWidth="200.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff); -fx-background-radius: 50px;" text="Billetera" textFill="WHITE">
+                                             <font>
+                                                <Font name="Berlin Sans FB" size="15.0" />
+                                             </font>
+                                          </Button>
+
+                                          <Button fx:id="eliminarCuentaBtn" mnemonicParsing="false" onAction="#eliminarCuentaBtnAction" prefWidth="200.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff); -fx-background-radius: 50px;" text="Eliminar Cuenta" textFill="WHITE">
+                                             <font>
+                                                <Font name="Berlin Sans FB" size="15.0" />
+                                             </font></Button>
+
                                           <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@img/bookYourStay.png" />

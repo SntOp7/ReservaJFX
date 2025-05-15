@@ -47,7 +47,13 @@ public class PanePrincipalControlador {
         inicioInferiorStack.getChildren().add(node);
     }
 
-    public void actualizarInferiorPersonalizado(String fxmlFile) {
+    public void actualizarInferiorPersonalizadoFiltrado(String fxmlFile, String titulo) {
+        inicioInferiorStack.getChildren().clear();
+        Parent node = cargarPanelPer(fxmlFile);
+        inicioInferiorStack.getChildren().add(node);
+    }
+
+    public void actualizarInferiorPersonalizadoOferta(String fxmlFile) {
         inicioInferiorStack.getChildren().clear();
         Parent node = cargarPanelPer(fxmlFile);
         inicioInferiorStack.getChildren().add(node);
