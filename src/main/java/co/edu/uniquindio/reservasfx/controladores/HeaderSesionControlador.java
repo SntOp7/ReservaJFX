@@ -47,7 +47,7 @@ public class HeaderSesionControlador {
 
     @FXML
     void ofertaBtnAction(ActionEvent event) {
-        panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/recomendadoAlojamiento.fxml");
+        panePrincipalControlador.actualizarInferiorPersonalizado("/co/edu/uniquindio/reservasfx/recomendadoAlojamiento.fxml");
     }
 
     @FXML

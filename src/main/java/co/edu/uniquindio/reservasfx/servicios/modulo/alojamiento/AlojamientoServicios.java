@@ -165,19 +165,19 @@ public class AlojamientoServicios {
         return alojamientos;
     }
 
-    public ArrayList<Alojamiento> obtenerAlojamientosPopulares(Ciudad ciudad, LinkedList<Reserva> reservas) throws Exception {
+    public ArrayList<Alojamiento> obtenerAlojamientosPopulares(Ciudad ciudad, ArrayList<Reserva> reservas) throws Exception {
         ArrayList<Alojamiento> alojamientos = alojamientoRepositorio.obtenerAlojamientosPopulares(ciudad, reservas);
         if (validarListaVacia(alojamientos)) throw new Exception("No hay alojamientos populares de momento");
         return alojamientos;
     }
 
-    public ArrayList<Alojamiento> obtenerAlojamientosOfertados(LinkedList<Oferta> ofertas) throws Exception {
+    public ArrayList<Alojamiento> obtenerAlojamientosOfertados(ArrayList<Oferta> ofertas) throws Exception {
         ArrayList<Alojamiento> alojamientos = alojamientoRepositorio.obtenerAlojamientosOfertados(ofertas);
         if (validarListaVacia(alojamientos)) throw new Exception("No hay alojamientos ofertados de momento");
         return alojamientos;
     }
 
-    public ArrayList<Alojamiento> obtenerAlojamientosPreferenciasCliente(LinkedList<Reserva> reservasCliente) throws Exception {
+    public ArrayList<Alojamiento> obtenerAlojamientosPreferenciasCliente(ArrayList<Reserva> reservasCliente) throws Exception {
         ArrayList<Alojamiento> alojamientos = alojamientoRepositorio.obtenerAlojamientosPreferenciasCliente(reservasCliente);
         if (validarListaVacia(alojamientos)) {
             alojamientos = obtenerAlojamientosAleatorios();
@@ -185,7 +185,7 @@ public class AlojamientoServicios {
         return alojamientos;
     }
 
-    public ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(LinkedList<Deseo> deseosCliente) throws Exception {
+    public ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(ArrayList<Deseo> deseosCliente) throws Exception {
         ArrayList<Alojamiento> alojamientos = alojamientoRepositorio.obtenerAlojamientosPorDeseosCliente(deseosCliente);
         if (validarListaVacia(alojamientos)) throw new Exception("No hay alojamientos agregados a tu lista de deseos de momento");
         return alojamientos;

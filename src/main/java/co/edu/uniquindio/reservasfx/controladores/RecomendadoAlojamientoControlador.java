@@ -1,5 +1,7 @@
 package co.edu.uniquindio.reservasfx.controladores;
 
+import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
+import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class RecomendadoAlojamientoControlador {
     @FXML
@@ -41,21 +44,38 @@ public class RecomendadoAlojamientoControlador {
     private StackPane quintoStack;
 
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
-    ArrayList<Alojamiento> alojamientosAleatorios;
+    ArrayList<Alojamiento> alojamientosCliente;
+    ArrayList<Alojamiento> alojamientosOferta;
     ArrayList<Alojamiento> alojamientosPagina;
+
+    String cedulaCliente;
+
+    boolean esOferta = false;
     int paginaActual;
     int totalPaginas;
 
     @FXML
     void initialize() {
         try {
-            alojamientosAleatorios = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerAlojamientosAleatorios();
             paginaActual = 1;
-            totalPaginas = alojamientosAleatorios.size() / 10;
-            totalPaginas = totalPaginas + (alojamientosAleatorios.size() % 10 == 0 ? 0 : 1);
-            numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
-            alojamientosPagina = determinarAlojamientosPagina(alojamientosAleatorios);
-            cargarListaAlojamientos(alojamientosPagina);
+            if (controlador.getSesion().getUsuario() == null) {
+                alojamientosCliente = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerAlojamientosAleatorios();
+                totalPaginas = alojamientosCliente.size() / 10;
+                totalPaginas = totalPaginas + (alojamientosCliente.size() % 10 == 0 ? 0 : 1);
+                numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
+                alojamientosPagina = determinarAlojamientosPagina(alojamientosCliente);
+                cargarListaAlojamientos(alojamientosPagina);
+            } else {
+                cedulaCliente = controlador.getSesion().getUsuario().getCedula();
+                ArrayList<Reserva> reservasCliente = controlador.getEmpresa().getModuloComercialServicios().obtenerReservasCliente(cedulaCliente);
+                alojamientosCliente = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerAlojamientosPreferenciasCliente(reservasCliente);
+                totalPaginas = alojamientosCliente.size() / 10;
+                totalPaginas = totalPaginas + (alojamientosCliente.size() % 10 == 0 ? 0 : 1);
+                numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
+                alojamientosPagina = determinarAlojamientosPagina(alojamientosCliente);
+                cargarListaAlojamientos(alojamientosPagina);
+            }
+
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
@@ -110,7 +130,7 @@ public class RecomendadoAlojamientoControlador {
         if (paginaActual == 1) return;
 
         paginaActual--;
-        alojamientosPagina = determinarAlojamientosPagina(alojamientosAleatorios);
+        alojamientosPagina = determinarAlojamientosPagina(alojamientosCliente);
         cargarListaAlojamientos(alojamientosPagina);
         numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
     }
@@ -120,8 +140,22 @@ public class RecomendadoAlojamientoControlador {
         if (paginaActual == totalPaginas) return;
 
         paginaActual++;
-        alojamientosPagina = determinarAlojamientosPagina(alojamientosAleatorios);
+        alojamientosPagina = determinarAlojamientosPagina(alojamientosCliente);
         cargarListaAlojamientos(alojamientosPagina);
         numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
+    }
+
+    public void inicializarValores() {
+        try {
+            ArrayList<Oferta> ofertas = controlador.getEmpresa().getModuloComercialServicios().obtenerOfertas();
+            alojamientosOferta = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerAlojamientosOfertados(ofertas);
+            totalPaginas = alojamientosOferta.size() / 10;
+            totalPaginas = totalPaginas + (alojamientosOferta.size() % 10 == 0 ? 0 : 1);
+            numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
+            alojamientosPagina = determinarAlojamientosPagina(alojamientosOferta);
+            cargarListaAlojamientos(alojamientosPagina);
+        } catch (Exception e) {
+            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 }

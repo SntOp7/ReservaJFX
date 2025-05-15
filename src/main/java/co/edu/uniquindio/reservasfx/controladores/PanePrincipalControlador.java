@@ -41,16 +41,29 @@ public class PanePrincipalControlador {
                 "/co/edu/uniquindio/reservasfx/recomendadoAlojamiento.fxml");
     }
 
-    public final void actualizarInferior(String fxmlFile) {
+    public void actualizarInferior(String fxmlFile) {
         inicioInferiorStack.getChildren().clear();
         Parent node = controlador.cargarPanel(fxmlFile);
         inicioInferiorStack.getChildren().add(node);
     }
 
-    public void actualizarSuperior(String fxmlFile) {
-        inicioSuperiorStack.getChildren().clear();
-        Parent node = controlador.cargarPanel(fxmlFile);
-        inicioSuperiorStack.getChildren().add(node);
+    public void actualizarInferiorPersonalizado(String fxmlFile) {
+        inicioInferiorStack.getChildren().clear();
+        Parent node = cargarPanelPer(fxmlFile);
+        inicioInferiorStack.getChildren().add(node);
+    }
+
+    private Parent cargarPanelPer(String fxmlFile) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Parent node = loader.load();
+            RecomendadoAlojamientoControlador recomendadoAlojamientoControlador = loader.getController();
+            recomendadoAlojamientoControlador.inicializarValores();
+            return node;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void actualizar(String fxmlFileSuperior, String fxmlFileInferior) {
@@ -60,15 +73,5 @@ public class PanePrincipalControlador {
         inicioSuperiorStack.getChildren().add(nodeSuperior);
         Parent nodeInferior = controlador.cargarPanel(fxmlFileInferior);
         inicioInferiorStack.getChildren().add(nodeInferior);
-    }
-
-    public void cargarEnTab(Tab tab, String rutaFXML) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaFXML));
-            Node contenido = loader.load();
-            tab.setContent(contenido);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

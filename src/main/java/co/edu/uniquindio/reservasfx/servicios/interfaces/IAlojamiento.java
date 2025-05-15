@@ -32,13 +32,13 @@ public interface IAlojamiento {
 
     ArrayList<Alojamiento> obtenerAlojamientosAleatorios() throws Exception;
 
-    ArrayList<Alojamiento> obtenerAlojamientosPopulares(Ciudad ciudad, LinkedList<Reserva> reservas) throws Exception;
+    ArrayList<Alojamiento> obtenerAlojamientosPopulares(Ciudad ciudad, ArrayList<Reserva> reservas) throws Exception;
 
-    ArrayList<Alojamiento> obtenerAlojamientosOfertados(LinkedList<Oferta> ofertas) throws Exception;
+    ArrayList<Alojamiento> obtenerAlojamientosOfertados(ArrayList<Oferta> ofertas) throws Exception;
 
-    ArrayList<Alojamiento> obtenerAlojamientosPreferenciasCliente(LinkedList<Reserva> reservasCliente) throws Exception;
+    ArrayList<Alojamiento> obtenerAlojamientosPreferenciasCliente(ArrayList<Reserva> reservasCliente) throws Exception;
 
-    ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(LinkedList<Deseo> deseosCliente) throws Exception;
+    ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(ArrayList<Deseo> deseosCliente) throws Exception;
 
     ArrayList<Alojamiento> obtenerAlojamientosPorFiltro(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad,
                                                         double precioMin, double precioMax) throws Exception;

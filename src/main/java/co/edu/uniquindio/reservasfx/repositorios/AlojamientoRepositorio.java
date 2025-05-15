@@ -101,7 +101,7 @@ public class AlojamientoRepositorio {
         return copia;
     }
 
-    public ArrayList<Alojamiento> obtenerAlojamientosPopulares(Ciudad ciudad, LinkedList<Reserva> reservas) {
+    public ArrayList<Alojamiento> obtenerAlojamientosPopulares(Ciudad ciudad, ArrayList<Reserva> reservas) {
         Map<Alojamiento, Integer> contadorReservas = new HashMap<>();
 
         for (Reserva reserva : reservas) {
@@ -116,7 +116,7 @@ public class AlojamientoRepositorio {
         return alojamientosPopulares;
     }
 
-    public ArrayList<Alojamiento> obtenerAlojamientosOfertados(LinkedList<Oferta> ofertas) {
+    public ArrayList<Alojamiento> obtenerAlojamientosOfertados(ArrayList<Oferta> ofertas) {
         ArrayList<Alojamiento> alojamientosConOferta = new ArrayList<>();
         LocalDate hoy = LocalDate.now();
 
@@ -133,7 +133,7 @@ public class AlojamientoRepositorio {
         return alojamientosConOferta;
     }
 
-    public ArrayList<Alojamiento> obtenerAlojamientosPreferenciasCliente(LinkedList<Reserva> reservasCliente) {
+    public ArrayList<Alojamiento> obtenerAlojamientosPreferenciasCliente(ArrayList<Reserva> reservasCliente) {
         if (reservasCliente.isEmpty()) return null;
 
         Set<TipoAlojamiento> tiposPreferidos = new HashSet<>();
@@ -173,7 +173,7 @@ public class AlojamientoRepositorio {
         return tipoAlojamiento;
     }
 
-    public ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(LinkedList<Deseo> deseosCliente) {
+    public ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(ArrayList<Deseo> deseosCliente) {
         if (deseosCliente.isEmpty()) return null;
 
         ArrayList<Alojamiento> alojamientosDeseados = new ArrayList<>();

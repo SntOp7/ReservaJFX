@@ -84,22 +84,22 @@ public class ModuloAlojamientoServicios implements IAlojamiento {
     }
 
     @Override
-    public ArrayList<Alojamiento> obtenerAlojamientosPopulares(Ciudad ciudad, LinkedList<Reserva> reservas) throws Exception {
+    public ArrayList<Alojamiento> obtenerAlojamientosPopulares(Ciudad ciudad, ArrayList<Reserva> reservas) throws Exception {
         return alojamientoServicios.obtenerAlojamientosPopulares(ciudad, reservas);
     }
 
     @Override
-    public ArrayList<Alojamiento> obtenerAlojamientosOfertados(LinkedList<Oferta> ofertas) throws Exception {
+    public ArrayList<Alojamiento> obtenerAlojamientosOfertados(ArrayList<Oferta> ofertas) throws Exception {
         return alojamientoServicios.obtenerAlojamientosOfertados(ofertas);
     }
 
     @Override
-    public ArrayList<Alojamiento> obtenerAlojamientosPreferenciasCliente(LinkedList<Reserva> reservasCliente) throws Exception {
+    public ArrayList<Alojamiento> obtenerAlojamientosPreferenciasCliente(ArrayList<Reserva> reservasCliente) throws Exception {
         return alojamientoServicios.obtenerAlojamientosPreferenciasCliente(reservasCliente);
     }
 
     @Override
-    public ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(LinkedList<Deseo> deseosCliente) throws Exception {
+    public ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(ArrayList<Deseo> deseosCliente) throws Exception {
         return alojamientoServicios.obtenerAlojamientosPorDeseosCliente(deseosCliente);
     }
 

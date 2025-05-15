@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
@@ -15,6 +16,7 @@ import javafx.stage.Stage;
 import lombok.Getter;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 
 public class ControladorPrincipal {
@@ -101,6 +103,16 @@ public class ControladorPrincipal {
             if (file.exists()) {
                 imageView.setImage(new Image(file.toURI().toString()));
             }
+        }
+    }
+
+    public void cargarEnTab(Tab tab, String rutaFXML) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaFXML));
+            Node contenido = loader.load();
+            tab.setContent(contenido);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

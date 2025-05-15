@@ -5,11 +5,13 @@ import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
 import co.edu.uniquindio.reservasfx.modelo.enums.EstadoOferta;
 import co.edu.uniquindio.reservasfx.utils.Persistencia;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+@Getter
 public class OfertaRepositorio {
     private ArrayList<Oferta> ofertas;
 

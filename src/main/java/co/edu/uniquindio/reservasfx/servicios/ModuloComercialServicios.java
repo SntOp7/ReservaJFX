@@ -68,6 +68,11 @@ public class ModuloComercialServicios implements IComercial {
     }
 
     @Override
+    public ArrayList<Oferta> obtenerOfertas() throws Exception {
+        return ofertaServicios.obtenerTodasOfertas();
+    }
+
+    @Override
     public ArrayList<Oferta> obtenerOfertasAlojamiento(String idAlojamiento) throws Exception {
         return ofertaServicios.obtenerOfertas(idAlojamiento);
     }

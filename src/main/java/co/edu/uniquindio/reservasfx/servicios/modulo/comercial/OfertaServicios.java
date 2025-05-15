@@ -81,6 +81,10 @@ public class OfertaServicios {
         return ofertaRepositorio.buscarOfertaPorId(id);
     }
 
+    public ArrayList<Oferta> obtenerTodasOfertas() {
+        return ofertaRepositorio.getOfertas();
+    }
+
     public ArrayList<Oferta> obtenerOfertas(String idAlojamiento) {
         return ofertaRepositorio.obtenerOfertasAlojamiento(idAlojamiento);
     }

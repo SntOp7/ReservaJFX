@@ -196,12 +196,12 @@ public class AlojamientoClienteControlador {
                     rutaInfo = null;
                 }
                 if (rutaInfo != null) {
-                    panePrincipalControlador.cargarEnTab(adicionalTab, rutaInfo);
+                    controlador.cargarEnTab(adicionalTab, rutaInfo);
                 }
 
-                panePrincipalControlador.cargarEnTab(reseniaHuespedTab, "/co/edu/uniquindio/reservasfx/listaResenias.fxml");
+                controlador.cargarEnTab(reseniaHuespedTab, "/co/edu/uniquindio/reservasfx/listaResenias.fxml");
 
-                panePrincipalControlador.cargarEnTab(ofertasEspecialesTab, "/co/edu/uniquindio/reservasfx/listaOfertas.fxml");
+                controlador.cargarEnTab(ofertasEspecialesTab, "/co/edu/uniquindio/reservasfx/listaOfertas.fxml");
 
             } catch (Exception e) {
                 controlador.crearAlerta("Error cargando tabs: " + e.getMessage(), Alert.AlertType.ERROR);
