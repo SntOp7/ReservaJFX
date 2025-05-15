@@ -14,4 +14,8 @@ public abstract class Alojamiento {
     private double precioPorNoche;
     private int capacidadMaxima;
     private String imagenPrincipal;
+
+    public String getTipo() {
+        return this.getClass().getSimpleName();
+    }
 }
