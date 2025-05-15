@@ -199,7 +199,7 @@ public class AlojamientoClienteControlador {
                     panePrincipalControlador.cargarEnTab(adicionalTab, rutaInfo);
                 }
 
-                panePrincipalControlador.cargarEnTab(reseniaHuespedTab, "/co/edu/uniquindio/reservasfx/listaResenas.fxml");
+                panePrincipalControlador.cargarEnTab(reseniaHuespedTab, "/co/edu/uniquindio/reservasfx/listaResenias.fxml");
 
                 panePrincipalControlador.cargarEnTab(ofertasEspecialesTab, "/co/edu/uniquindio/reservasfx/listaOfertas.fxml");
 
