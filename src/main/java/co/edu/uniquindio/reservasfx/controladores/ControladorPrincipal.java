@@ -8,9 +8,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.Getter;
+
+import java.io.File;
+import java.net.URL;
 
 public class ControladorPrincipal {
 
@@ -78,6 +83,24 @@ public class ControladorPrincipal {
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void cargarImagen(String imagePath, ImageView imageView) {
+        if (imagePath == null || imageView == null) {
+            return;
+        }
+
+        if (imagePath.startsWith("/") || imagePath.startsWith("resources/")) {
+            URL imageUrl = getClass().getResource(imagePath);
+            if (imageUrl != null) {
+                imageView.setImage(new Image(imageUrl.toExternalForm()));
+            }
+        } else {
+            File file = new File(imagePath);
+            if (file.exists()) {
+                imageView.setImage(new Image(file.toURI().toString()));
+            }
         }
     }
 }
