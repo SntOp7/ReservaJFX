@@ -45,7 +45,9 @@ public class RegistroClienteControlador {
         try {
             controlador.getEmpresa().registrarCliente(cedula, nombre, telefono, direccion, correo, contrasenia, false);
             controlador.crearAlerta("Usuario registrado con exito", Alert.AlertType.INFORMATION);
-            navegarVentana(registrarseButton, "/co/edu/uniquindio/reservasfx/activacionCuenta.fxml", "Activacion Cuenta");
+            controlador.navegarVentanaActivacionCuenta(registrarseButton,
+                    "/co/edu/uniquindio/reservasfx/activacionCuenta.fxml",
+                    "Activacion Cuenta", cedula, correo);
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
@@ -59,30 +61,5 @@ public class RegistroClienteControlador {
     @FXML
     void iniciarSesionLinkAction(ActionEvent event) {
         panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/inicioSesion.fxml");
-    }
-
-    public void navegarVentana(Node nodo, String nombreArchivoFxml, String tituloVentana) {
-        try {
-
-            // Cargar la nueva vista
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(nombreArchivoFxml));
-            Parent root = loader.load();
-            ActivacionCuentaControlador activacionCuentaControlador = loader.getController();
-            String cedulaUs = cedulaTxt.getText();
-            String correoUs = correoTxt.getText();
-            activacionCuentaControlador.inicializarValores(cedulaUs, correoUs);
-
-            // Crear y mostrar nueva ventana
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.setTitle(tituloVentana);
-            stage.showAndWait();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }

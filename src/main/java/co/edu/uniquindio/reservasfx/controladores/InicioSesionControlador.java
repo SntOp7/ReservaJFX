@@ -39,7 +39,8 @@ public class InicioSesionControlador {
             }
             if (!usuario.isActivo()){
                 controlador.crearAlerta("Es necesario activar la cuenta", Alert.AlertType.ERROR);
-                navegarVentana(btnIngresarSesion, "/co/edu/uniquindio/reservasfx/activacionCuenta.fxml",
+                controlador.navegarVentanaActivacionCuenta(btnIngresarSesion,
+                        "/co/edu/uniquindio/reservasfx/activacionCuenta.fxml",
                         "Activacion de cuenta", usuario.getCedula(), usuario.getEmail());
             } else {
                 controlador.getSesion().setUsuario(usuario);
@@ -64,26 +65,14 @@ public class InicioSesionControlador {
 
     @FXML
     void recuperacionHypAction(ActionEvent event) {
-        controlador.navegarVentana(recuperacionHyp, "/cambioContrasenia.fxml", "Recuperar Cuenta");
-    }
-
-    public void navegarVentana(Node nodo, String nombreArchivoFxml, String tituloVentana, String cedulaUs, String correoUs) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(nombreArchivoFxml));
-            Parent root = loader.load();
-            ActivacionCuentaControlador activacionCuentaControlador = loader.getController();
-            activacionCuentaControlador.inicializarValores(cedulaUs, correoUs);
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.setTitle(tituloVentana);
-            stage.showAndWait();
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        Usuario usuario = controlador.getEmpresa().getModuloUsuarioServicios()
+                .getUsuarioServicios().buscarUsuarioPorEmail(correoTxt.getText());
+        if (usuario != null) {
+            controlador.navegarVentanaRecuperacionCuenta(recuperacionHyp,
+                    "/co/edu/uniquindio/reservasfx/cambioContrasenia.fxml",
+                    "Recuperar Cuenta", correoTxt.getText());
+        } else {
+            controlador.crearAlerta("No se encontro un usuario con el correo ingresado", Alert.AlertType.ERROR);
         }
     }
 }

@@ -34,7 +34,10 @@ public class CambioContraseniaControlador {
     @FXML
     void initialize(){
         try {
-            codigoCorrecto = controlador.getEmpresa().getModuloUsuarioServicios().enviarCodigo(correo, true);
+            if (sesion.getUsuario() != null){
+                correo = sesion.getUsuario().getEmail();
+                codigoCorrecto = controlador.getEmpresa().getModuloUsuarioServicios().enviarCodigo(correo, true);
+            }
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
@@ -46,12 +49,10 @@ public class CambioContraseniaControlador {
             String codigoIngresado = codigoField.getText();
             String contraseniaNueva = ContraseniaField.getText();
             String contraseniaRep = repetirContraseniaField.getText();
-            if (sesion == null){
-                correo = sesion.getUsuario().getEmail();
-                controlador.getEmpresa().getModuloUsuarioServicios().cambiarContrasenia(correo, codigoCorrecto, codigoIngresado, contraseniaNueva, contraseniaRep);
-            }
             controlador.getEmpresa().getModuloUsuarioServicios().cambiarContrasenia(correo, codigoCorrecto, codigoIngresado, contraseniaNueva, contraseniaRep);
-        }catch (Exception e){
+            controlador.crearAlerta("Se ha cambiado la contraseña correctamente", Alert.AlertType.INFORMATION);
+            controlador.cerrarVentana(aceptarBtn);
+        } catch (Exception e){
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
 
@@ -62,9 +63,12 @@ public class CambioContraseniaControlador {
         controlador.cerrarVentana(cancelarBtn);
     }
 
-    public void inicializarValores(String correoUs){
-        this.correo = correoUs;
+    public void inicializarValores(String correoUs) {
+        try {
+            correo = correoUs;
+            codigoCorrecto = controlador.getEmpresa().getModuloUsuarioServicios().enviarCodigo(correo, true);
+        } catch (Exception e) {
+            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
-
-
 }

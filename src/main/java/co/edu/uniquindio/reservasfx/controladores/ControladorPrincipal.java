@@ -66,26 +66,52 @@ public class ControladorPrincipal {
 
     public void navegarVentana(Node nodo, String nombreArchivoFxml, String tituloVentana) {
         try {
-            // Cerrar ventana actual
-            Stage stageClose = (Stage) nodo.getScene().getWindow();
-            stageClose.close();
-
-            // Cargar la nueva vista
             FXMLLoader loader = new FXMLLoader(getClass().getResource(nombreArchivoFxml));
             Parent root = loader.load();
 
-            // Crear y mostrar nueva ventana
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.setTitle(tituloVentana);
-            stage.showAndWait();
+            cargarVentana(tituloVentana, root);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void navegarVentanaActivacionCuenta(Node nodo, String nombreArchivoFxml, String tituloVentana, String cedulaUs, String correoUs) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(nombreArchivoFxml));
+            Parent root = loader.load();
+            ActivacionCuentaControlador activacionCuentaControlador = loader.getController();
+            activacionCuentaControlador.inicializarValores(cedulaUs, correoUs);
+
+            cargarVentana(tituloVentana, root);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void navegarVentanaRecuperacionCuenta(Node nodo, String nombreArchivoFxml, String tituloVentana, String correoUs) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(nombreArchivoFxml));
+            Parent root = loader.load();
+            CambioContraseniaControlador cambioContraseniaControlador = loader.getController();
+            cambioContraseniaControlador.inicializarValores(correoUs);
+
+            cargarVentana(tituloVentana, root);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void cargarVentana(String tituloVentana, Parent root) {
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.setTitle(tituloVentana);
+        stage.showAndWait();
     }
 
     public void cargarImagen(String imagePath, ImageView imageView) {
