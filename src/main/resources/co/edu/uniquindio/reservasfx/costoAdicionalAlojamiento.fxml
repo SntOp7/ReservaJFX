@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.paint.LinearGradient?>
+
+<StackPane prefHeight="140.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.CostoAdicionalAlojamientoControlador">
+    <children>
+
+        <Rectangle arcHeight="15.0" arcWidth="15.0" height="140.0" width="814.0">
+            <fill>
+                <LinearGradient endX="1.0" endY="1.0">
+                    <stops>
+                        <Stop color="#e6f5ff" />
+                        <Stop color="#b3e0ff" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+            <effect>
+                <DropShadow color="#00000055" radius="5.0" spread="0.05" />
+            </effect>
+        </Rectangle>
+
+
+        <Circle fill="#4fc3f7" opacity="0.2" radius="60.0" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+                <Insets left="-30.0" top="-30.0" />
+            </StackPane.margin>
+        </Circle>
+
+
+        <Circle fill="#0288d1" opacity="0.15" radius="40.0" StackPane.alignment="BOTTOM_RIGHT">
+            <StackPane.margin>
+                <Insets bottom="-10.0" right="-10.0" />
+            </StackPane.margin>
+        </Circle>
+
+
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+            <children>
+
+                <StackPane>
+                    <children>
+                        <Rectangle arcHeight="25.0" arcWidth="25.0" height="50.0" opacity="0.3" width="600.0">
+                            <fill>
+                                <LinearGradient endX="1.0">
+                                    <stops>
+                                        <Stop color="#4fc3f7" />
+                                        <Stop color="#0288d1" offset="1.0" />
+                                    </stops>
+                                </LinearGradient>
+                            </fill>
+                            <effect>
+                                <InnerShadow choke="0.2" color="#00000033" height="5.0" radius="2.0" width="5.0" />
+                            </effect>
+                        </Rectangle>
+                        <Label text="Información adicional del Alojamiento" textFill="#01579b">
+                            <font>
+                                <Font name="Berlin Sans FB" size="32.0" />
+                            </font>
+                            <effect>
+                                <DropShadow color="#ffffff" height="2.0" radius="0.5" spread="0.5" width="2.0" />
+                            </effect>
+                        </Label>
+                    </children>
+                </StackPane>
+
+
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                    <children>
+
+                        <Label text="Costo de Aseo y Mantenimiento" textFill="#01579b">
+                            <font>
+                                <Font name="Berlin Sans FB" size="23.0" />
+                            </font>
+                            <effect>
+                                <DropShadow color="#ffffff" height="1.0" radius="0.25" spread="0.25" width="1.0" />
+                            </effect>
+                        </Label>
+
+
+                        <StackPane>
+                            <children>
+                                <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffff" height="35.0" stroke="#4fc3f7" strokeWidth="1.5" width="220.0">
+                                    <effect>
+                                        <DropShadow color="#00000033" height="5.0" radius="2.0" width="5.0" />
+                                    </effect>
+                                </Rectangle>
+                                <TextField fx:id="costoAdicionalTxt" promptText="Ingresar Costo Adicional" style="-fx-background-color: transparent; -fx-prompt-text-fill: #78909c;">
+                                    <font>
+                                        <Font name="System" size="14.0" />
+                                    </font>
+                                </TextField>
+                            </children>
+                        </StackPane>
+                    </children>
+
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</StackPane>
