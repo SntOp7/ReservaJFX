@@ -43,6 +43,19 @@ public class ActualizacionUsuarioControlador {
     String cedula;
 
     @FXML
+    public void initialize() {
+        Usuario usuarioSesion = sesion.getUsuario();
+
+        if (usuarioSesion instanceof Cliente cliente) {
+            txtCedula.setText(cliente.getCedula());
+            txtNombre.setText(cliente.getNombre());
+            txtCorreo.setText(cliente.getEmail());
+            txtDireccion.setText(cliente.getDireccion());
+            txtTelefono.setText(cliente.getTelefono());
+        }
+    }
+
+    @FXML
     void actualizarAction(ActionEvent event){
         try {
             String cedulaSesion = sesion.getUsuario().getCedula();
