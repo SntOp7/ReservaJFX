@@ -101,6 +101,11 @@
                   <Font name="Berlin Sans FB" size="17.0" />
                </font>
             </Button>
+            <Label fx:id="numeroPaginalbl" layoutX="798.0" layoutY="402.0" text="Página 1 de 1">
+               <font>
+                  <Font name="Berlin Sans FB" size="18.0" />
+               </font>
+            </Label>
             <ImageView fitHeight="293.0" fitWidth="265.0" layoutX="666.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/noLeido.png" />
