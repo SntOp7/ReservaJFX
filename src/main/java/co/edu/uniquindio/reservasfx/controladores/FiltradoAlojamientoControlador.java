@@ -93,10 +93,6 @@ public class FiltradoAlojamientoControlador {
 
             alojamientosFiltrados = controlador.getEmpresa().getModuloAlojamientoServicios()
                     .obtenerAlojamientosPorFiltro(tipoAlojamiento, nombre, ciudadSeleccionada, precioMin, precioMax);
-            if (alojamientosFiltrados.isEmpty()) {
-                limpiarAlojamientos();
-                return;
-            }
             cargarDatosPanelConAlojamientos(alojamientosFiltrados);
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
