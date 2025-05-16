@@ -1,5 +1,6 @@
 package co.edu.uniquindio.reservasfx.controladores;
 
+import co.edu.uniquindio.reservasfx.modelo.enums.TipoAlojamiento;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -34,21 +35,21 @@ public class HeaderSesionControlador {
     void casaBtnAction(ActionEvent event) {
         panePrincipalControlador.actualizarInferiorPersonalizadoFiltrado(
                 "/co/edu/uniquindio/reservasfx/filtradoAlojamiento.fxml",
-                "Información de Casas");
+                "Información de Casas", TipoAlojamiento.CASA);
     }
 
     @FXML
     void apartamentoBtnAction(ActionEvent event) {
         panePrincipalControlador.actualizarInferiorPersonalizadoFiltrado(
                 "/co/edu/uniquindio/reservasfx/filtradoAlojamiento.fxml",
-                "Información de Apartamentos");
+                "Información de Apartamentos", TipoAlojamiento.APARTAMENTO);
     }
 
     @FXML
     void hotelBtnAction(ActionEvent event) {
         panePrincipalControlador.actualizarInferiorPersonalizadoFiltrado(
                 "/co/edu/uniquindio/reservasfx/filtradoAlojamiento.fxml",
-                "Información de Hoteles");
+                "Información de Hoteles", TipoAlojamiento.HOTEL);
     }
 
     @FXML

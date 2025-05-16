@@ -1,5 +1,6 @@
 package co.edu.uniquindio.reservasfx.controladores;
 
+import co.edu.uniquindio.reservasfx.modelo.enums.TipoAlojamiento;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -47,18 +48,18 @@ public class PanePrincipalControlador {
         inicioInferiorStack.getChildren().add(node);
     }
 
-    public void actualizarInferiorPersonalizadoFiltrado(String fxmlFile, String titulo) {
+    public void actualizarInferiorPersonalizadoFiltrado(String fxmlFile, String titulo, TipoAlojamiento tipoAlojamiento) {
         inicioInferiorStack.getChildren().clear();
-        Parent node = cargarPanelPerFiltrado(fxmlFile, titulo);
+        Parent node = cargarPanelPerFiltrado(fxmlFile, titulo, tipoAlojamiento);
         inicioInferiorStack.getChildren().add(node);
     }
 
-    private Parent cargarPanelPerFiltrado(String fxmlFile, String titulo) {
+    private Parent cargarPanelPerFiltrado(String fxmlFile, String titulo, TipoAlojamiento tipoAlojamiento ) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent node = loader.load();
             FiltradoAlojamientoControlador filtradoAlojamientoControlador = loader.getController();
-            filtradoAlojamientoControlador.inicializarValores(titulo);
+            filtradoAlojamientoControlador.inicializarValores(titulo, tipoAlojamiento);
             return node;
         } catch (Exception e) {
             e.printStackTrace();

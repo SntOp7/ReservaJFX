@@ -149,7 +149,7 @@ public class ControladorPrincipal {
         ArrayList<Alojamiento> alojamientoArrayList = new ArrayList<>();
         try {
             int max = paginaActual * cantidadStackPane - 1;
-            int min = max - cantidadStackPane - 1;
+            int min = max - cantidadStackPane + 1;
             alojamientoArrayList = getEmpresa()
                     .getModuloAlojamientoServicios()
                     .obtenerAlojamientosRango(min, max, alojamientos);

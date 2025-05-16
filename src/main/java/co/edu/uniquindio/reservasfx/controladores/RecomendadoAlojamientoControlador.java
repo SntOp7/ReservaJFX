@@ -69,17 +69,16 @@ public class RecomendadoAlojamientoControlador {
                 alojamientosCliente = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerAlojamientosPreferenciasCliente(reservasCliente);
                 cargarDatosPanelConAlojamientos(alojamientosCliente);
             }
-
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
-    private void cargarDatosPanelConAlojamientos(ArrayList<Alojamiento> alojamientosCliente) {
-        totalPaginas = alojamientosCliente.size() / 10;
-        totalPaginas = totalPaginas + (alojamientosCliente.size() % 10 == 0 ? 0 : 1);
+    private void cargarDatosPanelConAlojamientos(ArrayList<Alojamiento> alojamientos) {
+        totalPaginas = alojamientos.size() / MAX_ALOJAMIENTOS_POR_PAGINA;
+        totalPaginas = totalPaginas + (alojamientos.size() % MAX_ALOJAMIENTOS_POR_PAGINA == 0 ? 0 : 1);
         numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
-        alojamientosPagina = controlador.determinarAlojamientosPagina(paginaActual, MAX_ALOJAMIENTOS_POR_PAGINA, alojamientosCliente);
+        alojamientosPagina = controlador.determinarAlojamientosPagina(paginaActual, MAX_ALOJAMIENTOS_POR_PAGINA, alojamientos);
         controlador.cargarListaAlojamientos(alojamientosPagina, stacks);
     }
 
