@@ -86,7 +86,7 @@ public class NotificacionesNoLeidasControlador {
 
             if (i < notificaciones.size()) {
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/reservasfx/vistas/notificacionCliente.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/reservasfx/notificacionCliente.fxml"));
                     Parent root = loader.load();
                     NotificacionClienteController controlador = loader.getController();
                     controlador.inicializarValores(notificaciones.get(i));

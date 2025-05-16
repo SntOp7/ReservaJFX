@@ -42,20 +42,15 @@
             </ImageView>
             <Label fx:id="tituloLbl" layoutX="187.0" layoutY="14.0" text="Título ">
                <font>
-                  <Font name="Berlin Sans FB" size="45.0" />
+                  <Font name="Berlin Sans FB" size="36.0" />
                </font>
             </Label>
-            <Label fx:id="asuntoLbl" layoutX="195.0" layoutY="71.0" text="Asunto">
+            <Label fx:id="asuntoLbl" layoutX="195.0" layoutY="71.0" prefWidth="250" text="Asunto" wrapText="true">
                <font>
                   <Font name="Berlin Sans FB" size="16.0" />
                </font>
             </Label>
-            <ImageView fitHeight="69.0" fitWidth="46.0" layoutX="556.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@img/mensaje.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="78.0" fitWidth="74.0" layoutX="535.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="78.0" fitWidth="74.0" layoutX="535.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/bookYourStay.png" />
                </image>
