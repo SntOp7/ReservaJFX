@@ -80,7 +80,7 @@ public class ActualizacionUsuarioControlador {
 
     @FXML
     void cambioContraseniaAction(ActionEvent event) {
-        controlador.navegarVentana(cambioContraseniaBtn, "/cambioContrasenia.fxml", "Cambiar Contrasenia");
+        controlador.navegarVentana(cambioContraseniaBtn, "/co/edu/uniquindio/reservasfx/cambioContrasenia.fxml", "Cambiar Contrasenia");
     }
 
 }
