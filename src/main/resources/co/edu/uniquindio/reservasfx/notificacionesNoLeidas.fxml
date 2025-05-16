@@ -63,11 +63,11 @@
                            <children>
                               <GridPane prefHeight="500.0" prefWidth="570.0" vgap="10.0">
                                  <children>
-                                    <StackPane prefHeight="150.0" prefWidth="200.0" />
-                                    <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1" />
-                                    <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="2" />
-                                    <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="3" />
-                                    <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="4" />
+                                    <StackPane fx:id="primerStack" prefHeight="150.0" prefWidth="200.0" />
+                                    <StackPane fx:id="segundoStack" prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                    <StackPane fx:id="tercerStack" prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="2" />
+                                    <StackPane fx:id="cuartoStack" prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="3" />
+                                    <StackPane fx:id="quintoStack" prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="4" />
                                  </children>
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
