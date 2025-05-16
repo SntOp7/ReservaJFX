@@ -17,6 +17,7 @@ import lombok.Getter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Getter
 public class AlojamientoRepositorio {
@@ -187,6 +188,16 @@ public class AlojamientoRepositorio {
         return alojamientosDeseados;
     }
 
+    public ArrayList<Alojamiento> obtenerAlojamientosPorFiltro(TipoAlojamiento tipoAlojamiento, String nombre, String ciudad, double minPrecio, double maxPrecio) {
+        return alojamientos.stream()
+                .filter(a -> a.getTipo().equals(tipoAlojamiento.getNombre().toLowerCase(Locale.ROOT)))
+                .filter(a -> nombre == null || nombre.isBlank() || a.getNombre().toLowerCase().startsWith(nombre.toLowerCase()))
+                .filter(a -> ciudad == null || ciudad.isBlank() || a.getCiudad().getNombre().equalsIgnoreCase(ciudad))
+                .filter(a -> (minPrecio <= 0 || a.getPrecioPorNoche() >= minPrecio) &&
+                        (maxPrecio <= 0 || a.getPrecioPorNoche() <= maxPrecio))
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
     public void guardarDatos(ArrayList<Alojamiento> alojamientos) {
         try {
             Persistencia.serializarObjeto(Constantes.RUTA_ALOJAMIENTOS, alojamientos);
@@ -207,5 +218,4 @@ public class AlojamientoRepositorio {
         }
         return new ArrayList<>();
     }
-
 }

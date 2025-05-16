@@ -191,9 +191,31 @@ public class AlojamientoServicios {
         return alojamientos;
     }
 
-    public ArrayList<Alojamiento> obtenerAlojamientosPorFiltro(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad,
-                                                               double precioMin, double precioMax) {
-        return null;
+    public ArrayList<Alojamiento> obtenerAlojamientosPorFiltro(TipoAlojamiento tipoAlojamiento, String nombre, String ciudad,
+                                                               String precioMin, String precioMax) throws Exception {
+
+        if (ciudad == null || ciudad.isBlank()) throw new Exception("Debes seleccionar una ciudad.");
+
+        double minPrecio;
+        double maxPrecio;
+
+        try {
+            minPrecio = precioMin == null || precioMin.isBlank() ? 0 : Double.parseDouble(precioMin);
+        } catch (NumberFormatException e) {
+            throw new Exception("El precio mínimo debe ser un número válido.");
+        }
+
+        try {
+            maxPrecio = precioMax == null || precioMax.isBlank() ? 0 : Double.parseDouble(precioMax);
+        } catch (NumberFormatException e) {
+            throw new Exception("El precio máximo debe ser un número válido.");
+        }
+
+        if (minPrecio < 0 || maxPrecio < 0) throw new Exception("Los precios no pueden ser negativos.");
+        if (maxPrecio > 0 && minPrecio > maxPrecio) throw new Exception("El precio mínimo no puede ser mayor al precio máximo.");
+        if (nombre != null && !nombre.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]*$")) throw new Exception("El nombre ingresado contiene caracteres inválidos.");
+
+        return alojamientoRepositorio.obtenerAlojamientosPorFiltro(tipoAlojamiento, nombre, ciudad, minPrecio, maxPrecio);
     }
 
 

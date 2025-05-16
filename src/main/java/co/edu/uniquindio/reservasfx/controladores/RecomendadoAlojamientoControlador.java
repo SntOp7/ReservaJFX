@@ -50,7 +50,9 @@ public class RecomendadoAlojamientoControlador {
 
     String cedulaCliente;
 
-    boolean esOferta = false;
+    final static int MAX_ALOJAMIENTOS_POR_PAGINA = 10;
+    StackPane[] stacks = {primerStack, segundoStack, tercerStack, cuartoStack, quintoStack,
+            sextoStack, novenoStack, decimoStack, septimoStack, octavoStack};
     int paginaActual;
     int totalPaginas;
 
@@ -60,20 +62,12 @@ public class RecomendadoAlojamientoControlador {
             paginaActual = 1;
             if (controlador.getSesion().getUsuario() == null) {
                 alojamientosCliente = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerAlojamientosAleatorios();
-                totalPaginas = alojamientosCliente.size() / 10;
-                totalPaginas = totalPaginas + (alojamientosCliente.size() % 10 == 0 ? 0 : 1);
-                numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
-                alojamientosPagina = determinarAlojamientosPagina(alojamientosCliente);
-                cargarListaAlojamientos(alojamientosPagina);
+                cargarDatosPanelConAlojamientos(alojamientosCliente);
             } else {
                 cedulaCliente = controlador.getSesion().getUsuario().getCedula();
                 ArrayList<Reserva> reservasCliente = controlador.getEmpresa().getModuloComercialServicios().obtenerReservasCliente(cedulaCliente);
                 alojamientosCliente = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerAlojamientosPreferenciasCliente(reservasCliente);
-                totalPaginas = alojamientosCliente.size() / 10;
-                totalPaginas = totalPaginas + (alojamientosCliente.size() % 10 == 0 ? 0 : 1);
-                numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
-                alojamientosPagina = determinarAlojamientosPagina(alojamientosCliente);
-                cargarListaAlojamientos(alojamientosPagina);
+                cargarDatosPanelConAlojamientos(alojamientosCliente);
             }
 
         } catch (Exception e) {
@@ -81,48 +75,12 @@ public class RecomendadoAlojamientoControlador {
         }
     }
 
-    public ArrayList<Alojamiento> determinarAlojamientosPagina(ArrayList<Alojamiento> alojamientos) {
-        ArrayList<Alojamiento> alojamientoArrayList = new ArrayList<>();
-        try {
-            int max = paginaActual * 10 - 1;
-            int min = max - 9;
-            alojamientoArrayList = controlador.getEmpresa()
-                    .getModuloAlojamientoServicios()
-                    .obtenerAlojamientosRango(min, max, alojamientos);
-        } catch (Exception e) {
-            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
-        }
-        return alojamientoArrayList;
-    }
-
-    public void cargarListaAlojamientos(ArrayList<Alojamiento> alojamientos) {
-        String rutaFXML = "/co/edu/uniquindio/reservasfx/alojamiento.fxml";
-        StackPane[] stacks = {
-                primerStack, segundoStack, tercerStack, cuartoStack, quintoStack,
-                sextoStack, septimoStack, octavoStack, novenoStack, decimoStack
-        };
-
-        for (int i = 0; i < alojamientos.size() && i < stacks.length; i++) {
-            cargarAlojamiento(rutaFXML, stacks[i], alojamientos.get(i));
-        }
-    }
-
-    public void cargarAlojamiento(String rutaFXML, StackPane stack, Alojamiento alojamiento) {
-        Parent node = cargarPanel(rutaFXML, alojamiento);
-        stack.getChildren().setAll(node);
-    }
-
-    public Parent cargarPanel(String fxmlFile, Alojamiento alojamiento) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-            Parent node = loader.load();
-            AlojamientoControlador alojamientoControlador = loader.getController();
-            alojamientoControlador.inicializarValores(alojamiento);
-            return node;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+    private void cargarDatosPanelConAlojamientos(ArrayList<Alojamiento> alojamientosCliente) {
+        totalPaginas = alojamientosCliente.size() / 10;
+        totalPaginas = totalPaginas + (alojamientosCliente.size() % 10 == 0 ? 0 : 1);
+        numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
+        alojamientosPagina = controlador.determinarAlojamientosPagina(paginaActual, MAX_ALOJAMIENTOS_POR_PAGINA, alojamientosCliente);
+        controlador.cargarListaAlojamientos(alojamientosPagina, stacks);
     }
 
     @FXML
@@ -130,8 +88,8 @@ public class RecomendadoAlojamientoControlador {
         if (paginaActual == 1) return;
 
         paginaActual--;
-        alojamientosPagina = determinarAlojamientosPagina(alojamientosCliente);
-        cargarListaAlojamientos(alojamientosPagina);
+        alojamientosPagina = controlador.determinarAlojamientosPagina(paginaActual, MAX_ALOJAMIENTOS_POR_PAGINA, alojamientosCliente);
+        controlador.cargarListaAlojamientos(alojamientosPagina, stacks);
         numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
     }
 
@@ -140,8 +98,8 @@ public class RecomendadoAlojamientoControlador {
         if (paginaActual == totalPaginas) return;
 
         paginaActual++;
-        alojamientosPagina = determinarAlojamientosPagina(alojamientosCliente);
-        cargarListaAlojamientos(alojamientosPagina);
+        alojamientosPagina = controlador.determinarAlojamientosPagina(paginaActual, MAX_ALOJAMIENTOS_POR_PAGINA, alojamientosCliente);
+        controlador.cargarListaAlojamientos(alojamientosPagina, stacks);
         numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
     }
 
@@ -149,11 +107,7 @@ public class RecomendadoAlojamientoControlador {
         try {
             ArrayList<Oferta> ofertas = controlador.getEmpresa().getModuloComercialServicios().obtenerOfertas();
             alojamientosOferta = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerAlojamientosOfertados(ofertas);
-            totalPaginas = alojamientosOferta.size() / 10;
-            totalPaginas = totalPaginas + (alojamientosOferta.size() % 10 == 0 ? 0 : 1);
-            numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
-            alojamientosPagina = determinarAlojamientosPagina(alojamientosOferta);
-            cargarListaAlojamientos(alojamientosPagina);
+            cargarDatosPanelConAlojamientos(alojamientosOferta);
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }

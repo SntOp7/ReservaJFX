@@ -49,17 +49,30 @@ public class PanePrincipalControlador {
 
     public void actualizarInferiorPersonalizadoFiltrado(String fxmlFile, String titulo) {
         inicioInferiorStack.getChildren().clear();
-        Parent node = cargarPanelPer(fxmlFile);
+        Parent node = cargarPanelPerFiltrado(fxmlFile, titulo);
         inicioInferiorStack.getChildren().add(node);
+    }
+
+    private Parent cargarPanelPerFiltrado(String fxmlFile, String titulo) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Parent node = loader.load();
+            FiltradoAlojamientoControlador filtradoAlojamientoControlador = loader.getController();
+            filtradoAlojamientoControlador.inicializarValores(titulo);
+            return node;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void actualizarInferiorPersonalizadoOferta(String fxmlFile) {
         inicioInferiorStack.getChildren().clear();
-        Parent node = cargarPanelPer(fxmlFile);
+        Parent node = cargarPanelPerOferta(fxmlFile);
         inicioInferiorStack.getChildren().add(node);
     }
 
-    private Parent cargarPanelPer(String fxmlFile) {
+    private Parent cargarPanelPerOferta(String fxmlFile) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent node = loader.load();

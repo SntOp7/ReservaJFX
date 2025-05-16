@@ -32,22 +32,29 @@ public class HeaderSesionControlador {
 
     @FXML
     void casaBtnAction(ActionEvent event) {
-        panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/filtradoAlojamiento.fxml");
+        panePrincipalControlador.actualizarInferiorPersonalizadoFiltrado(
+                "/co/edu/uniquindio/reservasfx/filtradoAlojamiento.fxml",
+                "Información de Casas");
     }
 
     @FXML
     void apartamentoBtnAction(ActionEvent event) {
-        panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/filtradoAlojamiento.fxml");
+        panePrincipalControlador.actualizarInferiorPersonalizadoFiltrado(
+                "/co/edu/uniquindio/reservasfx/filtradoAlojamiento.fxml",
+                "Información de Apartamentos");
     }
 
     @FXML
     void hotelBtnAction(ActionEvent event) {
-        panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/filtradoAlojamiento.fxml");
+        panePrincipalControlador.actualizarInferiorPersonalizadoFiltrado(
+                "/co/edu/uniquindio/reservasfx/filtradoAlojamiento.fxml",
+                "Información de Hoteles");
     }
 
     @FXML
     void ofertaBtnAction(ActionEvent event) {
-        panePrincipalControlador.actualizarInferiorPersonalizadoOferta("/co/edu/uniquindio/reservasfx/recomendadoAlojamiento.fxml");
+        panePrincipalControlador.actualizarInferiorPersonalizadoOferta(
+                "/co/edu/uniquindio/reservasfx/recomendadoAlojamiento.fxml");
     }
 
     @FXML

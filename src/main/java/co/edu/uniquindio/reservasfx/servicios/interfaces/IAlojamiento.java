@@ -40,8 +40,8 @@ public interface IAlojamiento {
 
     ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(ArrayList<Deseo> deseosCliente) throws Exception;
 
-    ArrayList<Alojamiento> obtenerAlojamientosPorFiltro(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad,
-                                                        double precioMin, double precioMax) throws Exception;
+    ArrayList<Alojamiento> obtenerAlojamientosPorFiltro(TipoAlojamiento tipoAlojamiento, String nombre, String ciudad,
+                                                        String precioMin, String precioMax) throws Exception;
 
     ArrayList<Alojamiento> obtenerAlojamientosRango(int min, int max, ArrayList<Alojamiento> totalAlojamientos) throws Exception;
 
