@@ -32,11 +32,12 @@ public class NotificacionesNoLeidasControlador {
     private ArrayList<Notificacion> notificaciones;
     private ArrayList<Notificacion> notificacionesPagina;
 
-    private final StackPane[] stacks = {primerStack, segundoStack, tercerStack, cuartoStack, quintoStack};
+    private StackPane[] stacks;
 
     @FXML
     public void initialize() {
         try {
+            stacks = new StackPane[]{primerStack, segundoStack, tercerStack, cuartoStack, quintoStack};
             String cedula = controlador.getSesion().getUsuario().getCedula();
             notificaciones = controlador.getEmpresa().getModuloUsuarioServicios().obtenerNotificacionesNoLeidas(cedula);
 
@@ -85,7 +86,7 @@ public class NotificacionesNoLeidasControlador {
 
             if (i < notificaciones.size()) {
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/notificacionCliente.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/reservasfx/vistas/notificacionCliente.fxml"));
                     Parent root = loader.load();
                     NotificacionClienteController controlador = loader.getController();
                     controlador.inicializarValores(notificaciones.get(i));
