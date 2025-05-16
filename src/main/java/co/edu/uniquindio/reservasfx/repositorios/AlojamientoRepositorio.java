@@ -48,38 +48,186 @@ public class AlojamientoRepositorio {
 
     public void listarAlojamientos() {
         alojamientos.add(Casa.builder()
-                        .id("CASA-001")
-                        .nombre("Casa Campestre El Paraíso")
-                        .precioPorNoche(250)
-                        .capacidadMaxima(6)
-                        .ciudad(Ciudad.ARMENIA)
-                        .imagenPrincipal("@img/bookYourStay.png")
-                        .build());
+                .id("CASA-001")
+                .nombre("Casa Campestre El Paraíso")
+                .precioPorNoche(250)
+                .capacidadMaxima(6)
+                .ciudad(Ciudad.ARMENIA)
+                .imagenPrincipal("@img/bookYourStay.png")
+                .build());
 
         alojamientos.add(Apartamento.builder()
-                        .id("APT-001")
-                        .nombre("Apartamento Central Loft")
-                        .precioPorNoche(180)
-                        .capacidadMaxima(4)
-                        .ciudad(Ciudad.BOGOTA)
-                        .build());
+                .id("APT-001")
+                .nombre("Apartamento Central Loft")
+                .precioPorNoche(180)
+                .capacidadMaxima(4)
+                .ciudad(Ciudad.BOGOTA)
+                .imagenPrincipal("@img/apt_loft.png")
+                .build());
 
         alojamientos.add(Hotel.builder()
-                        .id("HOTEL-001")
-                        .nombre("Hotel Boutique Andino")
-                        .precioPorNoche(320)
-                        .capacidadMaxima(2)
-                        .ciudad(Ciudad.MEDELLIN)
-                        .build());
+                .id("HOTEL-001")
+                .nombre("Hotel Boutique Andino")
+                .precioPorNoche(320)
+                .capacidadMaxima(2)
+                .ciudad(Ciudad.MEDELLIN)
+                .imagenPrincipal("@img/hotel_andino.png")
+                .build());
 
         alojamientos.add(Casa.builder()
-                        .id("CASA-002")
-                        .nombre("Casa Familiar Las Palmas")
-                        .precioPorNoche(220)
-                        .capacidadMaxima(5)
-                        .ciudad(Ciudad.CARTAGENA)
-                        .build());
+                .id("CASA-002")
+                .nombre("Casa Familiar Las Palmas")
+                .precioPorNoche(220)
+                .capacidadMaxima(5)
+                .ciudad(Ciudad.CARTAGENA)
+                .imagenPrincipal("@img/casa_palmas.png")
+                .build());
+
+        alojamientos.add(Hotel.builder()
+                .id("HOTEL-002")
+                .nombre("Hotel Playa Dorada")
+                .precioPorNoche(400)
+                .capacidadMaxima(3)
+                .ciudad(Ciudad.SANTA_MARTA)
+                .imagenPrincipal("@img/hotel_playa.png")
+                .build());
+
+        alojamientos.add(Apartamento.builder()
+                .id("APT-002")
+                .nombre("Apartamento Vista al Mar")
+                .precioPorNoche(200)
+                .capacidadMaxima(2)
+                .ciudad(Ciudad.CARTAGENA)
+                .imagenPrincipal("@img/apt_mar.png")
+                .build());
+
+        alojamientos.add(Casa.builder()
+                .id("CASA-003")
+                .nombre("Casa Colonial del Centro")
+                .precioPorNoche(270)
+                .capacidadMaxima(6)
+                .ciudad(Ciudad.BOGOTA)
+                .imagenPrincipal("@img/casa_colonial.png")
+                .build());
+
+        alojamientos.add(Hotel.builder()
+                .id("HOTEL-003")
+                .nombre("Hotel Nevado Deluxe")
+                .precioPorNoche(380)
+                .capacidadMaxima(4)
+                .ciudad(Ciudad.MANIZALES)
+                .imagenPrincipal("@img/hotel_nevado.png")
+                .build());
+
+        alojamientos.add(Apartamento.builder()
+                .id("APT-003")
+                .nombre("Apartamento Urbano 22")
+                .precioPorNoche(190)
+                .capacidadMaxima(3)
+                .ciudad(Ciudad.MEDELLIN)
+                .imagenPrincipal("@img/apt_urbano.png")
+                .build());
+
+        alojamientos.add(Casa.builder()
+                .id("CASA-004")
+                .nombre("Casa Tranquila del Bosque")
+                .precioPorNoche(210)
+                .capacidadMaxima(5)
+                .ciudad(Ciudad.PEREIRA)
+                .imagenPrincipal("@img/casa_bosque.png")
+                .build());
+
+        alojamientos.add(Hotel.builder()
+                .id("HOTEL-004")
+                .nombre("Hotel Jardines del Valle")
+                .precioPorNoche(350)
+                .capacidadMaxima(2)
+                .ciudad(Ciudad.ARMENIA)
+                .imagenPrincipal("@img/hotel_jardines.png")
+                .build());
+
+        alojamientos.add(Apartamento.builder()
+                .id("APT-004")
+                .nombre("Apartamento Torre 9")
+                .precioPorNoche(175)
+                .capacidadMaxima(2)
+                .ciudad(Ciudad.CALI)
+                .imagenPrincipal("@img/apt_torre.png")
+                .build());
+
+        alojamientos.add(Casa.builder()
+                .id("CASA-005")
+                .nombre("Casa del Río")
+                .precioPorNoche(280)
+                .capacidadMaxima(6)
+                .ciudad(Ciudad.MANIZALES)
+                .imagenPrincipal("@img/casa_rio.png")
+                .build());
+
+        alojamientos.add(Hotel.builder()
+                .id("HOTEL-005")
+                .nombre("Hotel El Descanso")
+                .precioPorNoche(290)
+                .capacidadMaxima(3)
+                .ciudad(Ciudad.SANTA_MARTA)
+                .imagenPrincipal("@img/hotel_descanso.png")
+                .build());
+
+        alojamientos.add(Apartamento.builder()
+                .id("APT-005")
+                .nombre("Apartamento Parque Norte")
+                .precioPorNoche(160)
+                .capacidadMaxima(2)
+                .ciudad(Ciudad.MEDELLIN)
+                .imagenPrincipal("@img/apt_parque.png")
+                .build());
+
+        alojamientos.add(Casa.builder()
+                .id("CASA-006")
+                .nombre("Casa Moderna Sabaneta")
+                .precioPorNoche(310)
+                .capacidadMaxima(5)
+                .ciudad(Ciudad.MEDELLIN)
+                .imagenPrincipal("@img/casa_mod.png")
+                .build());
+
+        alojamientos.add(Hotel.builder()
+                .id("HOTEL-006")
+                .nombre("Hotel Colonial del Café")
+                .precioPorNoche(330)
+                .capacidadMaxima(4)
+                .ciudad(Ciudad.PEREIRA)
+                .imagenPrincipal("@img/hotel_cafe.png")
+                .build());
+
+        alojamientos.add(Apartamento.builder()
+                .id("APT-006")
+                .nombre("Apartamento Alto Prado")
+                .precioPorNoche(210)
+                .capacidadMaxima(3)
+                .ciudad(Ciudad.BARRANQUILLA)
+                .imagenPrincipal("@img/apt_prado.png")
+                .build());
+
+        alojamientos.add(Casa.builder()
+                .id("CASA-007")
+                .nombre("Casa Verde Tropical")
+                .precioPorNoche(260)
+                .capacidadMaxima(6)
+                .ciudad(Ciudad.SANTA_MARTA)
+                .imagenPrincipal("@img/casa_verde.png")
+                .build());
+
+        alojamientos.add(Hotel.builder()
+                .id("HOTEL-007")
+                .nombre("Hotel Bahía Real")
+                .precioPorNoche(370)
+                .capacidadMaxima(2)
+                .ciudad(Ciudad.CARTAGENA)
+                .imagenPrincipal("@img/hotel_bahia.png")
+                .build());
     }
+
 
     public Alojamiento buscarAlojamientoPorNombre(String nombre) {
         return alojamientos.stream()
