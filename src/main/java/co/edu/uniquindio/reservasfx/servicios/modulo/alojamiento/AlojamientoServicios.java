@@ -194,17 +194,13 @@ public class AlojamientoServicios {
     public ArrayList<Alojamiento> obtenerAlojamientosPorFiltro(TipoAlojamiento tipoAlojamiento, String nombre, String ciudad,
                                                                String precioMin, String precioMax) throws Exception {
 
-        if (ciudad == null || ciudad.isBlank()) throw new Exception("Debes seleccionar una ciudad.");
-
         double minPrecio;
         double maxPrecio;
-
         try {
             minPrecio = precioMin == null || precioMin.isBlank() ? 0 : Double.parseDouble(precioMin);
         } catch (NumberFormatException e) {
             throw new Exception("El precio mínimo debe ser un número válido.");
         }
-
         try {
             maxPrecio = precioMax == null || precioMax.isBlank() ? 0 : Double.parseDouble(precioMax);
         } catch (NumberFormatException e) {

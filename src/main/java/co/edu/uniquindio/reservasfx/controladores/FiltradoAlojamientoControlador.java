@@ -53,8 +53,7 @@ public class FiltradoAlojamientoControlador {
     PanePrincipalControlador panePrincipalControlador = PanePrincipalControlador.getInstancia();
 
     final static int MAX_ALOJAMIENTOS_POR_PAGINA = 6;
-    StackPane[] stacks = {primerStack, segundoStack, tercerStack, cuartoStack, quintoStack,
-            sextoStack};
+    StackPane[] stacks;
 
     ArrayList<Alojamiento> alojamientosFiltrados;
     ArrayList<Alojamiento> alojamientosDeseos;
@@ -66,6 +65,10 @@ public class FiltradoAlojamientoControlador {
 
     @FXML
     void initialize() {
+        stacks = new StackPane[]{
+                primerStack, segundoStack, tercerStack, cuartoStack, quintoStack, sextoStack
+        };
+
         paginaActual = 1;
         Ciudad[] ciudades = Ciudad.values();
         for (Ciudad ciudad : ciudades) {
@@ -90,6 +93,10 @@ public class FiltradoAlojamientoControlador {
 
             alojamientosFiltrados = controlador.getEmpresa().getModuloAlojamientoServicios()
                     .obtenerAlojamientosPorFiltro(tipoAlojamiento, nombre, ciudadSeleccionada, precioMin, precioMax);
+            if (alojamientosFiltrados.isEmpty()) {
+                limpiarAlojamientos();
+                return;
+            }
             cargarDatosPanelConAlojamientos(alojamientosFiltrados);
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);

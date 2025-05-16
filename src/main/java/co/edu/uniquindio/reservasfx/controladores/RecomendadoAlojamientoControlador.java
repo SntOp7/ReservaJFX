@@ -51,14 +51,17 @@ public class RecomendadoAlojamientoControlador {
     String cedulaCliente;
 
     final static int MAX_ALOJAMIENTOS_POR_PAGINA = 10;
-    StackPane[] stacks = {primerStack, segundoStack, tercerStack, cuartoStack, quintoStack,
-            sextoStack, novenoStack, decimoStack, septimoStack, octavoStack};
+    StackPane[] stacks;
     int paginaActual;
     int totalPaginas;
 
     @FXML
     void initialize() {
         try {
+            stacks = new StackPane[]{
+                    primerStack, segundoStack, tercerStack, cuartoStack, quintoStack,
+                    sextoStack, septimoStack, octavoStack, novenoStack, decimoStack
+            };
             paginaActual = 1;
             if (controlador.getSesion().getUsuario() == null) {
                 alojamientosCliente = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerAlojamientosAleatorios();

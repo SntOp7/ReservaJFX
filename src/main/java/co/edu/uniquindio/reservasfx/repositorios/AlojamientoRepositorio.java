@@ -190,11 +190,16 @@ public class AlojamientoRepositorio {
 
     public ArrayList<Alojamiento> obtenerAlojamientosPorFiltro(TipoAlojamiento tipoAlojamiento, String nombre, String ciudad, double minPrecio, double maxPrecio) {
         return alojamientos.stream()
-                .filter(a -> a.getTipo().equals(tipoAlojamiento.getNombre().toLowerCase(Locale.ROOT)))
+                .filter(a -> {
+                    if (tipoAlojamiento == TipoAlojamiento.CASA) return a instanceof Casa;
+                    if (tipoAlojamiento == TipoAlojamiento.APARTAMENTO) return a instanceof Apartamento;
+                    if (tipoAlojamiento == TipoAlojamiento.HOTEL) return a instanceof Hotel;
+                    return false;
+                })
                 .filter(a -> nombre == null || nombre.isBlank() || a.getNombre().toLowerCase().startsWith(nombre.toLowerCase()))
                 .filter(a -> ciudad == null || ciudad.isBlank() || a.getCiudad().getNombre().equalsIgnoreCase(ciudad))
-                .filter(a -> (minPrecio <= 0 || a.getPrecioPorNoche() >= minPrecio) &&
-                        (maxPrecio <= 0 || a.getPrecioPorNoche() <= maxPrecio))
+                .filter(a -> minPrecio <= 0 || a.getPrecioPorNoche() >= minPrecio)
+                .filter(a -> maxPrecio <= 0 || a.getPrecioPorNoche() <= maxPrecio)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
