@@ -121,6 +121,18 @@ public class ControladorPrincipal {
         stage.showAndWait();
     }
 
+    public static Image cargarImagenSeleccionada(String nombreArchivo) {
+        String ruta = "/co/edu/uniquindio/reservasfx/img/" + nombreArchivo;
+        URL imagenUrl = ControladorPrincipal.class.getResource(ruta);
+
+        if (imagenUrl != null) {
+            return new Image(imagenUrl.toExternalForm());
+        } else {
+            System.err.println("No se encontró la imagen en la ruta: " + ruta);
+            return null;
+        }
+    }
+
     public void cargarImagen(String imagePath, ImageView imageView) {
         if (imagePath == null || imageView == null) {
             return;
