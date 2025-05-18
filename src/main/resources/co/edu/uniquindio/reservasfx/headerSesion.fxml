@@ -10,7 +10,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.HeaderSesionControlador">
    <children>
       <HBox spacing="10" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff);">
@@ -93,7 +92,7 @@
                         <children>
                             <Button fx:id="notificacionBtn" onAction="#notificacionAction" prefHeight="62.0" prefWidth="64.0" style="-fx-background-color: #00bfff; -fx-background-radius: 50px;">
                                 <graphic>
-                                    <ImageView fitHeight="52.0" fitWidth="58.0">
+                                    <ImageView fx:id="imagenNotificacion" fitHeight="52.0" fitWidth="58.0">
                                         <image>
                                             <Image url="@img/notificacion.png" />
                                         </image>
