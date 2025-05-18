@@ -133,6 +133,7 @@ public class UsuarioServicios {
 
     public void guardarDeseo(String cedulaCliente, String idAlojamiento) throws Exception {
         Deseo deseo = new Deseo(cedulaCliente, idAlojamiento);
+        if (deseoRepositorio.buscarDeseo(cedulaCliente, idAlojamiento) != null) throw new Exception("Ya tienes este deseo");
         deseoRepositorio.agregar(deseo);
         Alojamiento alojamiento = alojamientoServicios.buscarAlojamientoPorId(idAlojamiento);
         notificacionServicios.enviarNotificacion(cedulaCliente, "Deseo Agregado",

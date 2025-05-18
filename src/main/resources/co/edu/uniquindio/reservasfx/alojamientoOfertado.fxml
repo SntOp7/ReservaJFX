@@ -12,7 +12,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
 
-<StackPane prefHeight="290.0" prefWidth="464.0" style="-fx-background-color: linear-gradient(to bottom right, #f5f7fa, #e8ecf1);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.AlojamientoControlador">
+<StackPane prefHeight="290.0" prefWidth="464.0" style="-fx-background-color: linear-gradient(to bottom right, #f5f7fa, #e8ecf1);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.AlojamientoOfertadoControlador">
     <children>
 
         <Circle fill="#5f5fa810" radius="100" translateX="-190" translateY="-135" />
@@ -40,7 +40,7 @@
                                     </StackPane.margin>
                                     <children>
                                         <Rectangle fill="#ff5252" height="40.0" width="133.0" />
-                                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="103.0" text="EN OFERTA!!!" textFill="WHITE">
+                                        <Label fx:id="ofertalbl" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="103.0" text="EN OFERTA!!!" textFill="WHITE">
                                             <font>
                                                 <Font name="System Bold" size="14.0" />
                                             </font>
@@ -58,7 +58,7 @@
 
                         <StackPane alignment="TOP_RIGHT" prefHeight="155.0" prefWidth="444.0">
                             <children>
-                                <Button fx:id="favoritoOfertaBtn" mnemonicParsing="false" onAction="#favoritoOfertaBtnAction" prefHeight="50.0" prefWidth="64.0" style="-fx-background-color: transparent;" translateX="-15" translateY="15">
+                                <Button fx:id="favoritoOfertaBtn" mnemonicParsing="false" onAction="#favoritoBtnAction" prefHeight="50.0" prefWidth="64.0" style="-fx-background-color: transparent;" translateX="-15" translateY="15">
                                     <graphic>
                                         <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -80,6 +80,19 @@
                                 </LinearGradient>
                             </fill>
                         </Rectangle>
+                  <StackPane alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="155.0" prefWidth="444.0">
+                     <children>
+                        <Button fx:id="favoritoOfertaBtn1" mnemonicParsing="false" onAction="#favoritoBtnAction" prefHeight="50.0" prefWidth="64.0" style="-fx-background-color: transparent;" translateX="-15" translateY="15">
+                           <graphic>
+                              <ImageView fx:id="imagenCorazon" fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/corazonSinRelleno.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </StackPane>
                     </children>
                 </StackPane>
 
@@ -179,7 +192,7 @@
                                             </children>
                                         </HBox>
 
-                                        <Button fx:id="consultarOfertaBtn" mnemonicParsing="false" onAction="#consultarOfertaBtnAction" prefHeight="24.0" prefWidth="76.0" style="-fx-background-color: #5f5fa8; -fx-text-fill: white; -fx-background-radius: 5;" text="Consultar">
+                                        <Button fx:id="consultarOfertaBtn" mnemonicParsing="false" onAction="#consultarBtnAction" prefHeight="24.0" prefWidth="76.0" style="-fx-background-color: #5f5fa8; -fx-text-fill: white; -fx-background-radius: 5;" text="Consultar">
                                             <font>
                                                 <Font name="System Bold" size="11.0" />
                                             </font>

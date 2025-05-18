@@ -70,6 +70,7 @@ public class PanelAdministracionControlador {
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
     PanePrincipalControlador panePrincipalControlador = PanePrincipalControlador.getInstancia();
     CostoAdicionalAlojamientoControlador costoAdicionalAlojamientoControlador;
+    ListaHabitacionesAlojamientoControlador listaHabitacionesAlojamientoControlador;
 
     ObservableList<TipoServicio> tipoServicios;
 
@@ -154,20 +155,7 @@ public class PanelAdministracionControlador {
 
     @FXML
     void imagenPrincipalBtnAction(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Seleccionar imagen de perfil");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg", "*.gif")
-        );
-        File archivoSeleccionado = fileChooser.showOpenDialog(null);
-        if (archivoSeleccionado != null) {
-            try {
-                Image imagenSeleccionada = new Image(archivoSeleccionado.toURI().toString());
-                imagenPrincipal.setImage(imagenSeleccionada);
-            } catch (Exception e) {
-                controlador.crearAlerta("No se pudo cargar la imagen seleccionada.", Alert.AlertType.ERROR);
-            }
-        }
+        controlador.seleccionarImagen(imagenPrincipal);
     }
 
     @FXML
@@ -203,36 +191,17 @@ public class PanelAdministracionControlador {
 
     @FXML
     void registrarAlojamientoBtn(ActionEvent event) {
-        if (tipoAlojamientoBox.getSelectionModel().getSelectedItem() == null) {
-            controlador.crearAlerta("Debe seleccionar un tipo de alojamiento, para añadir los datos adicionales.",
-                    Alert.AlertType.ERROR);
-            return;
-        }
-        TipoAlojamiento tipoAlojamiento = TipoAlojamiento.valueOf(tipoAlojamientoBox.getSelectionModel().getSelectedItem().toUpperCase());
-        double precioNoche;
-        int capacidad;
-        double costoAdicional;
-        try {
-            precioNoche = Double.parseDouble(precioNocheField.getText());
-            capacidad = Integer.parseInt(capacidadField.getText());
-            //costoAdicional = Double.parseDouble(costoAdicionalAlojamientoControlador.getCostoAdicional());
-        } catch (NumberFormatException e) {
-            controlador.crearAlerta("Formato de precio, capacidad o costo adicional incorrecto.", Alert.AlertType.ERROR);
-            return;
-        }
         String urlPrincipal = imagenPrincipal.getImage().getUrl();
         String urlSecundaria1 = imagenSecundaria1.getImage().getUrl();
         String urlSecundaria2 = imagenSecundaria2.getImage().getUrl();
         String urlSecundaria3 = imagenSecundaria3.getImage().getUrl();
         ArrayList<String> imagenes = new ArrayList<>();
+        String tipoAlojamiento = tipoAlojamientoBox.getSelectionModel().getSelectedItem();
+        if (tipoAlojamiento == null) return;
         imagenes.add(urlSecundaria1);
         imagenes.add(urlSecundaria2);
         imagenes.add(urlSecundaria3);
         String nombre = nombreField.getText();
-        if (ciudadBox.getSelectionModel().getSelectedItem() == null) {
-            controlador.crearAlerta("Debe seleccionar una ciudad.", Alert.AlertType.ERROR);
-            return;
-        }
         Ciudad ciudad = Ciudad.valueOf(ciudadBox.getSelectionModel().getSelectedItem().toUpperCase());
         String descripcion = descripcionField.getText();
         ObservableList<TipoServicio> serviciosSeleccionados = tablaTipoServicios.getSelectionModel().getSelectedItems();
@@ -263,9 +232,9 @@ public class PanelAdministracionControlador {
     private Parent cargarPanelHotel() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                    "/co/edu/uniquindio/reservasfx/.fxml"));
+                    "/co/edu/uniquindio/reservasfx/listaHabitacionesAlojamiento.fxml"));
             Parent node = loader.load();
-
+            listaHabitacionesAlojamientoControlador = loader.getController();
             return node;
         } catch (Exception e) {
             e.printStackTrace();
