@@ -48,6 +48,7 @@ public class ListaHabitacionesAlojamientoControlador {
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
 
     ObservableList<Habitacion> habitacionesTabla;
+    ArrayList<Habitacion> habitaciones = new ArrayList<>();
 
     @FXML
     void initialize() {
@@ -69,8 +70,9 @@ public class ListaHabitacionesAlojamientoControlador {
 
     private void initData() {
         try {
-            habitacionesTabla.setAll(controlador.getEmpresa().getModuloAlojamientoServicios()
-                    .obtenerHabitacionesHotel(AlojamientoSelect.getInstancia().getAlojamiento().getId()));
+            habitaciones = controlador.getEmpresa().getModuloAlojamientoServicios()
+                    .obtenerHabitacionesHotel(AlojamientoSelect.getInstancia().getAlojamiento().getId());
+            habitacionesTabla.setAll(habitaciones);
             tableHabitacionesAgregadas.setItems(habitacionesTabla);
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
@@ -92,7 +94,8 @@ public class ListaHabitacionesAlojamientoControlador {
         try {
             Habitacion habitacion = controlador.getEmpresa().getModuloAlojamientoServicios().crearHabitacion(numeroHabitacion,
                     precioAdicional, capacidad, descripcion, urlImagen);
-            habitacionesTabla.add(habitacion);
+            habitaciones.add(habitacion);
+            habitacionesTabla.setAll(habitaciones);
             tableHabitacionesAgregadas.setItems(habitacionesTabla);
             controlador.crearAlerta("Se ha agregado la habitación a la lista", Alert.AlertType.INFORMATION);
         } catch (Exception e) {
@@ -103,6 +106,7 @@ public class ListaHabitacionesAlojamientoControlador {
     @FXML
     void eliminarHabitacionBtnAction(ActionEvent event) {
         Habitacion habitacion = tableHabitacionesAgregadas.getSelectionModel().getSelectedItem();
+        habitaciones.remove(habitacion);
         habitacionesTabla.remove(habitacion);
         tableHabitacionesAgregadas.setItems(habitacionesTabla);
         controlador.crearAlerta("Se ha eliminado la habitación de la lista", Alert.AlertType.INFORMATION);

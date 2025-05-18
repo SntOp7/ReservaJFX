@@ -35,7 +35,7 @@ public class ModuloAlojamientoServicios implements IAlojamiento {
     }
 
     @Override
-    public void registrarAlojamiento(String tipoAlojamiento, String nombre, String ciudad, String descripcion,
+    public void registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, String ciudad, String descripcion,
                                      String precioPorNoche, String capacidadMaxima, ArrayList<TipoServicio> servicios,
                                      String imagenPrincipal, ArrayList<String> imagenes, String costoAseoYMantenimiento,
                                      ArrayList<Habitacion> habitaciones) throws Exception {
@@ -55,6 +55,9 @@ public class ModuloAlojamientoServicios implements IAlojamiento {
                                   String precioPorNoche, String capacidadMaxima, ArrayList<TipoServicio> servicios,
                                   String imagenPrincipal, ArrayList<String> imagenes, String costoAseoYMantenimiento,
                                   ArrayList<Habitacion> habitaciones) throws Exception {
+
+        alojamientoServicios.editarAlojamiento(id, tipoAlojamiento, nombre, descripcion, precioPorNoche, capacidadMaxima,
+                servicios, imagenPrincipal, imagenes, costoAseoYMantenimiento);
         if (tipoAlojamiento.equals(TipoAlojamiento.HOTEL)) {
             if (habitaciones == null || habitaciones.isEmpty())
                 throw new Exception("Debe quedar registrado al menos una Habitación para el Hotel");

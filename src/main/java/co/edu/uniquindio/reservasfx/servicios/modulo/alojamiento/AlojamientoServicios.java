@@ -33,12 +33,10 @@ public class AlojamientoServicios {
         alojamientoRepositorio = new AlojamientoRepositorio();
     }
 
-    public Alojamiento registrarAlojamiento(String tipoAlojamientoString, String nombre, String ciudadString, String descripcion,
+    public Alojamiento registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, String ciudadString, String descripcion,
                                      String precioPorNocheString, String capacidadMaximaString, ArrayList<TipoServicio> servicios,
                                      String imagenPrincipal, ArrayList<String> imagenes, String costoAseoYMantenimientoString) throws Exception {
 
-        if (tipoAlojamientoString == null || tipoAlojamientoString.isEmpty()) throw new Exception("El tipo de alojamiento es obligatorio");
-        TipoAlojamiento tipoAlojamiento = TipoAlojamiento.valueOf(tipoAlojamientoString.toUpperCase());
         if (ciudadString == null || ciudadString.isEmpty()) throw new Exception("La ciudad es obligatoria");
         Ciudad ciudad = Ciudad.valueOf(ciudadString.toUpperCase());
         verificarCampos(tipoAlojamiento, nombre, descripcion, precioPorNocheString, capacidadMaximaString, servicios, imagenPrincipal,
@@ -80,7 +78,7 @@ public class AlojamientoServicios {
         }
     }
 
-    public Alojamiento editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion,
+    public void editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion,
                                   String precioPorNocheString, String capacidadMaximaString, ArrayList<TipoServicio> servicios,
                                   String imagenPrincipal, ArrayList<String> imagenes, String costoAseoYMantenimientoString) throws Exception {
 
@@ -107,7 +105,6 @@ public class AlojamientoServicios {
             ((Apartamento) alojamiento).setCostoAseoYMantenimiento(costoAseoYMantenimiento);
         }
         alojamientoRepositorio.editar(alojamiento);
-        return alojamiento;
     }
 
     public void editarServicios(String idAlojamiento, ArrayList<TipoServicio> servicios) {

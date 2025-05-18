@@ -3,8 +3,8 @@ package co.edu.uniquindio.reservasfx.modelo.enums;
 import lombok.Getter;
 
 public enum Ciudad {
-    BOGOTA("Bogotá"),
-    MEDELLIN("Medellín"),
+    BOGOTA("Bogota"),
+    MEDELLIN("Medellin"),
     CALI("Cali"),
     CARTAGENA("Cartagena"),
     BARRANQUILLA("Barranquilla"),

@@ -18,7 +18,7 @@ import java.util.LinkedList;
 
 public interface IAlojamiento {
 
-    void registrarAlojamiento(String tipoAlojamiento, String nombre, String ciudad, String descripcion,
+    void registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, String ciudad, String descripcion,
                               String precioPorNoche, String capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal,
                               ArrayList<String> imagenes, String costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception;
 
