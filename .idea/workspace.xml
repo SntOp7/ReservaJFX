@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="51ed1073-804c-4f43-b406-dbd702544cb9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/AlojamientoClienteControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/AlojamientoClienteControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/listaOfertas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/listaOfertas.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/listaResenias.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/listaResenias.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/NotificacionClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/NotificacionClienteController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
