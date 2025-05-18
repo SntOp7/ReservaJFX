@@ -7,7 +7,7 @@ import co.edu.uniquindio.reservasfx.modelo.factory.Casa;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class CostoAdicionalControlador {
+public class CostoAdicionalClienteControlador {
 
     @FXML
     private Label costoAseoMantenimientoLabel;

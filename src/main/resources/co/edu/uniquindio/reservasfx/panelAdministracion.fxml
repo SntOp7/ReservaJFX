@@ -60,7 +60,7 @@
                                                       <DropShadow color="#00000022" height="10" radius="4.5" width="10" />
                                                    </effect>
                                                 </Rectangle>
-                                                <ImageView fitHeight="195.0" fitWidth="274.0" pickOnBounds="true" preserveRatio="true" />
+                                                <ImageView fx:id="imagenPrincipal" fitHeight="195.0" fitWidth="274.0" pickOnBounds="true" preserveRatio="true" />
                                              </children>
                                           </StackPane>
                                           <Button fx:id="imagenPrincipalBtn" onAction="#imagenPrincipalBtnAction" prefWidth="300" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff); -fx-background-radius: 50px;" text="Agregar Imagen Principal">
@@ -83,7 +83,7 @@
                                                             <DropShadow color="#00000022" height="10" radius="4.5" width="10" />
                                                          </effect>
                                                       </Rectangle>
-                                                      <ImageView fitHeight="150.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true" />
+                                                      <ImageView fx:id="imagenSecundaria1" fitHeight="150.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true" />
                                                    </children>
                                                 </StackPane>
                                                 <StackPane prefHeight="200" prefWidth="120">
@@ -93,7 +93,7 @@
                                                             <DropShadow color="#00000022" height="10" radius="4.5" width="10" />
                                                          </effect>
                                                       </Rectangle>
-                                                      <ImageView fitHeight="150.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true" />
+                                                      <ImageView fx:id="imagenSecundaria2" fitHeight="150.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true" />
                                                    </children>
                                                 </StackPane>
                                                 <StackPane prefHeight="200" prefWidth="120">
@@ -103,7 +103,7 @@
                                                             <DropShadow color="#00000022" height="10" radius="4.5" width="10" />
                                                          </effect>
                                                       </Rectangle>
-                                                      <ImageView fitHeight="150.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true" />
+                                                      <ImageView fx:id="imagenSecundaria3" fitHeight="150.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true" />
                                                    </children>
                                                 </StackPane>
                                              </children>
@@ -217,7 +217,7 @@
 
                         <VBox spacing="15">
             <children>
-                              <StackPane prefHeight="343.0" prefWidth="893.0" style="-fx-background-color: white; -fx-background-radius: 10;" />
+                              <StackPane fx:id="tipoAlojamientoStack" prefHeight="343.0" prefWidth="893.0" style="-fx-background-color: white; -fx-background-radius: 10;" />
             
                               <HBox alignment="CENTER">
                <children>

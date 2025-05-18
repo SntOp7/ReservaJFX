@@ -90,7 +90,7 @@ public class FiltradoAlojamientoControlador {
             String ciudadSeleccionada = ciudadCombo.getValue();
             String precioMin = minTxt.getText();
             String precioMax = maxTxt.getText();
-
+            
             alojamientosFiltrados = controlador.getEmpresa().getModuloAlojamientoServicios()
                     .obtenerAlojamientosPorFiltro(tipoAlojamiento, nombre, ciudadSeleccionada, precioMin, precioMax);
             cargarDatosPanelConAlojamientos(alojamientosFiltrados);
@@ -100,6 +100,10 @@ public class FiltradoAlojamientoControlador {
     }
 
     private void cargarDatosPanelConAlojamientos(ArrayList<Alojamiento> alojamientos) {
+        if (alojamientos.isEmpty()) {
+            limpiarAlojamientos();
+            return;
+        }
         totalPaginas = alojamientos.size() / MAX_ALOJAMIENTOS_POR_PAGINA;
         totalPaginas = totalPaginas + (alojamientos.size() % MAX_ALOJAMIENTOS_POR_PAGINA == 0 ? 0 : 1);
         numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);

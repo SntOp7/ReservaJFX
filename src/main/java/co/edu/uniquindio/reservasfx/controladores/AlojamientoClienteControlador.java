@@ -2,21 +2,17 @@ package co.edu.uniquindio.reservasfx.controladores;
 import co.edu.uniquindio.reservasfx.modelo.AlojamientoSelect;
 import co.edu.uniquindio.reservasfx.modelo.SeleccionReserva;
 import co.edu.uniquindio.reservasfx.modelo.Sesion;
-import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Imagen;
-import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Usuario;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.repositorios.ImagenRepositorio;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
@@ -189,7 +185,7 @@ public class AlojamientoClienteControlador {
             try {
                 String rutaInfo;
                 if (tipo.equals("Casa") || tipo.equals("Apartamento")) {
-                    rutaInfo = "/co/edu/uniquindio/reservasfx/costoAdicional.fxml";
+                    rutaInfo = "/co/edu/uniquindio/reservasfx/costoAdicionalCliente.fxml";
                 } else if (tipo.equals("Hotel")) {
                     rutaInfo = "/co/edu/uniquindio/reservasfx/listaHabitaciones.fxml";
                 } else {
