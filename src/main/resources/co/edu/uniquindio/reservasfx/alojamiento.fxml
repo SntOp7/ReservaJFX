@@ -141,16 +141,6 @@
                                             </children>
                                         </HBox>
 
-                                        
-                                        <Button fx:id="consultarBtn" mnemonicParsing="false" onAction="#consultarBtnAction" prefHeight="24.0" prefWidth="76.0" style="-fx-background-color: #5f5fa8; -fx-text-fill: white; -fx-background-radius: 5;" text="Consultar">
-                                            <font>
-                                                <Font name="System Bold" size="11.0" />
-                                            </font>
-                                            <effect>
-                                                <DropShadow color="#00000040" height="3.0" radius="1.0" width="3.0" />
-                                            </effect>
-                                        </Button>
-
 
                                         <HBox alignment="CENTER_LEFT" spacing="5.0">
                                             <children>
@@ -170,6 +160,16 @@
                                                 </VBox>
                                             </children>
                                         </HBox>
+
+                                        <Button fx:id="consultarBtn" mnemonicParsing="false" onAction="#consultarBtnAction" prefHeight="24.0" prefWidth="76.0" style="-fx-background-color: #5f5fa8; -fx-text-fill: white; -fx-background-radius: 5;" text="Consultar">
+                                            <font>
+                                                <Font name="System Bold" size="11.0" />
+                                            </font>
+                                            <effect>
+                                                <DropShadow color="#00000040" height="3.0" radius="1.0" width="3.0" />
+                                            </effect>
+                                        </Button>
+
                                     </children>
                                     <padding>
                                         <Insets top="5.0" />
