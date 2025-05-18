@@ -10,6 +10,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -24,9 +26,30 @@ public class InicioSesionControlador {
     private PasswordField passwordTxt;
     @FXML
     private Hyperlink recuperacionHyp;
+    @FXML
+    private Region ojo;
+
+    private TextField passwordVisibleTxt = new TextField();
 
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
     PanePrincipalControlador panePrincipalControlador = PanePrincipalControlador.getInstancia();
+
+    @FXML
+    public void initialize() {
+        passwordVisibleTxt.setManaged(false);
+        passwordVisibleTxt.setVisible(false);
+
+        passwordVisibleTxt.setLayoutX(passwordTxt.getLayoutX());
+        passwordVisibleTxt.setLayoutY(passwordTxt.getLayoutY());
+        passwordVisibleTxt.setPrefWidth(passwordTxt.getPrefWidth());
+        passwordVisibleTxt.setPrefHeight(passwordTxt.getPrefHeight());
+
+        ((Pane) passwordTxt.getParent()).getChildren().add(passwordVisibleTxt);
+
+        passwordVisibleTxt.textProperty().bindBidirectional(passwordTxt.textProperty());
+
+        ojo.setOnMouseClicked(e -> togglePasswordVisibility());
+    }
 
     @FXML
     void ingresarSesionAction(ActionEvent event) {
@@ -73,6 +96,22 @@ public class InicioSesionControlador {
                     "Recuperar Cuenta", correoTxt.getText());
         } else {
             controlador.crearAlerta("No se encontro un usuario con el correo ingresado", Alert.AlertType.ERROR);
+        }
+    }
+
+    private void togglePasswordVisibility() {
+        if (passwordVisibleTxt.isVisible()) {
+            passwordVisibleTxt.setVisible(false);
+            passwordVisibleTxt.setManaged(false);
+
+            passwordTxt.setVisible(true);
+            passwordTxt.setManaged(true);
+        } else {
+            passwordVisibleTxt.setVisible(true);
+            passwordVisibleTxt.setManaged(true);
+
+            passwordTxt.setVisible(false);
+            passwordTxt.setManaged(false);
         }
     }
 }
