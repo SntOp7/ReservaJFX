@@ -2,6 +2,7 @@ package co.edu.uniquindio.reservasfx.controladores;
 import co.edu.uniquindio.reservasfx.modelo.Sesion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.BilleteraVirtual;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Notificacion;
+import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -26,8 +27,10 @@ public class RecargarBilleteraControlador {
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
     Sesion sesion = controlador.getSesion();
 
-    public void inicializarValores(BilleteraVirtual billetera) {
-        saldo_Lbl.setText(saldo_Lbl.getText() + billetera.getSaldo());
+    public void inicializarValores() {
+        String cedulaSesion = sesion.getUsuario().getCedula();
+        Cliente cliente = controlador.getEmpresa().getModuloUsuarioServicios().getUsuarioServicios().buscarClientePorCedula(cedulaSesion);
+        saldo_Lbl.setText(saldo_Lbl.getText() + cliente.getBilletera().getSaldo());
     }
 
     @FXML
