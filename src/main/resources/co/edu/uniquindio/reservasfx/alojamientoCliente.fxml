@@ -12,473 +12,412 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.paint.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.AlojamientoClienteControlador">
-    <children>
-       
-        <Rectangle arcHeight="0.0" arcWidth="0.0" height="740.0" stroke="BLACK" strokeType="INSIDE" width="900.0">
-            <fill>
-                <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
-                    <stops>
-                        <Stop color="#0d2e67" />
-                        <Stop color="#1c5cb4" offset="0.5" />
-                        <Stop color="#071940" offset="1.0" />
-                    </stops>
-                </LinearGradient>
-            </fill>
-        </Rectangle>
-
-
-        <Group>
-            <children>
-                <Circle fill="#ffffff10" layoutX="150.0" layoutY="120.0" radius="60.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-                <Circle fill="#ffffff15" layoutX="750.0" layoutY="80.0" radius="40.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-                <Polygon fill="#ffffff10" points="50.0, 300.0, 120.0, 350.0, 50.0, 400.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-                <Polygon fill="#ffffff10" points="850.0, 200.0, 800.0, 250.0, 850.0, 300.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-                <Line endX="300.0" endY="120.0" startX="200.0" startY="120.0" stroke="#ffffff20" strokeWidth="3.0" />
-                <Line endX="700.0" endY="200.0" startX="600.0" startY="200.0" stroke="#ffffff20" strokeWidth="3.0" />
-            </children>
-        </Group>
-
-
-        <VBox layoutY="20.0" prefHeight="150.0" prefWidth="900.0">
-            <children>
-                <HBox alignment="CENTER" prefHeight="521.0" prefWidth="900.0" spacing="30.0">
-                    <children>
-
-                        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="440.0" spacing="15.0">
-                            <children>
-
-                                <StackPane>
-                                    <children>
-
-                                        <Rectangle arcHeight="15.0" arcWidth="15.0" height="320.0" width="420.0">
-                                            <fill>
-                                                <LinearGradient endX="1.0" endY="1.0">
-                                                    <stops>
-                                                        <Stop color="BLACK" />
-                                                        <Stop color="WHITE" offset="0.5" />
-                                                        <Stop color="#2200ff" offset="1.0" />
-                                                    </stops>
-                                                </LinearGradient>
-                                            </fill>
-                                            <effect>
-                                                <DropShadow color="#00000080" height="15.0" radius="7.0" width="15.0" />
-                                            </effect>
-                                        </Rectangle>
-
-
-                                        <Rectangle arcHeight="10.0" arcWidth="10.0" height="305.0" width="405.0">
-                                            <fill>
-                                                <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
-                                                    <stops>
-                                                        <Stop color="#000a26" />
-                                                        <Stop color="#0d2a63" offset="1.0" />
-                                                    </stops>
-                                                </LinearGradient>
-                                            </fill>
-                                        </Rectangle>
-
-
-                                        <ImageView fx:id="imagenPrincipal" fitHeight="290.0" fitWidth="390.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@img/panelImagen.png" />
-                                            </image>
-                                            <effect>
-                                                <DropShadow color="#00000060" height="10.0" radius="4.5" width="10.0" />
-                                            </effect>
-                                        </ImageView>
-                                    </children>
-                                </StackPane>
-
-
-                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="400.0" spacing="15.0">
-                                    <children>
-
-                                        <Button fx:id="anteriorBtn" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#anteriorBtnAction">
-                                            <graphic>
-                                                <StackPane>
-                                                    <children>
-                                                        <Circle radius="20.0">
-                                                            <fill>
-                                                                <LinearGradient endX="1.0" endY="1.0">
-                                                                    <stops>
-                                                                        <Stop color="#332ac7" />
-                                                                        <Stop color="#9fa6ff" offset="0.5" />
-                                                                        <Stop color="#302ac7" offset="1.0" />
-                                                                    </stops>
-                                                                </LinearGradient>
-                                                            </fill>
-                                                            <effect>
-                                                                <DropShadow color="#00000080" height="10.0" radius="4.5" width="10.0" />
-                                                            </effect>
-                                                        </Circle>
-                                                        <Polygon points="-10.0, 0.0, 0.0, -10.0, 0.0, 10.0" stroke="WHITE" strokeType="INSIDE">
-                                                            <fill>
-                                                                <LinearGradient endX="1.0" endY="0.0" startX="0.0" startY="0.0">
-                                                                    <stops>
-                                                                        <Stop color="WHITE" />
-                                                                        <Stop color="#dcdcdc" offset="1.0" />
-                                                                    </stops>
-                                                                </LinearGradient>
-                                                            </fill>
-                                                        </Polygon>
-                                                    </children>
-                                                </StackPane>
-                                            </graphic>
-                                        </Button>
-
-
-                                        <HBox fx:id="thumbnailContainer" alignment="CENTER" prefHeight="100.0" prefWidth="300.0" spacing="10.0">
-                                            <children>
-
-                                                <StackPane>
-                                                    <children>
-                                                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="90.0" width="90.0">
-                                                            <fill>
-                                                                <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
-                                                                    <stops>
-                                                                        <Stop color="#c0c0c0" />
-                                                                        <Stop color="#f8f8f8" offset="0.5" />
-                                                                        <Stop color="#c0c0c0" offset="1.0" />
-                                                                    </stops>
-                                                                </LinearGradient>
-                                                            </fill>
-                                                        </Rectangle>
-                                                        <Rectangle arcHeight="3.0" arcWidth="3.0" height="82.0" width="82.0">
-                                                            <fill>
-                                                                <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
-                                                                    <stops>
-                                                                        <Stop color="#071940" />
-                                                                        <Stop color="#0d2e67" offset="1.0" />
-                                                                    </stops>
-                                                                </LinearGradient>
-                                                            </fill>
-                                                        </Rectangle>
-                                                        <ImageView fx:id="imagen1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
-                                                            <image>
-                                                                <Image url="@img/panelImagen.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                    </children>
-                                                    <effect>
-                                                        <DropShadow color="#00000080" height="8.0" radius="3.5" width="8.0" />
-                                                    </effect>
-                                                </StackPane>
-
-
-                                                <StackPane>
-                                                    <children>
-                                                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="90.0" width="90.0">
-                                                            <fill>
-                                                                <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
-                                                                    <stops>
-                                                                        <Stop color="#c0c0c0" />
-                                                                        <Stop color="#f8f8f8" offset="0.5" />
-                                                                        <Stop color="#c0c0c0" offset="1.0" />
-                                                                    </stops>
-                                                                </LinearGradient>
-                                                            </fill>
-                                                        </Rectangle>
-                                                        <Rectangle arcHeight="3.0" arcWidth="3.0" height="82.0" width="82.0">
-                                                            <fill>
-                                                                <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
-                                                                    <stops>
-                                                                        <Stop color="#071940" />
-                                                                        <Stop color="#0d2e67" offset="1.0" />
-                                                                    </stops>
-                                                                </LinearGradient>
-                                                            </fill>
-                                                        </Rectangle>
-                                                        <ImageView fx:id="imagen2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
-                                                            <image>
-                                                                <Image url="@img/panelImagen.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                    </children>
-                                                    <effect>
-                                                        <DropShadow color="#00000080" height="8.0" radius="3.5" width="8.0" />
-                                                    </effect>
-                                                </StackPane>
-
-
-                                                <StackPane>
-                                                    <children>
-                                                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="90.0" width="90.0">
-                                                            <fill>
-                                                                <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
-                                                                    <stops>
-                                                                        <Stop color="#c0c0c0" />
-                                                                        <Stop color="#f8f8f8" offset="0.5" />
-                                                                        <Stop color="#c0c0c0" offset="1.0" />
-                                                                    </stops>
-                                                                </LinearGradient>
-                                                            </fill>
-                                                        </Rectangle>
-                                                        <Rectangle fx:id="imagen3" arcHeight="3.0" arcWidth="3.0" height="82.0" width="82.0">
-                                                            <fill>
-                                                                <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
-                                                                    <stops>
-                                                                        <Stop color="#071940" />
-                                                                        <Stop color="#0d2e67" offset="1.0" />
-                                                                    </stops>
-                                                                </LinearGradient>
-                                                            </fill>
-                                                        </Rectangle>
-                                                        <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
-                                                            <image>
-                                                                <Image url="@img/panelImagen.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                    </children>
-                                                    <effect>
-                                                        <DropShadow color="#00000080" height="8.0" radius="3.5" width="8.0" />
-                                                    </effect>
-                                                </StackPane>
-                                            </children>
-                                        </HBox>
-
-
-                                        <Button fx:id="seguirBtn" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#seguirBtnAction">
-                                            <graphic>
-                                                <StackPane>
-                                                    <children>
-                                                        <Circle radius="20.0">
-                                                            <fill>
-                                                                <LinearGradient endX="1.0" endY="1.0">
-                                                                    <stops>
-                                                                        <Stop color="#2a31c7" />
-                                                                        <Stop color="#b5abf5" offset="0.5" />
-                                                                        <Stop color="#2c0cb0" offset="1.0" />
-                                                                    </stops>
-                                                                </LinearGradient>
-                                                            </fill>
-                                                            <effect>
-                                                                <DropShadow color="#00000080" height="10.0" radius="4.5" width="10.0" />
-                                                            </effect>
-                                                        </Circle>
-                                                        <Polygon points="10.0, 0.0, 0.0, -10.0, 0.0, 10.0" stroke="WHITE" strokeType="INSIDE">
-                                                            <fill>
-                                                                <LinearGradient endX="1.0" endY="0.0" startX="0.0" startY="0.0">
-                                                                    <stops>
-                                                                        <Stop color="WHITE" />
-                                                                        <Stop color="#dcdcdc" offset="1.0" />
-                                                                    </stops>
-                                                                </LinearGradient>
-                                                            </fill>
-                                                        </Polygon>
-                                                    </children>
-                                                </StackPane>
-                                            </graphic>
-                                        </Button>
-                                    </children>
-                                </HBox>
-                            </children>
-                        </VBox>
-
-
-                        <VBox alignment="CENTER_LEFT" prefHeight="509.0" prefWidth="440.0" spacing="20.0">
-                            <children>
-
-                                <StackPane prefHeight="510.0" prefWidth="439.0">
-                                    <children>
-                                        <Rectangle arcHeight="15.0" arcWidth="15.0" height="446.0" width="409.0">
-                                            <fill>
-                                                <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
-                                                    <stops>
-                                                        <Stop color="#18387080" />
-                                                        <Stop color="#18387060" offset="1.0" />
-                                                    </stops>
-                                                </LinearGradient>
-                                            </fill>
-                                            <effect>
-                                                <DropShadow color="#00000080" height="15.0" radius="7.0" width="15.0" />
-                                            </effect>
-                                        </Rectangle>
-
-
-                                        <VBox alignment="CENTER" prefHeight="410.0" prefWidth="409.0" spacing="15.0">
-                                            <children>
-
-                                                <Text fx:id="nombreText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
-                                                    <font>
-                                                        <Font name="Berlin Sans FB Bold" size="40.0" />
-                                                    </font>
-                                                    <effect>
-                                                        <DropShadow color="#00000080" height="3.0" radius="1.0" width="3.0" />
-                                                    </effect>
-                                                </Text>
-
-
-                                                <VBox spacing="15.0">
-                                                    <children>
-                                                        <HBox alignment="CENTER_LEFT" spacing="10.0">
-                                                            <children>
-                                                                <Circle fill="#372ac7" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
-                                                                <Text fx:id="ciudadText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad">
-                                                                    <font>
-                                                                        <Font name="Berlin Sans FB" size="17.0" />
-                                                                    </font>
-                                                                </Text>
-                                                            </children>
-                                                        </HBox>
-
-                                                        <HBox alignment="CENTER_LEFT" spacing="10.0">
-                                                            <children>
-                                                                <Circle fill="#372ac7" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
-                                                                <Text fx:id="descripcionText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripción" wrappingWidth="300.0">
-                                                                    <font>
-                                                                        <Font name="Berlin Sans FB" size="17.0" />
-                                                                    </font>
-                                                                </Text>
-                                                            </children>
-                                                        </HBox>
-
-                                                        <HBox alignment="CENTER_LEFT" spacing="10.0">
-                                                            <children>
-                                                                <Circle fill="#372ac7" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
-                                                                <Text fx:id="precioText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio">
-                                                                    <font>
-                                                                        <Font name="Berlin Sans FB" size="17.0" />
-                                                                    </font>
-                                                                </Text>
-                                                            </children>
-                                                        </HBox>
-
-                                                        <HBox alignment="CENTER_LEFT" spacing="10.0">
-                                                            <children>
-                                                                <Circle fill="#372ac7" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
-                                                                <Text fx:id="capacidadText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacidad">
-                                                                    <font>
-                                                                        <Font name="Berlin Sans FB" size="17.0" />
-                                                                    </font>
-                                                                </Text>
-                                                            </children>
-                                                        </HBox>
-                                                    </children>
-                                                </VBox>
-                                    <Label text="Realiza tu Reserva" textFill="WHITE">
-                                       <font>
-                                          <Font name="Berlin Sans FB" size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
-                                       <children>
-                                          <Circle fill="#372ac7" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
-                                          <Text fx:id="fechaInicioText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Inicio">
-                                             <font>
-                                                <Font name="Berlin Sans FB" size="17.0" />
-                                             </font>
-                                          </Text>
-                                          <DatePicker fx:id="fechaInicioDate" style="-fx-background-radius: 0;" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
-                                       <children>
-                                          <Circle fill="#372ac7" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
-                                          <Text fx:id="fechaFinText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Fin ">
-                                             <font>
-                                                <Font name="Berlin Sans FB" size="17.0" />
-                                             </font>
-                                          </Text>
-                                          <DatePicker fx:id="fechaFinDate" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
-                                       <children>
-                                          <Circle fill="#372ac7" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
-                                          <Text fx:id="huespedesText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Huéspedes">
-                                             <font>
-                                                <Font name="Berlin Sans FB" size="17.0" />
-                                             </font>
-                                          </Text>
-                                          <TextField fx:id="txtHuespedes" promptText="Número de Huéspedes" />
-                                       </children>
-                                    </HBox>
-
-
-                                                <HBox alignment="CENTER" prefHeight="60.0" prefWidth="400.0" spacing="20.0">
-                                       <children>
-                                          <Button fx:id="reservarBtn" mnemonicParsing="false" onAction="#reservarBtnAction" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(from 20% 0% to 100% 100%, #8BC34A,#2E7D32);" text="Reservar" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
-                                             <effect>
-                                                <Lighting diffuseConstant="2.0" specularConstant="0.47" specularExponent="37.07" surfaceScale="10.0">
-                                                   <bumpInput>
-                                                      <Shadow height="22.94" radius="5.235" width="0.0" />
-                                                   </bumpInput>
-                                                   <light>
-                                                      <Light.Distant color="#ffffffb8" />
-                                                   </light>
-                                                </Lighting>
-                                             </effect>
-                                             <font>
-                                                <Font name="Berlin Sans FB" size="15.0" />
-                                             </font></Button>
-                                          <Button fx:id="volverBtn" mnemonicParsing="false" onAction="#volverBtnAction" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(from 20% 0% to 100% 100%, #FF7043,#D32F2F);" text="Volver" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
-                                             <effect>
-                                                <Lighting diffuseConstant="2.0" specularConstant="0.47" specularExponent="37.07" surfaceScale="10.0">
-                                                   <bumpInput>
-                                                      <Shadow height="22.94" radius="5.235" width="0.0" />
-                                                   </bumpInput>
-                                                   <light>
-                                                      <Light.Distant color="#ffffffb8" />
-                                                   </light>
-                                                </Lighting>
-                                             </effect>
-                                             <font>
-                                                <Font name="Berlin Sans FB" size="15.0" />
-                                             </font>
-                                          </Button>
-                                       </children>
+<ScrollPane prefHeight="457.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.AlojamientoClienteControlador">
+   <content>
+      <AnchorPane id="AnchorPane" prefHeight="688.0" prefWidth="822.0">
+          <children>
+             
+              <Rectangle arcHeight="0.0" arcWidth="0.0" height="740.0" stroke="BLACK" strokeType="INSIDE" width="900.0">
+                  <fill>
+                      <LinearGradient endY="1.0">
+                          <stops>
+                              <Stop color="#0d2e67" />
+                              <Stop color="#1c5cb4" offset="0.5" />
+                              <Stop color="#0051ff" offset="1.0" />
+                          </stops>
+                      </LinearGradient>
+                  </fill>
+              </Rectangle>
+      
+      
+              <Group>
+                  <children>
+                      <Circle fill="#ffffff10" layoutX="150.0" layoutY="120.0" radius="60.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                      <Circle fill="#ffffff15" layoutX="750.0" layoutY="80.0" radius="40.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                      <Polygon fill="#ffffff10" points="50.0, 300.0, 120.0, 350.0, 50.0, 400.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                      <Polygon fill="#ffffff10" points="850.0, 200.0, 800.0, 250.0, 850.0, 300.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                      <Line endX="300.0" endY="120.0" startX="200.0" startY="120.0" stroke="#ffffff20" strokeWidth="3.0" />
+                      <Line endX="700.0" endY="200.0" startX="600.0" startY="200.0" stroke="#ffffff20" strokeWidth="3.0" />
+                  </children>
+              </Group>
+      
+      
+              <VBox layoutY="20.0" prefHeight="419.0" prefWidth="900.0">
+                  <children>
+                      <HBox alignment="CENTER" prefHeight="407.0" prefWidth="900.0" spacing="30.0">
+                          <children>
+      
+                              <VBox alignment="CENTER" prefHeight="362.0" prefWidth="435.0" spacing="15.0">
+                                  <children>
+      
+                                      <StackPane>
+                                          <children>
+      
+                                              <Rectangle arcHeight="15.0" arcWidth="15.0" height="194.0" width="238.0">
+                                                  <fill>
+                                                      <LinearGradient endX="1.0" endY="1.0">
+                                                          <stops>
+                                                              <Stop color="WHITE" />
+                                                              <Stop color="WHITE" offset="0.5" />
+                                                              <Stop color="#2200ff" offset="1.0" />
+                                                          </stops>
+                                                      </LinearGradient>
+                                                  </fill>
+                                                  <effect>
+                                                      <DropShadow color="#00000080" height="15.0" radius="7.0" width="15.0" />
+                                                  </effect>
+                                              </Rectangle>
+      
+      
+                                              <Rectangle arcHeight="10.0" arcWidth="10.0" height="190.0" width="228.0">
+                                                  <fill>
+                                                      <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
+                                                          <stops>
+                                                              <Stop color="#000a26" />
+                                                              <Stop color="#0d2a63" offset="1.0" />
+                                                          </stops>
+                                                      </LinearGradient>
+                                                  </fill>
+                                              </Rectangle>
+      
+      
+                                              <ImageView fx:id="imagenPrincipal" fitHeight="192.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+                                                  <image>
+                                                      <Image url="@img/panelImagen.png" />
+                                                  </image>
+                                                  <effect>
+                                                      <DropShadow color="#00000060" height="10.0" radius="4.5" width="10.0" />
+                                                  </effect>
+                                              </ImageView>
+                                          </children>
+                                      </StackPane>
+      
+      
+                                      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="400.0" spacing="15.0">
+                                          <children>
+      
+      
+                                              <HBox fx:id="thumbnailContainer" alignment="CENTER" prefHeight="100.0" prefWidth="300.0" spacing="10.0">
+                                                  <children>
+      
+                                                      <StackPane>
+                                                          <children>
+                                                              <Rectangle arcHeight="5.0" arcWidth="5.0" height="90.0" width="90.0">
+                                                                  <fill>
+                                                                      <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
+                                                                          <stops>
+                                                                              <Stop color="#c0c0c0" />
+                                                                              <Stop color="#f8f8f8" offset="0.5" />
+                                                                              <Stop color="#c0c0c0" offset="1.0" />
+                                                                          </stops>
+                                                                      </LinearGradient>
+                                                                  </fill>
+                                                              </Rectangle>
+                                                              <Rectangle arcHeight="3.0" arcWidth="3.0" height="82.0" width="82.0">
+                                                                  <fill>
+                                                                      <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
+                                                                          <stops>
+                                                                              <Stop color="#071940" />
+                                                                              <Stop color="#0d2e67" offset="1.0" />
+                                                                          </stops>
+                                                                      </LinearGradient>
+                                                                  </fill>
+                                                              </Rectangle>
+                                                              <ImageView fx:id="imagen1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                                                  <image>
+                                                                      <Image url="@img/panelImagen.png" />
+                                                                  </image>
+                                                              </ImageView>
+                                                          </children>
+                                                          <effect>
+                                                              <DropShadow color="#00000080" height="8.0" radius="3.5" width="8.0" />
+                                                          </effect>
+                                                      </StackPane>
+      
+      
+                                                      <StackPane>
+                                                          <children>
+                                                              <Rectangle arcHeight="5.0" arcWidth="5.0" height="90.0" width="90.0">
+                                                                  <fill>
+                                                                      <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
+                                                                          <stops>
+                                                                              <Stop color="#c0c0c0" />
+                                                                              <Stop color="#f8f8f8" offset="0.5" />
+                                                                              <Stop color="#c0c0c0" offset="1.0" />
+                                                                          </stops>
+                                                                      </LinearGradient>
+                                                                  </fill>
+                                                              </Rectangle>
+                                                              <Rectangle arcHeight="3.0" arcWidth="3.0" height="82.0" width="82.0">
+                                                                  <fill>
+                                                                      <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
+                                                                          <stops>
+                                                                              <Stop color="#071940" />
+                                                                              <Stop color="#0d2e67" offset="1.0" />
+                                                                          </stops>
+                                                                      </LinearGradient>
+                                                                  </fill>
+                                                              </Rectangle>
+                                                              <ImageView fx:id="imagen2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                                                  <image>
+                                                                      <Image url="@img/panelImagen.png" />
+                                                                  </image>
+                                                              </ImageView>
+                                                          </children>
+                                                          <effect>
+                                                              <DropShadow color="#00000080" height="8.0" radius="3.5" width="8.0" />
+                                                          </effect>
+                                                      </StackPane>
+      
+      
+                                                      <StackPane>
+                                                          <children>
+                                                              <Rectangle arcHeight="5.0" arcWidth="5.0" height="90.0" width="90.0">
+                                                                  <fill>
+                                                                      <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
+                                                                          <stops>
+                                                                              <Stop color="#c0c0c0" />
+                                                                              <Stop color="#f8f8f8" offset="0.5" />
+                                                                              <Stop color="#c0c0c0" offset="1.0" />
+                                                                          </stops>
+                                                                      </LinearGradient>
+                                                                  </fill>
+                                                              </Rectangle>
+                                                              <Rectangle fx:id="imagen3" arcHeight="3.0" arcWidth="3.0" height="82.0" width="82.0">
+                                                                  <fill>
+                                                                      <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
+                                                                          <stops>
+                                                                              <Stop color="#071940" />
+                                                                              <Stop color="#0d2e67" offset="1.0" />
+                                                                          </stops>
+                                                                      </LinearGradient>
+                                                                  </fill>
+                                                              </Rectangle>
+                                                              <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                                                  <image>
+                                                                      <Image url="@img/panelImagen.png" />
+                                                                  </image>
+                                                              </ImageView>
+                                                          </children>
+                                                          <effect>
+                                                              <DropShadow color="#00000080" height="8.0" radius="3.5" width="8.0" />
+                                                          </effect>
+                                                      </StackPane>
+                                                  </children>
+                                              </HBox>
+                                          </children>
+                                      </HBox>
+                                  </children>
+                              </VBox>
+      
+      
+                              <VBox alignment="CENTER_LEFT" prefHeight="509.0" prefWidth="440.0" spacing="20.0">
+                                  <children>
+      
+                                      <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="588.0" prefWidth="438.0">
+                                          <children>
+                                              <Rectangle arcHeight="15.0" arcWidth="15.0" height="446.0" width="409.0">
+                                                  <fill>
+                                                      <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
+                                                          <stops>
+                                                              <Stop color="#18387080" />
+                                                              <Stop color="#18387060" offset="1.0" />
+                                                          </stops>
+                                                      </LinearGradient>
+                                                  </fill>
+                                                  <effect>
+                                                      <DropShadow color="#00000080" height="15.0" radius="7.0" width="15.0" />
+                                                  </effect>
+                                              </Rectangle>
+                                    <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="412.0" prefViewportHeight="452.0" prefViewportWidth="438.0" prefWidth="418.0">
+                                       <content>
+            
+                  
+                                                          <VBox alignment="CENTER" minWidth="-Infinity" prefHeight="595.0" prefWidth="390.0" spacing="10.0" style="-fx-background-color: #240046;">
+                                                        <children>
+            
+                                                                  <Text fx:id="nombreText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
+                                                                <font>
+                                                                    <Font name="Berlin Sans FB Bold" size="40.0" />
+                                                                </font>
+                                                                <effect>
+                                                                    <DropShadow color="#00000080" height="3.0" radius="1.0" width="3.0" />
+                                                                </effect>
+                                                            </Text>
+            
+                  
+                                                                  <VBox spacing="15.0">
+                                                                <children>
+                                                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                                        <children>
+                                                                            <Circle fill="#e8e8e8" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+                                                                            <Text fx:id="ciudadText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad">
+                                                                                <font>
+                                                                                    <Font name="Berlin Sans FB" size="17.0" />
+                                                                                </font>
+                                                                            </Text>
+                                                                        </children>
+                                                                    </HBox>
+            
+                                                                          <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                                        <children>
+                                                                            <Circle fill="WHITE" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+                                                                            <Text fx:id="descripcionText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripción" wrappingWidth="300.0">
+                                                                                <font>
+                                                                                    <Font name="Berlin Sans FB" size="17.0" />
+                                                                                </font>
+                                                                            </Text>
+                                                                        </children>
+                                                                    </HBox>
+            
+                                                                          <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                                        <children>
+                                                                            <Circle fill="WHITE" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+                                                                            <Text fx:id="precioText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio">
+                                                                                <font>
+                                                                                    <Font name="Berlin Sans FB" size="17.0" />
+                                                                                </font>
+                                                                            </Text>
+                                                                        </children>
+                                                                    </HBox>
+            
+                                                                          <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                                        <children>
+                                                                            <Circle fill="WHITE" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+                                                                            <Text fx:id="capacidadText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacidad">
+                                                                                <font>
+                                                                                    <Font name="Berlin Sans FB" size="17.0" />
+                                                                                </font>
+                                                                            </Text>
+                                                                        </children>
+                                                                    </HBox>
+                                                                </children>
+                                                            </VBox>
+                                                <Label text="Realiza tu Reserva" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="Berlin Sans FB" size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                   <children>
+                                                      <Circle fill="WHITE" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+                                                      <Text fx:id="fechaInicioText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Inicio">
+                                                         <font>
+                                                            <Font name="Berlin Sans FB" size="17.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <DatePicker fx:id="fechaInicioDate" style="-fx-background-radius: 0;" />
+                                                   </children>
                                                 </HBox>
-                                            </children>
-                                            <padding>
-                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                            </padding>
-                                        </VBox>
-                                    </children>
-                                </StackPane>
-                            </children>
-                        </VBox>
-                    </children>
-                </HBox>
-            </children>
-        </VBox>
-
-
-        <VBox layoutY="470.0" prefHeight="75.0" prefWidth="900.0">
-            <children>
-                <!-- Barra de navegación con degradado elegante -->
-                <HBox alignment="CENTER" prefHeight="60.0" prefWidth="900.0">
-                    <children>
-
-
-                        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="900.0" spacing="20.0" style="-fx-background-color: #ffffff;">
-                            <children>
-                        <TabPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="307.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
-                          <tabs>
-                            <Tab fx:id="adicionalTab" text="Información Adicional">
-                                 <content>
-                                    <StackPane prefHeight="341.0" prefWidth="900.0" />
-                                 </content></Tab>
-                            <Tab fx:id="reseniaHuespedTab" text="Reseñas de Huéspedes">
-                              <content>
-                                    <StackPane prefHeight="274.0" prefWidth="759.0" />
-                              </content>
-                            </Tab>
-                              <Tab fx:id="ofertasEspecialesTab" text="Ofertas Especiales">
-                                 <content>
-                                    <StackPane layoutX="-1.0" layoutY="14.0" prefHeight="150.0" prefWidth="467.0" />
-                                 </content>
-                              </Tab>
-                          </tabs>
-                        </TabPane>
-                            </children>
-                        </HBox>
-                    </children>
-                </HBox>
-
-
-                <StackPane prefHeight="170.0" prefWidth="900.0" />
-            </children>
-        </VBox>
-    </children>
-</AnchorPane>
+                                                <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                                   <children>
+                                                      <Circle fill="WHITE" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+                                                      <Text fx:id="fechaFinText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Fin ">
+                                                         <font>
+                                                            <Font name="Berlin Sans FB" size="17.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <DatePicker fx:id="fechaFinDate" prefHeight="31.0" prefWidth="219.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" spacing="14.0">
+                                                   <children>
+                                                      <Circle fill="WHITE" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+                                                      <Text fx:id="huespedesText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Huéspedes">
+                                                         <font>
+                                                            <Font name="Berlin Sans FB" size="17.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <TextField fx:id="txtHuespedes" prefHeight="31.0" prefWidth="219.0" promptText="Número de Huéspedes" />
+                                                   </children>
+                                                </HBox>
+            
+                  
+                                                                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="400.0" spacing="20.0">
+                                                   <children>
+                                                      <Button fx:id="reservarBtn" mnemonicParsing="false" onAction="#reservarBtnAction" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(from 20% 0% to 100% 100%, #8BC34A,#2E7D32);" text="Reservar" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                                                         <font>
+                                                            <Font name="Berlin Sans FB" size="15.0" />
+                                                         </font>
+                                                      </Button>
+                                                      <Button fx:id="volverBtn" mnemonicParsing="false" onAction="#volverBtnAction" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(from 20% 0% to 100% 100%, #FF7043,#D32F2F);" text="Volver" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                                                         <font>
+                                                            <Font name="Berlin Sans FB" size="15.0" />
+                                                         </font>
+                                                      </Button>
+                                                   </children>
+                                                            </HBox>
+                                                <Label text="Servicios Incluidos" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="Berlin Sans FB" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <TableView fx:id="tablaServiciosIncluidos" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="157.0" prefWidth="366.0">
+                                                  <columns>
+                                                    <TableColumn fx:id="serviviosIncluidosColumn" prefWidth="365.0" text="Servicios Incluidos" />
+                                                  </columns>
+                                                   <VBox.margin>
+                                                      <Insets left="20.0" right="20.0" />
+                                                   </VBox.margin>
+                                                </TableView>
+                                                        </children>
+                                                        <padding>
+                                                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                        </padding>
+                                                    </VBox>
+                                       </content>
+                                       <StackPane.margin>
+                                          <Insets right="20.0" />
+                                       </StackPane.margin>
+                                    </ScrollPane>
+                                          </children>
+                                      </StackPane>
+                                  </children>
+                              </VBox>
+                          </children>
+                      </HBox>
+                  </children>
+              </VBox>
+      
+      
+              <VBox layoutY="470.0" prefHeight="75.0" prefWidth="900.0">
+                  <children>
+                      <!-- Barra de navegación con degradado elegante -->
+                      <HBox alignment="CENTER" prefHeight="267.0" prefWidth="900.0">
+                          <children>
+      
+      
+                              <HBox alignment="CENTER" prefHeight="60.0" prefWidth="900.0" spacing="20.0" style="-fx-background-color: #ffffff;">
+                                  <children>
+                              <TabPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="307.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
+                                <tabs>
+                                  <Tab fx:id="adicionalTab" text="Información Adicional">
+                                       <content>
+                                          <StackPane prefHeight="341.0" prefWidth="900.0" />
+                                       </content>
+                                    </Tab>
+                                  <Tab fx:id="reseniaHuespedTab" text="Reseñas de Huéspedes">
+                                    <content>
+                                          <StackPane prefHeight="274.0" prefWidth="759.0" />
+                                    </content>
+                                  </Tab>
+                                    <Tab fx:id="ofertasEspecialesTab" text="Ofertas Especiales">
+                                       <content>
+                                          <StackPane layoutX="-1.0" layoutY="14.0" prefHeight="150.0" prefWidth="467.0" />
+                                       </content>
+                                    </Tab>
+                                </tabs>
+                              </TabPane>
+                                  </children>
+                              </HBox>
+                          </children>
+                      </HBox>
+      
+      
+                      <StackPane prefHeight="170.0" prefWidth="900.0" />
+                  </children>
+              </VBox>
+          </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>
