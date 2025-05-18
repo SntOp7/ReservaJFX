@@ -7,7 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 public class EliminarCuentaControlador {
-    
+
 
     @FXML
     private Button aceptarBtn;

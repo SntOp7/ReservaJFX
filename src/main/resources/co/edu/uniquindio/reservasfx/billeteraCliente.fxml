@@ -122,7 +122,7 @@
                   </RadialGradient>
                </fill>
             </Circle>
-            <Label layoutX="726.0" layoutY="59.0" text="Saldo Disponible : ">
+            <Label fx:id="saldo_Lbl" layoutX="726.0" layoutY="59.0" text="Saldo Disponible : ">
                <font>
                   <Font name="Berlin Sans FB" size="24.0" />
                </font>
