@@ -213,9 +213,9 @@
                               </VBox>
                            </children>
                         </VBox>
-                        <Label text="Añada los servicios del alojamiento pulsando la tecla Ctrl">
+                        <Label opacity="0.5" text="*Añada los servicios del alojamiento pulsando la tecla Ctrl">
                            <font>
-                              <Font name="System Bold" size="15.0" />
+                              <Font name="Berlin Sans FB Bold" size="15.0" />
                            </font>
                         </Label>
          
