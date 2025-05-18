@@ -5,20 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51ed1073-804c-4f43-b406-dbd702544cb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/CostoAdicionalAlojamientoControlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/AlojamientoClienteControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/AlojamientoClienteControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/CostoAdicionalControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/CostoAdicionalClienteControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/FiltradoAlojamientoControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/FiltradoAlojamientoControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/PanelAdministracionControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/PanelAdministracionControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/costoAdicional.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/costoAdicionalCliente.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/panelAdministracion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/panelAdministracion.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../concesionario/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../concesionario/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../concesionario/src/main/java/co/edu/uniquindio/poo/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../concesionario/src/test/java/co/edu/uniquindio/poo/AppTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../concesionario/target/classes/co/edu/uniquindio/poo/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../concesionario/target/test-classes/co/edu/uniquindio/poo/AppTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/ListaReseniasControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/ListaReseniasControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/servicios/EmpresaServicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/servicios/EmpresaServicio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/servicios/ModuloComercialServicios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/servicios/ModuloComercialServicios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/servicios/ModuloUsuarioServicios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/servicios/ModuloUsuarioServicios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/servicios/interfaces/IComercial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/servicios/interfaces/IComercial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/servicios/interfaces/IEmpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/servicios/interfaces/IEmpresa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/servicios/interfaces/IUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/servicios/interfaces/IUsuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/servicios/modulo/comercial/OfertaServicios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/servicios/modulo/comercial/OfertaServicios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/servicios/modulo/comercial/ReservaServicios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/servicios/modulo/comercial/ReservaServicios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/servicios/modulo/usuario/CalificacionServicios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/servicios/modulo/usuario/CalificacionServicios.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

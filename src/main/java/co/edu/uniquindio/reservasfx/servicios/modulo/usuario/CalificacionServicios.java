@@ -22,18 +22,20 @@ public class CalificacionServicios {
         this.alojamientoServicios = alojamientoServicios;
     }
 
-    public void enviarCalificacion(String cedulaCliente, String idAlojamiento, String comentario, int valoracion,
+    public void enviarCalificacion(String cedulaCliente, String idAlojamiento, String comentario, String valoracion,
                                    ArrayList<Reserva> reservasCliente) throws Exception {
 
         Alojamiento alojamiento = alojamientoServicios.buscarAlojamientoPorId(idAlojamiento);
         if (comentario == null || comentario.trim().isEmpty()) throw new Exception("El comentario es obligatorio");
-        if (valoracion < 0 || valoracion > 5) throw new Exception("La valoración debe estar entre 0 y 5");
+        if (valoracion == null || valoracion.isEmpty()) throw new  Exception("El valoracion es obligatoria");
+        int valoraciones = Integer.parseInt(valoracion);
+        if (valoraciones < 0 || valoraciones > 5) throw new Exception("La valoración debe estar entre 0 y 5");
 
         if (!clienteTuvoReservaCompletadaEnAlojamiento(reservasCliente, idAlojamiento)) {
             throw new Exception("Solo puedes realizar una reseña si ya has completado una reserva en este alojamiento");
         }
 
-        Calificacion calificacion = new Calificacion(cedulaCliente, idAlojamiento, comentario, valoracion);
+        Calificacion calificacion = new Calificacion(cedulaCliente, idAlojamiento, comentario, valoraciones);
         calificacionRepositorio.agregar(calificacion);
         notificacionServicios.enviarNotificacion(cedulaCliente, "Reseña Publicada",
                 Constantes.CALIFICACION_PUBLICADA(alojamiento.getNombre()));

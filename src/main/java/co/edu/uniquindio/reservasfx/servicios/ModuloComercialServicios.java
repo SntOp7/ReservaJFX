@@ -34,7 +34,7 @@ public class ModuloComercialServicios implements IComercial {
 
     @Override
     public void realizarReserva(String cedulaCliente, String idAlojamiento, LocalDate fechaInicio, LocalDate fechaFin,
-                                int numeroHuespedes, int numeroHabitacion) throws Exception {
+                                String numeroHuespedes, int numeroHabitacion) throws Exception {
         reservaServicios.realizarReserva(cedulaCliente, idAlojamiento, fechaInicio, fechaFin, numeroHuespedes,
                 obtenerOfertasAlojamiento(idAlojamiento), numeroHabitacion);
     }
@@ -51,14 +51,14 @@ public class ModuloComercialServicios implements IComercial {
 
     @Override
     public void registrarOferta(OfertaEspecial ofertaEspecial, String idAlojamiento, String nombre, String descripcion,
-                                LocalDate fechaInicio, LocalDate fechaFin, double porcentajeDescuento) throws Exception {
+                                LocalDate fechaInicio, LocalDate fechaFin, String porcentajeDescuento) throws Exception {
         ofertaServicios.registrarOferta(ofertaEspecial, idAlojamiento, nombre, descripcion, fechaInicio, fechaFin,
                 porcentajeDescuento);
     }
 
     @Override
     public void editarOferta(String id, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin,
-                             double porcentajeDescuento) throws Exception {
+                             String porcentajeDescuento) throws Exception {
         ofertaServicios.editarOferta(id, nombre, descripcion, fechaInicio, fechaFin, porcentajeDescuento);
     }
 
