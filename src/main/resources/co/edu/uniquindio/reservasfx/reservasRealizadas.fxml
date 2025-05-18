@@ -153,6 +153,11 @@
                         <Image url="@img/reserva.png" />
                      </image>
                   </ImageView>
+                  <Button fx:id="cancelarReservaBtn" layoutX="493.0" layoutY="416.0" mnemonicParsing="false" onAction="#cancelarReservaBtnAction" style="-fx-background-radius: 50px; -fx-background-color: #FF0000;" text="Cancelar Reserva" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB" size="15.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
          </children>
