@@ -17,7 +17,7 @@
    <children>
       <StackPane>
           <children>
-             
+
               <Rectangle height="599.0" width="945.0">
                   <fill>
                       <LinearGradient endX="1.0" endY="1.0">

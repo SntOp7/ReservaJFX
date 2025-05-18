@@ -25,7 +25,7 @@
 
                 <StackPane prefHeight="400.0" prefWidth="900.0">
                     <children>
-                        <ImageView fitHeight="400.0" fitWidth="900.0" pickOnBounds="true" style="-fx-border-radius: 20 20 0 0; -fx-background-radius: 20 20 0 0;">
+                        <ImageView fx:id="imagenAlojamientoOferta" fitHeight="400.0" fitWidth="900.0" pickOnBounds="true" style="-fx-border-radius: 20 20 0 0; -fx-background-radius: 20 20 0 0;">
 
                             <effect>
                                 <ColorAdjust brightness="0.05" contrast="0.1" />
@@ -52,7 +52,7 @@
                                         <DropShadow height="15.0" radius="7.0" width="15.0" />
                                     </effect>
                                 </Rectangle>
-                                <Label prefHeight="53.0" prefWidth="260.0" text="En OFERTA !!!" textFill="WHITE">
+                                <Label fx:id="ofertaLbl" prefHeight="53.0" prefWidth="260.0" text="En OFERTA !!!" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="24.0" />
                                     </font>
