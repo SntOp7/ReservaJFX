@@ -4,11 +4,20 @@ import co.edu.uniquindio.reservasfx.modelo.SeleccionReserva;
 import co.edu.uniquindio.reservasfx.modelo.Sesion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Imagen;
+import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Servicio;
+import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.repositorios.ImagenRepositorio;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -97,7 +106,15 @@ public class AlojamientoClienteControlador {
     @FXML
     private TextField txtHuespedes;
 
+    @FXML
+    private TableView<Servicio> tablaServiciosIncluidos;
 
+
+    @FXML
+    private TableColumn<Servicio, String> serviviosIncluidosColumn;
+
+
+    private final ObservableList<Servicio> listaServicios = FXCollections.observableArrayList();
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
     PanePrincipalControlador panePrincipalControlador = PanePrincipalControlador.getInstancia();
     String rutaAnterior;
@@ -166,6 +183,22 @@ public class AlojamientoClienteControlador {
         cargarInformacionAlojamiento();
         cargarTabsDinamicamente();
         cargarImagenesDelAlojamiento();
+        initTabla();
+
+    }
+
+    public void initTabla() {
+        try {
+            serviviosIncluidosColumn.setCellValueFactory(cellData ->
+                    new SimpleStringProperty(cellData.getValue().getTipo().getNombre()));
+
+
+            ArrayList<Servicio> servicios = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerServiciosAlojamiento(alojamiento.getId());
+            listaServicios.setAll(servicios);
+            tablaServiciosIncluidos.setItems(listaServicios);
+        } catch (Exception e) {
+            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
+        }
 
     }
 
