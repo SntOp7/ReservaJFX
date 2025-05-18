@@ -30,7 +30,20 @@
                                 <ColorAdjust brightness="0.05" contrast="0.1" />
                             </effect>
                         </ImageView>
-      
+
+                        <StackPane alignment="TOP_RIGHT" prefHeight="155.0" prefWidth="444.0">
+                            <children>
+                                <Button fx:id="favoritoBtn" mnemonicParsing="false" onAction="#favoritoBtnAction" prefHeight="50.0" prefWidth="64.0" style="-fx-background-color: transparent;" translateX="-15" translateY="15">
+                           <graphic>
+                              <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/corazonSinRelleno.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                                </Button>
+                            </children>
+                        </StackPane>
 
                         <Rectangle arcHeight="15.0" arcWidth="15.0" height="155.0" opacity="0.2" width="444.0">
                             <fill>
@@ -42,7 +55,7 @@
                                 </LinearGradient>
                             </fill>
                         </Rectangle>
-      
+
 
                         <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="75.0" rotate="-45.0">
                             <StackPane.margin>
@@ -51,7 +64,7 @@
                         </StackPane>
                     </children>
                 </StackPane>
-      
+
 
                 <StackPane prefHeight="37.0" prefWidth="442.0">
                     <children>
@@ -71,7 +84,7 @@
                                                 <DropShadow color="#00000040" height="2.0" radius="0.5" width="2.0" />
                                             </effect>
                                         </Label>
-      
+
 
                                         <StackPane maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0">
                                             <children>
@@ -84,11 +97,11 @@
                                         </StackPane>
                                     </children>
                                 </HBox>
-      
+
 
                                 <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="410.0" spacing="10.0">
                                     <children>
-                                        <!-- Sección precio -->
+
                                         <HBox alignment="CENTER_LEFT" spacing="5.0">
                                             <children>
                                                 <StackPane maxHeight="24.0" maxWidth="24.0" minHeight="24.0" minWidth="24.0" style="-fx-background-color: #f0f4f8; -fx-background-radius: 12;">
@@ -107,7 +120,7 @@
                                                 </VBox>
                                             </children>
                                         </HBox>
-      
+
 
                                         <HBox alignment="CENTER_LEFT" spacing="5.0">
                                             <children>
@@ -127,7 +140,17 @@
                                                 </VBox>
                                             </children>
                                         </HBox>
-      
+
+                                        
+                                        <Button fx:id="consultarBtn" mnemonicParsing="false" onAction="#consultarBtnAction" prefHeight="24.0" prefWidth="76.0" style="-fx-background-color: #5f5fa8; -fx-text-fill: white; -fx-background-radius: 5;" text="Consultar">
+                                            <font>
+                                                <Font name="System Bold" size="11.0" />
+                                            </font>
+                                            <effect>
+                                                <DropShadow color="#00000040" height="3.0" radius="1.0" width="3.0" />
+                                            </effect>
+                                        </Button>
+
 
                                         <HBox alignment="CENTER_LEFT" spacing="5.0">
                                             <children>
@@ -162,7 +185,7 @@
             </effect>
         </VBox>
 
-       
+
         <Circle fill="#5f5fa820" radius="5" translateX="-210" translateY="-110">
             <effect>
                 <DropShadow color="#00000040" height="3.0" radius="1.0" width="3.0" />
