@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.UUID;
 
 public class RecargarBilleteraControlador {
 
@@ -27,10 +28,25 @@ public class RecargarBilleteraControlador {
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
     Sesion sesion = controlador.getSesion();
 
+    @FXML
+    public void initialize() {
+        inicializarValores();
+    }
+
     public void inicializarValores() {
         String cedulaSesion = sesion.getUsuario().getCedula();
         Cliente cliente = controlador.getEmpresa().getModuloUsuarioServicios().getUsuarioServicios().buscarClientePorCedula(cedulaSesion);
-        saldo_Lbl.setText(saldo_Lbl.getText() + cliente.getBilletera().getSaldo());
+
+        if (cliente == null) {
+            controlador.crearAlerta("No se encontró el cliente en la sesión actual.", Alert.AlertType.ERROR);
+            return;
+        }
+
+        if (cliente.getBilletera() == null) {
+            cliente.setBilletera(new BilleteraVirtual(UUID.randomUUID().toString(), 0));
+        }
+
+        saldo_Lbl.setText("Saldo Disponible: " + cliente.getBilletera().getSaldo());
     }
 
     @FXML
@@ -40,6 +56,12 @@ public class RecargarBilleteraControlador {
             double monto = Double.parseDouble(contenido);
             String cedula = sesion.getUsuario().getCedula();
             controlador.getEmpresa().getModuloUsuarioServicios().recargarBilleteraCliente(cedula, monto);
+            Cliente clienteActualizado = controlador.getEmpresa()
+                    .getModuloUsuarioServicios()
+                    .getUsuarioServicios()
+                    .buscarClientePorCedula(cedula);
+            saldo_Lbl.setText("Saldo Disponible: " + clienteActualizado.getBilletera().getSaldo());
+            recargaField.clear();
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
