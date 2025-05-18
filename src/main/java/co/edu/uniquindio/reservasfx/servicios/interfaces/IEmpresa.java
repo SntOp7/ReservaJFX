@@ -24,13 +24,13 @@ public interface IEmpresa {
 
     void eliminarCliente(String cedula) throws Exception;
 
-    void registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion,
+    void registrarAlojamiento(String tipoAlojamiento, String nombre, String ciudad, String descripcion,
                               String precioPorNoche, String capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal,
                               ArrayList<String> imagenes, String costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception;
 
-    void editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion, String precioPorNoche, String capacidadMaxima,
-                           ArrayList<TipoServicio> servicios, String imagenPrincipal, ArrayList<String> imagenes,
-                           String costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception;
+    void editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion, String precioPorNoche,
+                           String capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal,
+                           ArrayList<String> imagenes, String costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception;
 
     void eliminarAlojamiento(String id) throws Exception;
 
