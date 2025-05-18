@@ -7,9 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 public class EliminarCuentaControlador {
-
-    @FXML
-    private Button cancelarBtn;
+    
 
     @FXML
     private Button aceptarBtn;
@@ -31,8 +29,4 @@ public class EliminarCuentaControlador {
         }
     }
 
-    @FXML
-    void cancelarBtnAction(ActionEvent event) {
-        cuentaClienteControlador.limpiarCampos();
-    }
 }
