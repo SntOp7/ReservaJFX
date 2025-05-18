@@ -69,18 +69,18 @@
                   <Image url="@img/recarga.png" />
                </image>
             </ImageView>
-            <Label layoutX="637.0" layoutY="25.0" text="Recargar Billetera">
+            <Label layoutX="637.0" layoutY="101.0" text="Recargar Billetera">
                <font>
                   <Font name="Berlin Sans FB" size="48.0" />
                </font>
             </Label>
-            <Label layoutX="637.0" layoutY="132.0" text="Monto">
+            <Label layoutX="639.0" layoutY="180.0" text="Monto">
                <font>
                   <Font name="Berlin Sans FB" size="27.0" />
                </font>
             </Label>
-            <TextField fx:id="recargaField" layoutX="723.0" layoutY="132.0" prefHeight="31.0" prefWidth="273.0" promptText="Ingrese el monto a recargar" style="-fx-background-radius: 50px;" />
-            <Button fx:id="recargarBtn" layoutX="744.0" layoutY="199.0" mnemonicParsing="false" onAction="#recargarBtnAction" style="-fx-background-radius: 50px; -fx-background-color: #00913F;" text="Recargar" textFill="WHITE">
+            <TextField fx:id="recargaField" layoutX="726.0" layoutY="180.0" prefHeight="31.0" prefWidth="273.0" promptText="Ingrese el monto a recargar" style="-fx-background-radius: 50px;" />
+            <Button fx:id="recargarBtn" layoutX="737.0" layoutY="228.0" mnemonicParsing="false" onAction="#recargarBtnAction" style="-fx-background-radius: 50px; -fx-background-color: #00913F;" text="Recargar" textFill="WHITE">
                <font>
                   <Font name="Berlin Sans FB" size="24.0" />
                </font>
@@ -97,7 +97,7 @@
                   <Image url="@img/tarjeta.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="149.0" fitWidth="171.0" layoutX="749.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="149.0" fitWidth="171.0" layoutX="747.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/bookYourStay.png" />
                </image>
@@ -122,6 +122,16 @@
                   </RadialGradient>
                </fill>
             </Circle>
+            <Label layoutX="726.0" layoutY="59.0" text="Saldo Disponible : ">
+               <font>
+                  <Font name="Berlin Sans FB" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="68.0" fitWidth="72.0" layoutX="641.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/saldoDisponible.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>
