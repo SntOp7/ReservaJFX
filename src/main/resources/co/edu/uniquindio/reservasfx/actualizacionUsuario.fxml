@@ -14,320 +14,325 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.effect.*?>
 
-<StackPane prefHeight="845.0" prefWidth="1050.0" style="-fx-background-color: linear-gradient(to bottom, #f8f9fa, #e9ecef);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.ActualizacionUsuarioControlador">
-   <children>
 
-      <Pane mouseTransparent="true">
+<ScrollPane prefHeight="488.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.ActualizacionUsuarioControlador">
+   <content>
+      <StackPane prefHeight="845.0" prefWidth="1050.0" style="-fx-background-color: linear-gradient(to bottom, #f8f9fa, #e9ecef);">
          <children>
-
-            <Circle centerX="80.0" centerY="250.0" opacity="0.28" radius="60.0" stroke="TRANSPARENT">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#3a7bd5" />
-                        <Stop color="#00d2ff" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Circle>
-
-            <Circle centerX="950.0" centerY="200.0" radius="75.0" stroke="TRANSPARENT">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#4ca1af" />
-                        <Stop color="#2c3e50" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Circle>
-
-
-            <Polygon opacity="0.45" stroke="TRANSPARENT">
-               <points>
-                  <Double fx:value="850.0" />
-                  <Double fx:value="400.0" />
-                  <Double fx:value="950.0" />
-                  <Double fx:value="450.0" />
-                  <Double fx:value="900.0" />
-                  <Double fx:value="550.0" />
-                  <Double fx:value="800.0" />
-                  <Double fx:value="500.0" />
-               </points>
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#3498db" />
-                        <Stop color="#9b59b6" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Polygon>
-
-            <Polygon opacity="0.43" stroke="TRANSPARENT">
-               <points>
-                  <Double fx:value="50.0" />
-                  <Double fx:value="650.0" />
-                  <Double fx:value="150.0" />
-                  <Double fx:value="700.0" />
-                  <Double fx:value="100.0" />
-                  <Double fx:value="800.0" />
-                  <Double fx:value="20.0" />
-                  <Double fx:value="750.0" />
-               </points>
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#1abc9c" />
-                        <Stop color="#3498db" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Polygon>
-
-
-            <Rectangle arcHeight="50.0" arcWidth="50.0" height="80.0" opacity="0.51" stroke="TRANSPARENT" width="80.0" x="500.0" y="650.0">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#e74c3c" />
-                        <Stop color="#9b59b6" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-
-            </Rectangle>
-
-            <Rectangle arcHeight="120.0" arcWidth="120.0" height="120.0" opacity="0.68" stroke="TRANSPARENT" width="300.0" x="700.0" y="600.0">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#00d2ff" />
-                        <Stop color="#3a7bd5" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Rectangle>
-
-
-            <SVGPath content="M15,3C12.43,3 10.24,4.67 9.45,7L4,7L4,9L9.45,9C10,10.68 11.5,12 13.5,12C14.53,12 15.44,11.6 16.11,10.97L20,14.87L21.414,13.456L17.597,9.639C17.85,9.22 18,8.75 18,8.25C18,7.57 17.8,6.93 17.4,6.43L19,4.83L17.59,3.41L15.88,5.12C15.29,5.05 14.7,5.07 14.12,5.21L12.5,3.59L11.09,5L12.67,6.59C11.82,7.07 11.19,7.88 11,8.83L4,8.83L4,10.83L11.06,10.83C11.22,11.27 11.5,11.67 11.86,12L4,12L4,14L16.97,14L17,14L18,14L18,13.97L19,13.97L19,13L20,13L20,11L19,11L19,10.03L18,10.03L18,11L17,11L17,10.03L16,10.03L16,11L15,11L15,10.03L14,10.03L14,11L13,11L13,10.03L12,10.03L12,11L11,11L11.03,10.03L10.03,10.03L10.03,11L9.03,11L9.03,10.03L8.03,10.03L8.03,11L7.03,11L7.03,10.03L6.03,10.03L6.03,11L5.03,11L5.03,10.03L4.03,10.03L4.03,11L3.03,11L3.03,10.03L2.03,10.03L2.03,11L1.03,11L1.03,12L2.03,12L2.03,13L1.03,13L1.03,14L2.03,14L2.03,15L1.03,15L1.03,16L2.03,16L2.03,17L1.03,17L1.03,18L2.03,18L2.03,19L1.03,19L1.03,20L2.03,20L2.03,21L22.03,21L22.03,12L19,12L19,11" scaleX="1.5" scaleY="1.5" translateX="200.0" translateY="200.0">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#2c3e50" />
-                        <Stop color="#3498db" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </SVGPath>
-
-            <SVGPath content="M12,3C7.58,3 4,4.79 4,7V17C4,19.21 7.59,21 12,21C16.41,21 20,19.21 20,17V7C20,4.79 16.42,3 12,3M18,17C18,17.5 15.87,19 12,19C8.13,19 6,17.5 6,17V14.77C7.61,15.55 9.72,16 12,16C14.28,16 16.39,15.55 18,14.77V17M18,12.45C16.7,13.4 14.42,14 12,14C9.58,14 7.3,13.4 6,12.45V9.64C7.47,10.47 9.61,11 12,11C14.39,11 16.53,10.47 18,9.64V12.45M12,9C8.13,9 6,7.5 6,7C6,6.5 8.13,5 12,5C15.87,5 18,6.5 18,7C18,7.5 15.87,9 12,9Z" opacity="0.07" scaleX="2" scaleY="2" translateX="600.0" translateY="300.0">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#2ecc71" />
-                        <Stop color="#3498db" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </SVGPath>
-
-            <SVGPath content="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" opacity="0.06" scaleX="2" scaleY="2" translateX="300.0" translateY="500.0">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#e74c3c" />
-                        <Stop color="#f39c12" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </SVGPath>
-
-            <Circle centerX="170.0" centerY="320.0" radius="90.0" stroke="TRANSPARENT">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#2ecc71" />
-                        <Stop color="#3a7bd5" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Circle>
-         </children>
-      </Pane>
-
-      <BorderPane prefHeight="795.0" prefWidth="1050.0">
-         <top>
-            <Pane>
+      
+            <Pane mouseTransparent="true">
                <children>
-                  <HBox alignment="CENTER" prefHeight="110.0" prefWidth="1050.0" style="-fx-background-color: linear-gradient(to right, #2c3e50, #4ca1af); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);">
+      
+                  <Circle centerX="80.0" centerY="250.0" opacity="0.28" radius="60.0" stroke="TRANSPARENT">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#3a7bd5" />
+                              <Stop color="#00d2ff" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+      
+                  <Circle centerX="950.0" centerY="200.0" radius="75.0" stroke="TRANSPARENT">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#4ca1af" />
+                              <Stop color="#2c3e50" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+      
+      
+                  <Polygon opacity="0.45" stroke="TRANSPARENT">
+                     <points>
+                        <Double fx:value="850.0" />
+                        <Double fx:value="400.0" />
+                        <Double fx:value="950.0" />
+                        <Double fx:value="450.0" />
+                        <Double fx:value="900.0" />
+                        <Double fx:value="550.0" />
+                        <Double fx:value="800.0" />
+                        <Double fx:value="500.0" />
+                     </points>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#3498db" />
+                              <Stop color="#9b59b6" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Polygon>
+      
+                  <Polygon opacity="0.43" stroke="TRANSPARENT">
+                     <points>
+                        <Double fx:value="50.0" />
+                        <Double fx:value="650.0" />
+                        <Double fx:value="150.0" />
+                        <Double fx:value="700.0" />
+                        <Double fx:value="100.0" />
+                        <Double fx:value="800.0" />
+                        <Double fx:value="20.0" />
+                        <Double fx:value="750.0" />
+                     </points>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#1abc9c" />
+                              <Stop color="#3498db" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Polygon>
+      
+      
+                  <Rectangle arcHeight="50.0" arcWidth="50.0" height="80.0" opacity="0.51" stroke="TRANSPARENT" width="80.0" x="500.0" y="650.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#e74c3c" />
+                              <Stop color="#9b59b6" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+      
+                  </Rectangle>
+      
+                  <Rectangle arcHeight="120.0" arcWidth="120.0" height="120.0" opacity="0.68" stroke="TRANSPARENT" width="300.0" x="700.0" y="600.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#00d2ff" />
+                              <Stop color="#3a7bd5" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+      
+      
+                  <SVGPath content="M15,3C12.43,3 10.24,4.67 9.45,7L4,7L4,9L9.45,9C10,10.68 11.5,12 13.5,12C14.53,12 15.44,11.6 16.11,10.97L20,14.87L21.414,13.456L17.597,9.639C17.85,9.22 18,8.75 18,8.25C18,7.57 17.8,6.93 17.4,6.43L19,4.83L17.59,3.41L15.88,5.12C15.29,5.05 14.7,5.07 14.12,5.21L12.5,3.59L11.09,5L12.67,6.59C11.82,7.07 11.19,7.88 11,8.83L4,8.83L4,10.83L11.06,10.83C11.22,11.27 11.5,11.67 11.86,12L4,12L4,14L16.97,14L17,14L18,14L18,13.97L19,13.97L19,13L20,13L20,11L19,11L19,10.03L18,10.03L18,11L17,11L17,10.03L16,10.03L16,11L15,11L15,10.03L14,10.03L14,11L13,11L13,10.03L12,10.03L12,11L11,11L11.03,10.03L10.03,10.03L10.03,11L9.03,11L9.03,10.03L8.03,10.03L8.03,11L7.03,11L7.03,10.03L6.03,10.03L6.03,11L5.03,11L5.03,10.03L4.03,10.03L4.03,11L3.03,11L3.03,10.03L2.03,10.03L2.03,11L1.03,11L1.03,12L2.03,12L2.03,13L1.03,13L1.03,14L2.03,14L2.03,15L1.03,15L1.03,16L2.03,16L2.03,17L1.03,17L1.03,18L2.03,18L2.03,19L1.03,19L1.03,20L2.03,20L2.03,21L22.03,21L22.03,12L19,12L19,11" scaleX="1.5" scaleY="1.5" translateX="200.0" translateY="200.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#2c3e50" />
+                              <Stop color="#3498db" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </SVGPath>
+      
+                  <SVGPath content="M12,3C7.58,3 4,4.79 4,7V17C4,19.21 7.59,21 12,21C16.41,21 20,19.21 20,17V7C20,4.79 16.42,3 12,3M18,17C18,17.5 15.87,19 12,19C8.13,19 6,17.5 6,17V14.77C7.61,15.55 9.72,16 12,16C14.28,16 16.39,15.55 18,14.77V17M18,12.45C16.7,13.4 14.42,14 12,14C9.58,14 7.3,13.4 6,12.45V9.64C7.47,10.47 9.61,11 12,11C14.39,11 16.53,10.47 18,9.64V12.45M12,9C8.13,9 6,7.5 6,7C6,6.5 8.13,5 12,5C15.87,5 18,6.5 18,7C18,7.5 15.87,9 12,9Z" opacity="0.07" scaleX="2" scaleY="2" translateX="600.0" translateY="300.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#2ecc71" />
+                              <Stop color="#3498db" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </SVGPath>
+      
+                  <SVGPath content="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" opacity="0.06" scaleX="2" scaleY="2" translateX="300.0" translateY="500.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#e74c3c" />
+                              <Stop color="#f39c12" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </SVGPath>
+      
+                  <Circle centerX="170.0" centerY="320.0" radius="90.0" stroke="TRANSPARENT">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#2ecc71" />
+                              <Stop color="#3a7bd5" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+               </children>
+            </Pane>
+      
+            <BorderPane prefHeight="795.0" prefWidth="1050.0">
+               <top>
+                  <Pane>
                      <children>
-                        <HBox alignment="CENTER" spacing="20.0">
+                        <HBox alignment="CENTER" prefHeight="110.0" prefWidth="1050.0" style="-fx-background-color: linear-gradient(to right, #2c3e50, #4ca1af); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);">
                            <children>
-                              <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@img/panelImagen.png" />
-                                 </image>
-                                 <effect>
-                                    <DropShadow color="#00000066" height="10.0" radius="4.5" width="10.0" />
-                                 </effect>
-                              </ImageView>
-                              <Label alignment="CENTER" contentDisplay="CENTER" text="Actualizar Datos" textFill="WHITE">
-                                 <font>
-                                    <Font name="Segoe UI" size="42.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow color="#00000066" height="5.0" radius="2.0" width="5.0" />
-                                 </effect>
-                              </Label>
+                              <HBox alignment="CENTER" spacing="20.0">
+                                 <children>
+                                    <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@img/panelImagen.png" />
+                                       </image>
+                                       <effect>
+                                          <DropShadow color="#00000066" height="10.0" radius="4.5" width="10.0" />
+                                       </effect>
+                                    </ImageView>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" text="Actualizar Datos" textFill="WHITE">
+                                       <font>
+                                          <Font name="Segoe UI" size="42.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow color="#00000066" height="5.0" radius="2.0" width="5.0" />
+                                       </effect>
+                                    </Label>
+                                 </children>
+                              </HBox>
                            </children>
                         </HBox>
                      </children>
+                  </Pane>
+               </top>
+      
+               <center>
+                  <VBox alignment="TOP_CENTER" prefHeight="634.0" prefWidth="1050.0" spacing="30.0" style="-fx-background-color: transparent;">
+                     <padding>
+                        <Insets bottom="30.0" left="60.0" right="60.0" top="40.0" />
+                     </padding>
+                     <children>
+                        <TitledPane animated="true" collapsible="false" prefHeight="305.0" prefWidth="928.0" style="-fx-border-color: transparent; -fx-background-color: white; -fx-border-radius: 15px; -fx-background-radius: 15px;" text="Datos Personales">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="18.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#00000033" height="20.0" radius="9.5" width="20.0" />
+                           </effect>
+                           <content>
+                              <GridPane alignment="CENTER" hgap="25.0" prefHeight="163.0" prefWidth="907.0" style="-fx-background-color: linear-gradient(to right bottom, #3a7bd5, #00d2ff); -fx-background-radius: 0 0 15px 15px;" vgap="35.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="230.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="580.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <padding>
+                                    <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                                 </padding>
+                                 <children>
+                                    <Label style="-fx-font-weight: bold;" text="Nombre" textFill="WHITE">
+                                       <font>
+                                          <Font name="Segoe UI" size="16.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
+                                       </effect>
+                                    </Label>
+                                    <Label style="-fx-font-weight: bold;" text="Cédula" textFill="WHITE" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="Segoe UI" size="16.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
+                                       </effect>
+                                    </Label>
+                                    <Label style="-fx-font-weight: bold;" text="Dirección" textFill="WHITE" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="Segoe UI" size="16.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
+                                       </effect>
+                                    </Label>
+      
+                                    <TextField fx:id="txtNombre" prefHeight="45.0" promptText="Nombre" style="-fx-background-radius: 50px; -fx-border-radius: 50px; -fx-border-color: transparent; -fx-padding: 10px; -fx-font-size: 14px; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 0);" GridPane.columnIndex="1" />
+                                    <TextField fx:id="txtDireccion" prefHeight="45.0" promptText="Dirección" style="-fx-background-radius: 50px; -fx-border-radius: 50px; -fx-border-color: transparent; -fx-padding: 10px; -fx-font-size: 14px; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 0);" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="txtCedula" prefHeight="45.0" promptText="Cédula" style="-fx-background-radius: 50px; -fx-border-radius: 50px; -fx-border-color: transparent; -fx-padding: 10px; -fx-font-size: 14px; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 0);" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label style="-fx-font-weight: bold;" text="Teléfono" textFill="WHITE" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font name="Segoe UI" size="16.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
+                                       </effect>
+                                    </Label>
+                                    <TextField fx:id="txtTelefono" prefHeight="45.0" promptText="Teléfono" style="-fx-background-radius: 50px; -fx-border-radius: 50px; -fx-border-color: transparent; -fx-padding: 10px; -fx-font-size: 14px; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 0);" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                 </children>
+                              </GridPane>
+                           </content>
+                        </TitledPane>
+      
+                        <TitledPane animated="true" collapsible="false" prefHeight="226.0" prefWidth="930.0" style="-fx-border-color: transparent; -fx-border-radius: 15px; -fx-background-color: white; -fx-background-radius: 15px;" text="Información Para Ingresar">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="18.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#00000033" height="20.0" radius="9.5" width="20.0" />
+                           </effect>
+                           <content>
+                              <GridPane alignment="CENTER" hgap="25.0" prefHeight="167.0" prefWidth="924.0" style="-fx-background-color: linear-gradient(to right bottom, #3a7bd5, #00d2ff); -fx-background-radius: 0 0 15px 15px;" vgap="35.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="230.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="580.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <padding>
+                                    <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                                 </padding>
+                                 <children>
+                                    <Label style="-fx-font-weight: bold;" text="Correo " textFill="WHITE">
+                                       <font>
+                                          <Font name="Segoe UI" size="16.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
+                                       </effect>
+                                    </Label>
+                                    <Label style="-fx-font-weight: bold;" text="Contraseña actual" textFill="WHITE" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="Segoe UI" size="7.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
+                                       </effect>
+                                    </Label>
+      
+                                    <TextField fx:id="txtCorreo" prefHeight="21.0" prefWidth="600.0" promptText="Correo" style="-fx-background-radius: 50px; -fx-border-radius: 50px; -fx-border-color: transparent; -fx-padding: 10px; -fx-font-size: 14px; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 0);" GridPane.columnIndex="1" />
+                                    <PasswordField fx:id="contraseniaField" prefHeight="57.0" prefWidth="600.0" promptText="Contraseña " style="-fx-background-radius: 50px; -fx-border-radius: 50px; -fx-border-color: transparent; -fx-padding: 10px; -fx-font-size: 14px; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 0);" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label text="*Ingrese la contraseña actual para poder relizar la accion" textFill="#fffefe" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                 </children>
+                              </GridPane>
+                           </content>
+                        </TitledPane>
+                     </children>
+                  </VBox>
+               </center>
+      
+               <bottom>
+                  <HBox alignment="CENTER" prefHeight="74.0" prefWidth="1050.0" spacing="30.0" style="-fx-background-color: linear-gradient(to right, #2c3e50, #4ca1af); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, -5);">
+                     <padding>
+                        <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                     </padding>
+                     <children>
+                        <Button fx:id="actualizarBtn" mnemonicParsing="false" onAction="#actualizarAction" prefHeight="40.0" prefWidth="120.0" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(to right bottom, #3a7bd5, #00d2ff); -fx-text-fill: white; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);" text="Actualizar">
+                           <font>
+                              <Font name="Segoe UI" size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="cambioContraseniaBtn" mnemonicParsing="false" onAction="#cambioContraseniaAction" prefHeight="40.0" prefWidth="176.0" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(to right bottom, #9b59b6, #00d2ff); -fx-text-fill: white; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);" text="Cambiar Contraseña">
+                           <font>
+                              <Font name="Segoe UI" size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
                   </HBox>
-               </children>
-            </Pane>
-         </top>
-
-         <center>
-            <VBox alignment="TOP_CENTER" prefHeight="634.0" prefWidth="1050.0" spacing="30.0" style="-fx-background-color: transparent;">
-               <padding>
-                  <Insets bottom="30.0" left="60.0" right="60.0" top="40.0" />
-               </padding>
-               <children>
-                  <TitledPane animated="true" collapsible="false" prefHeight="305.0" prefWidth="928.0" style="-fx-border-color: transparent; -fx-background-color: white; -fx-border-radius: 15px; -fx-background-radius: 15px;" text="Datos Personales">
-                     <font>
-                        <Font name="Segoe UI Semibold" size="18.0" />
-                     </font>
-                     <effect>
-                        <DropShadow color="#00000033" height="20.0" radius="9.5" width="20.0" />
-                     </effect>
-                     <content>
-                        <GridPane alignment="CENTER" hgap="25.0" prefHeight="163.0" prefWidth="907.0" style="-fx-background-color: linear-gradient(to right bottom, #3a7bd5, #00d2ff); -fx-background-radius: 0 0 15px 15px;" vgap="35.0">
-                           <columnConstraints>
-                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="230.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="580.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <padding>
-                              <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-                           </padding>
-                           <children>
-                              <Label style="-fx-font-weight: bold;" text="Nombre" textFill="WHITE">
-                                 <font>
-                                    <Font name="Segoe UI" size="16.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
-                                 </effect>
-                              </Label>
-                              <Label style="-fx-font-weight: bold;" text="Cédula" textFill="WHITE" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font name="Segoe UI" size="16.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
-                                 </effect>
-                              </Label>
-                              <Label style="-fx-font-weight: bold;" text="Dirección" textFill="WHITE" GridPane.rowIndex="2">
-                                 <font>
-                                    <Font name="Segoe UI" size="16.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
-                                 </effect>
-                              </Label>
-
-                              <TextField fx:id="txtNombre" prefHeight="45.0" promptText="Nombre" style="-fx-background-radius: 50px; -fx-border-radius: 50px; -fx-border-color: transparent; -fx-padding: 10px; -fx-font-size: 14px; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 0);" GridPane.columnIndex="1" />
-                              <TextField fx:id="txtDireccion" prefHeight="45.0" promptText="Dirección" style="-fx-background-radius: 50px; -fx-border-radius: 50px; -fx-border-color: transparent; -fx-padding: 10px; -fx-font-size: 14px; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 0);" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <TextField fx:id="txtCedula" prefHeight="45.0" promptText="Cédula" style="-fx-background-radius: 50px; -fx-border-radius: 50px; -fx-border-color: transparent; -fx-padding: 10px; -fx-font-size: 14px; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 0);" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Label style="-fx-font-weight: bold;" text="Teléfono" textFill="WHITE" GridPane.rowIndex="3">
-                                 <font>
-                                    <Font name="Segoe UI" size="16.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
-                                 </effect>
-                              </Label>
-                              <TextField fx:id="txtTelefono" prefHeight="45.0" promptText="Teléfono" style="-fx-background-radius: 50px; -fx-border-radius: 50px; -fx-border-color: transparent; -fx-padding: 10px; -fx-font-size: 14px; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 0);" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                           </children>
-                        </GridPane>
-                     </content>
-                  </TitledPane>
-
-                  <TitledPane animated="true" collapsible="false" prefHeight="226.0" prefWidth="930.0" style="-fx-border-color: transparent; -fx-border-radius: 15px; -fx-background-color: white; -fx-background-radius: 15px;" text="Información Para Ingresar">
-                     <font>
-                        <Font name="Segoe UI Semibold" size="18.0" />
-                     </font>
-                     <effect>
-                        <DropShadow color="#00000033" height="20.0" radius="9.5" width="20.0" />
-                     </effect>
-                     <content>
-                        <GridPane alignment="CENTER" hgap="25.0" prefHeight="167.0" prefWidth="924.0" style="-fx-background-color: linear-gradient(to right bottom, #3a7bd5, #00d2ff); -fx-background-radius: 0 0 15px 15px;" vgap="35.0">
-                           <columnConstraints>
-                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="230.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="580.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <padding>
-                              <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-                           </padding>
-                           <children>
-                              <Label style="-fx-font-weight: bold;" text="Correo " textFill="WHITE">
-                                 <font>
-                                    <Font name="Segoe UI" size="16.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
-                                 </effect>
-                              </Label>
-                              <Label style="-fx-font-weight: bold;" text="Contraseña actual" textFill="WHITE" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font name="Segoe UI" size="7.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
-                                 </effect>
-                              </Label>
-
-                              <TextField fx:id="txtCorreo" prefHeight="21.0" prefWidth="600.0" promptText="Correo" style="-fx-background-radius: 50px; -fx-border-radius: 50px; -fx-border-color: transparent; -fx-padding: 10px; -fx-font-size: 14px; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 0);" GridPane.columnIndex="1" />
-                              <PasswordField fx:id="contraseniaField" prefHeight="57.0" prefWidth="600.0" promptText="Contraseña " style="-fx-background-radius: 50px; -fx-border-radius: 50px; -fx-border-color: transparent; -fx-padding: 10px; -fx-font-size: 14px; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 0);" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Label text="*Ingrese la contraseña actual para poder relizar la accion" textFill="#fffefe" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                           </children>
-                        </GridPane>
-                     </content>
-                  </TitledPane>
-               </children>
-            </VBox>
-         </center>
-
-         <bottom>
-            <HBox alignment="CENTER" prefHeight="74.0" prefWidth="1050.0" spacing="30.0" style="-fx-background-color: linear-gradient(to right, #2c3e50, #4ca1af); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, -5);">
-               <padding>
-                  <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
-               </padding>
-               <children>
-                  <Button fx:id="actualizarBtn" mnemonicParsing="false" onAction="#actualizarAction" prefHeight="40.0" prefWidth="120.0" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(to right bottom, #3a7bd5, #00d2ff); -fx-text-fill: white; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);" text="Actualizar">
-                     <font>
-                        <Font name="Segoe UI" size="14.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="cambioContraseniaBtn" mnemonicParsing="false" onAction="#cambioContraseniaAction" prefHeight="40.0" prefWidth="176.0" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(to right bottom, #9b59b6, #00d2ff); -fx-text-fill: white; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);" text="Cambiar Contraseña">
-                     <font>
-                        <Font name="Segoe UI" size="14.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-         </bottom>
-      </BorderPane>
-   </children>
-</StackPane>
+               </bottom>
+            </BorderPane>
+         </children>
+      </StackPane>
+   </content>
+</ScrollPane>
