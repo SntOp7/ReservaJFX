@@ -38,7 +38,7 @@ public class OfertaAlojamientoControlador {
             capacidadLbl.setText(alojamiento.getCapacidadMaxima() + "");
             ubicacionLbl.setText(alojamiento.getCiudad().getNombre());
             controlador.cargarImagen(alojamiento.getImagenPrincipal(), imagenAlojamientoOferta);
-            ArrayList<Oferta> ofertas = controlador.getEmpresa().getModuloComercialServicios().obtenerOfertasAlojamiento(alojamiento.getId());
+            ArrayList<Oferta> ofertas = controlador.getEmpresa().getModuloComercialServicios().obtenerOfertasActivasAlojamiento(alojamiento.getId());
             Oferta ofertaActual = ofertas.getFirst();
             String tipoOferta = ofertaActual.getOfertaEspecial().getNombre();
             ofertaLbl.setText((tipoOferta));
