@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
-public class LIstaHabitacionesControlador {
+public class LIstaHabitacionesClienteControlador {
 
     @FXML
     private TableView<Habitacion> tablaHabitaciones;
