@@ -33,7 +33,7 @@
 
                         <StackPane alignment="TOP_RIGHT" prefHeight="155.0" prefWidth="444.0">
                             <children>
-                                <Button fx:id="favoritoBtn" mnemonicParsing="false" onAction="#favoritoBtnAction" prefHeight="50.0" prefWidth="64.0" style="-fx-background-color: transparent;" translateX="-15" translateY="15">
+                                <Button fx:id="favoritoBtn" alignment="CENTER" mnemonicParsing="false" onAction="#favoritoBtnAction" prefHeight="71.0" prefWidth="79.0" style="-fx-background-color: transparent;" translateX="-15" translateY="15">
                            <graphic>
                               <ImageView fx:id="imagenCorazon" fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
