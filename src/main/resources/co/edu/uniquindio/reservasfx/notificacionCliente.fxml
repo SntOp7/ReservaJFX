@@ -50,11 +50,12 @@
                   <Font name="Berlin Sans FB" size="16.0" />
                </font>
             </Label>
-            <ImageView fitHeight="78.0" fitWidth="74.0" layoutX="535.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="78.0" fitWidth="74.0" layoutX="535.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/bookYourStay.png" />
                </image>
             </ImageView>
+            <Button fx:id="marcarLeidoBtn" layoutX="436.0" layoutY="22.0" mnemonicParsing="false" onAction="#marcarLeidoBtnAction" style="-fx-background-radius: 50px; -fx-background-color: transparent;" text="Marcar Leída" />
          </children>
       </Pane>
    </children>
