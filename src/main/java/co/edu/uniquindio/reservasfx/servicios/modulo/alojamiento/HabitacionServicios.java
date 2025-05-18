@@ -15,33 +15,58 @@ public class HabitacionServicios  {
         habitacionRepositorio = new HabitacionRepositorio();
     }
 
-    public void registrarHabitacion(String idHotel, int numero, double precio, int capacidad, String descripcion, String imagen) throws Exception {
-        if (idHotel == null || idHotel.isEmpty()) throw new Exception("El id es obligatorio");
-        if (numero == 0) throw new Exception("El numero es obligatorio");
-        verificarCampos(precio, capacidad, descripcion, imagen);
+    public Habitacion crearHabitacion(String numeroString, String precioString, String capacidadString, String descripcion,
+                                    String imagen) throws Exception {
 
-        if (buscarHabitacion(idHotel, numero) != null) throw new Exception("Una Habitacion ya existe con ese numero");
+        verificarCampos(numeroString, precioString, capacidadString, descripcion, imagen);
+        int numero = Integer.parseInt(numeroString);
+        int capacidad = Integer.parseInt(capacidadString);
+        double precio = Double.parseDouble(precioString);
+        verificarNumeros(numero, capacidad, precio);
 
-        Habitacion habitacion = Habitacion.builder().numero(numero).idHotel(idHotel).precio(precio).capacidad(capacidad)
+        return Habitacion.builder().numero(numero).precio(precio).capacidad(capacidad)
                 .descripcion(descripcion).imagen(imagen).build();
+    }
+
+    public void registrarHabitacion(String idHotel, Habitacion habitacion) throws Exception {
+        if (buscarHabitacion(idHotel, habitacion.getNumero()) != null) throw new Exception("Hay una Habitacion repetida con ese numero");
+        habitacion.setIdHotel(idHotel);
         habitacionRepositorio.agregar(habitacion);
     }
 
-    public void editarHabitacion(String idHotel, int numero, double precio, int capacidad, String descripcion, String imagen) throws Exception {
-        verificarCampos(precio, capacidad, descripcion, imagen);
-        Habitacion habitacion = buscarHabitacion(idHotel, numero);
-        habitacion.setPrecio(precio);
-        habitacion.setCapacidad(capacidad);
-        habitacion.setDescripcion(descripcion);
-        habitacion.setImagen(imagen);
+    public Habitacion verificarEdicionHabitacion(Habitacion habitacionAntigua, String numeroString, String precioString,
+                                           String capacidadString, String descripcion, String imagen) throws Exception {
+
+        verificarCampos(numeroString, precioString, capacidadString, descripcion, imagen);
+        int numero = Integer.parseInt(numeroString);
+        int capacidad = Integer.parseInt(capacidadString);
+        double precio = Double.parseDouble(precioString);
+        verificarNumeros(numero, capacidad, precio);
+        habitacionAntigua.setNumero(numero);
+        habitacionAntigua.setPrecio(precio);
+        habitacionAntigua.setCapacidad(capacidad);
+        habitacionAntigua.setDescripcion(descripcion);
+        habitacionAntigua.setImagen(imagen);
+        return habitacionAntigua;
+    }
+
+    public void editarHabitacion(String idHotel, Habitacion habitacion) throws Exception {
+        if (buscarHabitacion(idHotel, habitacion.getNumero()) != null) throw new Exception("Hay una Habitacion repetida con ese numero");
         habitacionRepositorio.editar(habitacion);
     }
 
-    private void verificarCampos(double precio, int capacidad, String descripcion, String imagen) throws Exception {
-        if (precio <= 0) throw new Exception("El precio debe ser mayor a 0");
-        if (capacidad <= 0) throw new Exception("La capacidad debe ser mayor a 0");
+    private void verificarCampos(String numero, String precio, String capacidad, String descripcion, String imagen) throws Exception {
+        if (numero == null || numero.isEmpty()) throw new Exception("El numero es obligatorio");
+        if (precio == null || precio.isEmpty()) throw new Exception("El precio es obligatorio");
+        if (capacidad == null || capacidad.isEmpty()) throw new Exception("La capacidad es obligatoria");
         if (descripcion == null || descripcion.isEmpty()) throw new Exception("La descripcion es obligatoria");
         if (imagen == null || imagen.isEmpty()) throw new Exception("La imagen es obligatoria");
+    }
+
+    private void verificarNumeros(int numero, int capacidad, double precio) {
+        if (numero <= 0) throw new IllegalArgumentException("El numero debe ser mayor a 0");
+        if (capacidad <= 0) throw new IllegalArgumentException("La capacidad debe ser mayor a 0");
+        if (precio <= 0) throw new IllegalArgumentException("El precio debe ser mayor a 0");
     }
 
     public void eliminarHabitacion(String idHotel, int numero) throws Exception {

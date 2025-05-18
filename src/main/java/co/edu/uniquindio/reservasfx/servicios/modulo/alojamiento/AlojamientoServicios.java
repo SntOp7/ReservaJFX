@@ -33,14 +33,23 @@ public class AlojamientoServicios {
         alojamientoRepositorio = new AlojamientoRepositorio();
     }
 
-    public Alojamiento registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion,
-                                     double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios,
-                                     String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento) throws Exception {
+    public Alojamiento registrarAlojamiento(String tipoAlojamientoString, String nombre, String ciudadString, String descripcion,
+                                     String precioPorNocheString, String capacidadMaximaString, ArrayList<TipoServicio> servicios,
+                                     String imagenPrincipal, ArrayList<String> imagenes, String costoAseoYMantenimientoString) throws Exception {
 
-        if (ciudad == null) throw new Exception("La ciudad es obligatoria");
-        verificarCampos(tipoAlojamiento, nombre, descripcion, precioPorNoche, capacidadMaxima, servicios, imagenPrincipal,
-                costoAseoYMantenimiento);
-
+        if (tipoAlojamientoString == null || tipoAlojamientoString.isEmpty()) throw new Exception("El tipo de alojamiento es obligatorio");
+        TipoAlojamiento tipoAlojamiento = TipoAlojamiento.valueOf(tipoAlojamientoString.toUpperCase());
+        if (ciudadString == null || ciudadString.isEmpty()) throw new Exception("La ciudad es obligatoria");
+        Ciudad ciudad = Ciudad.valueOf(ciudadString.toUpperCase());
+        verificarCampos(tipoAlojamiento, nombre, descripcion, precioPorNocheString, capacidadMaximaString, servicios, imagenPrincipal,
+                costoAseoYMantenimientoString);
+        double precioPorNoche = Double.parseDouble(precioPorNocheString);
+        int capacidadMaxima = Integer.parseInt(capacidadMaximaString);
+        double costoAseoYMantenimiento = 0;
+        if (tipoAlojamiento.equals(TipoAlojamiento.CASA) || tipoAlojamiento.equals(TipoAlojamiento.APARTAMENTO)) {
+            costoAseoYMantenimiento = Double.parseDouble(costoAseoYMantenimientoString);
+        }
+        verificarNumeros(precioPorNoche, capacidadMaxima, costoAseoYMantenimiento);
         String id = UUID.randomUUID().toString();
         Alojamiento alojamiento = switch (tipoAlojamiento) {
             case CASA -> AlojamientoFactory.crearCasa(id, nombre, ciudad, descripcion, precioPorNoche,
@@ -72,11 +81,18 @@ public class AlojamientoServicios {
     }
 
     public Alojamiento editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion,
-                                  double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios,
-                                  String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento) throws Exception {
+                                  String precioPorNocheString, String capacidadMaximaString, ArrayList<TipoServicio> servicios,
+                                  String imagenPrincipal, ArrayList<String> imagenes, String costoAseoYMantenimientoString) throws Exception {
 
-        verificarCampos(tipoAlojamiento, nombre, descripcion, precioPorNoche, capacidadMaxima, servicios, imagenPrincipal,
-                costoAseoYMantenimiento);
+        verificarCampos(tipoAlojamiento, nombre, descripcion, precioPorNocheString, capacidadMaximaString, servicios, imagenPrincipal,
+                costoAseoYMantenimientoString);
+        double precioPorNoche = Double.parseDouble(precioPorNocheString);
+        int capacidadMaxima = Integer.parseInt(capacidadMaximaString);
+        double costoAseoYMantenimiento = 0;
+        if (tipoAlojamiento.equals(TipoAlojamiento.CASA) || tipoAlojamiento.equals(TipoAlojamiento.APARTAMENTO)) {
+            costoAseoYMantenimiento = Double.parseDouble(costoAseoYMantenimientoString);
+        }
+        verificarNumeros(precioPorNoche, capacidadMaxima, costoAseoYMantenimiento);
         Alojamiento alojamiento = alojamientoRepositorio.buscarAlojamientoPorId(id);
         alojamiento.setNombre(nombre);
         alojamiento.setDescripcion(descripcion);
@@ -111,21 +127,27 @@ public class AlojamientoServicios {
         }
     }
 
-    public void verificarCampos(TipoAlojamiento tipoAlojamiento, String nombre, String descripcion, double precioPorNoche,
-                                 int capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal,
-                                 double costoAseoYMantenimiento) throws Exception {
+    public void verificarCampos(TipoAlojamiento tipoAlojamiento, String nombre, String descripcion, String precioPorNoche,
+                                 String capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal,
+                                 String costoAseoYMantenimiento) throws Exception {
 
-        if (tipoAlojamiento == null) throw new Exception("El tipo de alojamiento es obligatorio");
         if (nombre == null || nombre.isEmpty()) throw new Exception("El nombre es obligatorio");
         if (descripcion == null || descripcion.isEmpty()) throw new Exception("La descripción es obligatoria");
-        if (precioPorNoche <= 0) throw new Exception("El precio por noche debe ser mayor a 0");
-        if (capacidadMaxima <= 0) throw new Exception("La capacidad máxima debe ser mayor a 0");
+        if (precioPorNoche == null || precioPorNoche.isEmpty()) throw new Exception("El precio por noche es obligatorio");
+        if (capacidadMaxima == null || capacidadMaxima.isEmpty()) throw new Exception("La capacidad maxima es obligatoria");
         if (imagenPrincipal == null || imagenPrincipal.isEmpty()) throw new Exception("La imagen principal es obligatoria");
         if (servicios == null || servicios.isEmpty()) throw new Exception("Debe tener al menos un servicio");
 
         if (tipoAlojamiento.equals(TipoAlojamiento.CASA) || tipoAlojamiento.equals(TipoAlojamiento.APARTAMENTO)) {
-            if (costoAseoYMantenimiento <= 0) throw new Exception("El costo de aseo y mantenimiento debe ser mayor a 0");
+            if (costoAseoYMantenimiento == null || costoAseoYMantenimiento.isEmpty())
+                throw new Exception("El costo de aseo y mantenimiento es obligatorio");
         }
+    }
+
+    private void verificarNumeros(double precioPorNoche, int capacidadMaxima, double costoAseoYMantenimiento) throws Exception {
+        if (precioPorNoche <= 0) throw new Exception("El precio por noche debe ser mayor a 0.");
+        if (capacidadMaxima <= 0) throw new Exception("La capacidad maxima debe ser mayor a 0.");
+        if (costoAseoYMantenimiento <= 0) throw new Exception("El costo de aseo y mantenimiento debe ser mayor a 0.");
     }
 
     public void eliminarAlojamiento(String nombre) throws Exception {
