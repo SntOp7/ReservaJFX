@@ -188,7 +188,7 @@ public class AlojamientoClienteControlador {
                 if (tipo.equals("Casa") || tipo.equals("Apartamento")) {
                     rutaInfo = "/co/edu/uniquindio/reservasfx/costoAdicionalCliente.fxml";
                 } else if (tipo.equals("Hotel")) {
-                    rutaInfo = "/co/edu/uniquindio/reservasfx/listaHabitaciones.fxml";
+                    rutaInfo = "/co/edu/uniquindio/reservasfx/listaHabitacionesCliente.fxml";
                 } else {
                     rutaInfo = null;
                 }

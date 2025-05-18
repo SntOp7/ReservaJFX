@@ -238,9 +238,7 @@ public class PanelAdministracionControlador {
         ObservableList<TipoServicio> serviciosSeleccionados = tablaTipoServicios.getSelectionModel().getSelectedItems();
         ArrayList<TipoServicio> servicios = new ArrayList<>(serviciosSeleccionados);
         try {
-            controlador.getEmpresa().getModuloAlojamientoServicios().registrarAlojamiento(tipoAlojamiento, nombre,
-                    ciudad, descripcion, precioNoche, capacidad, servicios, urlPrincipal, imagenes,
-                    0, null);
+
             controlador.crearAlerta("Alojamiento registrado exitosamente.", Alert.AlertType.INFORMATION);
             panePrincipalControlador.actualizarInferior(
                     "/co/edu/uniquindio/reservasfx/panelAdministacion.fxml");

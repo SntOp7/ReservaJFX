@@ -35,9 +35,9 @@ public class ModuloAlojamientoServicios implements IAlojamiento {
     }
 
     @Override
-    public void registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion,
-                                     double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios,
-                                     String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento,
+    public void registrarAlojamiento(String tipoAlojamiento, String nombre, String ciudad, String descripcion,
+                                     String precioPorNoche, String capacidadMaxima, ArrayList<TipoServicio> servicios,
+                                     String imagenPrincipal, ArrayList<String> imagenes, String costoAseoYMantenimiento,
                                      ArrayList<Habitacion> habitaciones) throws Exception {
         Alojamiento alojamiento = alojamientoServicios.registrarAlojamiento(tipoAlojamiento, nombre, ciudad, descripcion,
                 precioPorNoche, capacidadMaxima, servicios, imagenPrincipal, imagenes, costoAseoYMantenimiento);
@@ -45,25 +45,21 @@ public class ModuloAlojamientoServicios implements IAlojamiento {
             if (habitaciones == null || habitaciones.isEmpty())
                 throw new Exception("Debe registrar al menos una habitación para el Hotel");
             for (Habitacion habitacion : habitaciones) {
-                habitacionServicios.registrarHabitacion(alojamiento.getId(), habitacion.getNumero(), habitacion.getPrecio(),
-                        habitacion.getCapacidad(), habitacion.getDescripcion(), habitacion.getImagen());
+                registrarHabitacion(alojamiento.getId(), habitacion);
             }
         }
     }
 
     @Override
     public void editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion,
-                                  double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios,
-                                  String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento,
+                                  String precioPorNoche, String capacidadMaxima, ArrayList<TipoServicio> servicios,
+                                  String imagenPrincipal, ArrayList<String> imagenes, String costoAseoYMantenimiento,
                                   ArrayList<Habitacion> habitaciones) throws Exception {
-        Alojamiento alojamiento = alojamientoServicios.editarAlojamiento(id, tipoAlojamiento, nombre, descripcion,
-                precioPorNoche, capacidadMaxima, servicios, imagenPrincipal, imagenes, costoAseoYMantenimiento);
-        if (alojamiento instanceof Hotel) {
+        if (tipoAlojamiento.equals(TipoAlojamiento.HOTEL)) {
             if (habitaciones == null || habitaciones.isEmpty())
                 throw new Exception("Debe quedar registrado al menos una Habitación para el Hotel");
             for (Habitacion habitacion : habitaciones) {
-                habitacionServicios.editarHabitacion(alojamiento.getId(), habitacion.getNumero(), habitacion.getPrecio(),
-                        habitacion.getCapacidad(), habitacion.getDescripcion(), habitacion.getImagen());
+                editarHabitacion(id, habitacion);
             }
         }
     }
@@ -136,14 +132,24 @@ public class ModuloAlojamientoServicios implements IAlojamiento {
     }
 
     @Override
-    public void registrarHabitacion(String idHotel, int numero, double precio, int capacidad, String descripcion,
-                                    String imagen) throws Exception {
-        habitacionServicios.registrarHabitacion(idHotel, numero, precio, capacidad, descripcion, imagen);
+    public Habitacion crearHabitacion(String numero, String precio, String capacidad, String descripcion, String imagen) throws Exception {
+        return habitacionServicios.crearHabitacion(numero, precio, capacidad, descripcion, imagen);
     }
 
     @Override
-    public void editarHabitacion(String idHotel, int numero, double precio, int capacidad, String descripcion, String imagen) throws Exception {
-        habitacionServicios.editarHabitacion(idHotel, numero, precio, capacidad, descripcion, imagen);
+    public void registrarHabitacion(String idHotel, Habitacion habitacion) throws Exception {
+        habitacionServicios.registrarHabitacion(idHotel, habitacion);
+    }
+
+    @Override
+    public Habitacion verificarEdicionHabitacion(Habitacion habitacionAntigua, String numero, String precio, String capacidad,
+                                                 String descripcion, String imagen) throws Exception {
+        return habitacionServicios.verificarEdicionHabitacion(habitacionAntigua, numero, precio, capacidad, descripcion, imagen);
+    }
+
+    @Override
+    public void editarHabitacion(String idHotel, Habitacion habitacion) throws Exception {
+        habitacionServicios.editarHabitacion(idHotel, habitacion);
     }
 
     @Override
