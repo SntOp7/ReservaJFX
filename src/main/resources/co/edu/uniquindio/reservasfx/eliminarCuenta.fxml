@@ -80,12 +80,7 @@
                   <Font name="Berlin Sans FB" size="16.0" />
                </font>
             </Label>
-            <Button fx:id="aceptarBtn" layoutX="761.0" layoutY="181.0" mnemonicParsing="false" onAction="#aceptarBtnAction" style="-fx-background-radius: 50px; -fx-background-color: #00913F;" text="Aceptar" textFill="WHITE">
-               <font>
-                  <Font name="Berlin Sans FB" size="21.0" />
-               </font>
-            </Button>
-            <Button fx:id="cancelarBtn" layoutX="867.0" layoutY="181.0" mnemonicParsing="false" onAction="#cancelarBtnAction" style="-fx-background-radius: 50px; -fx-background-color: #FF0000;" text="Cancelar" textFill="WHITE">
+            <Button fx:id="aceptarBtn" layoutX="811.0" layoutY="181.0" mnemonicParsing="false" onAction="#aceptarBtnAction" style="-fx-background-radius: 50px; -fx-background-color: #00913F;" text="Aceptar" textFill="WHITE">
                <font>
                   <Font name="Berlin Sans FB" size="21.0" />
                </font>
