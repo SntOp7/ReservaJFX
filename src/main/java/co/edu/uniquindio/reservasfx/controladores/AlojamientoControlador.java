@@ -1,5 +1,6 @@
 package co.edu.uniquindio.reservasfx.controladores;
 
+import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Administrador;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.modelo.factory.Apartamento;
 import co.edu.uniquindio.reservasfx.modelo.factory.Casa;
@@ -9,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class AlojamientoControlador {
@@ -46,27 +48,32 @@ public class AlojamientoControlador {
     @FXML
     void favoritoBtnAction(ActionEvent event) {
         if (controlador.getSesion().getUsuario() != null) {
-            String cedula = controlador.getSesion().getUsuario().getCedula();
-            if (alojamiento != null) {
-                try {
-                    controlador.getEmpresa().getModuloUsuarioServicios().guardarDeseo(cedula, alojamiento.getId());
-                    String mensaje = "";
-                    if (alojamiento instanceof Casa) {
-                        mensaje += "Casas";
-                    } else if (alojamiento instanceof Apartamento) {
-                        mensaje += "Apartamentos";
-                    } else if (alojamiento instanceof Hotel) {
-                        mensaje += "Hoteles";
+            if (controlador.getSesion().getUsuario() instanceof Administrador) {
+                controlador.crearAlerta("Solo los clientes pueden agregar a la lista de deseos", Alert.AlertType.ERROR);
+            } else {
+                String cedula = controlador.getSesion().getUsuario().getCedula();
+                if (alojamiento != null) {
+                    try {
+                        controlador.getEmpresa().getModuloUsuarioServicios().guardarDeseo(cedula, alojamiento.getId());
+                        String mensaje = "";
+                        if (alojamiento instanceof Casa) {
+                            mensaje += "Casas";
+                        } else if (alojamiento instanceof Apartamento) {
+                            mensaje += "Apartamentos";
+                        } else if (alojamiento instanceof Hotel) {
+                            mensaje += "Hoteles";
+                        }
+                        controlador.crearAlerta("Se ha agregado el alojamiento a tu lista de deseos de " + mensaje,
+                                Alert.AlertType.INFORMATION);
+                        Image imagen = ControladorPrincipal.cargarImagenSeleccionada("corazonRelleno.png");
+                        imagenCorazon.setImage(imagen);
+                    } catch (Exception e) {
+                        controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
                     }
-                    controlador.crearAlerta("Se ha agregado el alojamiento a tu lista de deseos de " + mensaje,
-                            Alert.AlertType.INFORMATION);
-                    controlador.cargarImagen("corazonRelleno.png", imagenCorazon);
-                } catch (Exception e) {
-                    controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
                 }
             }
         } else {
-            controlador.crearAlerta("Debe estar logueado para poder agregar un deseo", Alert.AlertType.ERROR);
+            controlador.crearAlerta("Debe estar logueado para poder agregar a la lista de deseos", Alert.AlertType.ERROR);
         }
     }
 
@@ -76,7 +83,7 @@ public class AlojamientoControlador {
             controlador.getAlojamientoSelect().setAlojamiento(alojamiento);
             panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/alojamientoCliente.fxml");
         } else {
-            controlador.crearAlerta("Debe estar logueado para poder agregar un deseo", Alert.AlertType.ERROR);
+            controlador.crearAlerta("Debe estar logueado para consultar el alojamiento", Alert.AlertType.ERROR);
         }
     }
 }
