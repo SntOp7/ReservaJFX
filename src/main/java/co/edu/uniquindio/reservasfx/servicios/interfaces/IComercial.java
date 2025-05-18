@@ -12,17 +12,17 @@ import java.util.ArrayList;
 public interface IComercial {
 
     void realizarReserva(String cedulaCliente, String idAlojamiento, LocalDate fechaInicio, LocalDate fechaFin,
-                         int numeroHuespedes, int numeroHabitacion) throws Exception;
+                         String numeroHuespedes, int numeroHabitacion) throws Exception;
 
     void cancelarReserva(String id) throws Exception;
 
     ArrayList<Reserva> obtenerReservasCliente(String cedulaCliente) throws Exception;
 
     void registrarOferta(OfertaEspecial ofertaEspecial, String idAlojamiento, String nombre, String descripcion,
-                         LocalDate fechaInicio, LocalDate fechaFin, double porcentajeDescuento) throws Exception;
+                         LocalDate fechaInicio, LocalDate fechaFin, String porcentajeDescuento) throws Exception;
 
     void editarOferta(String id, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin,
-                      double porcentajeDescuento) throws Exception;
+                      String porcentajeDescuento) throws Exception;
 
     void eliminarOferta(String id) throws Exception;
 

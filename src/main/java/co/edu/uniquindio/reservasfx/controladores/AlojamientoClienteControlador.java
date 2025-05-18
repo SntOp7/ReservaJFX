@@ -134,13 +134,14 @@ public class AlojamientoClienteControlador {
             String idAlojamiento = AlojamientoSelect.getInstancia().getAlojamiento().getId();
             LocalDate inicio = fechaInicioDate.getValue();
             LocalDate fin    = fechaFinDate.getValue();
-            int numHues = Integer.parseInt(huespedesText.getText());
+            String numHuespedes =  txtHuespedes.getText();
 
             Habitacion habitacion = SeleccionReserva.getInstancia().getHabitacionSeleccionada();
+            if ( habitacion == null ) throw new Exception("Habitacion no seleccionada");
             int numeroHabitacion = (habitacion != null) ? habitacion.getNumero() : -1;
 
-            controlador.getEmpresa().getModuloComercialServicios().realizarReserva(cedula, idAlojamiento, inicio, fin, numHues, numeroHabitacion
-                    );
+            controlador.getEmpresa().getModuloComercialServicios().realizarReserva(cedula, idAlojamiento, inicio, fin, numHuespedes, numeroHabitacion);
+
             controlador.crearAlerta("Reserva realizada exitosamente", Alert.AlertType.INFORMATION);
         } catch (NumberFormatException e) {
             controlador.crearAlerta("Número de huéspedes inválido", Alert.AlertType.WARNING);

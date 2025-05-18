@@ -28,7 +28,7 @@ public interface IUsuario {
 
     void activarCuentaCliente(String cedula, String codigoCorrecto, String codigoIngresado) throws Exception;
 
-    void enviarCalificacion(String cedulaCliente, String idAlojamiento, String comentario, int valoracion,
+    void enviarCalificacion(String cedulaCliente, String idAlojamiento, String comentario, String valoracion,
                             ArrayList<Reserva> reservasCliente) throws Exception;
 
     ArrayList<Calificacion> obtenerCalificacionesAlojamiento(String idAlojamiento) throws Exception;

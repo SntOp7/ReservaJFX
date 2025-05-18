@@ -27,14 +27,17 @@ public class OfertaServicios {
     }
 
     public void registrarOferta(OfertaEspecial ofertaEspecial, String idAlojamiento, String nombre, String descripcion,
-                                LocalDate fechaInicio, LocalDate fechaFin, double porcentajeDescuento) throws Exception {
+                                LocalDate fechaInicio, LocalDate fechaFin, String porcentajeDescuento) throws Exception {
 
         if (ofertaEspecial == null ) throw new Exception("La oferta es obligatoria");
-        verificarCampos(nombre, descripcion, fechaInicio, fechaFin, porcentajeDescuento);
+        if (porcentajeDescuento ==null ||  porcentajeDescuento.isEmpty()) throw  new Exception("Elporcentaje de descuento es obligatorio");
+        double porcentaje = Double.parseDouble(porcentajeDescuento);
+        if (porcentaje < 0 || porcentaje > 100) throw new Exception("El porcentaje de descuento debe ser mayor a cero y manor a 100");
+        verificarCampos(nombre, descripcion, fechaInicio, fechaFin, porcentaje);
         EstadoOferta estadoOferta = obtenerEstadoOferta(fechaInicio, fechaFin);
         Oferta oferta = Oferta.builder().ofertaEspecial(ofertaEspecial).id(UUID.randomUUID().toString()).
                 idAlojamiento(idAlojamiento).nombre(nombre).descripcion(descripcion).fechaInicio(fechaInicio).
-                fechaFin(fechaFin).porcentajeDescuento(porcentajeDescuento).estado(estadoOferta).build();
+                fechaFin(fechaFin).porcentajeDescuento(porcentaje).estado(estadoOferta).build();
 
         ofertaRepositorio.agregar(oferta);
         for (Cliente cliente : usuarioServicios.obtenerClientes()) {
@@ -50,14 +53,15 @@ public class OfertaServicios {
     }
 
     public void editarOferta(String id, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin,
-                             double porcentajeDescuento) throws Exception {
-        verificarCampos(nombre, descripcion, fechaInicio, fechaFin, porcentajeDescuento);
+                             String porcentajeDescuento) throws Exception {
+        double porcentaje = Double.parseDouble(porcentajeDescuento);
+        verificarCampos(nombre, descripcion, fechaInicio, fechaFin, porcentaje);
         Oferta oferta = ofertaRepositorio.buscarOfertaPorId(id);
         oferta.setNombre(nombre);
         oferta.setDescripcion(descripcion);
         oferta.setFechaInicio(fechaInicio);
         oferta.setFechaFin(fechaFin);
-        oferta.setPorcentajeDescuento(porcentajeDescuento);
+        oferta.setPorcentajeDescuento(porcentaje);
         ofertaRepositorio.editar(oferta);
     }
 

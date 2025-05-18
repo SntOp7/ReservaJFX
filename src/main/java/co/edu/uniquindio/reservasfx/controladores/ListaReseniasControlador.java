@@ -64,7 +64,7 @@ public class ListaReseniasControlador {
     void enviarReseniaBtnAction(ActionEvent event) {
         try {
             String comentario = comentarioTxt.getText();
-            int valoracion = Integer.parseInt(valoracionTxt.getText());
+            String valoracion = valoracionTxt.getText();
 
             String idAlojamiento = alojamiento.getId();
             String cedulaCliente = controlador.getSesion().getUsuario().getCedula();

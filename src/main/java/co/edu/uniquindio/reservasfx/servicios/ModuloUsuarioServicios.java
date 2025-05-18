@@ -78,7 +78,7 @@ public class ModuloUsuarioServicios implements IUsuario {
     }
 
     @Override
-    public void enviarCalificacion(String cedulaCliente, String idAlojamiento, String comentario, int valoracion,
+    public void enviarCalificacion(String cedulaCliente, String idAlojamiento, String comentario, String valoracion,
                                    ArrayList<Reserva> reservasCliente) throws Exception {
         calificacionServicios.enviarCalificacion(cedulaCliente, idAlojamiento, comentario, valoracion, reservasCliente);
     }

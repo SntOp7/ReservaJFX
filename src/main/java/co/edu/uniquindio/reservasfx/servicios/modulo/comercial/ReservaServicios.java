@@ -45,19 +45,22 @@ public class ReservaServicios {
     }
 
     public void realizarReserva(String cedulaCliente, String idAlojamiento, LocalDate fechaInicio, LocalDate fechaFin,
-                                int numeroHuespedes, ArrayList<Oferta> ofertasAlojamiento, int numeroHabitacion) throws Exception {
+                                String numeroHuespedes, ArrayList<Oferta> ofertasAlojamiento, int numeroHabitacion) throws Exception {
 
         if (fechaInicio == null) throw new Exception("La fecha de inicio es obligatoria");
         if (fechaFin == null) throw new Exception("La fecha de fin es obligatoria");
         if (fechaInicio.isBefore(LocalDate.now())) throw new Exception("La fecha de inicio no puede ser en el pasado");
         if (fechaFin.isBefore(fechaInicio)) throw new Exception("La fecha de fin no puede ser anterior a la fecha de inicio");
-        if (numeroHuespedes <= 0) throw new Exception("El número de huéspedes debe ser mayor a cero");
+        if (numeroHuespedes ==null || numeroHuespedes.isEmpty()) throw new Exception("El número de huéspedes es obligatorio");
+
+        int huespedes = Integer.parseInt(numeroHuespedes);
+        if (huespedes <= 0) throw new  Exception("El mumero de huespedes debe ser mayor a 0");
 
         Alojamiento alojamiento = alojamientoServicios.buscarAlojamientoPorId(idAlojamiento);
         if (alojamiento instanceof Hotel) {
             if (numeroHabitacion == 0) throw new Exception("Debes seleccionar una habitación para realizar la reserva");
         }
-        if (!verificarCapacidadAlojamiento(alojamiento, numeroHuespedes, numeroHabitacion))
+        if (!verificarCapacidadAlojamiento(alojamiento, huespedes, numeroHabitacion))
             throw new Exception("El alojamiento no dispone de la capacidad solicitada");
         Reserva reservaConflicto = obtenerReservaConflicto(alojamiento.getId(), fechaInicio, fechaFin);
         if (reservaConflicto != null) {
@@ -90,7 +93,7 @@ public class ReservaServicios {
                 .idAlojamiento(idAlojamiento)
                 .fechaInicio(fechaInicio)
                 .fechaFin(fechaFin)
-                .numeroHuespedes(numeroHuespedes)
+                .numeroHuespedes(huespedes)
                 .factura(factura)
                 .estado(EstadoReserva.ACTIVA)
                 .build();
@@ -235,4 +238,5 @@ public class ReservaServicios {
     public void actualizarEstadoReservas() {
         reservaRepositorio.actualizarEstadoReservas();
     }
+
 }
