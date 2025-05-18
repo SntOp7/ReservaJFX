@@ -44,17 +44,17 @@ public class EmpresaServicio implements IEmpresa {
 
     @Override
     public void registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion,
-                                     double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios,
-                                     String imagenPrincipal, ArrayList<String> imagenes, double costoAseoYMantenimiento,
+                                     String precioPorNoche, String capacidadMaxima, ArrayList<TipoServicio> servicios,
+                                     String imagenPrincipal, ArrayList<String> imagenes, String costoAseoYMantenimiento,
                                      ArrayList<Habitacion> habitaciones) throws Exception {
         moduloAlojamientoServicios.registrarAlojamiento(tipoAlojamiento, nombre, ciudad, descripcion, precioPorNoche,
                 capacidadMaxima, servicios, imagenPrincipal, imagenes, costoAseoYMantenimiento, habitaciones);
     }
 
     @Override
-    public void editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion, double precioPorNoche, int capacidadMaxima,
+    public void editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion, String precioPorNoche, String capacidadMaxima,
                                   ArrayList<TipoServicio> servicios, String imagenPrincipal, ArrayList<String> imagenes,
-                                  double costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception {
+                                  String costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception {
         moduloAlojamientoServicios.editarAlojamiento(id, tipoAlojamiento, nombre, descripcion, precioPorNoche, capacidadMaxima, servicios,
                 imagenPrincipal, imagenes, costoAseoYMantenimiento, habitaciones);
     }
@@ -66,7 +66,7 @@ public class EmpresaServicio implements IEmpresa {
 
     @Override
     public void realizarReserva(String cedulaCliente, String idAlojamiento, LocalDate fechaInicio, LocalDate fechaFin,
-                                int numeroHuespedes, int numeroHabitacion) throws Exception {
+                                String numeroHuespedes, String numeroHabitacion) throws Exception {
         moduloComercialServicios.realizarReserva(cedulaCliente, idAlojamiento, fechaInicio, fechaFin, numeroHuespedes,
                 numeroHabitacion);
     }
@@ -79,14 +79,14 @@ public class EmpresaServicio implements IEmpresa {
     @Override
     public void registrarOferta(OfertaEspecial ofertaEspecial, String idAlojamiento, String nombre,
                                 String descripcion, LocalDate fechaInicio, LocalDate fechaFin,
-                                double porcentajeDescuento) throws Exception {
+                                String porcentajeDescuento) throws Exception {
         moduloComercialServicios.registrarOferta(ofertaEspecial, idAlojamiento, nombre, descripcion, fechaInicio,
                 fechaFin, porcentajeDescuento);
     }
 
     @Override
     public void editarOferta(String id, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin,
-                             double porcentajeDescuento) throws Exception {
+                             String porcentajeDescuento) throws Exception {
         moduloComercialServicios.editarOferta(id, nombre, descripcion, fechaInicio, fechaFin, porcentajeDescuento);
     }
 
@@ -96,7 +96,7 @@ public class EmpresaServicio implements IEmpresa {
     }
 
     @Override
-    public void enviarCalificacion(String cedulaCliente, String idAlojamiento, String comentario, int valoracion,
+    public void enviarCalificacion(String cedulaCliente, String idAlojamiento, String comentario, String valoracion,
                                    ArrayList<Reserva> reservasCliente) throws Exception {
         moduloUsuarioServicios.enviarCalificacion(cedulaCliente, idAlojamiento, comentario, valoracion, reservasCliente);
     }

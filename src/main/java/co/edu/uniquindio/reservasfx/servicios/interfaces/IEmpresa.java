@@ -25,29 +25,29 @@ public interface IEmpresa {
     void eliminarCliente(String cedula) throws Exception;
 
     void registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, Ciudad ciudad, String descripcion,
-                              double precioPorNoche, int capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal,
-                              ArrayList<String> imagenes, double costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception;
+                              String precioPorNoche, String capacidadMaxima, ArrayList<TipoServicio> servicios, String imagenPrincipal,
+                              ArrayList<String> imagenes, String costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception;
 
-    void editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion, double precioPorNoche, int capacidadMaxima,
+    void editarAlojamiento(String id, TipoAlojamiento tipoAlojamiento, String nombre, String descripcion, String precioPorNoche, String capacidadMaxima,
                            ArrayList<TipoServicio> servicios, String imagenPrincipal, ArrayList<String> imagenes,
-                           double costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception;
+                           String costoAseoYMantenimiento, ArrayList<Habitacion> habitaciones) throws Exception;
 
     void eliminarAlojamiento(String id) throws Exception;
 
     void realizarReserva(String cedulaCliente, String idAlojamiento, LocalDate fechaInicio, LocalDate fechaFin,
-                          int numeroHuespedes, int numeroHabitacion) throws Exception;
+                          String numeroHuespedes, String numeroHabitacion) throws Exception;
 
     void cancelarReserva(String id) throws Exception;
 
     void registrarOferta(OfertaEspecial ofertaEspecial, String idAlojamiento, String nombre, String descripcion,
-                         LocalDate fechaInicio, LocalDate fechaFin, double porcentajeDescuento) throws Exception;
+                         LocalDate fechaInicio, LocalDate fechaFin, String porcentajeDescuento) throws Exception;
 
     void editarOferta(String id, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin,
-                      double porcentajeDescuento) throws Exception;
+                      String porcentajeDescuento) throws Exception;
 
     void eliminarOferta(String id) throws Exception;
 
-    void enviarCalificacion(String cedulaCliente, String idAlojamiento, String comentario, int valoracion,
+    void enviarCalificacion(String cedulaCliente, String idAlojamiento, String comentario, String valoracion,
                             ArrayList<Reserva> reservasCliente) throws Exception;
 
     void enviarNotificacion(String cedulaCliente, String titulo, String mensaje) throws Exception;
