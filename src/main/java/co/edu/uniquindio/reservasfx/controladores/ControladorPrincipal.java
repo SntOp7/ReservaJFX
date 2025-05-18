@@ -1,5 +1,6 @@
 package co.edu.uniquindio.reservasfx.controladores;
 
+import co.edu.uniquindio.reservasfx.modelo.AlojamientoSelect;
 import co.edu.uniquindio.reservasfx.modelo.Sesion;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.servicios.EmpresaServicio;
@@ -8,11 +9,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.Getter;
@@ -30,10 +31,13 @@ public class ControladorPrincipal {
     private final EmpresaServicio empresa;
     @Getter
     private final Sesion sesion;
+    @Getter
+    private final AlojamientoSelect alojamientoSelect;
 
     private ControladorPrincipal() {
         empresa = new EmpresaServicio();
         sesion = Sesion.getInstancia();
+        alojamientoSelect = AlojamientoSelect.getInstancia();
     }
 
     public static ControladorPrincipal getInstancia(){
@@ -131,6 +135,23 @@ public class ControladorPrincipal {
             File file = new File(imagePath);
             if (file.exists()) {
                 imageView.setImage(new Image(file.toURI().toString()));
+            }
+        }
+    }
+
+    public void seleccionarImagen(ImageView imagen) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Seleccionar imagen de perfil");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg", "*.gif")
+        );
+        File archivoSeleccionado = fileChooser.showOpenDialog(null);
+        if (archivoSeleccionado != null) {
+            try {
+                Image imagenSeleccionada = new Image(archivoSeleccionado.toURI().toString());
+                imagen.setImage(imagenSeleccionada);
+            } catch (Exception e) {
+                crearAlerta("No se pudo cargar la imagen seleccionada.", Alert.AlertType.ERROR);
             }
         }
     }
