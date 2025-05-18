@@ -71,32 +71,32 @@
                                                             <children>
                                                                 <StackPane prefHeight="200" prefWidth="120">
                                                                     <children>
-                                                                        <Rectangle arcHeight="10" arcWidth="10" height="200" style="-fx-fill: white; -fx-stroke: #e0e0e0; -fx-stroke-width: 1;" width="120">
+                                                                        <Rectangle arcHeight="10" arcWidth="10" height="202.0" style="-fx-fill: white; -fx-stroke: #e0e0e0; -fx-stroke-width: 1;" width="211.0">
                                                                             <effect>
                                                                                 <DropShadow color="#00000022" height="10" radius="4.5" width="10" />
                                                                             </effect>
                                                                         </Rectangle>
-                                                                        <ImageView fx:id="imagenSecundaria1" fitHeight="150.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fx:id="imagenSecundaria1" fitHeight="150.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true" />
                                                                     </children>
                                                                 </StackPane>
                                                                 <StackPane prefHeight="200" prefWidth="120">
                                                                     <children>
-                                                                        <Rectangle arcHeight="10" arcWidth="10" height="200" style="-fx-fill: white; -fx-stroke: #e0e0e0; -fx-stroke-width: 1;" width="120">
+                                                                        <Rectangle arcHeight="10" arcWidth="10" height="201.0" style="-fx-fill: white; -fx-stroke: #e0e0e0; -fx-stroke-width: 1;" width="189.0">
                                                                             <effect>
                                                                                 <DropShadow color="#00000022" height="10" radius="4.5" width="10" />
                                                                             </effect>
                                                                         </Rectangle>
-                                                                        <ImageView fx:id="imagenSecundaria2" fitHeight="150.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fx:id="imagenSecundaria2" fitHeight="150.0" fitWidth="153.0" pickOnBounds="true" preserveRatio="true" />
                                                                     </children>
                                                                 </StackPane>
                                                                 <StackPane prefHeight="200" prefWidth="120">
                                                                     <children>
-                                                                        <Rectangle arcHeight="10" arcWidth="10" height="200" style="-fx-fill: white; -fx-stroke: #e0e0e0; -fx-stroke-width: 1;" width="120">
+                                                                        <Rectangle arcHeight="10" arcWidth="10" height="201.0" style="-fx-fill: white; -fx-stroke: #e0e0e0; -fx-stroke-width: 1;" width="186.0">
                                                                             <effect>
                                                                                 <DropShadow color="#00000022" height="10" radius="4.5" width="10" />
                                                                             </effect>
                                                                         </Rectangle>
-                                                                        <ImageView fx:id="imagenSecundaria3" fitHeight="150.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fx:id="imagenSecundaria3" fitHeight="150.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true" />
                                                                     </children>
                                                                 </StackPane>
                                                             </children>
