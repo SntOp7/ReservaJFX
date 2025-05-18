@@ -123,7 +123,7 @@ public class AlojamientoClienteControlador {
     private ArrayList<String> rutasImagenes;
     private int imagenActual = 0;
     ImagenRepositorio imagenRepositorio;
-    private ArrayList<Imagen> listaImagenes;  // Lista con objetos Imagen
+    private ArrayList<Imagen> listaImagenes;
     private int indiceImagenActual = 0;
 
 
@@ -209,6 +209,7 @@ public class AlojamientoClienteControlador {
             descripcionText.setText(descripcionText.getText() + ":" + alojamiento.getDescripcion());
             capacidadText.setText(capacidadText.getText() + ":" + alojamiento.getCapacidadMaxima());
             precioText.setText(precioText.getText() + ":" + alojamiento.getPrecioPorNoche());
+            controlador.cargarImagen(alojamiento.getImagenPrincipal(), imagenPrincipal);
         }
     }
 
