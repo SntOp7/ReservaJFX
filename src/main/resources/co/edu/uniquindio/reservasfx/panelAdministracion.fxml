@@ -10,7 +10,7 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.geometry.Insets?>
 
-<ScrollPane prefHeight="810.0" prefWidth="954.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.PanelAdministracionControlador">
+<ScrollPane prefHeight="797.0" prefWidth="954.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.PanelAdministracionControlador">
    <content>
       <VBox spacing="20" style="-fx-background-color: transparent;">
          <children>
@@ -26,7 +26,7 @@
                   <Line endX="600" endY="1600" startX="600" startY="0" style="-fx-stroke: #3498db11; -fx-stroke-width: 1;" />
       
 
-                  <VBox spacing="35.0" style="-fx-padding: 30;">
+                  <VBox alignment="CENTER" spacing="35.0" style="-fx-padding: 30;">
          <children>
 
                         <VBox spacing="20">
@@ -213,6 +213,11 @@
                               </VBox>
                            </children>
                         </VBox>
+                        <Label text="Añada los servicios del alojamiento pulsando la tecla Ctrl">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
          
 
                         <VBox spacing="15">
@@ -244,13 +249,18 @@
                                                                   <DropShadow color="#00000022" height="5" radius="2" width="5" />
                                                                </effect>
                                                             </Label>
-   
-
-                                                            <VBox spacing="10">
+                                                            <HBox prefHeight="68.0" prefWidth="853.0">
                                                                <children>
-                                                                  <Label style="-fx-font-family: 'Segoe UI'; -fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Rentabilidad por estadísticas del Tipo de Alojamiento BookYourStay" />
+         
+            
+                                                                        <VBox prefHeight="102.0" prefWidth="853.0" spacing="10">
+                                                                     <children>
+                                                                        <Label style="-fx-font-family: 'Segoe UI'; -fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Rentabilidad por estadísticas del Tipo de Alojamiento BookYourStay" />
+                                                                        <ComboBox prefHeight="31.0" prefWidth="161.0" promptText="Seleccionar mes" />
+                                                                     </children>
+                                                                  </VBox>
                                                                </children>
-                                                            </VBox>
+                                                            </HBox>
                                                             <TableView fx:id="tablaEstadisticas" prefHeight="200.0" prefWidth="200.0">
                                                                <columns>
                                                                   <TableColumn fx:id="tipoAlojamientoColumn" prefWidth="426.0" text="Tipo de Alojamiento" />
@@ -263,14 +273,7 @@
                                                                <children>
                                                                   <Label style="-fx-font-family: 'Segoe UI'; -fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Gráfico de barras Ganancias Alojamientos BookYourStay" />
                                                                   <HBox />
-                                                                  <BarChart fx:id="graficoBarrasAlojamiento" prefHeight="439.0" prefWidth="853.0">
-                                                                     <xAxis>
-                                                                        <CategoryAxis label="Tipo de Alojamiento" side="BOTTOM" />
-                                                                     </xAxis>
-                                                                     <yAxis>
-                                                                        <NumberAxis label="Ganancias Totales" side="LEFT" />
-                                                                     </yAxis>
-                                                                  </BarChart>
+                                                                  <StackPane prefHeight="383.0" prefWidth="853.0" />
                                                                   <HBox alignment="CENTER" />
                                                                </children>
                                                             </VBox>
