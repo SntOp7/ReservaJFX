@@ -33,6 +33,14 @@ public class AlojamientoServicios {
         alojamientoRepositorio = new AlojamientoRepositorio();
     }
 
+    public AlojamientoServicios(AlojamientoRepositorio alojamientoRepositorio,
+                                ServicioRepositorio servicioRepositorio,
+                                ImagenRepositorio imagenRepositorio) {
+        this.alojamientoRepositorio = alojamientoRepositorio;
+        this.servicioRepositorio = servicioRepositorio;
+        this.imagenRepositorio = imagenRepositorio;
+    }
+
     public Alojamiento registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, String ciudadString, String descripcion,
                                      String precioPorNocheString, String capacidadMaximaString, ArrayList<TipoServicio> servicios,
                                      String imagenPrincipal, ArrayList<String> imagenes, String costoAseoYMantenimientoString) throws Exception {
