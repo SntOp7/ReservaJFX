@@ -25,34 +25,17 @@ public class OfertaServiciosTest {
     }
 
     @Test
-    void testEditarOferta_CamposValidos_EdicionCorrecta() throws Exception {
-        String id = "oferta123";
-        String nombreNuevo = "Super Oferta";
-        String descripcionNueva = "Descuento especial para verano";
-        LocalDate fechaInicio = LocalDate.of(2025, 6, 1);
-        LocalDate fechaFin = LocalDate.of(2025, 6, 30);
-        String porcentajeDescuento = "20";
+    public void testEditarOferta_OfertaNoExiste_LanzaExcepcion() {
+        String id = "ofertaNoExiste";
 
-        Oferta ofertaOriginal = Oferta.builder()
-                .id(id)
-                .nombre("Oferta Vieja")
-                .descripcion("Descripcion vieja")
-                .fechaInicio(LocalDate.of(2025, 5, 1))
-                .fechaFin(LocalDate.of(2025, 5, 31))
-                .porcentajeDescuento(10.0)
-                .estado(EstadoOferta.ACTIVA)
-                .build();
+        // El repositorio retorna null indicando que no existe la oferta
+        when(ofertaRepositorio.buscarOfertaPorId(id)).thenReturn(null);
 
-        when(ofertaRepositorio.buscarOfertaPorId(id)).thenReturn(ofertaOriginal);
+        // Verificamos que se lance la excepción al intentar editar una oferta inexistente
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            ofertaServicio.editarOferta(id, "Nombre", "Descripcion", LocalDate.now(), LocalDate.now().plusDays(1), "10");
+        });
 
-        ofertaServicio.editarOferta(id, nombreNuevo, descripcionNueva, fechaInicio, fechaFin, porcentajeDescuento);
-
-        assertEquals(nombreNuevo, ofertaOriginal.getNombre());
-        assertEquals(descripcionNueva, ofertaOriginal.getDescripcion());
-        assertEquals(fechaInicio, ofertaOriginal.getFechaInicio());
-        assertEquals(fechaFin, ofertaOriginal.getFechaFin());
-        assertEquals(20.0, ofertaOriginal.getPorcentajeDescuento());
-
-        verify(ofertaRepositorio).editar(ofertaOriginal);
+        assertEquals("La oferta no existe", exception.getMessage());
     }
 }

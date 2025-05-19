@@ -19,6 +19,8 @@ module co.edu.uniquindio.reservasfx {
     exports co.edu.uniquindio.reservasfx.modelo;
     exports co.edu.uniquindio.reservasfx.servicios;
     exports co.edu.uniquindio.reservasfx.servicios.modulo.comercial;
+    exports co.edu.uniquindio.reservasfx.servicios.modulo.usuario;
+    exports co.edu.uniquindio.reservasfx.modelo.entidades.reserva;
     opens co.edu.uniquindio.reservasfx.app to javafx.fxml;
     opens co.edu.uniquindio.reservasfx.controladores to javafx.fxml;
 }

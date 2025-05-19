@@ -125,7 +125,7 @@ public class ReservaServicios {
         return capacidadDisponible;
     }
 
-    private double calcularSubtotal(Alojamiento alojamiento, LocalDate inicio, LocalDate fin) {
+    public double calcularSubtotal(Alojamiento alojamiento, LocalDate inicio, LocalDate fin) {
         long dias = ChronoUnit.DAYS.between(inicio, fin);
         double subtotal = 0;
         if (alojamiento instanceof Hotel) {
