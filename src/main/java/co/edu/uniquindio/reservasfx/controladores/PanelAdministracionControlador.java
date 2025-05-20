@@ -129,7 +129,7 @@ public class PanelAdministracionControlador {
         tipoAlojamientoColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getTipo().getNombre()));
         gananciasTotalesColumn.setCellValueFactory(cellData ->
-                new SimpleObjectProperty<>(cellData.getValue().getRentabilidad()));
+                new SimpleObjectProperty<>(cellData.getValue().getRentabilidadTipo()));
     }
 
     private void cargarOpcionesTipoAlojamiento() {
@@ -179,7 +179,21 @@ public class PanelAdministracionControlador {
     }
 
     private void cargarGraficoRentabilidad() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/co/edu/uniquindio/reservasfx/graficas.fxml"));
+            Parent graficoNode = loader.load();
 
+            GraficasControlador graficasControlador = loader.getController();
+            graficasControlador.graficarTipos(new ArrayList<>(estadisticasTipoAlojamiento));
+
+            stackpaneGraficos.getChildren().clear();
+            stackpaneGraficos.getChildren().add(graficoNode);
+
+        } catch (Exception e) {
+            controlador.crearAlerta("Error al cargar el gráfico: " + e.getMessage(), Alert.AlertType.ERROR);
+            e.printStackTrace();
+        }
     }
 
     @FXML

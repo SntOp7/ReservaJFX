@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.reservasfx.controladores.GraficasControlador"
+            prefHeight="600.0" prefWidth="800.0">
+
+    <VBox fx:id="panelGraficas" spacing="30" AnchorPane.topAnchor="10" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
+
+        <HBox spacing="20" alignment="CENTER">
+            <BarChart fx:id="barChartTipos" prefWidth="350" prefHeight="250">
+                <xAxis>
+                    <CategoryAxis label="Tipo Alojamiento"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Cantidad"/>
+                </yAxis>
+            </BarChart>
+            <PieChart fx:id="pieChartTipos" prefWidth="300" prefHeight="250"/>
+        </HBox>
+
+        <HBox spacing="20" alignment="CENTER">
+            <BarChart fx:id="barChartAlojamientos" prefWidth="350" prefHeight="250">
+                <xAxis>
+                    <CategoryAxis label="Alojamiento"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Rentabilidad"/>
+                </yAxis>
+            </BarChart>
+            <PieChart fx:id="pieChartAlojamientos" prefWidth="300" prefHeight="250"/>
+        </HBox>
+
+    </VBox>
+</AnchorPane>
