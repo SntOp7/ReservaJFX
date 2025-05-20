@@ -12,7 +12,7 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.paint.*?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1098.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.AlojamientoClienteControlador">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1205.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.AlojamientoClienteControlador">
     <content>
         <AnchorPane id="AnchorPane" prefHeight="453.0" prefWidth="1900.0">
             <children>
@@ -385,7 +385,7 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="60.0" prefWidth="1900.0" spacing="20.0" style="-fx-background-color: #ffffff;">
                                             <children>
-                                                <TabPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="1902.0" tabClosingPolicy="UNAVAILABLE">
+                                                <TabPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="831.0" prefWidth="1902.0" tabClosingPolicy="UNAVAILABLE">
                                                     <tabs>
                                                         <Tab fx:id="adicionalTab" text="Información Adicional">
                                                             <content>
