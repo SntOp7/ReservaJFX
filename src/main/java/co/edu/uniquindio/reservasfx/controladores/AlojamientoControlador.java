@@ -19,8 +19,6 @@ public class AlojamientoControlador {
     @FXML
     private Label precioLbl;
     @FXML
-    private Button favoritoBtn;
-    @FXML
     private Label nombreLbl;
     @FXML
     private Label ubicacionLbl;

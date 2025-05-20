@@ -92,6 +92,7 @@ public class FiltradoAlojamientoControlador {
     private void aplicarFiltros() {
         try {
             limpiarAlojamientos();
+            listaDeseosRadioBtn.setSelected(false);
             String nombre = nombreTxt.getText().trim();
             String ciudadSeleccionada = ciudadCombo.getValue() == null ? "" : ciudadCombo.getValue();
             String precioMin = minTxt.getText();
