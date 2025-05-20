@@ -49,11 +49,21 @@ public class AlojamientoServicios {
         Ciudad ciudad = Ciudad.valueOf(ciudadString.toUpperCase());
         verificarCampos(tipoAlojamiento, nombre, descripcion, precioPorNocheString, capacidadMaximaString, servicios, imagenPrincipal,
                 costoAseoYMantenimientoString);
-        double precioPorNoche = Double.parseDouble(precioPorNocheString);
-        int capacidadMaxima = Integer.parseInt(capacidadMaximaString);
+        double precioPorNoche = 0;
+        int capacidadMaxima = 0;
+        try {
+            precioPorNoche = Double.parseDouble(precioPorNocheString);
+            capacidadMaxima = Integer.parseInt(capacidadMaximaString);
+        } catch (NumberFormatException e) {
+            throw new Exception("El Precio por noche y Capacidad Maxima solo admiten números");
+        }
         double costoAseoYMantenimiento = 0;
         if (tipoAlojamiento.equals(TipoAlojamiento.CASA) || tipoAlojamiento.equals(TipoAlojamiento.APARTAMENTO)) {
-            costoAseoYMantenimiento = Double.parseDouble(costoAseoYMantenimientoString);
+            try {
+                costoAseoYMantenimiento = Double.parseDouble(costoAseoYMantenimientoString);
+            } catch (NumberFormatException e) {
+                throw new Exception("El Costo de Aseo y Mantenimiento solo admite números");
+            }
         }
         verificarNumeros(precioPorNoche, capacidadMaxima, costoAseoYMantenimiento);
         String id = UUID.randomUUID().toString();
@@ -92,11 +102,21 @@ public class AlojamientoServicios {
 
         verificarCampos(tipoAlojamiento, nombre, descripcion, precioPorNocheString, capacidadMaximaString, servicios, imagenPrincipal,
                 costoAseoYMantenimientoString);
-        double precioPorNoche = Double.parseDouble(precioPorNocheString);
-        int capacidadMaxima = Integer.parseInt(capacidadMaximaString);
+        double precioPorNoche = 0;
+        int capacidadMaxima = 0;
+        try {
+            precioPorNoche = Double.parseDouble(precioPorNocheString);
+            capacidadMaxima = Integer.parseInt(capacidadMaximaString);
+        } catch (NumberFormatException e) {
+            throw new Exception("El Precio por noche y Capacidad Maxima solo admiten números");
+        }
         double costoAseoYMantenimiento = 0;
         if (tipoAlojamiento.equals(TipoAlojamiento.CASA) || tipoAlojamiento.equals(TipoAlojamiento.APARTAMENTO)) {
-            costoAseoYMantenimiento = Double.parseDouble(costoAseoYMantenimientoString);
+            try {
+                costoAseoYMantenimiento = Double.parseDouble(costoAseoYMantenimientoString);
+            } catch (NumberFormatException e) {
+                throw new Exception("El Costo de Aseo y Mantenimiento solo admite números");
+            }
         }
         verificarNumeros(precioPorNoche, capacidadMaxima, costoAseoYMantenimiento);
         Alojamiento alojamiento = alojamientoRepositorio.buscarAlojamientoPorId(id);

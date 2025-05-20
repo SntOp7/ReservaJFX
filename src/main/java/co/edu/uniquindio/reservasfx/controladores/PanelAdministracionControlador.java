@@ -8,6 +8,7 @@ import co.edu.uniquindio.reservasfx.modelo.vo.EstadisticasTipoAlojamiento;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.css.SimpleStyleableDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +39,7 @@ public class PanelAdministracionControlador {
     @FXML
     private Button agregarImagenesBtn;
     @FXML
-    private TableColumn<TipoAlojamiento, String> tipoAlojamientoColumn;
+    private TableColumn<EstadisticasTipoAlojamiento, String> tipoAlojamientoColumn;
     @FXML
     private TableView<EstadisticasTipoAlojamiento> tablaEstadisticas;
     @FXML
@@ -76,9 +77,11 @@ public class PanelAdministracionControlador {
     ListaHabitacionesAlojamientoControlador listaHabitacionesAlojamientoControlador;
 
     ObservableList<TipoServicio> tipoServicios;
+    ObservableList<EstadisticasTipoAlojamiento> estadisticasTipoAlojamiento;
 
     @FXML
     void initialize() {
+        estadisticasTipoAlojamiento = FXCollections.observableArrayList();
         tipoServicios = FXCollections.observableArrayList();
         tablaTipoServicios.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
@@ -124,8 +127,9 @@ public class PanelAdministracionControlador {
 
     private void initTablaRentabilidad() {
         tipoAlojamientoColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getNombre()));
-
+                new SimpleStringProperty(cellData.getValue().getTipo().getNombre()));
+        gananciasTotalesColumn.setCellValueFactory(cellData ->
+                new SimpleObjectProperty<>(cellData.getValue().getRentabilidad()));
     }
 
     private void cargarOpcionesTipoAlojamiento() {
@@ -155,8 +159,23 @@ public class PanelAdministracionControlador {
         tablaTipoServicios.setItems(tipoServicios);
     }
 
-    private void cargarTablaRentabilidad() {
+    @FXML
+    void seleccionarMesBoxAction(ActionEvent event) {
+        int mes = seleccionarMesBox.getSelectionModel().getSelectedIndex() + 1;
+        cargarTablaRentabilidad(mes);
+        cargarGraficoRentabilidad();
+    }
 
+    private void cargarTablaRentabilidad(int mes) {
+        try {
+            ArrayList<EstadisticasTipoAlojamiento> estadisticas = controlador.getEmpresa().
+                    getModuloComercialServicios().obtenerRentabilidadTipoAlojamiento(mes);
+            estadisticasTipoAlojamiento.clear();
+            estadisticasTipoAlojamiento.addAll(estadisticas);
+            tablaEstadisticas.setItems(estadisticasTipoAlojamiento);
+        } catch (Exception e) {
+            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 
     private void cargarGraficoRentabilidad() {
@@ -234,15 +253,10 @@ public class PanelAdministracionControlador {
             }
             controlador.crearAlerta("Alojamiento registrado exitosamente.", Alert.AlertType.INFORMATION);
             panePrincipalControlador.actualizarInferior(
-                    "/co/edu/uniquindio/reservasfx/panelAdministacion.fxml");
+                    "/co/edu/uniquindio/reservasfx/recomendadoAlojamiento.fxml");
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
-    }
-
-    @FXML
-    void seleccionarMesBoxAction(ActionEvent event) {
-
     }
 
     private Parent cargarPanel() {

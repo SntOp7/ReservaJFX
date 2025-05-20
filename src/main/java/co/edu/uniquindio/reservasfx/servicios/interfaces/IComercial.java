@@ -38,5 +38,5 @@ public interface IComercial {
 
     EstadisticasAlojamiento obtenerEstadisticasAlojamiento(String idAlojamiento) throws Exception;
 
-    EstadisticasTipoAlojamiento obtenerRentabilidadTipoAlojamiento(int mes) throws Exception;
+    ArrayList<EstadisticasTipoAlojamiento> obtenerRentabilidadTipoAlojamiento(int mes) throws Exception;
 }

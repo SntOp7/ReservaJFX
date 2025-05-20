@@ -98,7 +98,7 @@ public class ModuloComercialServicios implements IComercial {
     }
 
     @Override
-    public EstadisticasTipoAlojamiento obtenerRentabilidadTipoAlojamiento(int mes) throws Exception {
+    public ArrayList<EstadisticasTipoAlojamiento> obtenerRentabilidadTipoAlojamiento(int mes) throws Exception {
         return reservaServicios.obtenerRentabilidadTipoAlojamiento(mes);
     }
 }

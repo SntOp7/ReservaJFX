@@ -1,9 +1,7 @@
 package co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento;
 
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
-import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.repositorios.HabitacionRepositorio;
-import co.edu.uniquindio.reservasfx.servicios.ModuloAlojamientoServicios;
 
 import java.util.ArrayList;
 
@@ -19,9 +17,16 @@ public class HabitacionServicios  {
                                     String imagen) throws Exception {
 
         verificarCampos(numeroString, precioString, capacidadString, descripcion, imagen);
-        int numero = Integer.parseInt(numeroString);
-        int capacidad = Integer.parseInt(capacidadString);
-        double precio = Double.parseDouble(precioString);
+        int numero = 0;
+        int capacidad = 0;
+        double precio = 0;
+        try {
+            numero = Integer.parseInt(numeroString);
+            capacidad = Integer.parseInt(capacidadString);
+            precio = Double.parseDouble(precioString);
+        } catch (NumberFormatException e) {
+            throw new Exception("Los campos de precio, capacidad y numero de habitacion deben ser números");
+        }
         verificarNumeros(numero, capacidad, precio);
 
         return Habitacion.builder().numero(numero).precio(precio).capacidad(capacidad)
@@ -34,20 +39,26 @@ public class HabitacionServicios  {
         habitacionRepositorio.agregar(habitacion);
     }
 
-    public Habitacion verificarEdicionHabitacion(Habitacion habitacionAntigua, String numeroString, String precioString,
+    public void verificarEdicionHabitacion(Habitacion habitacionAntigua, String numeroString, String precioString,
                                            String capacidadString, String descripcion, String imagen) throws Exception {
 
         verificarCampos(numeroString, precioString, capacidadString, descripcion, imagen);
-        int numero = Integer.parseInt(numeroString);
-        int capacidad = Integer.parseInt(capacidadString);
-        double precio = Double.parseDouble(precioString);
+        int numero = 0;
+        int capacidad = 0;
+        double precio = 0;
+        try {
+            numero = Integer.parseInt(numeroString);
+            capacidad = Integer.parseInt(capacidadString);
+            precio = Double.parseDouble(precioString);
+        } catch (NumberFormatException e) {
+            throw new Exception("Los campos de precio, capacidad y numero de habitacion deben ser números");
+        }
         verificarNumeros(numero, capacidad, precio);
         habitacionAntigua.setNumero(numero);
         habitacionAntigua.setPrecio(precio);
         habitacionAntigua.setCapacidad(capacidad);
         habitacionAntigua.setDescripcion(descripcion);
         habitacionAntigua.setImagen(imagen);
-        return habitacionAntigua;
     }
 
     public void editarHabitacion(String idHotel, Habitacion habitacion) throws Exception {

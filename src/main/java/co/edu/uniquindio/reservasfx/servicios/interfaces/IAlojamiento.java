@@ -1,6 +1,5 @@
 package co.edu.uniquindio.reservasfx.servicios.interfaces;
 
-import co.edu.uniquindio.reservasfx.modelo.entidades.Calificacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Imagen;
@@ -8,13 +7,11 @@ import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Servicio;
 import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
 import co.edu.uniquindio.reservasfx.modelo.enums.Ciudad;
-import co.edu.uniquindio.reservasfx.modelo.enums.Mes;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoAlojamiento;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoServicio;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public interface IAlojamiento {
 
@@ -55,8 +52,8 @@ public interface IAlojamiento {
 
     void registrarHabitacion(String idHotel, Habitacion habitacion) throws Exception;
 
-    Habitacion verificarEdicionHabitacion(Habitacion habitacionAntigua, String numero, String precio,
-                                          String capacidad, String descripcion, String imagen) throws Exception;
+    void verificarEdicionHabitacion(Habitacion habitacionAntigua, String numero, String precio,
+                                    String capacidad, String descripcion, String imagen) throws Exception;
 
     void editarHabitacion(String idHotel, Habitacion habitacion) throws Exception;
 
