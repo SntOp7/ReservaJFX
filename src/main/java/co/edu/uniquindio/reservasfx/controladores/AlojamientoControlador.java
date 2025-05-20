@@ -106,9 +106,15 @@ public class AlojamientoControlador {
     @FXML
     void consultarBtnAction(ActionEvent event) {
         if (controlador.getSesion().getUsuario() != null) {
-            controlador.getAlojamientoSelect().setAlojamiento(alojamiento);
-            panePrincipalControlador.limpiarInferior();
-            panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/alojamientoCliente.fxml");
+            if (controlador.getSesion().getUsuario() instanceof Administrador) {
+                controlador.getAlojamientoSelect().setAlojamiento(alojamiento);
+                panePrincipalControlador.limpiarInferior();
+                panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/alojamientoAdministrador.fxml");
+            } else {
+                controlador.getAlojamientoSelect().setAlojamiento(alojamiento);
+                panePrincipalControlador.limpiarInferior();
+                panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/alojamientoCliente.fxml");
+            }
         } else {
             controlador.crearAlerta("Debe estar logueado para consultar el alojamiento", Alert.AlertType.ERROR);
         }

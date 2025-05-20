@@ -46,7 +46,7 @@
                         </StackPane>
                   <Button fx:id="favoritoBtn" onAction="#favoritoBtnAction" prefHeight="48.0" prefWidth="50.0" style="-fx-background-color: transparent; -fx-background-radius: 50px;" textFill="#f53c3c" translateX="190.0" translateY="-65.0">
                      <graphic>
-                        <ImageView fx:id="imagenNotificacion" fitHeight="47.0" fitWidth="46.0">
+                        <ImageView fx:id="imagenCorazon" fitHeight="47.0" fitWidth="46.0">
                            <image>
                               <Image url="@img/corazonSinRelleno.png" />
                            </image>
