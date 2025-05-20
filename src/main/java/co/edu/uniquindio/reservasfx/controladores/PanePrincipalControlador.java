@@ -42,6 +42,10 @@ public class PanePrincipalControlador {
                 "/co/edu/uniquindio/reservasfx/recomendadoAlojamiento.fxml");
     }
 
+    public void limpiarInferior() {
+        inicioInferiorStack.getChildren().clear();
+    }
+
     public void actualizarInferior(String fxmlFile) {
         inicioInferiorStack.getChildren().clear();
         Parent node = controlador.cargarPanel(fxmlFile);

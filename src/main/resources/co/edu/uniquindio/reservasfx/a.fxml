@@ -29,16 +29,19 @@
 
                         <StackPane alignment="TOP_RIGHT" prefHeight="155.0" prefWidth="444.0">
                      <children>
-                        <Button fx:id="favoritoOfertaBtn" mnemonicParsing="false" onAction="#favoritoBtnAction" prefHeight="20.0" prefWidth="31.0" style="-fx-background-color: transparent;" translateX="-5.0" translateY="5.0">
-                           <graphic>
-                              <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@img/corazonSinRelleno.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
+                         <ImageView fx:id="imagenCorazon" fitHeight="44.0" fitWidth="44.0" onMouseClicked="#favoritoBtnAction">
+                             <image>
+                                 <Image url="@img/corazonSinRelleno.png" />
+                             </image>
+                             <StackPane.margin>
+                                 <Insets right="10.0" top="10.0" />
+                             </StackPane.margin>
+                         </ImageView>
+                             
                      </children>
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
                         </StackPane>
             
                                     <Rectangle arcHeight="15.0" arcWidth="15.0" height="155.0" opacity="0.2" width="444.0">

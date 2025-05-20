@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 
@@ -61,7 +62,7 @@ public class AlojamientoControlador {
     }
 
     @FXML
-    void favoritoBtnAction(ActionEvent event) {
+    void favoritoBtnAction(MouseEvent event) {
         if (controlador.getSesion().getUsuario() != null) {
             if (controlador.getSesion().getUsuario() instanceof Administrador) {
                 controlador.crearAlerta("Solo los clientes pueden agregar a la lista de deseos", Alert.AlertType.ERROR);
@@ -106,6 +107,7 @@ public class AlojamientoControlador {
     void consultarBtnAction(ActionEvent event) {
         if (controlador.getSesion().getUsuario() != null) {
             controlador.getAlojamientoSelect().setAlojamiento(alojamiento);
+            panePrincipalControlador.limpiarInferior();
             panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/alojamientoCliente.fxml");
         } else {
             controlador.crearAlerta("Debe estar logueado para consultar el alojamiento", Alert.AlertType.ERROR);
