@@ -12,9 +12,9 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.paint.*?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="482.0" prefWidth="1944.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.AlojamientoClienteControlador">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1098.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.AlojamientoClienteControlador">
     <content>
-        <AnchorPane id="AnchorPane" prefHeight="740.0" prefWidth="1900.0">
+        <AnchorPane id="AnchorPane" prefHeight="453.0" prefWidth="1900.0">
             <children>
 
                 <Rectangle arcHeight="0.0" arcWidth="0.0" height="740.0" stroke="BLACK" strokeType="INSIDE" width="1900.0">
@@ -385,21 +385,21 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="60.0" prefWidth="1900.0" spacing="20.0" style="-fx-background-color: #ffffff;">
                                             <children>
-                                                <TabPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="267.0" prefWidth="1883.0" tabClosingPolicy="UNAVAILABLE">
+                                                <TabPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="1902.0" tabClosingPolicy="UNAVAILABLE">
                                                     <tabs>
                                                         <Tab fx:id="adicionalTab" text="Información Adicional">
                                                             <content>
-                                                                <StackPane prefHeight="341.0" prefWidth="900.0" />
+                                                                <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="1902.0" />
                                                             </content>
                                                         </Tab>
                                                         <Tab fx:id="reseniaHuespedTab" text="Reseñas de Huéspedes">
                                                             <content>
-                                                                <StackPane prefHeight="274.0" prefWidth="759.0" />
+                                                <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="1902.0" />
                                                             </content>
                                                         </Tab>
                                                         <Tab fx:id="ofertasEspecialesTab" text="Ofertas Especiales">
                                                             <content>
-                                                                <StackPane prefHeight="150.0" prefWidth="467.0" />
+                                                <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="1902.0" />
                                                             </content>
                                                         </Tab>
                                                     </tabs>
