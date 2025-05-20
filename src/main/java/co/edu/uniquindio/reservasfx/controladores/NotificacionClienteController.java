@@ -32,6 +32,7 @@ public class NotificacionClienteController {
     void marcarLeidoBtnAction(ActionEvent event) {
         try{
             controlador.getEmpresa().getModuloUsuarioServicios().marcarNotificacionComoLeida(notificacionActual);
+            controlador.crearAlerta("Se marco como leida correctamente",  Alert.AlertType.INFORMATION);
         }catch(Exception e){
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
