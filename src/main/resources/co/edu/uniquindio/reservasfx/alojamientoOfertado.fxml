@@ -21,7 +21,7 @@
 
                 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="140.0" prefWidth="444.0">
                     <children>
-                        <ImageView fx:id="imagenAlojamiento" fitHeight="155.0" fitWidth="444.0" pickOnBounds="true" style="-fx-border-radius: 15 15 0 0; -fx-background-radius: 15 15 0 0;">
+                        <ImageView fx:id="imagenAlojamiento" fitHeight="178.0" fitWidth="444.0" pickOnBounds="true" style="-fx-border-radius: 15 15 0 0; -fx-background-radius: 15 15 0 0;">
                             <effect>
                                 <ColorAdjust brightness="0.05" contrast="0.1" />
                             </effect>
@@ -53,17 +53,17 @@
                         </StackPane>
 
                         <StackPane alignment="TOP_RIGHT" prefHeight="155.0" prefWidth="444.0">
-                            <children>
-                                <Button fx:id="favoritoOfertaBtn" mnemonicParsing="false" onAction="#favoritoBtnAction" prefHeight="35.0" prefWidth="13.0" style="-fx-background-color: transparent;" translateX="-5.0" translateY="5.0">
-                                    <graphic>
-                                        <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@img/corazonSinRelleno.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </Button>
-                            </children>
+                     <children>
+                        <Button fx:id="favoritoBtn" onAction="#favoritoBtnAction" prefHeight="48.0" prefWidth="50.0" style="-fx-background-color: transparent; -fx-background-radius: 50px;" textFill="#f53c3c">
+                           <graphic>
+                              <ImageView fx:id="imagenNotificacion" fitHeight="47.0" fitWidth="46.0">
+                                 <image>
+                                    <Image url="@img/corazonSinRelleno.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
                         </StackPane>
 
                               <Rectangle arcHeight="15.0" arcWidth="15.0" height="177.0" opacity="0.2" width="444.0">

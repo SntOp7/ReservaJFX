@@ -62,7 +62,7 @@ public class AlojamientoControlador {
     }
 
     @FXML
-    void favoritoBtnAction(MouseEvent event) {
+    void favoritoBtnAction(ActionEvent event) {
         if (controlador.getSesion().getUsuario() != null) {
             if (controlador.getSesion().getUsuario() instanceof Administrador) {
                 controlador.crearAlerta("Solo los clientes pueden agregar a la lista de deseos", Alert.AlertType.ERROR);
