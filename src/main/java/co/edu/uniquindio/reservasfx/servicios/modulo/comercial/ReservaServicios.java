@@ -248,9 +248,9 @@ public class ReservaServicios {
         estadisticasApartamento.setTipo(TipoAlojamiento.APARTAMENTO);
         estadisticasHotel.setTipo(TipoAlojamiento.HOTEL);
 
-        estadisticasCasa.setRentabilidad(totalCasa);
-        estadisticasApartamento.setRentabilidad(totalApartamento);
-        estadisticasHotel.setRentabilidad(totalHotel);
+        estadisticasCasa.setRentabilidadTipo(totalCasa);
+        estadisticasApartamento.setRentabilidadTipo(totalApartamento);
+        estadisticasHotel.setRentabilidadTipo(totalHotel);
 
         ArrayList<EstadisticasTipoAlojamiento> estadisticas = new ArrayList<>();
         estadisticas.add(estadisticasCasa);
