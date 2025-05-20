@@ -1,5 +1,6 @@
 package co.edu.uniquindio.reservasfx.controladores;
 
+import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Administrador;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
 import co.edu.uniquindio.reservasfx.modelo.enums.Ciudad;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoAlojamiento;
@@ -65,6 +66,9 @@ public class FiltradoAlojamientoControlador {
 
     @FXML
     void initialize() {
+        if (controlador.getSesion().getUsuario() instanceof Administrador) {
+            listaDeseosRadioBtn.setDisable(true);
+        }
         stacks = new StackPane[]{
                 primerStack, segundoStack, tercerStack, cuartoStack, quintoStack, sextoStack
         };
@@ -74,6 +78,7 @@ public class FiltradoAlojamientoControlador {
         for (Ciudad ciudad : ciudades) {
             ciudadCombo.getItems().add(ciudad.getNombre());
         }
+        ciudadCombo.getItems().add("Ninguna");
         agregarListenersFiltros();
     }
 
@@ -86,14 +91,21 @@ public class FiltradoAlojamientoControlador {
 
     private void aplicarFiltros() {
         try {
+            limpiarAlojamientos();
+            listaDeseosRadioBtn.setSelected(false);
             String nombre = nombreTxt.getText().trim();
-            String ciudadSeleccionada = ciudadCombo.getValue();
+            String ciudadSeleccionada = ciudadCombo.getValue() == null ? "" : ciudadCombo.getValue();
             String precioMin = minTxt.getText();
             String precioMax = maxTxt.getText();
-            
-            alojamientosFiltrados = controlador.getEmpresa().getModuloAlojamientoServicios()
-                    .obtenerAlojamientosPorFiltro(tipoAlojamiento, nombre, ciudadSeleccionada, precioMin, precioMax);
-            cargarDatosPanelConAlojamientos(alojamientosFiltrados);
+            if (!nombre.isEmpty()) {
+                alojamientosFiltrados = controlador.getEmpresa().getModuloAlojamientoServicios()
+                        .obtenerAlojamientosPorFiltro(tipoAlojamiento, nombre, ciudadSeleccionada, precioMin, precioMax);
+                cargarDatosPanelConAlojamientos(alojamientosFiltrados);
+            } else if (!ciudadSeleccionada.isEmpty()|| !precioMin.isEmpty() && !precioMax.isEmpty()) {
+                alojamientosFiltrados = controlador.getEmpresa().getModuloAlojamientoServicios()
+                        .obtenerAlojamientosPorFiltro(tipoAlojamiento, nombre, ciudadSeleccionada, precioMin, precioMax);
+                cargarDatosPanelConAlojamientos(alojamientosFiltrados);
+            }
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }

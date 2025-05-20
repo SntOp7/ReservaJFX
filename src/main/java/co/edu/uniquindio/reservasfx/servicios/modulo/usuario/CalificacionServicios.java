@@ -41,7 +41,7 @@ public class CalificacionServicios {
                 Constantes.CALIFICACION_PUBLICADA(alojamiento.getNombre()));
     }
 
-    private boolean clienteTuvoReservaCompletadaEnAlojamiento(ArrayList<Reserva> reservasCliente, String idAlojamiento) {
+    public boolean clienteTuvoReservaCompletadaEnAlojamiento(ArrayList<Reserva> reservasCliente, String idAlojamiento) {
         return reservasCliente.stream()
                 .anyMatch(r ->
                         r.getIdAlojamiento().equals(idAlojamiento) &&

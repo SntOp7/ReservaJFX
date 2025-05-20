@@ -5,10 +5,8 @@ import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Imagen;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Servicio;
 import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
-import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
 import co.edu.uniquindio.reservasfx.modelo.enums.Ciudad;
-import co.edu.uniquindio.reservasfx.modelo.enums.Mes;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoAlojamiento;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoServicio;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
@@ -16,12 +14,9 @@ import co.edu.uniquindio.reservasfx.modelo.factory.Hotel;
 import co.edu.uniquindio.reservasfx.servicios.interfaces.IAlojamiento;
 import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.AlojamientoServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.HabitacionServicios;
-import co.edu.uniquindio.reservasfx.servicios.modulo.comercial.ReservaServicios;
 import lombok.Getter;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 @Getter
 public class ModuloAlojamientoServicios implements IAlojamiento {
@@ -35,7 +30,7 @@ public class ModuloAlojamientoServicios implements IAlojamiento {
     }
 
     @Override
-    public void registrarAlojamiento(String tipoAlojamiento, String nombre, String ciudad, String descripcion,
+    public void registrarAlojamiento(TipoAlojamiento tipoAlojamiento, String nombre, String ciudad, String descripcion,
                                      String precioPorNoche, String capacidadMaxima, ArrayList<TipoServicio> servicios,
                                      String imagenPrincipal, ArrayList<String> imagenes, String costoAseoYMantenimiento,
                                      ArrayList<Habitacion> habitaciones) throws Exception {
@@ -55,6 +50,9 @@ public class ModuloAlojamientoServicios implements IAlojamiento {
                                   String precioPorNoche, String capacidadMaxima, ArrayList<TipoServicio> servicios,
                                   String imagenPrincipal, ArrayList<String> imagenes, String costoAseoYMantenimiento,
                                   ArrayList<Habitacion> habitaciones) throws Exception {
+
+        alojamientoServicios.editarAlojamiento(id, tipoAlojamiento, nombre, descripcion, precioPorNoche, capacidadMaxima,
+                servicios, imagenPrincipal, imagenes, costoAseoYMantenimiento);
         if (tipoAlojamiento.equals(TipoAlojamiento.HOTEL)) {
             if (habitaciones == null || habitaciones.isEmpty())
                 throw new Exception("Debe quedar registrado al menos una Habitación para el Hotel");
@@ -142,9 +140,9 @@ public class ModuloAlojamientoServicios implements IAlojamiento {
     }
 
     @Override
-    public Habitacion verificarEdicionHabitacion(Habitacion habitacionAntigua, String numero, String precio, String capacidad,
-                                                 String descripcion, String imagen) throws Exception {
-        return habitacionServicios.verificarEdicionHabitacion(habitacionAntigua, numero, precio, capacidad, descripcion, imagen);
+    public void verificarEdicionHabitacion(Habitacion habitacionAntigua, String numero, String precio, String capacidad,
+                                           String descripcion, String imagen) throws Exception {
+        habitacionServicios.verificarEdicionHabitacion(habitacionAntigua, numero, precio, capacidad, descripcion, imagen);
     }
 
     @Override

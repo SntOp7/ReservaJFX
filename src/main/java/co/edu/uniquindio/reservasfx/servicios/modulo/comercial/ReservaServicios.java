@@ -7,6 +7,7 @@ import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Factura;
 import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.enums.EstadoReserva;
+import co.edu.uniquindio.reservasfx.modelo.enums.TipoAlojamiento;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.modelo.factory.Apartamento;
 import co.edu.uniquindio.reservasfx.modelo.factory.Casa;
@@ -125,7 +126,7 @@ public class ReservaServicios {
         return capacidadDisponible;
     }
 
-    private double calcularSubtotal(Alojamiento alojamiento, LocalDate inicio, LocalDate fin) {
+    public double calcularSubtotal(Alojamiento alojamiento, LocalDate inicio, LocalDate fin) {
         long dias = ChronoUnit.DAYS.between(inicio, fin);
         double subtotal = 0;
         if (alojamiento instanceof Hotel) {
@@ -201,8 +202,10 @@ public class ReservaServicios {
         return estadisticas;
     }
 
-    public EstadisticasTipoAlojamiento obtenerRentabilidadTipoAlojamiento(int mes) {
-        EstadisticasTipoAlojamiento estadisticas = new EstadisticasTipoAlojamiento();
+    public ArrayList<EstadisticasTipoAlojamiento> obtenerRentabilidadTipoAlojamiento(int mes) {
+        EstadisticasTipoAlojamiento estadisticasCasa = new EstadisticasTipoAlojamiento();
+        EstadisticasTipoAlojamiento estadisticasApartamento = new EstadisticasTipoAlojamiento();
+        EstadisticasTipoAlojamiento estadisticasHotel = new EstadisticasTipoAlojamiento();
         ArrayList<Reserva> reservas = reservaRepositorio.getReservas();
 
         double totalCasa = 0;
@@ -227,16 +230,22 @@ public class ReservaServicios {
                 totalHotel += ingreso;
             }
         }
+        estadisticasCasa.setTipo(TipoAlojamiento.CASA);
+        estadisticasApartamento.setTipo(TipoAlojamiento.APARTAMENTO);
+        estadisticasHotel.setTipo(TipoAlojamiento.HOTEL);
 
-        estadisticas.setRentabilidadCasa(totalCasa);
-        estadisticas.setRentabilidadApartamento(totalApartamento);
-        estadisticas.setRentabilidadHotel(totalHotel);
+        estadisticasCasa.setRentabilidad(totalCasa);
+        estadisticasApartamento.setRentabilidad(totalApartamento);
+        estadisticasHotel.setRentabilidad(totalHotel);
 
+        ArrayList<EstadisticasTipoAlojamiento> estadisticas = new ArrayList<>();
+        estadisticas.add(estadisticasCasa);
+        estadisticas.add(estadisticasApartamento);
+        estadisticas.add(estadisticasHotel);
         return estadisticas;
     }
 
     public void actualizarEstadoReservas() {
         reservaRepositorio.actualizarEstadoReservas();
     }
-
 }

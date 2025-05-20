@@ -1,12 +1,14 @@
 package co.edu.uniquindio.reservasfx.controladores;
 
 import co.edu.uniquindio.reservasfx.modelo.enums.Ciudad;
+import co.edu.uniquindio.reservasfx.modelo.enums.Mes;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoAlojamiento;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoServicio;
 import co.edu.uniquindio.reservasfx.modelo.vo.EstadisticasTipoAlojamiento;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.css.SimpleStyleableDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,7 +39,7 @@ public class PanelAdministracionControlador {
     @FXML
     private Button agregarImagenesBtn;
     @FXML
-    private TableColumn<TipoAlojamiento, String> tipoAlojamientoColumn;
+    private TableColumn<EstadisticasTipoAlojamiento, String> tipoAlojamientoColumn;
     @FXML
     private TableView<EstadisticasTipoAlojamiento> tablaEstadisticas;
     @FXML
@@ -51,11 +53,11 @@ public class PanelAdministracionControlador {
     @FXML
     private ComboBox<String> tipoAlojamientoBox;
     @FXML
-    private BarChart<? , ?> graficoBarrasAlojamiento;
-    @FXML
     private TableColumn<EstadisticasTipoAlojamiento, Double> gananciasTotalesColumn;
     @FXML
     private TitledPane accordionRentabilidad;
+    @FXML
+    private ComboBox<String> seleccionarMesBox;
     @FXML
     private StackPane tipoAlojamientoStack;
     @FXML
@@ -66,6 +68,8 @@ public class PanelAdministracionControlador {
     private ImageView imagenSecundaria1;
     @FXML
     private ImageView imagenPrincipal;
+    @FXML
+    private StackPane stackpaneGraficos;
 
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
     PanePrincipalControlador panePrincipalControlador = PanePrincipalControlador.getInstancia();
@@ -73,9 +77,11 @@ public class PanelAdministracionControlador {
     ListaHabitacionesAlojamientoControlador listaHabitacionesAlojamientoControlador;
 
     ObservableList<TipoServicio> tipoServicios;
+    ObservableList<EstadisticasTipoAlojamiento> estadisticasTipoAlojamiento;
 
     @FXML
     void initialize() {
+        estadisticasTipoAlojamiento = FXCollections.observableArrayList();
         tipoServicios = FXCollections.observableArrayList();
         tablaTipoServicios.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
@@ -83,18 +89,18 @@ public class PanelAdministracionControlador {
         initTablaRentabilidad();
         cargarOpcionesTipoAlojamiento();
         cargarOpcionesCiudad();
+        cargarOpcionesMes();
         cargarTablaServicios();
-        cargarTablaRentabilidad();
-        cargarGraficoRentabilidad();
         agregarListener();
     }
 
     private void agregarListener() {
-        tipoAlojamientoBox.valueProperty().addListener((obs, oldVal, newVal) -> cargarDatosAdicionales());
+        tipoAlojamientoBox.valueProperty().addListener((obs, oldVal, newVal)
+                -> cargarDatosAdicionales());
     }
 
     private void cargarDatosAdicionales() {
-        String  tipoAlojamiento = tipoAlojamientoBox.getSelectionModel().getSelectedItem();
+        String tipoAlojamiento = tipoAlojamientoBox.getSelectionModel().getSelectedItem();
         if (tipoAlojamiento == null) return;
         switch (tipoAlojamiento) {
             case "Casa", "Apartamento" -> cargarStackPane();
@@ -121,8 +127,9 @@ public class PanelAdministracionControlador {
 
     private void initTablaRentabilidad() {
         tipoAlojamientoColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getNombre()));
-
+                new SimpleStringProperty(cellData.getValue().getTipo().getNombre()));
+        gananciasTotalesColumn.setCellValueFactory(cellData ->
+                new SimpleObjectProperty<>(cellData.getValue().getRentabilidad()));
     }
 
     private void cargarOpcionesTipoAlojamiento() {
@@ -139,14 +146,36 @@ public class PanelAdministracionControlador {
         }
     }
 
+    private void cargarOpcionesMes() {
+        Mes[] meses = Mes.values();
+        for (Mes mes : meses) {
+            seleccionarMesBox.getItems().add(mes.getNombre());
+        }
+    }
+
     private void cargarTablaServicios() {
         TipoServicio[] servicios = TipoServicio.values();
         tipoServicios.addAll(servicios);
         tablaTipoServicios.setItems(tipoServicios);
     }
 
-    private void cargarTablaRentabilidad() {
+    @FXML
+    void seleccionarMesBoxAction(ActionEvent event) {
+        int mes = seleccionarMesBox.getSelectionModel().getSelectedIndex() + 1;
+        cargarTablaRentabilidad(mes);
+        cargarGraficoRentabilidad();
+    }
 
+    private void cargarTablaRentabilidad(int mes) {
+        try {
+            ArrayList<EstadisticasTipoAlojamiento> estadisticas = controlador.getEmpresa().
+                    getModuloComercialServicios().obtenerRentabilidadTipoAlojamiento(mes);
+            estadisticasTipoAlojamiento.clear();
+            estadisticasTipoAlojamiento.addAll(estadisticas);
+            tablaEstadisticas.setItems(estadisticasTipoAlojamiento);
+        } catch (Exception e) {
+            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 
     private void cargarGraficoRentabilidad() {
@@ -191,26 +220,40 @@ public class PanelAdministracionControlador {
 
     @FXML
     void registrarAlojamientoBtn(ActionEvent event) {
-        String urlPrincipal = imagenPrincipal.getImage().getUrl();
-        String urlSecundaria1 = imagenSecundaria1.getImage().getUrl();
-        String urlSecundaria2 = imagenSecundaria2.getImage().getUrl();
-        String urlSecundaria3 = imagenSecundaria3.getImage().getUrl();
+        String urlPrincipal = imagenPrincipal.getImage() == null ? null : imagenPrincipal.getImage().getUrl();
+        String urlSecundaria1 = imagenSecundaria1.getImage() == null ? null : imagenSecundaria1.getImage().getUrl();
+        String urlSecundaria2 = imagenSecundaria2.getImage() == null ? null : imagenSecundaria2.getImage().getUrl();
+        String urlSecundaria3 = imagenSecundaria3.getImage() == null ? null : imagenSecundaria3.getImage().getUrl();
         ArrayList<String> imagenes = new ArrayList<>();
-        String tipoAlojamiento = tipoAlojamientoBox.getSelectionModel().getSelectedItem();
-        if (tipoAlojamiento == null) return;
         imagenes.add(urlSecundaria1);
         imagenes.add(urlSecundaria2);
         imagenes.add(urlSecundaria3);
+        String tipoAlojamientoString = tipoAlojamientoBox.getSelectionModel().getSelectedItem();
+        if (tipoAlojamientoString == null) {
+            controlador.crearAlerta("Debe seleccionar primero un tipo de alojamiento.", Alert.AlertType.ERROR);
+            return;
+        }
+        TipoAlojamiento tipoAlojamiento = TipoAlojamiento.valueOf(tipoAlojamientoString.toUpperCase());
         String nombre = nombreField.getText();
-        Ciudad ciudad = Ciudad.valueOf(ciudadBox.getSelectionModel().getSelectedItem().toUpperCase());
+        String ciudad = ciudadBox.getSelectionModel().getSelectedItem();
         String descripcion = descripcionField.getText();
+        String precioNoche = precioNocheField.getText();
+        String capacidad = capacidadField.getText();
         ObservableList<TipoServicio> serviciosSeleccionados = tablaTipoServicios.getSelectionModel().getSelectedItems();
         ArrayList<TipoServicio> servicios = new ArrayList<>(serviciosSeleccionados);
         try {
-
+            if (tipoAlojamiento.equals(TipoAlojamiento.HOTEL)) {
+                controlador.getEmpresa().getModuloAlojamientoServicios().registrarAlojamiento(tipoAlojamiento, nombre,
+                        ciudad, descripcion, precioNoche, capacidad, servicios, urlPrincipal, imagenes,
+                        null, listaHabitacionesAlojamientoControlador.habitaciones);
+            } else {
+                controlador.getEmpresa().getModuloAlojamientoServicios().registrarAlojamiento(tipoAlojamiento, nombre,
+                        ciudad, descripcion, precioNoche, capacidad, servicios, urlPrincipal, imagenes,
+                        costoAdicionalAlojamientoControlador.costoAdicional, null);
+            }
             controlador.crearAlerta("Alojamiento registrado exitosamente.", Alert.AlertType.INFORMATION);
             panePrincipalControlador.actualizarInferior(
-                    "/co/edu/uniquindio/reservasfx/panelAdministacion.fxml");
+                    "/co/edu/uniquindio/reservasfx/recomendadoAlojamiento.fxml");
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }

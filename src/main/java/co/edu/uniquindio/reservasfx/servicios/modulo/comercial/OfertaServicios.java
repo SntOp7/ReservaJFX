@@ -57,6 +57,9 @@ public class OfertaServicios {
         double porcentaje = Double.parseDouble(porcentajeDescuento);
         verificarCampos(nombre, descripcion, fechaInicio, fechaFin, porcentaje);
         Oferta oferta = ofertaRepositorio.buscarOfertaPorId(id);
+        if (oferta == null) {
+            throw new IllegalArgumentException("La oferta no existe");
+        }
         oferta.setNombre(nombre);
         oferta.setDescripcion(descripcion);
         oferta.setFechaInicio(fechaInicio);

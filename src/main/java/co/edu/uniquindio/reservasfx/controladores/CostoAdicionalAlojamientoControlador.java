@@ -13,6 +13,15 @@ public class CostoAdicionalAlojamientoControlador {
 
     @FXML
     void initialize() {
+        agregarListener();
+    }
+
+    private void agregarListener() {
+        costoAdicionalTxt.textProperty().addListener((obs, oldVal, newVal)
+                -> obtenerCosto());
+    }
+
+    private void obtenerCosto() {
         costoAdicional = costoAdicionalTxt.getText();
     }
 }

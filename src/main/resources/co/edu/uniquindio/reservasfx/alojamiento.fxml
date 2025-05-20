@@ -33,19 +33,27 @@
 
                         <StackPane alignment="TOP_RIGHT" prefHeight="155.0" prefWidth="444.0">
                             <children>
-                                <Button fx:id="favoritoBtn" alignment="CENTER" mnemonicParsing="false" onAction="#favoritoBtnAction" prefHeight="71.0" prefWidth="79.0" style="-fx-background-color: transparent;" translateX="-15" translateY="15">
-                           <graphic>
-                              <ImageView fx:id="imagenCorazon" fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@img/corazonSinRelleno.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                                </Button>
+                                <StackPane alignment="CENTER" maxHeight="44.0" maxWidth="44.0" minHeight="44.0" minWidth="44.0" prefHeight="44.0" prefWidth="44.0">
+                                    <StackPane.margin>
+                                        <Insets right="10.0" top="10.0" />
+                                    </StackPane.margin>
+                                    <children>
+                                        <ImageView fx:id="imagenCorazon" fitHeight="44.0" fitWidth="44.0" onMouseClicked="#favoritoBtnAction" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@img/corazonSinRelleno.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Button fx:id="favoritoBtn" maxHeight="44.0" maxWidth="44.0" minHeight="44.0" minWidth="44.0" mnemonicParsing="false" onAction="#favoritoBtnAction" prefHeight="44.0" prefWidth="44.0" scaleY="1.5" style="-fx-background-color: transparent; -fx-background-radius: 0;" translateY="-5.0">
+                                            <padding>
+                                                <Insets bottom="0.0" left="0.0" right="0.0" top="0.0" />
+                                            </padding>
+                                        </Button>
+                                    </children>
+                                </StackPane>
                             </children>
                         </StackPane>
 
-                              <Rectangle arcHeight="15.0" arcWidth="15.0" height="155.0" opacity="0.2" width="444.0">
+                        <Rectangle arcHeight="15.0" arcWidth="15.0" height="155.0" opacity="0.2" width="444.0">
                             <fill>
                                 <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
                                     <stops>

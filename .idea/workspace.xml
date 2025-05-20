@@ -6,9 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="51ed1073-804c-4f43-b406-dbd702544cb9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/InicioSesionControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/InicioSesionControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/RecargarBilleteraControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/RecargarBilleteraControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/inicioSesion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/inicioSesion.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/AlojamientoControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/AlojamientoControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/ControladorPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/ControladorPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/FiltradoAlojamientoControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/controladores/FiltradoAlojamientoControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/alojamiento.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/reservasfx/a.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../concesionario/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../concesionario/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../concesionario/src/main/java/co/edu/uniquindio/poo/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../concesionario/src/test/java/co/edu/uniquindio/poo/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../concesionario/target/classes/co/edu/uniquindio/poo/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../concesionario/target/test-classes/co/edu/uniquindio/poo/AppTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +55,14 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.ReservasApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AlojamientoServiciosTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CalificacionServiciosTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.HabitacionServiciosTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NotificacionServiciosTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.OfertaServiciosTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.OfertaServiciosTest.testEditarOferta_CamposValidos_EdicionCorrecta.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.ReservaServiciosTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UsuarioServiciosTest.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
@@ -62,7 +77,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.ReservasApplication">
     <configuration name="ReservasApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.reservasfx.app.ReservasApplication" />
       <module name="ReservasFX" />
@@ -76,9 +91,49 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CalificacionServiciosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ReservasFX" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CalificacionServiciosTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NotificacionServiciosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ReservasFX" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="NotificacionServiciosTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReservaServiciosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ReservasFX" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ReservaServiciosTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UsuarioServiciosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ReservasFX" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UsuarioServiciosTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ReservasApplication" />
+        <item itemvalue="JUnit.UsuarioServiciosTest" />
+        <item itemvalue="JUnit.NotificacionServiciosTest" />
+        <item itemvalue="JUnit.CalificacionServiciosTest" />
+        <item itemvalue="JUnit.ReservaServiciosTest" />
       </list>
     </recent_temporary>
   </component>
@@ -108,21 +163,5 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/app/ReservasApplication.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/co/edu/uniquindio/reservasfx/app/ReservasApplication.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
