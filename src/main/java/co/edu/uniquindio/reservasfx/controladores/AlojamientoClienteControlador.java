@@ -204,11 +204,11 @@ public class AlojamientoClienteControlador {
 
     private void cargarInformacionAlojamiento() {
         if (alojamiento != null) {
-            nombreText.setText(nombreText.getText() + ":" + alojamiento.getNombre());
-            ciudadText.setText(ciudadText.getText() + ": " + alojamiento.getCiudad().getNombre());
-            descripcionText.setText(descripcionText.getText() + ":" + alojamiento.getDescripcion());
-            capacidadText.setText(capacidadText.getText() + ":" + alojamiento.getCapacidadMaxima());
-            precioText.setText(precioText.getText() + ":" + alojamiento.getPrecioPorNoche());
+            nombreText.setText(alojamiento.getNombre());
+            ciudadText.setText(ciudadText.getText() + " : " + alojamiento.getCiudad().getNombre());
+            descripcionText.setText(descripcionText.getText() + " : " + alojamiento.getDescripcion());
+            capacidadText.setText(capacidadText.getText() + " : " + alojamiento.getCapacidadMaxima());
+            precioText.setText(precioText.getText() + " : " + alojamiento.getPrecioPorNoche());
             controlador.cargarImagen(alojamiento.getImagenPrincipal(), imagenPrincipal);
         }
     }
