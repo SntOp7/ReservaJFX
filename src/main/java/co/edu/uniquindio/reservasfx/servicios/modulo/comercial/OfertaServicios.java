@@ -27,13 +27,17 @@ public class OfertaServicios {
     }
 
     public void registrarOferta(OfertaEspecial ofertaEspecial, String idAlojamiento, String nombre, String descripcion,
-                                LocalDate fechaInicio, LocalDate fechaFin, String porcentajeDescuento) throws Exception {
+                                LocalDate fechaInicio, LocalDate fechaFin, String porcentajeDescuentoString) throws Exception {
 
         if (ofertaEspecial == null ) throw new Exception("La oferta es obligatoria");
-        if (porcentajeDescuento ==null ||  porcentajeDescuento.isEmpty()) throw  new Exception("Elporcentaje de descuento es obligatorio");
-        double porcentaje = Double.parseDouble(porcentajeDescuento);
-        if (porcentaje < 0 || porcentaje > 100) throw new Exception("El porcentaje de descuento debe ser mayor a cero y manor a 100");
-        verificarCampos(nombre, descripcion, fechaInicio, fechaFin, porcentaje);
+        verificarCampos(nombre, descripcion, fechaInicio, fechaFin, porcentajeDescuentoString);
+        double porcentaje = 0;
+        try {
+            porcentaje = Double.parseDouble(porcentajeDescuentoString);
+        } catch (NumberFormatException e) {
+            throw new Exception("El porcentaje de descuento debe ser un numero");
+        }
+        if (porcentaje < 0 || porcentaje > 100) throw new Exception("El porcentaje de descuento debe ser mayor a cero y menor a 100");
         EstadoOferta estadoOferta = obtenerEstadoOferta(fechaInicio, fechaFin);
         Oferta oferta = Oferta.builder().ofertaEspecial(ofertaEspecial).id(UUID.randomUUID().toString()).
                 idAlojamiento(idAlojamiento).nombre(nombre).descripcion(descripcion).fechaInicio(fechaInicio).
@@ -53,12 +57,18 @@ public class OfertaServicios {
     }
 
     public void editarOferta(String id, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin,
-                             String porcentajeDescuento) throws Exception {
-        double porcentaje = Double.parseDouble(porcentajeDescuento);
-        verificarCampos(nombre, descripcion, fechaInicio, fechaFin, porcentaje);
+                             String porcentajeDescuentoString) throws Exception {
+        verificarCampos(nombre, descripcion, fechaInicio, fechaFin, porcentajeDescuentoString);
+        double porcentaje = 0;
+        try {
+            porcentaje = Double.parseDouble(porcentajeDescuentoString);
+        } catch (NumberFormatException e) {
+            throw new Exception("El porcentaje de descuento debe ser un numero");
+        }
+        if (porcentaje < 0 || porcentaje > 100) throw new Exception("El porcentaje de descuento debe ser mayor a cero y menor a 100");
         Oferta oferta = ofertaRepositorio.buscarOfertaPorId(id);
         if (oferta == null) {
-            throw new IllegalArgumentException("La oferta no existe");
+            throw new Exception("La oferta no existe");
         }
         oferta.setNombre(nombre);
         oferta.setDescripcion(descripcion);
@@ -68,14 +78,14 @@ public class OfertaServicios {
         ofertaRepositorio.editar(oferta);
     }
 
-    private void verificarCampos(String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin, double porcentajeDescuento) throws Exception {
+    private void verificarCampos(String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin, String porcentajeDescuento) throws Exception {
         if (nombre == null || nombre.isEmpty()) throw new Exception("El nombre es obligatorio");
         if (descripcion == null || descripcion.isEmpty()) throw new Exception("La descripcion es obligatoria");
         if (fechaInicio == null) throw new Exception("La fecha de inicio es obligatoria");
         if (fechaFin == null) throw new Exception("La fecha de fin es obligatoria");
         if (fechaInicio.isBefore(LocalDate.now())) throw new Exception("La fecha de inicio no puede ser en el pasado");
         if (fechaFin.isBefore(fechaInicio)) throw new Exception("La fecha de fin no puede ser anterior a la fecha de inicio");
-        if (porcentajeDescuento == 0) throw new Exception("El porcentaje de descuento es obligatorio");
+        if (porcentajeDescuento == null ||  porcentajeDescuento.isEmpty()) throw  new Exception("El porcentaje de descuento es obligatorio");
     }
 
     public void eliminarOferta(String id) throws Exception {
