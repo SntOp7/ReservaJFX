@@ -193,7 +193,7 @@ public class ControladorPrincipal {
     }
 
     public void cargarListaAlojamientos(ArrayList<Alojamiento> alojamientos, StackPane[] stacks) {
-        String rutaFXML = "/co/edu/uniquindio/reservasfx/alojamiento.fxml";
+        String rutaFXML = "/co/edu/uniquindio/reservasfx/a.fxml";
 
         for (int i = 0; i < alojamientos.size() && i < stacks.length; i++) {
             cargarAlojamiento(rutaFXML, stacks[i], alojamientos.get(i));

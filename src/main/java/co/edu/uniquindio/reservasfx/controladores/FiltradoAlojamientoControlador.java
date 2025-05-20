@@ -79,6 +79,7 @@ public class FiltradoAlojamientoControlador {
             ciudadCombo.getItems().add(ciudad.getNombre());
         }
         ciudadCombo.getItems().add("Ninguna");
+        numeroPaginalbl.setText("Página " + paginaActual + " de " + 1);
         agregarListenersFiltros();
     }
 
@@ -95,6 +96,7 @@ public class FiltradoAlojamientoControlador {
             listaDeseosRadioBtn.setSelected(false);
             String nombre = nombreTxt.getText().trim();
             String ciudadSeleccionada = ciudadCombo.getValue() == null ? "" : ciudadCombo.getValue();
+            if (ciudadSeleccionada.equals("Ninguna")) ciudadSeleccionada = "";
             String precioMin = minTxt.getText();
             String precioMax = maxTxt.getText();
             if (!nombre.isEmpty()) {
@@ -125,20 +127,24 @@ public class FiltradoAlojamientoControlador {
 
     @FXML
     void anteriorAction(ActionEvent event) {
+        if (alojamientosFiltrados == null || alojamientosFiltrados.isEmpty()) return;
         if (paginaActual == 1) return;
 
         paginaActual--;
         alojamientosPagina = controlador.determinarAlojamientosPagina(paginaActual, MAX_ALOJAMIENTOS_POR_PAGINA, alojamientosFiltrados);
+        limpiarAlojamientos();
         controlador.cargarListaAlojamientos(alojamientosPagina, stacks);
         numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
     }
 
     @FXML
     void siguienteAction(ActionEvent event) {
+        if (alojamientosFiltrados == null || alojamientosFiltrados.isEmpty()) return;
         if (paginaActual == totalPaginas) return;
 
         paginaActual++;
         alojamientosPagina = controlador.determinarAlojamientosPagina(paginaActual, MAX_ALOJAMIENTOS_POR_PAGINA, alojamientosFiltrados);
+        limpiarAlojamientos();
         controlador.cargarListaAlojamientos(alojamientosPagina, stacks);
         numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
     }
@@ -151,6 +157,10 @@ public class FiltradoAlojamientoControlador {
                         .obtenerDeseosCliente(controlador.getSesion().getUsuario().getCedula());
                 alojamientosDeseos = controlador.getEmpresa().getModuloAlojamientoServicios()
                         .obtenerAlojamientosPorDeseosCliente(deseosCliente);
+                if (alojamientosDeseos == null || alojamientosDeseos.isEmpty()) {
+                    controlador.crearAlerta("No hay alojamientos en su lista de deseos", Alert.AlertType.INFORMATION);
+                    return;
+                }
                 cargarDatosPanelConAlojamientos(alojamientosDeseos);
             } else {
                 limpiarAlojamientos();

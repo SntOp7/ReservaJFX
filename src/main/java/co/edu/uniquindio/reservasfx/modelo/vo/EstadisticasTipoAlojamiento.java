@@ -8,5 +8,5 @@ import lombok.Setter;
 @Setter
 public class EstadisticasTipoAlojamiento {
     private TipoAlojamiento tipo;
-    private double rentabilidad;
+    private double rentabilidadTipo;
 }

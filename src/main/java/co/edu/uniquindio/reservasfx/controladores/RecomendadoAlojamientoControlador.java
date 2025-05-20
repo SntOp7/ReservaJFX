@@ -91,6 +91,7 @@ public class RecomendadoAlojamientoControlador {
 
         paginaActual--;
         alojamientosPagina = controlador.determinarAlojamientosPagina(paginaActual, MAX_ALOJAMIENTOS_POR_PAGINA, alojamientosCliente);
+        limpiarAlojamientos();
         controlador.cargarListaAlojamientos(alojamientosPagina, stacks);
         numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
     }
@@ -101,8 +102,15 @@ public class RecomendadoAlojamientoControlador {
 
         paginaActual++;
         alojamientosPagina = controlador.determinarAlojamientosPagina(paginaActual, MAX_ALOJAMIENTOS_POR_PAGINA, alojamientosCliente);
+        limpiarAlojamientos();
         controlador.cargarListaAlojamientos(alojamientosPagina, stacks);
         numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
+    }
+
+    public void limpiarAlojamientos() {
+        for (StackPane stackPane : stacks) {
+            stackPane.getChildren().clear();
+        }
     }
 
     public void inicializarValores() {

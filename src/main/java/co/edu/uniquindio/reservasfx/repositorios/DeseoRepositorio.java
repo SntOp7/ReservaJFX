@@ -36,7 +36,7 @@ public class DeseoRepositorio {
         ArrayList<Deseo> deseosPorCedula = new ArrayList<>();
         for (Deseo deseo : deseos) {
             if (deseo.getCedulaCliente().equals(cedulaCliente)) {
-                deseos.add(deseo);
+                deseosPorCedula.add(deseo);
             }
         }
         return deseosPorCedula;

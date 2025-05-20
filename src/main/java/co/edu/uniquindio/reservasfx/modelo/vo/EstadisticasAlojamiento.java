@@ -8,4 +8,5 @@ import lombok.Setter;
 public class EstadisticasAlojamiento {
     private double ocupacionPorcentual;
     private double gananciasTotales;
+    private double gananciasTotalesGlobales;
 }

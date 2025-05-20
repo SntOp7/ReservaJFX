@@ -2,6 +2,7 @@ package co.edu.uniquindio.reservasfx.controladores;
 
 import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Administrador;
+import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.modelo.factory.Apartamento;
 import co.edu.uniquindio.reservasfx.modelo.factory.Casa;
@@ -53,6 +54,14 @@ public class AlojamientoOfertadoControlador {
             Oferta ofertaActual = ofertas.getFirst();
             String tipoOferta = ofertaActual.getOfertaEspecial().getNombre();
             ofertalbl.setText((tipoOferta));
+            ArrayList<Deseo> deseosCliente = controlador.getEmpresa().getModuloUsuarioServicios()
+                    .obtenerDeseosCliente(controlador.getSesion().getUsuario().getCedula());
+            ArrayList<Alojamiento> alojamientosDeseos = controlador.getEmpresa().getModuloAlojamientoServicios()
+                    .obtenerAlojamientosPorDeseosCliente(deseosCliente);
+            if (alojamientosDeseos != null && alojamientosDeseos.contains(alojamiento)) {
+                Image imagen = ControladorPrincipal.cargarImagenSeleccionada("corazonRelleno.png");
+                imagenCorazon.setImage(imagen);
+            }
         } catch (Exception e){
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
@@ -64,8 +73,18 @@ public class AlojamientoOfertadoControlador {
             controlador.crearAlerta("Solo los clientes pueden agregar a la lista de deseos", Alert.AlertType.ERROR);
         } else {
             String cedula = controlador.getSesion().getUsuario().getCedula();
-            if (alojamiento != null) {
-                try {
+            try {
+                ArrayList<Deseo> deseosCliente = controlador.getEmpresa().getModuloUsuarioServicios()
+                        .obtenerDeseosCliente(controlador.getSesion().getUsuario().getCedula());
+                ArrayList<Alojamiento> alojamientosDeseos = controlador.getEmpresa().getModuloAlojamientoServicios()
+                        .obtenerAlojamientosPorDeseosCliente(deseosCliente);
+                if (alojamientosDeseos != null && alojamientosDeseos.contains(alojamiento)) {
+                    controlador.getEmpresa().getModuloUsuarioServicios().eliminarDeseo(cedula, alojamiento.getId());
+                    Image imagen = ControladorPrincipal.cargarImagenSeleccionada("corazonSinRelleno.png");
+                    imagenCorazon.setImage(imagen);
+                    controlador.crearAlerta("Se ha eliminado el alojamiento de tu lista de deseos",
+                            Alert.AlertType.INFORMATION);
+                } else {
                     controlador.getEmpresa().getModuloUsuarioServicios().guardarDeseo(cedula, alojamiento.getId());
                     String mensaje = "";
                     if (alojamiento instanceof Casa) {
@@ -79,9 +98,9 @@ public class AlojamientoOfertadoControlador {
                             Alert.AlertType.INFORMATION);
                     Image imagen = ControladorPrincipal.cargarImagenSeleccionada("corazonRelleno.png");
                     imagenCorazon.setImage(imagen);
-                } catch (Exception e) {
-                    controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
                 }
+            } catch (Exception e) {
+                controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
             }
         }
     }

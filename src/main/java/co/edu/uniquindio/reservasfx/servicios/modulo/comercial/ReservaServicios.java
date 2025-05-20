@@ -183,7 +183,7 @@ public class ReservaServicios {
         double gananciasTotales = 0;
         long diasOcupados = 0;
         LocalDate hoy = LocalDate.now();
-        LocalDate inicioPeriodo = hoy.withDayOfYear(1); // desde el inicio del año
+        LocalDate inicioPeriodo = hoy.withDayOfYear(1);
         long diasTotalesPeriodo = ChronoUnit.DAYS.between(inicioPeriodo, hoy.plusDays(1));
 
         for (Reserva reserva : reservas) {
@@ -196,8 +196,22 @@ public class ReservaServicios {
 
         double ocupacionPorcentual = diasTotalesPeriodo > 0 ? (diasOcupados * 100.0) / diasTotalesPeriodo : 0;
 
+        ArrayList<Reserva> todasLasReservas = reservaRepositorio.getReservas();
+        double gananciasTotalesGlobales = 0;
+
+        for (Reserva reserva : todasLasReservas) {
+            if (reserva.getEstado() != EstadoReserva.FINALIZADA) continue;
+
+            Alojamiento al = alojamientoServicios.buscarAlojamientoPorId(reserva.getIdAlojamiento());
+            if (al == null) continue;
+
+            long dias = ChronoUnit.DAYS.between(reserva.getFechaInicio(), reserva.getFechaFin());
+            gananciasTotalesGlobales += dias * al.getPrecioPorNoche();
+        }
+
         estadisticas.setGananciasTotales(gananciasTotales);
         estadisticas.setOcupacionPorcentual(ocupacionPorcentual);
+        estadisticas.setGananciasTotalesGlobales(gananciasTotalesGlobales);
 
         return estadisticas;
     }

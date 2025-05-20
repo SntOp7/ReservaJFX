@@ -234,7 +234,6 @@ public class AlojamientoServicios {
 
     public ArrayList<Alojamiento> obtenerAlojamientosPorDeseosCliente(ArrayList<Deseo> deseosCliente) throws Exception {
         ArrayList<Alojamiento> alojamientos = alojamientoRepositorio.obtenerAlojamientosPorDeseosCliente(deseosCliente);
-        if (validarListaVacia(alojamientos)) throw new Exception("No hay alojamientos agregados a tu lista de deseos de momento");
         return alojamientos;
     }
 
