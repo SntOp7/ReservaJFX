@@ -13,7 +13,7 @@
 
 <StackPane prefHeight="605.0" prefWidth="1902.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.EstadisticasAlojamientoControlador">
     <children>
-        <!-- Fondo decorativo con degradado -->
+  
         <Rectangle height="605.0" width="1902.0">
             <fill>
                 <LinearGradient endX="1.0" endY="1.0">
@@ -25,7 +25,7 @@
             </fill>
         </Rectangle>
 
-        <!-- Círculo decorativo superior izquierdo -->
+
         <Circle radius="180.0" translateX="-800.0" translateY="-250.0">
             <fill>
                 <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
@@ -40,7 +40,7 @@
             </effect>
         </Circle>
 
-        <!-- Círculo decorativo inferior derecho -->
+
         <Circle radius="150.0" translateX="850.0" translateY="250.0">
             <fill>
                 <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
@@ -55,7 +55,7 @@
             </effect>
         </Circle>
 
-        <!-- Línea curva decorativa superior -->
+
         <Path>
             <elements>
                 <MoveTo x="0.0" y="100.0" />
@@ -72,7 +72,7 @@
             <strokeWidth>3.0</strokeWidth>
         </Path>
 
-        <!-- Línea curva decorativa inferior -->
+
         <Path>
             <elements>
                 <MoveTo x="0.0" y="500.0" />
@@ -89,12 +89,12 @@
             <strokeWidth>3.0</strokeWidth>
         </Path>
 
-        <!-- Contenido principal -->
+
         <VBox prefHeight="200.0" prefWidth="100.0">
             <children>
                 <HBox alignment="CENTER" prefHeight="101.0" prefWidth="1902.0">
                     <children>
-                        <!-- Rectángulo decorativo detrás del título -->
+
                         <StackPane>
                             <children>
                                 <Rectangle arcHeight="30.0" arcWidth="30.0" height="80.0" width="350.0">
@@ -131,10 +131,10 @@
                     <children>
                         <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="572.0">
                             <children>
-                                <!-- Panel para gráfica de ocupación -->
+
                                 <StackPane>
                                     <children>
-                                        <!-- Fondo del panel con borde redondeado -->
+
                                         <Rectangle arcHeight="20.0" arcWidth="20.0" height="516.0" width="572.0">
                                             <fill>
                                                 <LinearGradient endY="1.0">
@@ -159,7 +159,7 @@
 
                                         <VBox alignment="CENTER">
                                             <children>
-                                                <!-- Línea decorativa superior -->
+
                                                 <Rectangle arcHeight="3.0" arcWidth="3.0" height="3.0" width="520.0">
                                                     <fill>
                                                         <LinearGradient endX="1.0">
@@ -177,12 +177,12 @@
                                                     </font>
                                                 </Label>
 
-                                                <!-- Círculo decorativo pequeño -->
+
                                                 <Circle fill="#4682b4" radius="5.0" translateY="10.0" />
 
                                                 <StackPane fx:id="stackOcupacionAnual" prefHeight="429.0" prefWidth="572.0" />
 
-                                                <!-- Línea decorativa inferior -->
+
                                                 <Rectangle arcHeight="3.0" arcWidth="3.0" height="3.0" width="520.0">
                                                     <fill>
                                                         <LinearGradient endX="1.0">
@@ -201,10 +201,10 @@
                         </VBox>
                         <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="572.0">
                             <children>
-                                <!-- Panel para gráfica de ganancias -->
+
                                 <StackPane>
                                     <children>
-                                        <!-- Fondo del panel con borde redondeado -->
+
                                         <Rectangle arcHeight="20.0" arcWidth="20.0" height="516.0" width="572.0">
                                             <fill>
                                                 <LinearGradient endY="1.0">
@@ -229,7 +229,7 @@
 
                                         <VBox alignment="CENTER">
                                             <children>
-                                                <!-- Línea decorativa superior -->
+
                                                 <Rectangle arcHeight="3.0" arcWidth="3.0" height="3.0" width="520.0">
                                                     <fill>
                                                         <LinearGradient endX="1.0">
@@ -247,12 +247,11 @@
                                                     </font>
                                                 </Label>
 
-                                                <!-- Círculo decorativo pequeño -->
+
                                                 <Circle fill="#1e90ff" radius="5.0" translateY="10.0" />
 
                                                 <StackPane fx:id="stackGananciaAnual" prefHeight="429.0" prefWidth="572.0" />
 
-                                                <!-- Línea decorativa inferior -->
                                                 <Rectangle arcHeight="3.0" arcWidth="3.0" height="3.0" width="520.0">
                                                     <fill>
                                                         <LinearGradient endX="1.0">
