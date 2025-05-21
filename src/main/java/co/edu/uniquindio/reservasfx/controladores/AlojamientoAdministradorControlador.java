@@ -164,9 +164,9 @@ public class AlojamientoAdministradorControlador {
         for (Imagen imagen : imagenesAlojamiento) {
             rutaImagenesAlojamiento.add(imagen.getRuta());
         }
-        String urlSecundaria1 = rutaImagenSecundaria1 == null ? rutaImagenesAlojamiento.get(0) : rutaImagenSecundaria1;
-        String urlSecundaria2 = rutaImagenSecundaria2 == null ? rutaImagenesAlojamiento.get(1) : rutaImagenSecundaria2;
-        String urlSecundaria3 = rutaImagenSecundaria3 == null ? rutaImagenesAlojamiento.get(2) : rutaImagenSecundaria3;
+        String urlSecundaria1 = rutaImagenSecundaria1 == null && !rutaImagenesAlojamiento.isEmpty() ? rutaImagenesAlojamiento.get(0) : rutaImagenSecundaria1;
+        String urlSecundaria2 = rutaImagenSecundaria2 == null && rutaImagenesAlojamiento.size() > 1 ? rutaImagenesAlojamiento.get(1) : rutaImagenSecundaria2;
+        String urlSecundaria3 = rutaImagenSecundaria3 == null && rutaImagenesAlojamiento.size() > 2 ? rutaImagenesAlojamiento.get(2) : rutaImagenSecundaria3;
         ArrayList<String> imagenes = new ArrayList<>();
         imagenes.add(urlSecundaria1);
         imagenes.add(urlSecundaria2);

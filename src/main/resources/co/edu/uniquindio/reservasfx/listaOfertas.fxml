@@ -107,7 +107,7 @@
                         </LinearGradient>
                     </textFill>
                 </Label>
-                <Label fx:id="numeroHabitacionLbl" layoutX="64.0" layoutY="102.0" text="Ofertas Disponibles !!!" textFill="RED">
+                <Label layoutX="64.0" layoutY="102.0" text="Ofertas Disponibles !!!" textFill="RED">
                     <font>
                         <Font name="Berlin Sans FB" size="26.0" />
                     </font>
@@ -197,7 +197,7 @@
                         </LinearGradient>
                     </fill>
                 </Circle>
-            <Label fx:id="descripcionLbl1" layoutX="64.0" layoutY="200.0" text="Descripción : ">
+            <Label fx:id="descripcionLbl" layoutX="64.0" layoutY="200.0" text="Descripción : ">
                <font>
                   <Font name="Berlin Sans FB" size="24.0" />
                </font>
@@ -212,9 +212,9 @@
                   <Image url="@img/bookYourStay.png" />
                </image>
             </ImageView>
-            <Label fx:id="descripcionLbl111" layoutX="377.0" layoutY="451.0" text="Si esta sección se encuentra vacía, no te preocupes, significa que no hay ofertas disponibles">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="270.0" layoutY="448.0" text="Si esta sección se encuentra vacía, no te preocupes, significa que no hay ofertas disponibles">
                <font>
-                  <Font name="Berlin Sans FB" size="8.0" />
+                  <Font name="Berlin Sans FB" size="13.0" />
                </font>
             </Label>
             <CubicCurve controlX1="-50.0" controlX2="50.0" controlY1="-100.0" controlY2="100.0" endX="150.0" layoutX="153.0" rotate="180.0" startX="-150.0" stroke="TRANSPARENT">

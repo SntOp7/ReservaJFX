@@ -15,31 +15,18 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.util.ArrayList;
 
 public class ListaOfertasControlador {
-
     @FXML
     private Label descuentoLbl;
-
     @FXML
     private TableColumn<Oferta, String> fechaInicioColumn;
-
     @FXML
-    private Label descripcionLbl1;
-
+    private Label descripcionLbl;
     @FXML
     private Label tipoOfertaLbl;
-
     @FXML
     private TableColumn<Oferta, String> fechaFinColumn;
-
-    @FXML
-    private Label numeroHabitacionLbl;
-
-    @FXML
-    private Label descripcionLbl111;
-
     @FXML
     private TableColumn<Oferta, String> nombreColumn;
-
     @FXML
     private TableView<Oferta> tablaOfertas;
 
@@ -65,12 +52,9 @@ public class ListaOfertasControlador {
 
         tablaOfertas.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
-                tipoOfertaLbl.setText(newSelection.getOfertaEspecial().getNombre());
-                descripcionLbl1.setText(newSelection.getDescripcion());
-                descuentoLbl.setText(String.valueOf(newSelection.getPorcentajeDescuento()) + "%");
-
-                numeroHabitacionLbl.setText("");
-                descripcionLbl111.setText("");
+                tipoOfertaLbl.setText(tipoOfertaLbl.getText() + newSelection.getOfertaEspecial().getNombre());
+                descripcionLbl.setText(descripcionLbl.getText() + newSelection.getDescripcion());
+                descuentoLbl.setText(descuentoLbl.getText() + newSelection.getPorcentajeDescuento() + "%");
             }
         });
     }
