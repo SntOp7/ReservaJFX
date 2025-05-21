@@ -30,7 +30,7 @@ public class OfertaServicios {
                                 LocalDate fechaInicio, LocalDate fechaFin, String porcentajeDescuentoString) throws Exception {
 
         if (ofertaEspecialString == null || ofertaEspecialString.isEmpty()) throw new Exception("Debes seleccionar una oferta especial");
-        OfertaEspecial ofertaEspecial = OfertaEspecial.valueOf(ofertaEspecialString);
+        OfertaEspecial ofertaEspecial = OfertaEspecial.valueOf(ofertaEspecialString.toUpperCase().replaceAll(" ", "_"));
         verificarCampos(nombre, descripcion, fechaInicio, fechaFin, porcentajeDescuentoString);
         double porcentaje = 0;
         try {
