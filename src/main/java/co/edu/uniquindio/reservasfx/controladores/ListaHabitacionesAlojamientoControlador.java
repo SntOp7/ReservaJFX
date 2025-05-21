@@ -52,6 +52,8 @@ public class ListaHabitacionesAlojamientoControlador {
 
     private Habitacion habitacionSelected;
 
+    private String rutaImagen;
+
     @FXML
     void initialize() {
         habitacionesTabla = FXCollections.observableArrayList();
@@ -70,7 +72,7 @@ public class ListaHabitacionesAlojamientoControlador {
     }
 
     private void cargarDatos() {
-        controlador.cargarImagen(habitacionSelected.getImagen(), imagenHabitacion);
+        controlador.cargarImagen(rutaImagen, imagenHabitacion);
         numeroHabitacionTxt.setText(habitacionSelected.getNumero() + "");
         precioAdicionalTxt.setText(habitacionSelected.getPrecio() + "");
         capacidadTxt.setText(habitacionSelected.getCapacidad() + "");
@@ -99,7 +101,7 @@ public class ListaHabitacionesAlojamientoControlador {
 
     @FXML
     void agregarImagenBtnAction(ActionEvent event) {
-        controlador.seleccionarImagen(imagenHabitacion);
+        rutaImagen = controlador.seleccionarImagen(imagenHabitacion);
     }
 
     @FXML
@@ -108,7 +110,7 @@ public class ListaHabitacionesAlojamientoControlador {
         String precioAdicional = precioAdicionalTxt.getText();
         String descripcion = descripcionTxt.getText();
         String capacidad = capacidadTxt.getText();
-        String urlImagen = imagenHabitacion.getImage() == null ? null : imagenHabitacion.getImage().getUrl();
+        String urlImagen = rutaImagen == null ? null : rutaImagen.isEmpty() ? null : rutaImagen;
         try {
             Habitacion habitacion = controlador.getEmpresa().getModuloAlojamientoServicios().crearHabitacion(numeroHabitacion,
                     precioAdicional, capacidad, descripcion, urlImagen);

@@ -30,80 +30,71 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class AlojamientoAdministradorControlador {
-
     @FXML
     private TableView<Servicio> tablaServiciosIncluidos;
-
     @FXML
     private ImageView imagenPrincipal;
-
     @FXML
     private TableColumn<Servicio, String> serviviosIncluidosColumn;
-
     @FXML
     private Tab reseniaHuespedTab;
-
     @FXML
     private Button editarBtn;
-
     @FXML
     private HBox thumbnailContainer;
-
     @FXML
     private Text nombreText;
-
     @FXML
     private ImageView imagen1;
-
     @FXML
     private Button subirImagenBtn;
-
     @FXML
     private Button subirNuevasImagenesBtn;
-
     @FXML
     private Button eliminarBtn;
-
     @FXML
-    private ImageView imagen21;
-
+    private ImageView imagen2;
+    @FXML
+    private ImageView imagen3;
     @FXML
     private Text capacidadText;
-
     @FXML
     private Text descripcionText;
-
     @FXML
     private Tab ofertasEspecialesTab;
-
     @FXML
     private Tab adicionalTab;
-
     @FXML
     private Text precioText;
-
     @FXML
     private Text ciudadText;
 
+    private String rutaImagenPrincipal;
+    private String rutaImagenSecundaria1;
+    private String rutaImagenSecundaria2;
+    private String rutaImagenSecundaria3;
 
     @FXML
     void subirImagenBtnAction(ActionEvent event) {
-        controlador.seleccionarImagen(imagenPrincipal);
+        rutaImagenPrincipal = controlador.seleccionarImagen(imagenPrincipal);
     }
 
     @FXML
     void subirNuevasImagenesBtnAction(ActionEvent event) {
-        controlador.seleccionarImagen(imagen1);
-        controlador.seleccionarImagen((imagen21));
+        rutaImagenSecundaria1 = controlador.seleccionarImagen(imagen1);
+        rutaImagenSecundaria2 = controlador.seleccionarImagen((imagen2));
+        rutaImagenSecundaria3 = controlador.seleccionarImagen((imagen3));
     }
 
     @FXML
     void editarBtnAction(ActionEvent event) {
-        String urlPrincipal = imagenPrincipal.getImage() == null ? null : imagenPrincipal.getImage().getUrl();
-        String urlSecundaria1 = imagen1.getImage() == null ? null : imagen1.getImage().getUrl();
-        String urlSecundaria3 = imagen21.getImage() == null ? null : imagen21.getImage().getUrl();
+        String urlPrincipal = rutaImagenPrincipal == null ? null : rutaImagenPrincipal;
+        String urlSecundaria1 = rutaImagenSecundaria1 == null ? null : rutaImagenSecundaria1;
+        String urlSecundaria2 = rutaImagenSecundaria2 == null ? null : rutaImagenSecundaria2;
+        String urlSecundaria3 = rutaImagenSecundaria3 == null ? null : rutaImagenSecundaria3;
         ArrayList<String> imagenes = new ArrayList<>();
         imagenes.add(urlSecundaria1);
+        imagenes.add(urlSecundaria2);
         imagenes.add(urlSecundaria3);
         TipoAlojamiento tipoAlojamiento = null;
         ArrayList<Habitacion> habitaciones = listaHabitacionesAlojamientoControlador.habitaciones;
@@ -130,9 +121,12 @@ public class AlojamientoAdministradorControlador {
                 tipoServicios.add(tipoServicio);
             }
 
-            controlador.getEmpresa().getModuloAlojamientoServicios().editarAlojamiento(alojamiento.getId(), tipoAlojamiento, nombre, descripcion, precioNoche, capacidad, tipoServicios, imagenPrincipal.getImage().getUrl(), imagenes, costoAdicional.costoAdicional, habitaciones);
+            controlador.getEmpresa().getModuloAlojamientoServicios().editarAlojamiento(alojamiento.getId(),
+                    tipoAlojamiento, nombre, descripcion, precioNoche, capacidad, tipoServicios,
+                    imagenPrincipal.getImage().getUrl(), imagenes, costoAdicional.costoAdicional, habitaciones);
+            controlador.crearAlerta("Alojamiento editado con exito",Alert.AlertType.INFORMATION);
         } catch (Exception e) {
-            controlador.crearAlerta("Error", Alert.AlertType.ERROR);
+            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 

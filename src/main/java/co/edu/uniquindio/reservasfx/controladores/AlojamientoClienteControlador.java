@@ -30,87 +30,58 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class AlojamientoClienteControlador {
-
     @FXML
     private Tab reseniaHuespedTab;
-
     @FXML
     private Button volverBtn;
-
     @FXML
     private HBox thumbnailContainer;
-
     @FXML
     private ImageView imagen2;
-
     @FXML
     private Button seguirBtn;
-
     @FXML
     private Text nombreText;
-
     @FXML
     private ImageView imagen1;
-
     @FXML
     private StackPane contentPane;
-
     @FXML
     private Button reservarBtn;
-
     @FXML
     private Text capacidadText;
-
     @FXML
     private Text descripcionText;
-
     @FXML
     private Rectangle imagen3;
-
     @FXML
     private Tab ofertasEspecialesTab;
-
     @FXML
     private Tab adicionalTab;
-
     @FXML
     private Button anteriorBtn;
-
     @FXML
     private Text precioText;
-
     @FXML
     private Text ciudadText;
-
     @FXML
     private ScrollPane offersScrollPane;
-
     @FXML
     private ImageView imagenPrincipal;
-
     @FXML
     private Text huespedesText;
-
     @FXML
     private DatePicker fechaInicioDate;
-
     @FXML
     private Text fechaFinText;
-
     @FXML
     private DatePicker fechaFinDate;
-
     @FXML
     private Text fechaInicioText;
-
-
     @FXML
     private TextField txtHuespedes;
-
     @FXML
     private TableView<Servicio> tablaServiciosIncluidos;
-
-
     @FXML
     private TableColumn<Servicio, String> serviviosIncluidosColumn;
 
@@ -129,30 +100,13 @@ public class AlojamientoClienteControlador {
 
 
     @FXML
-    void anteriorBtnAction(ActionEvent event) {
-        if (rutasImagenes == null || rutasImagenes.isEmpty()) return;
-
-        imagenActual = (imagenActual - 1 + rutasImagenes.size()) % rutasImagenes.size();
-        mostrarImagenActual();
-    }
-
-    @FXML
-    void seguirBtnAction(ActionEvent event) {
-        if (rutasImagenes == null || rutasImagenes.isEmpty()) return;
-
-        imagenActual = (imagenActual + 1) % rutasImagenes.size();
-        mostrarImagenActual();
-    }
-
-
-    @FXML
     void reservarBtnAction(ActionEvent event) {
         try {
             String cedula = sesion.getUsuario().getCedula();
             String idAlojamiento = AlojamientoSelect.getInstancia().getAlojamiento().getId();
             LocalDate inicio = fechaInicioDate.getValue();
-            LocalDate fin    = fechaFinDate.getValue();
-            String numHuespedes =  txtHuespedes.getText();
+            LocalDate fin = fechaFinDate.getValue();
+            String numHuespedes = txtHuespedes.getText();
             int numeroHabitacion = 0;
             if (alojamiento instanceof Hotel) {
                 Habitacion habitacion = SeleccionReserva.getInstancia().getHabitacionSeleccionada();
@@ -270,13 +224,4 @@ public class AlojamientoClienteControlador {
             thumbnailContainer.getChildren().add(imgView);
         }
     }
-
-    private void mostrarImagenActual() {
-        if (listaImagenes != null && !listaImagenes.isEmpty() && indiceImagenActual < listaImagenes.size()) {
-            Imagen imagen = listaImagenes.get(indiceImagenActual);
-            imagenPrincipal.setImage(new Image(imagen.getRuta()));
-        }
-    }
-
-
 }

@@ -21,6 +21,8 @@ import lombok.Getter;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 
 public class ControladorPrincipal {
@@ -134,38 +136,46 @@ public class ControladorPrincipal {
     }
 
     public void cargarImagen(String imagePath, ImageView imageView) {
-        if (imagePath == null || imageView == null) {
-            return;
-        }
+        if (imagePath == null || imageView == null) return;
 
-        if (imagePath.startsWith("/") || imagePath.startsWith("resources/")) {
-            URL imageUrl = getClass().getResource(imagePath);
-            if (imageUrl != null) {
-                imageView.setImage(new Image(imageUrl.toExternalForm()));
-            }
-        } else {
-            File file = new File(imagePath);
-            if (file.exists()) {
-                imageView.setImage(new Image(file.toURI().toString()));
-            }
+        File file = new File(imagePath);
+        if (file.exists()) {
+            imageView.setImage(new Image(file.toURI().toString()));
         }
     }
 
-    public void seleccionarImagen(ImageView imagen) {
+    public String seleccionarImagen(ImageView imagen) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Seleccionar imagen de perfil");
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg", "*.gif")
         );
+
         File archivoSeleccionado = fileChooser.showOpenDialog(null);
         if (archivoSeleccionado != null) {
             try {
-                Image imagenSeleccionada = new Image(archivoSeleccionado.toURI().toString());
-                imagen.setImage(imagenSeleccionada);
-            } catch (Exception e) {
-                crearAlerta("No se pudo cargar la imagen seleccionada.", Alert.AlertType.ERROR);
+                String rutaGuardada = copiarImagenAlProyecto(archivoSeleccionado);
+                imagen.setImage(new Image(new File(rutaGuardada).toURI().toString()));
+                return rutaGuardada;
+            } catch (IOException e) {
+                crearAlerta("No se pudo copiar la imagen seleccionada.", Alert.AlertType.ERROR);
             }
         }
+        return null;
+    }
+
+    public String copiarImagenAlProyecto(File archivoOrigen) throws IOException {
+        String destinoDir = "data/imagenes/";
+
+        File carpetaDestino = new File(destinoDir);
+        if (!carpetaDestino.exists()) {
+            carpetaDestino.mkdirs();
+        }
+
+        File archivoDestino = new File(carpetaDestino, archivoOrigen.getName());
+        Files.copy(archivoOrigen.toPath(), archivoDestino.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+        return archivoDestino.getPath();
     }
 
     public void cargarEnTab(Tab tab, String rutaFXML) {
