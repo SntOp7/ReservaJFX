@@ -41,8 +41,6 @@ public class NotificacionesNoLeidasControlador {
             String cedula = controlador.getSesion().getUsuario().getCedula();
             notificaciones = controlador.getEmpresa().getModuloUsuarioServicios().obtenerNotificacionesNoLeidas(cedula);
 
-            totalPaginas = notificaciones.size() / MAX_NOTIFICACIONES_POR_PAGINA;
-            if (notificaciones.size() % MAX_NOTIFICACIONES_POR_PAGINA != 0) totalPaginas++;
             paginaActual = 1;
 
             cargarNotificacionesPagina();
@@ -54,6 +52,8 @@ public class NotificacionesNoLeidasControlador {
     private void cargarNotificacionesPagina() {
         notificacionesPagina = determinarListaPagina(paginaActual, MAX_NOTIFICACIONES_POR_PAGINA, notificaciones);
         cargarListaNotificaciones(notificacionesPagina, stacks);
+        totalPaginas = notificaciones.size() / MAX_NOTIFICACIONES_POR_PAGINA;
+        totalPaginas = totalPaginas + (notificaciones.size() % MAX_NOTIFICACIONES_POR_PAGINA == 0 ? 0 : 1);
         numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
     }
 
