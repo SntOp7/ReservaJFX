@@ -142,7 +142,7 @@
                                                                                 </LinearGradient>
                                                                             </fill>
                                                                         </Rectangle>
-                                                                        <Rectangle fx:id="imagen3" arcHeight="3.0" arcWidth="3.0" height="82.0" width="82.0">
+                                                                        <Rectangle arcHeight="3.0" arcWidth="3.0" height="82.0" width="82.0">
                                                                             <fill>
                                                                                 <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
                                                                                     <stops>
@@ -152,7 +152,7 @@
                                                                                 </LinearGradient>
                                                                             </fill>
                                                                         </Rectangle>
-                                                                        <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                                                        <ImageView fx:id="imagen2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                                                                             <image>
                                                                                 <Image url="@img/panelImagen.png" />
                                                                             </image>
@@ -187,7 +187,7 @@
                                                                                 </LinearGradient>
                                                                             </fill>
                                                                         </Rectangle>
-                                                                        <ImageView fx:id="imagen21" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                                                        <ImageView fx:id="imagen3" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                                                                             <image>
                                                                                 <Image url="@img/panelImagen.png" />
                                                                             </image>
