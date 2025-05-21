@@ -156,7 +156,7 @@
                                                             </LinearGradient>
                                                          </fill>
                                                       </Rectangle>
-                                                                        <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                                                        <ImageView fx:id="imagen2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                                                                             <image>
                                                                                 <Image url="@img/panelImagen.png" />
                                                                             </image>
@@ -191,7 +191,7 @@
                                                             </LinearGradient>
                                                          </fill>
                                                       </Rectangle>
-                                                                        <ImageView fx:id="imagen21" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                                                        <ImageView fx:id="imagen3" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                                                                             <image>
                                                                                 <Image url="@img/panelImagen.png" />
                                                                             </image>
