@@ -39,7 +39,7 @@ public class HabitacionServicios  {
         habitacionRepositorio.agregar(habitacion);
     }
 
-    public void verificarEdicionHabitacion(Habitacion habitacionAntigua, String numeroString, String precioString,
+    public Habitacion verificarEdicionHabitacion(Habitacion habitacionAntigua, String numeroString, String precioString,
                                            String capacidadString, String descripcion, String imagen) throws Exception {
 
         verificarCampos(numeroString, precioString, capacidadString, descripcion, imagen);
@@ -59,6 +59,7 @@ public class HabitacionServicios  {
         habitacionAntigua.setCapacidad(capacidad);
         habitacionAntigua.setDescripcion(descripcion);
         habitacionAntigua.setImagen(imagen);
+        return habitacionAntigua;
     }
 
     public void editarHabitacion(String idHotel, Habitacion habitacion) throws Exception {

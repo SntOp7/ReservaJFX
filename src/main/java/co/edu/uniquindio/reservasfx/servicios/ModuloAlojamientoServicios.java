@@ -140,9 +140,9 @@ public class ModuloAlojamientoServicios implements IAlojamiento {
     }
 
     @Override
-    public void verificarEdicionHabitacion(Habitacion habitacionAntigua, String numero, String precio, String capacidad,
+    public Habitacion verificarEdicionHabitacion(Habitacion habitacionAntigua, String numero, String precio, String capacidad,
                                            String descripcion, String imagen) throws Exception {
-        habitacionServicios.verificarEdicionHabitacion(habitacionAntigua, numero, precio, capacidad, descripcion, imagen);
+        return habitacionServicios.verificarEdicionHabitacion(habitacionAntigua, numero, precio, capacidad, descripcion, imagen);
     }
 
     @Override

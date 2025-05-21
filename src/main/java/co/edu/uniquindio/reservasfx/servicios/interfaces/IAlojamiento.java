@@ -52,7 +52,7 @@ public interface IAlojamiento {
 
     void registrarHabitacion(String idHotel, Habitacion habitacion) throws Exception;
 
-    void verificarEdicionHabitacion(Habitacion habitacionAntigua, String numero, String precio,
+    Habitacion verificarEdicionHabitacion(Habitacion habitacionAntigua, String numero, String precio,
                                     String capacidad, String descripcion, String imagen) throws Exception;
 
     void editarHabitacion(String idHotel, Habitacion habitacion) throws Exception;

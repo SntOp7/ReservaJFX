@@ -26,10 +26,11 @@ public class OfertaServicios {
         this.notificacionServicios = notificacionServicios;
     }
 
-    public void registrarOferta(OfertaEspecial ofertaEspecial, String idAlojamiento, String nombre, String descripcion,
+    public void registrarOferta(String ofertaEspecialString, String idAlojamiento, String nombre, String descripcion,
                                 LocalDate fechaInicio, LocalDate fechaFin, String porcentajeDescuentoString) throws Exception {
 
-        if (ofertaEspecial == null ) throw new Exception("La oferta es obligatoria");
+        if (ofertaEspecialString == null || ofertaEspecialString.isEmpty()) throw new Exception("Debes seleccionar una oferta especial");
+        OfertaEspecial ofertaEspecial = OfertaEspecial.valueOf(ofertaEspecialString);
         verificarCampos(nombre, descripcion, fechaInicio, fechaFin, porcentajeDescuentoString);
         double porcentaje = 0;
         try {

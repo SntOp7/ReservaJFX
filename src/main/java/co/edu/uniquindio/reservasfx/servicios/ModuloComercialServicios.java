@@ -50,7 +50,7 @@ public class ModuloComercialServicios implements IComercial {
     }
 
     @Override
-    public void registrarOferta(OfertaEspecial ofertaEspecial, String idAlojamiento, String nombre, String descripcion,
+    public void registrarOferta(String ofertaEspecial, String idAlojamiento, String nombre, String descripcion,
                                 LocalDate fechaInicio, LocalDate fechaFin, String porcentajeDescuento) throws Exception {
         ofertaServicios.registrarOferta(ofertaEspecial, idAlojamiento, nombre, descripcion, fechaInicio, fechaFin,
                 porcentajeDescuento);

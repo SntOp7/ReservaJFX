@@ -18,7 +18,7 @@ public interface IComercial {
 
     ArrayList<Reserva> obtenerReservasCliente(String cedulaCliente) throws Exception;
 
-    void registrarOferta(OfertaEspecial ofertaEspecial, String idAlojamiento, String nombre, String descripcion,
+    void registrarOferta(String ofertaEspecial, String idAlojamiento, String nombre, String descripcion,
                          LocalDate fechaInicio, LocalDate fechaFin, String porcentajeDescuento) throws Exception;
 
     void editarOferta(String id, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFin,

@@ -77,7 +77,7 @@ public class EmpresaServicio implements IEmpresa {
     }
 
     @Override
-    public void registrarOferta(OfertaEspecial ofertaEspecial, String idAlojamiento, String nombre,
+    public void registrarOferta(String ofertaEspecial, String idAlojamiento, String nombre,
                                 String descripcion, LocalDate fechaInicio, LocalDate fechaFin,
                                 String porcentajeDescuento) throws Exception {
         moduloComercialServicios.registrarOferta(ofertaEspecial, idAlojamiento, nombre, descripcion, fechaInicio,

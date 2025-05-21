@@ -50,6 +50,8 @@ public class ListaHabitacionesAlojamientoControlador {
     ObservableList<Habitacion> habitacionesTabla;
     ArrayList<Habitacion> habitaciones = new ArrayList<>();
 
+    private Habitacion habitacionSelected;
+
     @FXML
     void initialize() {
         habitacionesTabla = FXCollections.observableArrayList();
@@ -57,6 +59,22 @@ public class ListaHabitacionesAlojamientoControlador {
         if (controlador.getAlojamientoSelect().getAlojamiento() != null) {
             initData();
         }
+        seleccionarHabitacion();
+    }
+
+    private void seleccionarHabitacion() {
+        tableHabitacionesAgregadas.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            habitacionSelected = newSelection;
+            cargarDatos();
+        });
+    }
+
+    private void cargarDatos() {
+        controlador.cargarImagen(habitacionSelected.getImagen(), imagenHabitacion);
+        numeroHabitacionTxt.setText(habitacionSelected.getNumero() + "");
+        precioAdicionalTxt.setText(habitacionSelected.getPrecio() + "");
+        capacidadTxt.setText(habitacionSelected.getCapacidad() + "");
+        descripcionTxt.setText(habitacionSelected.getDescripcion());
     }
 
     private void initTabla() {
@@ -98,6 +116,7 @@ public class ListaHabitacionesAlojamientoControlador {
             habitacionesTabla.setAll(habitaciones);
             tableHabitacionesAgregadas.setItems(habitacionesTabla);
             controlador.crearAlerta("Se ha agregado la habitación a la lista", Alert.AlertType.INFORMATION);
+            tableHabitacionesAgregadas.getSelectionModel().clearSelection();
             limpiarCampos();
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
@@ -115,6 +134,7 @@ public class ListaHabitacionesAlojamientoControlador {
         habitacionesTabla.remove(habitacion);
         tableHabitacionesAgregadas.setItems(habitacionesTabla);
         controlador.crearAlerta("Se ha eliminado la habitación de la lista", Alert.AlertType.INFORMATION);
+        tableHabitacionesAgregadas.getSelectionModel().clearSelection();
         limpiarCampos();
     }
 
@@ -129,12 +149,16 @@ public class ListaHabitacionesAlojamientoControlador {
         String precioAdicional = precioAdicionalTxt.getText();
         String descripcion = descripcionTxt.getText();
         String capacidad = capacidadTxt.getText();
-        String urlImagen = imagenHabitacion.getImage().getUrl();
+        String urlImagen = imagenHabitacion.getImage() == null ? null : imagenHabitacion.getImage().getUrl();
         try {
-            controlador.getEmpresa().getModuloAlojamientoServicios().verificarEdicionHabitacion(habitacionAntigua,
+            Habitacion habitacionEditada = controlador.getEmpresa().getModuloAlojamientoServicios().verificarEdicionHabitacion(habitacionAntigua,
                     numeroHabitacion, precioAdicional, capacidad, descripcion, urlImagen);
+            habitaciones.remove(habitacionAntigua);
+            habitaciones.add(habitacionEditada);
+            habitacionesTabla.setAll(habitaciones);
             tableHabitacionesAgregadas.setItems(habitacionesTabla);
             controlador.crearAlerta("Se ha editado correctamente la habitación", Alert.AlertType.INFORMATION);
+            tableHabitacionesAgregadas.getSelectionModel().clearSelection();
             limpiarCampos();
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
