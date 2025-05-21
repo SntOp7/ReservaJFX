@@ -13,6 +13,7 @@ public class EliminarCuentaControlador {
     private Button aceptarBtn;
 
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
+    PanePrincipalControlador panePrincipalControlador = PanePrincipalControlador.getInstancia();
     CuentaClienteControlador cuentaClienteControlador;
     Sesion sesion = controlador.getSesion();
 
@@ -21,7 +22,10 @@ public class EliminarCuentaControlador {
         try {
             String cedula = sesion.getUsuario().getCedula();
             controlador.getEmpresa().getModuloUsuarioServicios().eliminarCliente(cedula);
-            cuentaClienteControlador.limpiarCampos();
+            controlador.crearAlerta("Se elimino correctamente",   Alert.AlertType.INFORMATION);
+            panePrincipalControlador.actualizar("/co/edu/uniquindio/reservasfx/headerPrincipal.fxml", "/co/edu/uniquindio/reservasfx/recomendadoAlojamiento.fxml");
+            sesion.setUsuario(null);
+
 
         }
         catch (Exception e) {
