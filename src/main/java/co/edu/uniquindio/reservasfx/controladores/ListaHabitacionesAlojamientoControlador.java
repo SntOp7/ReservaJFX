@@ -29,7 +29,7 @@ public class ListaHabitacionesAlojamientoControlador {
     @FXML
     private Button agregarImagenBtn;
     @FXML
-    private Button editarHabitacionBtn1;
+    private Button editarHabitacionBtn;
     @FXML
     private TextField capacidadTxt;
     @FXML
@@ -90,7 +90,7 @@ public class ListaHabitacionesAlojamientoControlador {
         String precioAdicional = precioAdicionalTxt.getText();
         String descripcion = descripcionTxt.getText();
         String capacidad = capacidadTxt.getText();
-        String urlImagen = imagenHabitacion.getImage().getUrl();
+        String urlImagen = imagenHabitacion.getImage() == null ? null : imagenHabitacion.getImage().getUrl();
         try {
             Habitacion habitacion = controlador.getEmpresa().getModuloAlojamientoServicios().crearHabitacion(numeroHabitacion,
                     precioAdicional, capacidad, descripcion, urlImagen);
@@ -98,6 +98,7 @@ public class ListaHabitacionesAlojamientoControlador {
             habitacionesTabla.setAll(habitaciones);
             tableHabitacionesAgregadas.setItems(habitacionesTabla);
             controlador.crearAlerta("Se ha agregado la habitación a la lista", Alert.AlertType.INFORMATION);
+            limpiarCampos();
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
@@ -106,27 +107,45 @@ public class ListaHabitacionesAlojamientoControlador {
     @FXML
     void eliminarHabitacionBtnAction(ActionEvent event) {
         Habitacion habitacion = tableHabitacionesAgregadas.getSelectionModel().getSelectedItem();
+        if (habitacion == null) {
+            controlador.crearAlerta("Debes seleccionar una habitación", Alert.AlertType.WARNING);
+            return;
+        }
         habitaciones.remove(habitacion);
         habitacionesTabla.remove(habitacion);
         tableHabitacionesAgregadas.setItems(habitacionesTabla);
         controlador.crearAlerta("Se ha eliminado la habitación de la lista", Alert.AlertType.INFORMATION);
+        limpiarCampos();
     }
 
     @FXML
     void editarHabitacionBtnAction(ActionEvent event) {
+        Habitacion habitacionAntigua = tableHabitacionesAgregadas.getSelectionModel().getSelectedItem();
+        if (habitacionAntigua == null) {
+            controlador.crearAlerta("Debes seleccionar una habitación", Alert.AlertType.WARNING);
+            return;
+        }
         String numeroHabitacion = numeroHabitacionTxt.getText();
         String precioAdicional = precioAdicionalTxt.getText();
         String descripcion = descripcionTxt.getText();
         String capacidad = capacidadTxt.getText();
         String urlImagen = imagenHabitacion.getImage().getUrl();
-        Habitacion habitacionAntigua = tableHabitacionesAgregadas.getSelectionModel().getSelectedItem();
         try {
             controlador.getEmpresa().getModuloAlojamientoServicios().verificarEdicionHabitacion(habitacionAntigua,
                     numeroHabitacion, precioAdicional, capacidad, descripcion, urlImagen);
             tableHabitacionesAgregadas.setItems(habitacionesTabla);
             controlador.crearAlerta("Se ha editado correctamente la habitación", Alert.AlertType.INFORMATION);
+            limpiarCampos();
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
+    }
+
+    private void limpiarCampos() {
+        numeroHabitacionTxt.clear();
+        precioAdicionalTxt.clear();
+        descripcionTxt.clear();
+        capacidadTxt.clear();
+        imagenHabitacion.setImage(null);
     }
 }

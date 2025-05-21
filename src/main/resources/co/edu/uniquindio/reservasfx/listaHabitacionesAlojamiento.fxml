@@ -334,6 +334,14 @@
                                               </StackPane>
                                     <HBox alignment="CENTER" spacing="15.0">
                                        <children>
+                                          <Button fx:id="editarHabitacionBtn" mnemonicParsing="false" onAction="#editarHabitacionBtnAction" style="-fx-background-color: #FF8000; -fx-text-fill: white;" text="Editar">
+                                             <effect>
+                                                <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
+                                             </effect>
+                                             <font>
+                                                <Font name="Berlin Sans FB" size="13.0" />
+                                             </font>
+                                          </Button>
             
                                                           <Button fx:id="eliminarHabitacionBtn" mnemonicParsing="false" onAction="#eliminarHabitacionBtnAction" style="-fx-background-color: #e01b24; -fx-text-fill: white;" text="Eliminar">
                                                         <font>
@@ -343,14 +351,6 @@
                                                             <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
                                                         </effect>
                                                     </Button>
-                                          <Button fx:id="editarHabitacionBtn1" mnemonicParsing="false" onAction="#editarHabitacionBtnAction" style="-fx-background-color: #FF8000; -fx-text-fill: white;" text="Editar">
-                                             <effect>
-                                                <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
-                                             </effect>
-                                             <font>
-                                                <Font name="Berlin Sans FB" size="13.0" />
-                                             </font>
-                                          </Button>
                                        </children>
                                     </HBox>
                                           </children>

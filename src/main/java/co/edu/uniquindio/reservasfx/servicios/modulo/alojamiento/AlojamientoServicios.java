@@ -65,7 +65,7 @@ public class AlojamientoServicios {
                 throw new Exception("El Costo de Aseo y Mantenimiento solo admite números");
             }
         }
-        verificarNumeros(precioPorNoche, capacidadMaxima, costoAseoYMantenimiento);
+        verificarNumeros(tipoAlojamiento, precioPorNoche, capacidadMaxima, costoAseoYMantenimiento);
         String id = UUID.randomUUID().toString();
         Alojamiento alojamiento = switch (tipoAlojamiento) {
             case CASA -> AlojamientoFactory.crearCasa(id, nombre, ciudad, descripcion, precioPorNoche,
@@ -118,7 +118,7 @@ public class AlojamientoServicios {
                 throw new Exception("El Costo de Aseo y Mantenimiento solo admite números");
             }
         }
-        verificarNumeros(precioPorNoche, capacidadMaxima, costoAseoYMantenimiento);
+        verificarNumeros(tipoAlojamiento, precioPorNoche, capacidadMaxima, costoAseoYMantenimiento);
         Alojamiento alojamiento = alojamientoRepositorio.buscarAlojamientoPorId(id);
         alojamiento.setNombre(nombre);
         alojamiento.setDescripcion(descripcion);
@@ -169,10 +169,13 @@ public class AlojamientoServicios {
         }
     }
 
-    private void verificarNumeros(double precioPorNoche, int capacidadMaxima, double costoAseoYMantenimiento) throws Exception {
+    private void verificarNumeros(TipoAlojamiento tipoAlojamiento, double precioPorNoche,
+                                  int capacidadMaxima, double costoAseoYMantenimiento) throws Exception {
         if (precioPorNoche <= 0) throw new Exception("El precio por noche debe ser mayor a 0.");
         if (capacidadMaxima <= 0) throw new Exception("La capacidad maxima debe ser mayor a 0.");
-        if (costoAseoYMantenimiento <= 0) throw new Exception("El costo de aseo y mantenimiento debe ser mayor a 0.");
+        if (tipoAlojamiento.equals(TipoAlojamiento.CASA) || tipoAlojamiento.equals(TipoAlojamiento.APARTAMENTO)) {
+            if (costoAseoYMantenimiento <= 0) throw new Exception("El costo de aseo y mantenimiento debe ser mayor a 0.");
+        }
     }
 
     public void eliminarAlojamiento(String nombre) throws Exception {

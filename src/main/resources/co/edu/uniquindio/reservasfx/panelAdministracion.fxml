@@ -199,11 +199,14 @@
                                     </children>
                                 </VBox>
 
-                                <Label style="-fx-font-family: 'Segoe UI'; -fx-font-size: 15px; -fx-font-weight: bold;" text="Añada los servicios del alojamiento pulsando la tecla Ctrl" />
+                                <Label opacity="0.5" style="-fx-font-family: 'Segoe UI'; -fx-font-size: 15px; -fx-font-weight: bold;" text="*Añada los servicios del alojamiento pulsando la tecla Ctrl">
+                           <font>
+                              <Font name="Berlin Sans FB" size="12.0" />
+                           </font></Label>
 
                                 <VBox alignment="CENTER" spacing="15">
                                     <children>
-                                        <StackPane fx:id="tipoAlojamientoStack" prefHeight="343.0" prefWidth="893.0" style="-fx-background-color: white; -fx-background-radius: 10;" />
+                                        <StackPane fx:id="tipoAlojamientoStack" prefHeight="600.0" prefWidth="893.0" style="-fx-background-color: white; -fx-background-radius: 10;" />
 
                                         <HBox alignment="CENTER">
                                             <children>
