@@ -44,10 +44,7 @@ public class GraficasControlador{
         barChartTipos.getData().add(series);
     }
 
-    // Método para mostrar gráfico de pastel de ocupación
-    public void mostrarGraficoOcupacion(EstadisticasAlojamiento estadisticas) {
-        panelGraficas.getChildren().clear(); // Opcional: limpiar antes
-
+    public PieChart generarGraficoOcupacion(EstadisticasAlojamiento estadisticas) {
         double ocupacion = estadisticas.getOcupacionPorcentual();
         double desocupacion = 100 - ocupacion;
 
@@ -56,13 +53,10 @@ public class GraficasControlador{
         pieChart.getData().add(new PieChart.Data("Ocupado", ocupacion));
         pieChart.getData().add(new PieChart.Data("Disponible", desocupacion));
 
-        panelGraficas.getChildren().add(pieChart);
+        return pieChart;
     }
 
-    // Método para mostrar gráfico de barras de ganancias
-    public void mostrarGraficoGanancias(EstadisticasAlojamiento estadisticas) {
-        panelGraficas.getChildren().clear(); // Opcional: limpiar antes
-
+    public BarChart<String, Number> generarGraficoGanancias(EstadisticasAlojamiento estadisticas) {
         double gananciaAlojamiento = estadisticas.getGananciasTotales();
         double gananciaGlobal = estadisticas.getGananciasTotalesGlobales();
 
@@ -83,6 +77,6 @@ public class GraficasControlador{
 
         barChart.getData().add(series);
 
-        panelGraficas.getChildren().add(barChart);
+        return barChart;
     }
 }

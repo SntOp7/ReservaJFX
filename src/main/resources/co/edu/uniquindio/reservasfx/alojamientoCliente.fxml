@@ -285,7 +285,7 @@
                                                                                 </HBox>
                                                             <Label alignment="CENTER" prefHeight="19.0" prefWidth="804.0" style="-fx-font-family: 'Segoe UI'; -fx-text-fill: #7f8c8d;" text="*Si el Alojamiento es un Hotel la Capacidad Máxima y el Precio varían automáticamente según la Habitación" textFill="WHITE">
                                                                <font>
-                                                                  <Font size="6.0" />
+                                                                  <Font size="16.0" />
                                                                </font>
                                                             </Label>
                                                                             </children>
