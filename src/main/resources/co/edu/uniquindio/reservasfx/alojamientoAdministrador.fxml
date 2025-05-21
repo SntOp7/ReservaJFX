@@ -12,7 +12,7 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.paint.*?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1014.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.AlojamientoAdministradorControlador">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1164.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.AlojamientoAdministradorControlador">
     <content>
         <AnchorPane id="AnchorPane" prefHeight="453.0" prefWidth="1900.0">
             <children>
@@ -354,7 +354,7 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="60.0" prefWidth="1900.0" spacing="20.0" style="-fx-background-color: #ffffff;">
                                             <children>
-                                                <TabPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="1902.0" tabClosingPolicy="UNAVAILABLE">
+                                                <TabPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="1902.0" tabClosingPolicy="UNAVAILABLE">
                                                     <tabs>
                                                         <Tab fx:id="adicionalTab" text="Información Adicional">
                                                             <content>
@@ -373,7 +373,7 @@
                                                         </Tab>
                                           <Tab fx:id="estadisticasTab" text="Estadísticas">
                                              <content>
-                                                <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="114.0" prefWidth="1902.0" />
+                                                <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="1902.0" />
                                              </content>
                                           </Tab>
                                                     </tabs>
