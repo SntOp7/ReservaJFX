@@ -104,7 +104,7 @@ public class ListaOfertasAlojamientoControlador {
     }
 
     @FXML
-    void agregarBtnAction(ActionEvent event) {
+    public void agregarBtnAction(ActionEvent event) {
         String nombre = nombreField.getText();
         String tipoOferta = tipoOfertaBox.getSelectionModel().getSelectedItem();
         String descripcion = descripcionField.getText();

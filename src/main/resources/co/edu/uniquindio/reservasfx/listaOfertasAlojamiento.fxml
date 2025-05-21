@@ -11,7 +11,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
 
-<StackPane prefHeight="519.0" prefWidth="1901.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #e6f0ff, #d0e6ff, #b3d9ff);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.ListaOfertasAlojamientoControlador">
+<StackPane prefHeight="519.0" prefWidth="1901.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #e6f0ff, #d0e6ff, #b3d9ff);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.ListaOfertasAlojamientoControlador">
     <children>
         <BorderPane prefHeight="200.0" prefWidth="200.0">
             <top>

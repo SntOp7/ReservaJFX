@@ -6,6 +6,7 @@ import co.edu.uniquindio.reservasfx.modelo.Sesion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Imagen;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Servicio;
+import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.ServicioSeleccionable;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoAlojamiento;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoServicio;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
@@ -19,6 +20,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -28,14 +30,16 @@ import javafx.scene.text.Text;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AlojamientoAdministradorControlador {
     @FXML
-    private TableView<Servicio> tablaServiciosIncluidos;
+    private TableView<ServicioSeleccionable> tablaServiciosIncluidos;
     @FXML
     private ImageView imagenPrincipal;
     @FXML
-    private TableColumn<Servicio, String> serviviosIncluidosColumn;
+    private TableColumn<ServicioSeleccionable, String> serviviosIncluidosColumn;
     @FXML
     private Tab reseniaHuespedTab;
     @FXML
@@ -44,6 +48,8 @@ public class AlojamientoAdministradorControlador {
     private HBox thumbnailContainer;
     @FXML
     private Text nombreText;
+    @FXML
+    private Text NombreText;
     @FXML
     private ImageView imagen1;
     @FXML
@@ -67,12 +73,101 @@ public class AlojamientoAdministradorControlador {
     @FXML
     private Text precioText;
     @FXML
-    private Text ciudadText;
+    private TextField txtNombre;
+    @FXML
+    private TextField txtCapacidad;
+    @FXML
+    private TextField txtDescripcion;
+    @FXML
+    private TextField txtPrecioNoche;
+    @FXML
+    private TableColumn<ServicioSeleccionable, Boolean> incluirColumna;
 
     private String rutaImagenPrincipal;
     private String rutaImagenSecundaria1;
     private String rutaImagenSecundaria2;
     private String rutaImagenSecundaria3;
+
+
+    private final ObservableList<ServicioSeleccionable> listaServicios = FXCollections.observableArrayList();
+    ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
+    PanePrincipalControlador panePrincipalControlador = PanePrincipalControlador.getInstancia();
+    ListaHabitacionesAlojamientoControlador listaHabitacionesAlojamientoControlador =new ListaHabitacionesAlojamientoControlador();
+    CostoAdicionalAlojamientoControlador costoAdicional = new CostoAdicionalAlojamientoControlador();
+    String rutaAnterior;
+    Sesion sesion = controlador.getSesion();
+    Alojamiento alojamiento = AlojamientoSelect.getInstancia().getAlojamiento();
+    private ArrayList<String> rutasImagenes;
+    private int imagenActual = 0;
+    ImagenRepositorio imagenRepositorio;
+    private ArrayList<Imagen> listaImagenes;
+    private int indiceImagenActual = 0;
+
+    void inicializarValores(String ruta) {
+        this.rutaAnterior = ruta;
+        cargarImagenesDelAlojamiento();
+    }
+
+
+    @FXML
+    void initialize() {
+        cargarInformacionAlojamiento();
+        cargarTabsDinamicamente();
+        cargarImagenesDelAlojamiento();
+        initTabla();
+        tablaServiciosIncluidos.setOnKeyPressed(event -> {
+            switch (event.getCode()) {
+                case CONTROL -> {
+                    guardarServicios();
+                }
+            }
+        });
+
+    }
+
+    public void initTabla() {
+        try {
+            ArrayList<Servicio> serviciosIncluidos = controlador.getEmpresa()
+                    .getModuloAlojamientoServicios()
+                    .obtenerServiciosAlojamiento(alojamiento.getId());
+
+            ArrayList<ServicioSeleccionable> lista = new ArrayList<>();
+
+            for (TipoServicio tipo : TipoServicio.values()) {
+                boolean yaIncluido = serviciosIncluidos.stream()
+                        .anyMatch(s -> s.getTipo().equals(tipo));
+
+                Servicio servicio = new Servicio(alojamiento.getId(), tipo);
+                lista.add(new ServicioSeleccionable(servicio, yaIncluido));
+            }
+
+            incluirColumna.setCellValueFactory(cellData -> cellData.getValue().seleccionadoProperty());
+            incluirColumna.setCellFactory(CheckBoxTableCell.forTableColumn(incluirColumna));
+
+            serviviosIncluidosColumn.setCellValueFactory(cellData ->
+                    new SimpleStringProperty(cellData.getValue().getServicio().getNombre()));
+
+            tablaServiciosIncluidos.setItems(FXCollections.observableArrayList(lista));
+
+        } catch (Exception e) {
+            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
+    public void guardarServicios() {
+        List<Servicio> seleccionados = tablaServiciosIncluidos.getItems().stream()
+                .filter(ServicioSeleccionable::isSeleccionado)
+                .map(ServicioSeleccionable::getServicio)
+                .collect(Collectors.toList());
+
+        ArrayList<TipoServicio> tipoServicios = new ArrayList<>();
+        for (Servicio servicio : seleccionados) {
+            TipoServicio tipoServicio = servicio.getTipo();
+            tipoServicios.add(tipoServicio);
+        }
+        controlador.getEmpresa().getModuloAlojamientoServicios().getAlojamientoServicios().registrarServicios(alojamiento.getId(), tipoServicios);
+        controlador.crearAlerta("Servicio guardado correctamente", Alert.AlertType.INFORMATION);
+    }
 
     @FXML
     void subirImagenBtnAction(ActionEvent event) {
@@ -140,58 +235,13 @@ public class AlojamientoAdministradorControlador {
         }
     }
 
-
-    private final ObservableList<Servicio> listaServicios = FXCollections.observableArrayList();
-    ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
-    PanePrincipalControlador panePrincipalControlador = PanePrincipalControlador.getInstancia();
-    ListaHabitacionesAlojamientoControlador listaHabitacionesAlojamientoControlador =new ListaHabitacionesAlojamientoControlador();
-    CostoAdicionalAlojamientoControlador costoAdicional = new CostoAdicionalAlojamientoControlador();
-    String rutaAnterior;
-    Sesion sesion = controlador.getSesion();
-    Alojamiento alojamiento = AlojamientoSelect.getInstancia().getAlojamiento();
-    private ArrayList<String> rutasImagenes;
-    private int imagenActual = 0;
-    ImagenRepositorio imagenRepositorio;
-    private ArrayList<Imagen> listaImagenes;
-    private int indiceImagenActual = 0;
-
-    void inicializarValores(String ruta) {
-        this.rutaAnterior = ruta;
-        cargarImagenesDelAlojamiento();
-    }
-
-
-    @FXML
-    void initialize() {
-        cargarInformacionAlojamiento();
-        cargarTabsDinamicamente();
-        cargarImagenesDelAlojamiento();
-        initTabla();
-
-    }
-
-    public void initTabla() {
-        try {
-            serviviosIncluidosColumn.setCellValueFactory(cellData ->
-                    new SimpleStringProperty(cellData.getValue().getTipo().getNombre()));
-
-
-            ArrayList<Servicio> servicios = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerServiciosAlojamiento(alojamiento.getId());
-            listaServicios.setAll(servicios);
-            tablaServiciosIncluidos.setItems(listaServicios);
-        } catch (Exception e) {
-            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
-        }
-
-    }
-
     private void cargarInformacionAlojamiento() {
         if (alojamiento != null) {
-            nombreText.setText(alojamiento.getNombre());
-            ciudadText.setText(ciudadText.getText() + " : " + alojamiento.getCiudad().getNombre());
-            descripcionText.setText(descripcionText.getText() + " : " + alojamiento.getDescripcion());
-            capacidadText.setText(capacidadText.getText() + " : " + alojamiento.getCapacidadMaxima());
-            precioText.setText(precioText.getText() + " : " + alojamiento.getPrecioPorNoche());
+            NombreText.setText(alojamiento.getNombre());
+            txtNombre.setText(alojamiento.getNombre());
+            txtDescripcion.setText(alojamiento.getDescripcion());
+            txtCapacidad.setText(Integer.toString(alojamiento.getCapacidadMaxima()));
+            txtPrecioNoche.setText(Double.toString(alojamiento.getPrecioPorNoche()));
             controlador.cargarImagen(alojamiento.getImagenPrincipal(), imagenPrincipal);
         }
     }
@@ -202,16 +252,12 @@ public class AlojamientoAdministradorControlador {
 
             try {
                 String rutaInfo;
-                if (tipo.equals("Casa") || tipo.equals("Apartamento")) {
-                    rutaInfo = "/co/edu/uniquindio/reservasfx/costoAdicionalAlojamineto.fxml";
-                } else if (tipo.equals("Hotel")) {
+                if (tipo.equals("Hotel")) {
                     rutaInfo = "/co/edu/uniquindio/reservasfx/listaHabitacionesAlojamiento.fxml";
                 } else {
-                    rutaInfo = null;
+                    rutaInfo = "/co/edu/uniquindio/reservasfx/costoAdicionalAlojamiento.fxml";
                 }
-                if (rutaInfo != null) {
-                    controlador.cargarEnTab(adicionalTab, rutaInfo);
-                }
+                controlador.cargarEnTab(adicionalTab, rutaInfo);
 
                 controlador.cargarEnTab(reseniaHuespedTab, "/co/edu/uniquindio/reservasfx/listaResenias.fxml");
 

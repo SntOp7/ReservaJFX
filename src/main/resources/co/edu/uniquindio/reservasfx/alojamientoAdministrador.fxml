@@ -234,7 +234,7 @@
                                                           <VBox alignment="CENTER" minWidth="-Infinity" prefHeight="496.0" prefWidth="462.0" spacing="10.0" style="-fx-background-color: transparent;">
                                                               <children>
 
-                                                                  <Text fx:id="nombreText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
+                                                                  <Text fx:id="NombreText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
                                                                       <font>
                                                                           <Font name="Berlin Sans FB" size="24.0" />
                                                                       </font>
@@ -249,12 +249,12 @@
                                                                           <HBox alignment="CENTER_LEFT" spacing="40.0">
                                                                               <children>
                                                                                   <Circle fill="WHITE" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
-                                                                                  <Text fx:id="ciudadText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
+                                                                                  <Text fx:id="nombreText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
                                                                                       <font>
                                                                                           <Font name="Berlin Sans FB" size="17.0" />
                                                                                       </font>
                                                                                   </Text>
-                                                            <TextField promptText="Nombre" style="-fx-background-radius: 50px;" />
+                                                            <TextField fx:id="txtNombre" promptText="Nombre" style="-fx-background-radius: 50px;" />
                                                                               </children>
                                                                           </HBox>
 
@@ -266,7 +266,7 @@
                                                                                           <Font name="Berlin Sans FB" size="17.0" />
                                                                                       </font>
                                                                                   </Text>
-                                                            <TextField promptText="Descripción" style="-fx-background-radius: 50px;" />
+                                                            <TextField fx:id="txtDescripcion" promptText="Descripción" style="-fx-background-radius: 50px;" />
                                                                               </children>
                                                                           </HBox>
 
@@ -278,7 +278,7 @@
                                                                                           <Font name="Berlin Sans FB" size="17.0" />
                                                                                       </font>
                                                                                   </Text>
-                                                            <TextField promptText="Precio por noche" style="-fx-background-radius: 50px;" />
+                                                            <TextField fx:id="txtPrecioNoche" promptText="Precio por noche" style="-fx-background-radius: 50px;" />
                                                                               </children>
                                                                           </HBox>
 
@@ -290,7 +290,7 @@
                                                                                           <Font name="Berlin Sans FB" size="17.0" />
                                                                                       </font>
                                                                                   </Text>
-                                                            <TextField promptText="Capacidad" style="-fx-background-radius: 50px;" />
+                                                            <TextField fx:id="txtCapacidad" promptText="Capacidad" style="-fx-background-radius: 50px;" />
                                                                               </children>
                                                                           </HBox>
                                                                       </children>
@@ -303,6 +303,7 @@
 
                                                                   <TableView fx:id="tablaServiciosIncluidos" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="157.0" prefWidth="366.0">
                                                                       <columns>
+                                                                          <TableColumn fx:id="incluirColumna" text="Incluir" prefWidth="100.0"/>
                                                                           <TableColumn fx:id="serviviosIncluidosColumn" prefWidth="365.0" text="Servicios Incluidos" />
                                                                       </columns>
                                                                       <VBox.margin>
