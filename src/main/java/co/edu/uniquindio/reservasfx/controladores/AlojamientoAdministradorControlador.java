@@ -154,19 +154,14 @@ public class AlojamientoAdministradorControlador {
         }
     }
 
-    public void guardarServicios() {
+    public ArrayList<Servicio> guardarServicios() {
         List<Servicio> seleccionados = tablaServiciosIncluidos.getItems().stream()
                 .filter(ServicioSeleccionable::isSeleccionado)
                 .map(ServicioSeleccionable::getServicio)
                 .collect(Collectors.toList());
+        ArrayList<Servicio> servicios = new ArrayList<>(seleccionados);
 
-        ArrayList<TipoServicio> tipoServicios = new ArrayList<>();
-        for (Servicio servicio : seleccionados) {
-            TipoServicio tipoServicio = servicio.getTipo();
-            tipoServicios.add(tipoServicio);
-        }
-        controlador.getEmpresa().getModuloAlojamientoServicios().getAlojamientoServicios().registrarServicios(alojamiento.getId(), tipoServicios);
-        controlador.crearAlerta("Servicio guardado correctamente", Alert.AlertType.INFORMATION);
+        return servicios;
     }
 
     @FXML
@@ -209,7 +204,7 @@ public class AlojamientoAdministradorControlador {
             String capacidad = capacidadText.getText();
             String precioNoche = precioText.getText();
 
-            ArrayList<Servicio> serviciosAlojamiento = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerServiciosAlojamiento(alojamiento.getId());
+            ArrayList<Servicio> serviciosAlojamiento = guardarServicios();
             ArrayList<TipoServicio> tipoServicios = new ArrayList<>();
             for (Servicio servicio : serviciosAlojamiento) {
                 TipoServicio tipoServicio = servicio.getTipo();
