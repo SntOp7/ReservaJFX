@@ -65,31 +65,33 @@ public class ListaReseniasControlador {
     @FXML
     void enviarReseniaBtnAction(ActionEvent event) {
         try {
-            String comentario = comentarioTxt.getText();
-            String valoracion = valoracionTxt.getText();
+            if (controlador.getSesion().getUsuario() instanceof Administrador){
+                controlador.crearAlerta("El administrador no puede hacer reseñas", Alert.AlertType.ERROR);
+            }
+            else {
+                String comentario = comentarioTxt.getText();
+                String valoracion = valoracionTxt.getText();
 
-            String idAlojamiento = alojamiento.getId();
-            String cedulaCliente = controlador.getSesion().getUsuario().getCedula();
+                String idAlojamiento = alojamiento.getId();
+                String cedulaCliente = controlador.getSesion().getUsuario().getCedula();
 
-            boolean Uadmin = controlador.getSesion().getUsuario() instanceof Administrador;
-            if (Uadmin) controlador.crearAlerta("El administrador no puede agregar reseñas",  Alert.AlertType.ERROR);
+                ArrayList<Reserva> reservasCliente = controlador.getEmpresa().getModuloComercialServicios().obtenerReservasCliente(cedulaCliente);
 
-            ArrayList<Reserva> reservasCliente = controlador.getEmpresa().getModuloComercialServicios().obtenerReservasCliente(cedulaCliente);
+                controlador.getEmpresa().enviarCalificacion(cedulaCliente, idAlojamiento, comentario, valoracion, reservasCliente);
 
-            controlador.getEmpresa().enviarCalificacion(cedulaCliente, idAlojamiento, comentario, valoracion, reservasCliente);
+                resenias = controlador.getEmpresa().getModuloUsuarioServicios().obtenerCalificacionesAlojamiento(idAlojamiento);
 
-            resenias = controlador.getEmpresa().getModuloUsuarioServicios().obtenerCalificacionesAlojamiento(idAlojamiento);
+                paginaActual = 1;
+                totalPaginas = resenias.size() / 5 + (resenias.size() % 5 == 0 ? 0 : 1);
+                reseniasPagina = determinarReseniasPagina(resenias);
+                cargarListaResenias(reseniasPagina);
+                numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
 
-            paginaActual = 1;
-            totalPaginas = resenias.size() / 5 + (resenias.size() % 5 == 0 ? 0 : 1);
-            reseniasPagina = determinarReseniasPagina(resenias);
-            cargarListaResenias(reseniasPagina);
-            numeroPaginalbl.setText("Página " + paginaActual + " de " + totalPaginas);
+                comentarioTxt.clear();
+                valoracionTxt.clear();
 
-            comentarioTxt.clear();
-            valoracionTxt.clear();
-
-            controlador.crearAlerta("Reseña enviada con éxito", Alert.AlertType.INFORMATION);
+                controlador.crearAlerta("Reseña enviada con éxito", Alert.AlertType.INFORMATION);
+            }
         } catch (Exception e) {
             controlador.crearAlerta("Error al enviar la reseña: " + e.getMessage(), Alert.AlertType.ERROR);
         }

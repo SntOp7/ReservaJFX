@@ -29,16 +29,17 @@ public class GraficasControlador{
     private VBox panelGraficas;
 
 
-    // Método para graficar tipo de alojamiento
     public void graficarTipos(ArrayList<EstadisticasTipoAlojamiento> tipos) {
+        barChartAlojamientos.setVisible(false);
+        pieChartAlojamientos.setVisible(false);
+        pieChartTipos.setVisible(false);
+        barChartTipos.setVisible(true);
         barChartTipos.getData().clear();
-        pieChartTipos.getData().clear();
 
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-
         for (EstadisticasTipoAlojamiento tipoAlojamiento : tipos) {
-            series.getData().add(new XYChart.Data<>(tipoAlojamiento.getTipo().toString(), tipoAlojamiento.getRentabilidadTipo()));
-            pieChartTipos.getData().add(new PieChart.Data(tipoAlojamiento.getTipo().toString(), tipoAlojamiento.getRentabilidadTipo()));
+            series.getData().add(
+                    new XYChart.Data<>(tipoAlojamiento.getTipo().toString(), tipoAlojamiento.getRentabilidadTipo()));
         }
 
         barChartTipos.getData().add(series);
