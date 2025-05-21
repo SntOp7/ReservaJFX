@@ -50,6 +50,7 @@ public class BilleteraClienteControlador {
     void recargarBtnAction(ActionEvent event) {
         try {
             String contenido = recargaField.getText().trim();
+            if (contenido == null || contenido.equals("")) throw new Exception("El monto no puede estar vacio");
             double monto = Double.parseDouble(contenido);
             String cedula = sesion.getUsuario().getCedula();
             controlador.getEmpresa().getModuloUsuarioServicios().recargarBilleteraCliente(cedula, monto);

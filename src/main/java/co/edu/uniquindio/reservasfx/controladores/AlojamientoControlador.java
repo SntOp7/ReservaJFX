@@ -62,7 +62,7 @@ public class AlojamientoControlador {
     }
 
     @FXML
-    void favoritoBtnAction(MouseEvent event) {
+    void favoritoBtnAction(ActionEvent event) {
         if (controlador.getSesion().getUsuario() != null) {
             if (controlador.getSesion().getUsuario() instanceof Administrador) {
                 controlador.crearAlerta("Solo los clientes pueden agregar a la lista de deseos", Alert.AlertType.ERROR);
@@ -106,9 +106,15 @@ public class AlojamientoControlador {
     @FXML
     void consultarBtnAction(ActionEvent event) {
         if (controlador.getSesion().getUsuario() != null) {
-            controlador.getAlojamientoSelect().setAlojamiento(alojamiento);
-            panePrincipalControlador.limpiarInferior();
-            panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/alojamientoCliente.fxml");
+            if (controlador.getSesion().getUsuario() instanceof Administrador) {
+                controlador.getAlojamientoSelect().setAlojamiento(alojamiento);
+                panePrincipalControlador.limpiarInferior();
+                panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/alojamientoAdministrador.fxml");
+            } else {
+                controlador.getAlojamientoSelect().setAlojamiento(alojamiento);
+                panePrincipalControlador.limpiarInferior();
+                panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/alojamientoCliente.fxml");
+            }
         } else {
             controlador.crearAlerta("Debe estar logueado para consultar el alojamiento", Alert.AlertType.ERROR);
         }

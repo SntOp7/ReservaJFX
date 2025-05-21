@@ -157,6 +157,7 @@ public class UsuarioServicios {
     public void recargarBilleteraCliente(String cedulaCliente, double monto) throws Exception {
         Cliente cliente = usuarioRepositorio.buscarCliente(cedulaCliente);
         if (cliente == null) throw new Exception("El cliente no existe");
+        if (monto == 0) throw new Exception("El monto es obligatorio");
         cliente.getBilletera().setSaldo(cliente.getBilletera().getSaldo() + monto);
         usuarioRepositorio.editar(cliente);
     }
