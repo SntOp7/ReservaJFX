@@ -79,6 +79,11 @@ public class PanelAdministracionControlador {
     ObservableList<TipoServicio> tipoServicios;
     ObservableList<EstadisticasTipoAlojamiento> estadisticasTipoAlojamiento;
 
+    private String rutaImagenPrincipal;
+    private String rutaImagenSecundaria1;
+    private String rutaImagenSecundaria2;
+    private String rutaImagenSecundaria3;
+
     @FXML
     void initialize() {
         estadisticasTipoAlojamiento = FXCollections.observableArrayList();
@@ -198,7 +203,7 @@ public class PanelAdministracionControlador {
 
     @FXML
     void imagenPrincipalBtnAction(ActionEvent event) {
-        controlador.seleccionarImagen(imagenPrincipal);
+        rutaImagenPrincipal = controlador.seleccionarImagen(imagenPrincipal);
     }
 
     @FXML
@@ -220,10 +225,13 @@ public class PanelAdministracionControlador {
                 } else {
                     if (imagenSecundaria1.getImage() == null) {
                         imagenSecundaria1.setImage(imagenSeleccionada);
+                        rutaImagenSecundaria1 = archivoSeleccionado.getAbsolutePath();
                     } else if (imagenSecundaria2.getImage() == null) {
                         imagenSecundaria2.setImage(imagenSeleccionada);
+                        rutaImagenSecundaria2 = archivoSeleccionado.getAbsolutePath();
                     } else if (imagenSecundaria3.getImage() == null) {
                         imagenSecundaria3.setImage(imagenSeleccionada);
+                        rutaImagenSecundaria3 = archivoSeleccionado.getAbsolutePath();
                     }
                 }
             } catch (Exception e) {
@@ -234,10 +242,10 @@ public class PanelAdministracionControlador {
 
     @FXML
     void registrarAlojamientoBtn(ActionEvent event) {
-        String urlPrincipal = imagenPrincipal.getImage() == null ? null : imagenPrincipal.getImage().getUrl();
-        String urlSecundaria1 = imagenSecundaria1.getImage() == null ? null : imagenSecundaria1.getImage().getUrl();
-        String urlSecundaria2 = imagenSecundaria2.getImage() == null ? null : imagenSecundaria2.getImage().getUrl();
-        String urlSecundaria3 = imagenSecundaria3.getImage() == null ? null : imagenSecundaria3.getImage().getUrl();
+        String urlPrincipal = rutaImagenPrincipal == null ? null : rutaImagenPrincipal;
+        String urlSecundaria1 = rutaImagenSecundaria1 == null ? null : rutaImagenSecundaria1;
+        String urlSecundaria2 = rutaImagenSecundaria2 == null ? null : rutaImagenSecundaria2;
+        String urlSecundaria3 = rutaImagenSecundaria3 == null ? null : rutaImagenSecundaria3;
         ArrayList<String> imagenes = new ArrayList<>();
         imagenes.add(urlSecundaria1);
         imagenes.add(urlSecundaria2);
