@@ -123,7 +123,7 @@ public class AlojamientoAdministradorControlador {
 
             controlador.getEmpresa().getModuloAlojamientoServicios().editarAlojamiento(alojamiento.getId(),
                     tipoAlojamiento, nombre, descripcion, precioNoche, capacidad, tipoServicios,
-                    imagenPrincipal.getImage().getUrl(), imagenes, costoAdicional.costoAdicional, habitaciones);
+                    urlPrincipal, imagenes, costoAdicional.costoAdicional, habitaciones);
             controlador.crearAlerta("Alojamiento editado con exito",Alert.AlertType.INFORMATION);
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
