@@ -11,11 +11,11 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
 
-<StackPane prefHeight="519.0" prefWidth="1901.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #e6f0ff, #d0e6ff, #b3d9ff);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.ListaOfertasAlojamientoControlador">
+<StackPane style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #e6f0ff, #d0e6ff, #b3d9ff);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.ListaOfertasAlojamientoControlador">
     <children>
-        <BorderPane prefHeight="200.0" prefWidth="200.0">
+        <BorderPane maxHeight="200.0">
             <top>
-                <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                <VBox alignment="CENTER" maxHeight="100.0" BorderPane.alignment="CENTER">
                     <children>
                         <Label text="Ofertas Especiales Para El Alojamiento" textFill="#1a56a0">
                             <font>
@@ -31,10 +31,13 @@
                             </VBox.margin>
                         </Line>
                     </children>
+                    <BorderPane.margin>
+                        <Insets bottom="5.0" />
+                    </BorderPane.margin>
                 </VBox>
             </top>
             <bottom>
-                <HBox alignment="CENTER" prefHeight="86.0" prefWidth="1901.0" spacing="30.0" BorderPane.alignment="CENTER">
+                <HBox alignment="CENTER" maxHeight="60.0" spacing="30.0" BorderPane.alignment="CENTER">
                     <children>
                         <Circle fill="#4d94ff" opacity="0.5" radius="8.0" />
                         <Button fx:id="agregarBtn" mnemonicParsing="false" onAction="#agregarBtnAction" style="-fx-background-radius: 50px; -fx-background-color: #4d94ff; -fx-text-fill: white; -fx-font-family: 'Berlin Sans FB'; -fx-font-size: 14px; -fx-padding: 8 25;" text="Agregar">
@@ -57,20 +60,20 @@
                         <Circle fill="#4d94ff" opacity="0.5" radius="8.0" />
                     </children>
                     <padding>
-                        <Insets bottom="10.0" />
+                        <Insets bottom="10.0" top="5.0" />
                     </padding>
                 </HBox>
             </bottom>
             <center>
-                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="150.0" BorderPane.alignment="CENTER">
+                <HBox alignment="CENTER" spacing="50.0" BorderPane.alignment="CENTER" VBox.vgrow="ALWAYS">
                     <children>
-                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="319.0" prefWidth="386.0">
+                        <HBox>
                             <children>
-                                <VBox alignment="CENTER" prefHeight="319.0" prefWidth="399.0">
+                                <VBox alignment="CENTER">
                                     <children>
                                         <AnchorPane>
                                             <children>
-                                               
+
                                                 <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#f2f8ff" height="280.0" stroke="#99c2ff" strokeWidth="1.5" width="397.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                     <effect>
                                                         <DropShadow color="#00000040" height="10.0" radius="4.5" width="10.0" />
@@ -84,7 +87,7 @@
                                                 <Polygon fill="#4d94ff" layoutX="350.0" layoutY="250.0" opacity="0.1" points="0.0, 0.0, 30.0, -20.0, 30.0, 20.0" />
 
 
-                                                <GridPane alignment="CENTER" hgap="20.0" layoutX="15.0" layoutY="15.0" prefHeight="250.0" prefWidth="367.0" vgap="15.0">
+                                                <GridPane alignment="CENTER" hgap="20.0" layoutX="15.0" layoutY="15.0" prefHeight="250.0" prefWidth="367.0" vgap="5.0">
                                                     <columnConstraints>
                                                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="140.0" />
                                                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="160.0" />
@@ -118,9 +121,9 @@
                                 </VBox>
                             </children>
                         </HBox>
-                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="319.0" prefWidth="357.0">
+                        <HBox>
                             <children>
-                                <VBox alignment="CENTER" prefHeight="319.0" prefWidth="532.0">
+                                <VBox alignment="CENTER">
                                     <children>
                                         <AnchorPane>
                                             <children>
@@ -149,41 +152,40 @@
                             </children>
                         </HBox>
                     </children>
+                    <BorderPane.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                    </BorderPane.margin>
                 </HBox>
             </center>
             <left>
-                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                <VBox alignment="CENTER" maxWidth="70.0" BorderPane.alignment="CENTER">
                     <children>
                         <Circle fill="#4d94ff" opacity="0.3" radius="30.0">
                             <VBox.margin>
-                                <Insets bottom="20.0" />
+                                <Insets bottom="10.0" />
                             </VBox.margin>
                         </Circle>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4d94ff" height="200.0" opacity="0.2" stroke="#4d94ff" strokeType="INSIDE" width="5.0">
-                            <VBox.margin>
-                                <Insets />
-                            </VBox.margin>
-                        </Rectangle>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4d94ff" height="150.0" opacity="0.2" stroke="#4d94ff" strokeType="INSIDE" width="5.0" />
                         <Circle fill="#4d94ff" opacity="0.3" radius="30.0">
                             <VBox.margin>
-                                <Insets top="20.0" />
+                                <Insets top="10.0" />
                             </VBox.margin>
                         </Circle>
                     </children>
                 </VBox>
             </left>
             <right>
-                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                <VBox alignment="CENTER" maxWidth="70.0" BorderPane.alignment="CENTER">
                     <children>
                         <Circle fill="#4d94ff" opacity="0.3" radius="30.0">
                             <VBox.margin>
-                                <Insets bottom="20.0" />
+                                <Insets bottom="10.0" />
                             </VBox.margin>
                         </Circle>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4d94ff" height="200.0" opacity="0.2" stroke="#4d94ff" strokeType="INSIDE" width="5.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4d94ff" height="150.0" opacity="0.2" stroke="#4d94ff" strokeType="INSIDE" width="5.0" />
                         <Circle fill="#4d94ff" opacity="0.3" radius="30.0">
                             <VBox.margin>
-                                <Insets top="20.0" />
+                                <Insets top="10.0" />
                             </VBox.margin>
                         </Circle>
                     </children>

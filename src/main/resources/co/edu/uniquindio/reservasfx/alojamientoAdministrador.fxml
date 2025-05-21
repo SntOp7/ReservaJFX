@@ -12,12 +12,12 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.paint.*?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1098.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.AlojamientoAdministradorControlador">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1014.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.AlojamientoAdministradorControlador">
     <content>
         <AnchorPane id="AnchorPane" prefHeight="453.0" prefWidth="1900.0">
             <children>
 
-                <Rectangle arcHeight="0.0" arcWidth="0.0" height="740.0" stroke="BLACK" strokeType="INSIDE" width="1900.0">
+                <Rectangle arcHeight="0.0" arcWidth="0.0" height="814.0" stroke="BLACK" strokeType="INSIDE" width="1900.0">
                     <fill>
                         <LinearGradient endX="1.0" endY="1.0">
                             <stops>
@@ -49,7 +49,7 @@
                                 <HBox alignment="CENTER" prefHeight="407.0" prefWidth="1900.0" spacing="50.0">
                                     <children>
                                         <!-- Left Section - Images -->
-                                        <VBox alignment="CENTER" prefHeight="362.0" prefWidth="435.0" spacing="15.0">
+                                        <VBox alignment="CENTER" prefHeight="362.0" prefWidth="435.0" spacing="20.0">
                                             <children>
 
                                                 <StackPane>
@@ -217,7 +217,7 @@
                                             <children>
                                                 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="588.0" prefWidth="438.0">
                                                     <children>
-                                                        <Rectangle arcHeight="15.0" arcWidth="15.0" height="469.0" width="462.0">
+                                                        <Rectangle arcHeight="15.0" arcWidth="15.0" height="492.0" width="462.0">
                                                             <fill>
                                                                 <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
                                                                     <stops>
@@ -231,7 +231,7 @@
                                                             </effect>
                                                         </Rectangle>
 
-                                                          <VBox alignment="CENTER" minWidth="-Infinity" prefHeight="496.0" prefWidth="462.0" spacing="10.0" style="-fx-background-color: transparent;">
+                                                          <VBox alignment="CENTER" minWidth="-Infinity" prefHeight="512.0" prefWidth="462.0" spacing="10.0" style="-fx-background-color: transparent;">
                                                               <children>
 
                                                                   <Text fx:id="NombreText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
@@ -303,7 +303,7 @@
 
                                                                   <TableView fx:id="tablaServiciosIncluidos" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="157.0" prefWidth="366.0">
                                                                       <columns>
-                                                                          <TableColumn fx:id="incluirColumna" text="Incluir" prefWidth="100.0"/>
+                                                                          <TableColumn fx:id="incluirColumna" prefWidth="100.0" text="Incluir" />
                                                                           <TableColumn fx:id="serviviosIncluidosColumn" prefWidth="365.0" text="Servicios Incluidos" />
                                                                       </columns>
                                                                       <VBox.margin>
@@ -355,23 +355,28 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="60.0" prefWidth="1900.0" spacing="20.0" style="-fx-background-color: #ffffff;">
                                             <children>
-                                                <TabPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1242.0" prefWidth="1902.0" tabClosingPolicy="UNAVAILABLE">
+                                                <TabPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="1902.0" tabClosingPolicy="UNAVAILABLE">
                                                     <tabs>
                                                         <Tab fx:id="adicionalTab" text="Información Adicional">
                                                             <content>
-                                                                <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="1902.0" />
+                                                                <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="1902.0" />
                                                             </content>
                                                         </Tab>
                                                         <Tab fx:id="reseniaHuespedTab" text="Reseñas de Huéspedes">
                                                             <content>
-                                                                <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="1902.0" />
+                                                                <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="1902.0" />
                                                             </content>
                                                         </Tab>
                                                         <Tab fx:id="ofertasEspecialesTab" text="Ofertas Especiales">
                                                             <content>
-                                                                <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="1902.0" />
+                                                                <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="114.0" prefWidth="1902.0" />
                                                             </content>
                                                         </Tab>
+                                          <Tab fx:id="estadisticasTab1" text="Estadísticas">
+                                             <content>
+                                                <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="114.0" prefWidth="1902.0" />
+                                             </content>
+                                          </Tab>
                                                     </tabs>
                                                 </TabPane>
                                             </children>

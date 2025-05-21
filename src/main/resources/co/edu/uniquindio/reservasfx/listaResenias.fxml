@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane prefHeight="569.0" prefWidth="1902.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.ListaReseniasControlador">
+<StackPane prefHeight="500.0" prefWidth="1902.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.ListaReseniasControlador">
     <children>
         <Pane prefHeight="569.0" prefWidth="1902.0">
             <children>
@@ -145,42 +145,42 @@
                 </CubicCurve>
 
 
-                <Label layoutX="865.0" layoutY="21.0" text="Reseñas">
+                <Label layoutX="865.0" layoutY="14.0" text="Reseñas">
                     <font>
                         <Font name="Berlin Sans FB" size="42.0" />
                     </font>
                 </Label>
 
 
-                <ImageView fitHeight="220.0" fitWidth="232.0" layoutX="1026.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="220.0" fitWidth="232.0" layoutX="1003.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@img/bookYourStay.png" />
                     </image>
                 </ImageView>
 
 
-                <ImageView fitHeight="126.0" fitWidth="124.0" layoutX="615.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="126.0" fitWidth="124.0" layoutX="617.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@img/usuario.png" />
                     </image>
                 </ImageView>
-                <TextField fx:id="valoracionTxt" layoutX="749.0" layoutY="137.0" prefWidth="250.0" promptText="Agrega una valoración " style="-fx-background-radius: 50px;">
+                <TextField fx:id="valoracionTxt" layoutX="753.0" layoutY="101.0" prefWidth="250.0" promptText="Agrega una valoración " style="-fx-background-radius: 50px;">
                     <font>
                         <Font name="Berlin Sans FB" size="15.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="comentarioTxt" layoutX="749.0" layoutY="175.0" prefWidth="250.0" promptText="Agrega un comentario" style="-fx-background-radius: 50px;" />
-                <Button fx:id="enviarReseniaBtn" layoutX="878.0" layoutY="232.0" mnemonicParsing="false" onAction="#enviarReseniaBtnAction" style="-fx-background-color: #00913F; -fx-background-radius: 50PX;" text="Enviar Reseña" textFill="WHITE" />
+                <TextField fx:id="comentarioTxt" layoutX="753.0" layoutY="139.0" prefWidth="250.0" promptText="Agrega un comentario" style="-fx-background-radius: 50px;" />
+                <Button fx:id="enviarReseniaBtn" layoutX="878.0" layoutY="191.0" mnemonicParsing="false" onAction="#enviarReseniaBtnAction" style="-fx-background-color: #00913F; -fx-background-radius: 50PX;" text="Enviar Reseña" textFill="WHITE" />
 
 
-                <Label layoutX="868.0" layoutY="279.0" text="Otras Reseñas">
+                <Label layoutX="867.0" layoutY="237.0" text="Otras Reseñas">
                     <font>
                         <Font name="Berlin Sans FB" size="23.0" />
                     </font>
                 </Label>
 
 
-                <VBox layoutX="655.0" layoutY="369.0" prefHeight="200.0" prefWidth="592.0">
+                <VBox layoutX="655.0" layoutY="318.0" prefHeight="200.0" prefWidth="592.0">
                     <children>
                         <ScrollPane prefHeight="150.0" prefWidth="592.0">
                             <content>
@@ -213,12 +213,12 @@
                 </VBox>
 
                                                                                           
-                                                                                                          <Button fx:id="anteriorBtn" layoutX="941.0" layoutY="320.0" mnemonicParsing="false" onAction="#anteriorBtnAction" style="-fx-background-color: #FF0000; -fx-background-radius: 50px;" text="Anterior" textFill="#e8e8e8">
+                                                                                                          <Button fx:id="anteriorBtn" layoutX="940.0" layoutY="268.0" mnemonicParsing="false" onAction="#anteriorBtnAction" style="-fx-background-color: #FF0000; -fx-background-radius: 50px;" text="Anterior" textFill="#e8e8e8">
                     <font>
                         <Font name="Berlin Sans FB" size="17.0" />
                     </font>
                 </Button>
-                <Button fx:id="siguienteBtn" layoutX="846.0" layoutY="320.0" mnemonicParsing="false" onAction="#siguienteBtnAction" style="-fx-background-color: #00913F; -fx-background-radius: 50px;" text="Siguiente" textFill="WHITE">
+                <Button fx:id="siguienteBtn" layoutX="845.0" layoutY="268.0" mnemonicParsing="false" onAction="#siguienteBtnAction" style="-fx-background-color: #00913F; -fx-background-radius: 50px;" text="Siguiente" textFill="WHITE">
                     <font>
                         <Font name="Berlin Sans FB" size="17.0" />
                     </font>
