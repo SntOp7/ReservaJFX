@@ -13,7 +13,7 @@
 
 <StackPane prefHeight="605.0" prefWidth="1902.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.EstadisticasAlojamientoControlador">
     <children>
-  
+
         <Rectangle height="605.0" width="1902.0">
             <fill>
                 <LinearGradient endX="1.0" endY="1.0">
