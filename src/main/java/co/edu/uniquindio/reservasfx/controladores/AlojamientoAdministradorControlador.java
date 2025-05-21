@@ -87,6 +87,8 @@ public class AlojamientoAdministradorControlador {
     private TextField txtDescripcion;
     @FXML
     private TextField txtPrecioNoche;
+    @FXML
+    private Tab estadisticasTab;
 
     private String rutaImagenPrincipal;
     private String rutaImagenSecundaria1;
@@ -153,43 +155,49 @@ public class AlojamientoAdministradorControlador {
 
     @FXML
     void editarBtnAction(ActionEvent event) {
-        String urlPrincipal = rutaImagenPrincipal == null ? null : rutaImagenPrincipal;
-        String urlSecundaria1 = rutaImagenSecundaria1 == null ? null : rutaImagenSecundaria1;
-        String urlSecundaria2 = rutaImagenSecundaria2 == null ? null : rutaImagenSecundaria2;
-        String urlSecundaria3 = rutaImagenSecundaria3 == null ? null : rutaImagenSecundaria3;
+        try {
+        String imagenPrincipal = alojamiento.getImagenPrincipal();
+        String urlPrincipal = rutaImagenPrincipal == null ? imagenPrincipal : rutaImagenPrincipal;
+        ArrayList<Imagen> imagenesAlojamiento = controlador.getEmpresa()
+                .getModuloAlojamientoServicios().obtenerImagenesAlojamiento(alojamiento.getId());
+        ArrayList<String> rutaImagenesAlojamiento = new ArrayList<>();
+        for (Imagen imagen : imagenesAlojamiento) {
+            rutaImagenesAlojamiento.add(imagen.getRuta());
+        }
+        String urlSecundaria1 = rutaImagenSecundaria1 == null ? rutaImagenesAlojamiento.get(0) : rutaImagenSecundaria1;
+        String urlSecundaria2 = rutaImagenSecundaria2 == null ? rutaImagenesAlojamiento.get(1) : rutaImagenSecundaria2;
+        String urlSecundaria3 = rutaImagenSecundaria3 == null ? rutaImagenesAlojamiento.get(2) : rutaImagenSecundaria3;
         ArrayList<String> imagenes = new ArrayList<>();
         imagenes.add(urlSecundaria1);
         imagenes.add(urlSecundaria2);
         imagenes.add(urlSecundaria3);
         TipoAlojamiento tipoAlojamiento = null;
-        try {
-            if (alojamiento instanceof Hotel) {
-                tipoAlojamiento = TipoAlojamiento.HOTEL;
-
-            }
-            if (alojamiento instanceof Casa) {
-                tipoAlojamiento = TipoAlojamiento.CASA;
-            }
-            if (alojamiento instanceof Apartamento) {
-                tipoAlojamiento = TipoAlojamiento.APARTAMENTO;
-            }
-            String nombre = txtNombre.getText();
-            String descripcion = txtDescripcion.getText();
-            String capacidad = txtCapacidad.getText();
-            String precioNoche = txtPrecioNoche.getText();
-            ObservableList<TipoServicio> serviciosSeleccionados = tablaServiciosIncluidos.getSelectionModel()
-                    .getSelectedItems();
-            ArrayList<TipoServicio> servicios = new ArrayList<>(serviciosSeleccionados);
-            if (alojamiento instanceof Hotel) {
-                controlador.getEmpresa().getModuloAlojamientoServicios().editarAlojamiento(alojamiento.getId(),
-                        tipoAlojamiento, nombre, descripcion, precioNoche, capacidad, servicios,
-                        urlPrincipal, imagenes, null, listaHabitacionesAlojamientoControlador
-                                .getHabitaciones());
-            } else {
-                controlador.getEmpresa().getModuloAlojamientoServicios().editarAlojamiento(alojamiento.getId(),
-                        tipoAlojamiento, nombre, descripcion, precioNoche, capacidad, servicios,
-                        urlPrincipal, imagenes, costoAdicionalAlojamientoControlador.getCostoAdicional(), null);
-            }
+        if (alojamiento instanceof Hotel) {
+            tipoAlojamiento = TipoAlojamiento.HOTEL;
+        }
+        if (alojamiento instanceof Casa) {
+            tipoAlojamiento = TipoAlojamiento.CASA;
+        }
+        if (alojamiento instanceof Apartamento) {
+            tipoAlojamiento = TipoAlojamiento.APARTAMENTO;
+        }
+        String nombre = txtNombre.getText();
+        String descripcion = txtDescripcion.getText();
+        String capacidad = txtCapacidad.getText();
+        String precioNoche = txtPrecioNoche.getText();
+        ObservableList<TipoServicio> serviciosSeleccionados = tablaServiciosIncluidos.getSelectionModel()
+                .getSelectedItems();
+        ArrayList<TipoServicio> servicios = new ArrayList<>(serviciosSeleccionados);
+        if (alojamiento instanceof Hotel) {
+            controlador.getEmpresa().getModuloAlojamientoServicios().editarAlojamiento(alojamiento.getId(),
+                    tipoAlojamiento, nombre, descripcion, precioNoche, capacidad, servicios,
+                    urlPrincipal, imagenes, null, listaHabitacionesAlojamientoControlador
+                            .getHabitaciones());
+        } else {
+            controlador.getEmpresa().getModuloAlojamientoServicios().editarAlojamiento(alojamiento.getId(),
+                    tipoAlojamiento, nombre, descripcion, precioNoche, capacidad, servicios,
+                    urlPrincipal, imagenes, costoAdicionalAlojamientoControlador.getCostoAdicional(), null);
+        }
             controlador.crearAlerta("Alojamiento editado con exito",Alert.AlertType.INFORMATION);
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
@@ -234,6 +242,7 @@ public class AlojamientoAdministradorControlador {
 
                 controlador.cargarEnTab(ofertasEspecialesTab, "/co/edu/uniquindio/reservasfx/listaOfertasAlojamiento.fxml");
 
+                controlador.cargarEnTab(estadisticasTab, "/co/edu/uniquindio/reservasfx/estadisticasAlojamiento.fxml");
             } catch (Exception e) {
                 controlador.crearAlerta("Error cargando tabs: " + e.getMessage(), Alert.AlertType.ERROR);
             }
