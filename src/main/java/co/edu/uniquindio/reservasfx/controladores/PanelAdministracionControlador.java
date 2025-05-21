@@ -208,36 +208,9 @@ public class PanelAdministracionControlador {
 
     @FXML
     void agregarImagenesBtnAction(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Seleccionar imagen de perfil");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg", "*.gif")
-        );
-        File archivoSeleccionado = fileChooser.showOpenDialog(null);
-        if (archivoSeleccionado != null) {
-            try {
-                Image imagenSeleccionada = new Image(archivoSeleccionado.toURI().toString());
-                if (imagenPrincipal.getImage() != null && Objects.equals(imagenSeleccionada.getUrl(), imagenPrincipal.getImage().getUrl())
-                || imagenSecundaria1.getImage() != null && Objects.equals(imagenSeleccionada.getUrl(), imagenSecundaria1.getImage().getUrl())
-                || imagenSecundaria2.getImage() != null && Objects.equals(imagenSeleccionada.getUrl(), imagenSecundaria2.getImage().getUrl())
-                || imagenSecundaria3.getImage() != null && Objects.equals(imagenSeleccionada.getUrl(), imagenSecundaria3.getImage().getUrl())) {
-                    controlador.crearAlerta("No se puede agregar la misma imagen.", Alert.AlertType.ERROR);
-                } else {
-                    if (imagenSecundaria1.getImage() == null) {
-                        imagenSecundaria1.setImage(imagenSeleccionada);
-                        rutaImagenSecundaria1 = archivoSeleccionado.getAbsolutePath();
-                    } else if (imagenSecundaria2.getImage() == null) {
-                        imagenSecundaria2.setImage(imagenSeleccionada);
-                        rutaImagenSecundaria2 = archivoSeleccionado.getAbsolutePath();
-                    } else if (imagenSecundaria3.getImage() == null) {
-                        imagenSecundaria3.setImage(imagenSeleccionada);
-                        rutaImagenSecundaria3 = archivoSeleccionado.getAbsolutePath();
-                    }
-                }
-            } catch (Exception e) {
-                controlador.crearAlerta("No se pudo cargar la imagen seleccionada.", Alert.AlertType.ERROR);
-            }
-        }
+        rutaImagenSecundaria1 = controlador.seleccionarImagen(imagenSecundaria1);
+        rutaImagenSecundaria2 = controlador.seleccionarImagen((imagenSecundaria2));
+        rutaImagenSecundaria3 = controlador.seleccionarImagen((imagenSecundaria3));
     }
 
     @FXML

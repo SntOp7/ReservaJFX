@@ -93,27 +93,17 @@ public class AlojamientoAdministradorControlador {
     private String rutaImagenSecundaria2;
     private String rutaImagenSecundaria3;
 
-
-    private final ObservableList<TipoServicio> listaServicios = FXCollections.observableArrayList();
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
     PanePrincipalControlador panePrincipalControlador = PanePrincipalControlador.getInstancia();
-    String rutaAnterior;
-    Sesion sesion = controlador.getSesion();
-    Alojamiento alojamiento = AlojamientoSelect.getInstancia().getAlojamiento();
-    private ArrayList<String> rutasImagenes;
-    private int imagenActual = 0;
-    ImagenRepositorio imagenRepositorio;
-    private ArrayList<Imagen> listaImagenes;
-    private int indiceImagenActual = 0;
-    ObservableList<TipoServicio> tipoServiciosAlojamiento = FXCollections.observableArrayList();
     CostoAdicionalAlojamientoControlador costoAdicionalAlojamientoControlador;
     ListaHabitacionesAlojamientoControlador listaHabitacionesAlojamientoControlador;
 
-    void inicializarValores(String ruta) {
-        this.rutaAnterior = ruta;
-        cargarImagenesDelAlojamiento();
-    }
+    private final ObservableList<TipoServicio> listaServicios = FXCollections.observableArrayList();
+    ObservableList<TipoServicio> tipoServiciosAlojamiento = FXCollections.observableArrayList();
 
+    Alojamiento alojamiento = AlojamientoSelect.getInstancia().getAlojamiento();
+
+    ImageView[] imagenes = {imagen1, imagen2, imagen3};
 
     @FXML
     void initialize() {
@@ -223,6 +213,7 @@ public class AlojamientoAdministradorControlador {
             txtDescripcion.setText(alojamiento.getDescripcion());
             txtCapacidad.setText(Integer.toString(alojamiento.getCapacidadMaxima()));
             txtPrecioNoche.setText(Double.toString(alojamiento.getPrecioPorNoche()));
+            System.out.println(alojamiento.getImagenPrincipal());
             controlador.cargarImagen(alojamiento.getImagenPrincipal(), imagenPrincipal);
         }
     }
@@ -253,34 +244,20 @@ public class AlojamientoAdministradorControlador {
         try {
             String idAlojamiento = alojamiento.getId();
             ArrayList<Imagen> listaImagenes = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerImagenesAlojamiento(idAlojamiento);
-
-            ArrayList<String> rutasImagenes = new ArrayList<>();
-
-            for (Imagen img : listaImagenes) {
-                rutasImagenes.add(img.getRuta());
+            if (listaImagenes == null || listaImagenes.isEmpty() ) {
+                return;
             }
-
-            cargarThumbnails(rutasImagenes);
-        }catch (Exception e){
+            ArrayList<String> rutaImagenes = new ArrayList<>();
+            for (Imagen imagen : listaImagenes) {
+                rutaImagenes.add(imagen.getRuta());
+            }
+            for (int i = 0; i < imagenes.length; i++) {
+                if (i < rutaImagenes.size()) {
+                    controlador.cargarImagen(rutaImagenes.get(i), imagenes[i]);
+                }
+            }
+        } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
-        }
-    }
-
-    void cargarThumbnails(ArrayList<String> rutasImagenes) {
-        thumbnailContainer.getChildren().clear();
-
-        for (String ruta : rutasImagenes) {
-            ImageView imgView = new ImageView(new Image(ruta));
-            imgView.setFitWidth(100);
-            imgView.setFitHeight(100);
-            thumbnailContainer.getChildren().add(imgView);
-        }
-    }
-
-    private void mostrarImagenActual() {
-        if (listaImagenes != null && !listaImagenes.isEmpty() && indiceImagenActual < listaImagenes.size()) {
-            Imagen imagen = listaImagenes.get(indiceImagenActual);
-            imagenPrincipal.setImage(new Image(imagen.getRuta()));
         }
     }
 

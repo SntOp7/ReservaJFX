@@ -1,5 +1,8 @@
 package co.edu.uniquindio.reservasfx.controladores;
 
+import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
+import co.edu.uniquindio.reservasfx.modelo.factory.Apartamento;
+import co.edu.uniquindio.reservasfx.modelo.factory.Casa;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import lombok.Getter;
@@ -11,8 +14,18 @@ public class CostoAdicionalAlojamientoControlador {
     @Getter
     String costoAdicional;
 
+    ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
+
     @FXML
     void initialize() {
+        Alojamiento alojamiento = controlador.getAlojamientoSelect().getAlojamiento();
+        if (alojamiento != null) {
+            if (alojamiento instanceof Casa) {
+                costoAdicionalTxt.setText(((Casa) alojamiento).getCostoAseoYMantenimiento() + "");
+            } else {
+                costoAdicionalTxt.setText(((Apartamento) alojamiento).getCostoAseoYMantenimiento() + "");
+            }
+        }
         agregarListener();
     }
 

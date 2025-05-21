@@ -73,11 +73,14 @@ public class ListaHabitacionesAlojamientoControlador {
     }
 
     private void cargarDatos() {
-        controlador.cargarImagen(rutaImagen, imagenHabitacion);
-        numeroHabitacionTxt.setText(habitacionSelected.getNumero() + "");
-        precioAdicionalTxt.setText(habitacionSelected.getPrecio() + "");
-        capacidadTxt.setText(habitacionSelected.getCapacidad() + "");
-        descripcionTxt.setText(habitacionSelected.getDescripcion());
+        if (habitacionSelected != null) {
+            rutaImagen = habitacionSelected.getImagen();
+            controlador.cargarImagen(rutaImagen, imagenHabitacion);
+            numeroHabitacionTxt.setText(habitacionSelected.getNumero() + "");
+            precioAdicionalTxt.setText(habitacionSelected.getPrecio() + "");
+            capacidadTxt.setText(habitacionSelected.getCapacidad() + "");
+            descripcionTxt.setText(habitacionSelected.getDescripcion());
+        }
     }
 
     private void initTabla() {
