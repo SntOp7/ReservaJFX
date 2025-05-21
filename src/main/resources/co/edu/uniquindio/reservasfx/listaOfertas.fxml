@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.image.*?>
@@ -10,9 +11,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane prefHeight="481.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.ListaOfertasControlador">
+<StackPane prefHeight="481.0" prefWidth="1902.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.ListaOfertasControlador">
     <children>
-        <Pane prefHeight="200.0" prefWidth="200.0">
+        <Pane prefHeight="481.0" prefWidth="1661.0" StackPane.alignment="CENTER">
             <children>
                 <Arc layoutX="935.0" layoutY="72.0" length="270.0" radiusX="34.0" radiusY="34.0" rotate="138.0" startAngle="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" type="ROUND">
                     <fill>
@@ -116,16 +117,6 @@
                         <Font name="Berlin Sans FB" size="24.0" />
                     </font>
                 </Label>
-                <QuadCurve controlX="-50.0" controlY="-100.0" endX="50.0" layoutX="50.0" layoutY="481.0" startX="-50.0" stroke="TRANSPARENT" strokeType="INSIDE">
-                    <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                            <stops>
-                                <Stop color="#1f93ff4c" />
-                                <Stop color="WHITE" offset="1.0" />
-                            </stops>
-                        </LinearGradient>
-                    </fill>
-                </QuadCurve>
                 <CubicCurve controlX1="-50.0" controlX2="50.0" controlY1="-100.0" controlY2="100.0" endX="150.0" layoutX="836.0" startX="-150.0" stroke="TRANSPARENT">
                     <fill>
                         <LinearGradient endX="1.0" endY="1.0">
@@ -156,7 +147,7 @@
                         </LinearGradient>
                     </fill>
                 </CubicCurve>
-                <CubicCurve controlX1="-50.0" controlX2="50.0" controlY1="-100.0" controlY2="100.0" endX="150.0" layoutX="974.0" layoutY="322.0" rotate="90.0" startX="-150.0" stroke="BLACK" strokeWidth="0.0">
+                <CubicCurve controlX1="-50.0" controlX2="50.0" controlY1="-100.0" controlY2="100.0" endX="150.0" layoutX="1428.0" layoutY="309.0" rotate="90.0" startX="-150.0" stroke="BLACK" strokeWidth="0.0">
                     <fill>
                         <LinearGradient endX="1.0" endY="1.0">
                             <stops>
@@ -221,7 +212,7 @@
                   <Image url="@img/bookYourStay.png" />
                </image>
             </ImageView>
-            <Label fx:id="descripcionLbl111" layoutX="342.0" layoutY="462.0" text="Si esta sección se encuentra vacía, no te preocupes, significa que no hay ofertas disponibles">
+            <Label fx:id="descripcionLbl111" layoutX="377.0" layoutY="451.0" text="Si esta sección se encuentra vacía, no te preocupes, significa que no hay ofertas disponibles">
                <font>
                   <Font name="Berlin Sans FB" size="8.0" />
                </font>
@@ -246,6 +237,19 @@
                   <Image url="@img/oferta2.png" />
                </image>
             </ImageView>
-            </children></Pane>
+            </children>
+         <StackPane.margin>
+            <Insets left="475.0" />
+         </StackPane.margin></Pane>
+          <QuadCurve controlX="-50.0" controlY="-100.0" endX="50.0" startX="-50.0" stroke="TRANSPARENT" strokeType="INSIDE">
+              <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                      <stops>
+                          <Stop color="#1f93ff4c" />
+                          <Stop color="WHITE" offset="1.0" />
+                      </stops>
+                  </LinearGradient>
+              </fill>
+          </QuadCurve>
     </children>
 </StackPane>
