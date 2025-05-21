@@ -303,7 +303,6 @@
 
                                                                   <TableView fx:id="tablaServiciosIncluidos" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="157.0" prefWidth="366.0">
                                                                       <columns>
-                                                                          <TableColumn fx:id="incluirColumna" prefWidth="100.0" text="Incluir" />
                                                                           <TableColumn fx:id="serviviosIncluidosColumn" prefWidth="365.0" text="Servicios Incluidos" />
                                                                       </columns>
                                                                       <VBox.margin>
