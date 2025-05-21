@@ -159,7 +159,7 @@
                                                     </effect>
                                                 </TextField>
 
-                                                <Label alignment="CENTER" style="-fx-font-family: 'Segoe UI'; -fx-text-fill: #7f8c8d;" text="*Si el Alojamiento es un Hotel la Capacidad Máxima varía automáticamente según la Habitación" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+                                                <Label alignment="CENTER" style="-fx-font-family: 'Segoe UI'; -fx-text-fill: #7f8c8d;" text="*Si el Alojamiento es un Hotel la Capacidad Máxima y el Precio varían automáticamente según la Habitación" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
                                             </children>
                                             <rowConstraints>
                                                 <RowConstraints />

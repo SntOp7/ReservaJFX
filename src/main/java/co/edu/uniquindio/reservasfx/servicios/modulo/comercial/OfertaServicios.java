@@ -71,6 +71,11 @@ public class OfertaServicios {
         if (oferta == null) {
             throw new Exception("La oferta no existe");
         }
+        if (fechaInicio.isEqual(LocalDate.now())) {
+            oferta.setEstado(EstadoOferta.ACTIVA);
+        } else if (fechaInicio.isAfter(LocalDate.now())) {
+            oferta.setEstado(EstadoOferta.PROXIMA);
+        }
         oferta.setNombre(nombre);
         oferta.setDescripcion(descripcion);
         oferta.setFechaInicio(fechaInicio);

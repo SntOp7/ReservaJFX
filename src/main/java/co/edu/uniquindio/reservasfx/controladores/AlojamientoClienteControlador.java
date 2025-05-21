@@ -85,19 +85,15 @@ public class AlojamientoClienteControlador {
     @FXML
     private TableColumn<Servicio, String> serviviosIncluidosColumn;
 
-
-    private final ObservableList<Servicio> listaServicios = FXCollections.observableArrayList();
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
     PanePrincipalControlador panePrincipalControlador = PanePrincipalControlador.getInstancia();
-    String rutaAnterior;
+
+    private final ObservableList<Servicio> listaServicios = FXCollections.observableArrayList();
+
     Sesion sesion = controlador.getSesion();
     Alojamiento alojamiento = AlojamientoSelect.getInstancia().getAlojamiento();
-    private ArrayList<String> rutasImagenes;
-    private int imagenActual = 0;
-    ImagenRepositorio imagenRepositorio;
-    private ArrayList<Imagen> listaImagenes;
-    private int indiceImagenActual = 0;
 
+    ImageView[] imagenes = {imagen1, imagen2, imagen3};
 
     @FXML
     void reservarBtnAction(ActionEvent event) {
@@ -114,7 +110,8 @@ public class AlojamientoClienteControlador {
                 numeroHabitacion = (habitacion != null) ? habitacion.getNumero() : -1;
             }
 
-            controlador.getEmpresa().getModuloComercialServicios().realizarReserva(cedula, idAlojamiento, inicio, fin, numHuespedes, numeroHabitacion);
+            controlador.getEmpresa().getModuloComercialServicios()
+                    .realizarReserva(cedula, idAlojamiento, inicio, fin, numHuespedes, numeroHabitacion);
 
             controlador.crearAlerta("Reserva realizada exitosamente", Alert.AlertType.INFORMATION);
         } catch (NumberFormatException e) {
@@ -126,14 +123,8 @@ public class AlojamientoClienteControlador {
 
     @FXML
     void volverBtnAction(ActionEvent event) {
-        panePrincipalControlador.actualizarInferior(rutaAnterior);
+        panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/recomendadoAlojamiento.fxml");
     }
-
-    void inicializarValores(String ruta) {
-        this.rutaAnterior = ruta;
-        cargarImagenesDelAlojamiento();
-    }
-
 
     @FXML
     void initialize() {
@@ -141,7 +132,6 @@ public class AlojamientoClienteControlador {
         cargarTabsDinamicamente();
         cargarImagenesDelAlojamiento();
         initTabla();
-
     }
 
     public void initTabla() {
@@ -172,20 +162,15 @@ public class AlojamientoClienteControlador {
 
     private void cargarTabsDinamicamente() {
         if (alojamiento != null) {
-            String tipo = alojamiento.getClass().getSimpleName(); // "Casa", "Apartamento", "Hotel"
-
             try {
                 String rutaInfo;
-                if (tipo.equals("Casa") || tipo.equals("Apartamento")) {
-                    rutaInfo = "/co/edu/uniquindio/reservasfx/costoAdicionalCliente.fxml";
-                } else if (tipo.equals("Hotel")) {
+                if (alojamiento instanceof Hotel) {
                     rutaInfo = "/co/edu/uniquindio/reservasfx/listaHabitacionesCliente.fxml";
                 } else {
-                    rutaInfo = null;
+                    rutaInfo = "/co/edu/uniquindio/reservasfx/costoAdicionalCliente.fxml";
                 }
-                if (rutaInfo != null) {
-                    controlador.cargarEnTab(adicionalTab, rutaInfo);
-                }
+
+                controlador.cargarEnTab(adicionalTab, rutaInfo);
 
                 controlador.cargarEnTab(reseniaHuespedTab, "/co/edu/uniquindio/reservasfx/listaResenias.fxml");
 
@@ -201,27 +186,20 @@ public class AlojamientoClienteControlador {
         try {
             String idAlojamiento = alojamiento.getId();
             ArrayList<Imagen> listaImagenes = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerImagenesAlojamiento(idAlojamiento);
-
-            ArrayList<String> rutasImagenes = new ArrayList<>();
-
-            for (Imagen img : listaImagenes) {
-                rutasImagenes.add(img.getRuta());
+            if (listaImagenes == null || listaImagenes.isEmpty() ) {
+                return;
             }
-
-            cargarThumbnails(rutasImagenes);
-        }catch (Exception e){
+            ArrayList<String> rutaImagenes = new ArrayList<>();
+            for (Imagen imagen : listaImagenes) {
+                rutaImagenes.add(imagen.getRuta());
+            }
+            for (int i = 0; i < imagenes.length; i++) {
+                if (i < rutaImagenes.size()) {
+                    controlador.cargarImagen(rutaImagenes.get(i), imagenes[i]);
+                }
+            }
+        } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
-        }
-    }
-
-    void cargarThumbnails(ArrayList<String> rutasImagenes) {
-        thumbnailContainer.getChildren().clear();
-
-        for (String ruta : rutasImagenes) {
-            ImageView imgView = new ImageView(new Image(ruta));
-            imgView.setFitWidth(100);
-            imgView.setFitHeight(100);
-            thumbnailContainer.getChildren().add(imgView);
         }
     }
 }

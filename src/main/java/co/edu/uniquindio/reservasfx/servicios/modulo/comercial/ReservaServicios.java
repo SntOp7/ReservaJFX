@@ -71,7 +71,7 @@ public class ReservaServicios {
 
         Cliente cliente = usuarioServicios.buscarClientePorCedula(cedulaCliente);
 
-        double subtotal = calcularSubtotal(alojamiento, fechaInicio, fechaFin);
+        double subtotal = calcularSubtotal(alojamiento, numeroHabitacion, fechaInicio, fechaFin);
         double total = calcularTotalConOfertas(subtotal, ofertasAlojamiento);
 
         if (cliente.getBilletera().getSaldo() < total) {
@@ -99,6 +99,7 @@ public class ReservaServicios {
                 .estado(EstadoReserva.ACTIVA)
                 .build();
 
+        cliente.getBilletera().setSaldo(cliente.getBilletera().getSaldo() - total);
         reservaRepositorio.agregar(reserva);
 
         String asunto = "Confirmación de Reserva - BookYourStay";
@@ -126,11 +127,12 @@ public class ReservaServicios {
         return capacidadDisponible;
     }
 
-    public double calcularSubtotal(Alojamiento alojamiento, LocalDate inicio, LocalDate fin) {
+    public double calcularSubtotal(Alojamiento alojamiento, int numeroHabitacion, LocalDate inicio, LocalDate fin) throws Exception {
         long dias = ChronoUnit.DAYS.between(inicio, fin);
+        Habitacion habitacion = habitacionServicios.buscarHabitacion(alojamiento.getId(), numeroHabitacion);
         double subtotal = 0;
         if (alojamiento instanceof Hotel) {
-            subtotal = dias * alojamiento.getPrecioPorNoche();
+            subtotal = dias * habitacion.getPrecio();
         } else if (alojamiento instanceof Casa) {
             subtotal = dias * alojamiento.getPrecioPorNoche() + ((Casa)alojamiento).getCostoAseoYMantenimiento();
         } else if (alojamiento instanceof Apartamento) {
@@ -164,6 +166,8 @@ public class ReservaServicios {
     public void cancelarReserva(String id) throws Exception {
         Reserva reserva = reservaRepositorio.buscarReservaPorId(id);
         if (reserva == null) throw new Exception("La reserva no existe");
+        if (reserva.getEstado() == EstadoReserva.FINALIZADA) throw new Exception("La reserva ya fue finalizada");
+        if (reserva.getEstado() == EstadoReserva.CANCELADA) throw new Exception("La reserva ya fue cancelada");
         reservaRepositorio.cancelar(reserva);
         notificacionServicios.enviarNotificacion(reserva.getCedulaCliente(), "Reserva Cancelada",
                 Constantes.RESERVA_CANCELADA_POR_CLIENTE(reserva.getIdAlojamiento()));

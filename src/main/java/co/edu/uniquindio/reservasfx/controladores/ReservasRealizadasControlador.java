@@ -1,8 +1,10 @@
 package co.edu.uniquindio.reservasfx.controladores;
 
 
+import co.edu.uniquindio.reservasfx.modelo.AlojamientoSelect;
 import co.edu.uniquindio.reservasfx.modelo.Sesion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
+import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -36,7 +38,7 @@ public class ReservasRealizadasControlador {
     private TableColumn<Reserva, Double> totalPagadoColumn;
 
     @FXML
-    private TableColumn<Reserva, EstadoReserva> estadoColumn;
+    private TableColumn<Reserva, String> estadoColumn;
 
     @FXML
     private TableView<Reserva> tablaReservas;
@@ -51,9 +53,10 @@ public class ReservasRealizadasControlador {
 
     private final ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
 
-    private Sesion sesion;
+    private final Sesion sesion = ControladorPrincipal.getInstancia().getSesion();
 
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    public void initialize() {
         initTabla();
         initData();
         tablaReservas.setItems(listaReservas);
@@ -64,17 +67,18 @@ public class ReservasRealizadasControlador {
      */
     public void initTabla() {
         nombreColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getIdAlojamiento()));
+                new SimpleStringProperty(controlador.getEmpresa().getModuloAlojamientoServicios()
+                        .getAlojamientoServicios().buscarAlojamientoPorId(cellData.getValue().getIdAlojamiento()).getNombre()));
         fechaInicioColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getFechaInicio().toString()));
         fechaFinColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getFechaInicio().toString()));
+                new SimpleStringProperty(cellData.getValue().getFechaFin().toString()));
         huespedesColumn.setCellValueFactory(cellData ->
                 new SimpleIntegerProperty(cellData.getValue().getNumeroHuespedes()).asObject());
         totalPagadoColumn.setCellValueFactory(cellData ->
                 new SimpleDoubleProperty(cellData.getValue().getFactura().getTotal()).asObject());
         estadoColumn.setCellValueFactory(cellData ->
-                new SimpleObjectProperty<>(cellData.getValue().getEstado()));
+                new SimpleStringProperty(cellData.getValue().getEstado().getNombre()));
     }
 
     public void initData(){
@@ -82,7 +86,7 @@ public class ReservasRealizadasControlador {
             String cedula = sesion.getUsuario().getCedula();
             ArrayList<Reserva> reservas = controlador.getEmpresa().getModuloComercialServicios().obtenerReservasCliente(cedula);
             listaReservas.setAll(reservas);
-        }catch (Exception e){
+        } catch (Exception e){
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
 
         }

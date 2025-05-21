@@ -41,9 +41,9 @@ public class ListaOfertasAlojamientoControlador {
     @FXML
     private TableColumn<Oferta, String> clmNombre;
     @FXML
-    private TableColumn<Oferta, OfertaEspecial> clmTipoOferta;
+    private TableColumn<Oferta, String> clmTipoOferta;
     @FXML
-    private TableColumn<Oferta, EstadoOferta> clmEstadoOferta;
+    private TableColumn<Oferta, String> clmEstadoOferta;
 
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
 
@@ -74,22 +74,24 @@ public class ListaOfertasAlojamientoControlador {
     }
 
     private void cargarDatos() {
-        nombreField.setText(ofertaSelected.getNombre());
-        tipoOfertaBox.getSelectionModel().select(ofertaSelected.getOfertaEspecial().getNombre());
-        tipoOfertaBox.setDisable(true);
-        descripcionField.setText(ofertaSelected.getDescripcion());
-        inicioDate.setValue(ofertaSelected.getFechaInicio());
-        finDate.setValue(ofertaSelected.getFechaFin());
-        descuentoField.setText(ofertaSelected.getPorcentajeDescuento() + "");
+        if (ofertaSelected != null) {
+            nombreField.setText(ofertaSelected.getNombre());
+            tipoOfertaBox.getSelectionModel().select(ofertaSelected.getOfertaEspecial().getNombre());
+            tipoOfertaBox.setDisable(true);
+            descripcionField.setText(ofertaSelected.getDescripcion());
+            inicioDate.setValue(ofertaSelected.getFechaInicio());
+            finDate.setValue(ofertaSelected.getFechaFin());
+            descuentoField.setText(ofertaSelected.getPorcentajeDescuento() + "");
+        }
     }
 
     private void initTabla() {
         clmNombre.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getNombre()));
         clmEstadoOferta.setCellValueFactory(cellData ->
-                new SimpleObjectProperty<>(cellData.getValue().getEstado()));
+                new SimpleStringProperty(cellData.getValue().getEstado().getNombre()));
         clmTipoOferta.setCellValueFactory(cellData ->
-                new SimpleObjectProperty<>(cellData.getValue().getOfertaEspecial()));
+                new SimpleStringProperty(cellData.getValue().getOfertaEspecial().getNombre()));
     }
 
     private void initData() {

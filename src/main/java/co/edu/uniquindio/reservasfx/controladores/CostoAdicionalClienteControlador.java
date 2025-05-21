@@ -17,9 +17,8 @@ public class CostoAdicionalClienteControlador {
 
     Alojamiento alojamiento = AlojamientoSelect.getInstancia().getAlojamiento();
 
-
-    public void inicializar(Alojamiento alojamiento) {
-        this.alojamiento = alojamiento;
+    @FXML
+    void initialize() {
         cargarDatos();
     }
 
@@ -29,10 +28,10 @@ public class CostoAdicionalClienteControlador {
 
             if (alojamiento instanceof Casa) {
                 Casa casa = (Casa) alojamiento;
-                costoAseoMantenimientoLabel.setText(costoAseoMantenimientoLabel.getText() + ":" + casa.getCostoAseoYMantenimiento());
+                costoAseoMantenimientoLabel.setText(costoAseoMantenimientoLabel.getText() + ": " + casa.getCostoAseoYMantenimiento());
             } else if (alojamiento instanceof Apartamento) {
                 Apartamento apto = (Apartamento) alojamiento;
-                costoAseoMantenimientoLabel.setText(costoAseoMantenimientoLabel.getText() + ":" +  apto.getCostoAseoYMantenimiento());
+                costoAseoMantenimientoLabel.setText(costoAseoMantenimientoLabel.getText() + ": " +  apto.getCostoAseoYMantenimiento());
             } else {
                 costoAseoMantenimientoLabel.setText("No aplica");
             }

@@ -3,6 +3,7 @@ package co.edu.uniquindio.reservasfx.controladores;
 import co.edu.uniquindio.reservasfx.modelo.AlojamientoSelect;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -51,9 +52,12 @@ public class ListaOfertasControlador {
 
     @FXML
     public void initialize() {
-        nombreColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        fechaInicioColumn.setCellValueFactory(new PropertyValueFactory<>("fechaInicioString"));
-        fechaFinColumn.setCellValueFactory(new PropertyValueFactory<>("fechaFinString"));
+        nombreColumn.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getNombre()));
+        fechaInicioColumn.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getFechaInicio().toString()));
+        fechaFinColumn.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getFechaFin().toString()));
 
         cargarOfertas();
 
