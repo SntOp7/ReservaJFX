@@ -7,6 +7,7 @@ import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Imagen;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Servicio;
 import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
+import co.edu.uniquindio.reservasfx.modelo.factory.Hotel;
 import co.edu.uniquindio.reservasfx.repositorios.ImagenRepositorio;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -152,10 +153,12 @@ public class AlojamientoClienteControlador {
             LocalDate inicio = fechaInicioDate.getValue();
             LocalDate fin    = fechaFinDate.getValue();
             String numHuespedes =  txtHuespedes.getText();
-
-            Habitacion habitacion = SeleccionReserva.getInstancia().getHabitacionSeleccionada();
-            if ( habitacion == null ) throw new Exception("Habitacion no seleccionada");
-            int numeroHabitacion = (habitacion != null) ? habitacion.getNumero() : -1;
+            int numeroHabitacion = 0;
+            if (alojamiento instanceof Hotel) {
+                Habitacion habitacion = SeleccionReserva.getInstancia().getHabitacionSeleccionada();
+                if (habitacion == null) throw new Exception("Habitacion no seleccionada");
+                numeroHabitacion = (habitacion != null) ? habitacion.getNumero() : -1;
+            }
 
             controlador.getEmpresa().getModuloComercialServicios().realizarReserva(cedula, idAlojamiento, inicio, fin, numHuespedes, numeroHabitacion);
 
