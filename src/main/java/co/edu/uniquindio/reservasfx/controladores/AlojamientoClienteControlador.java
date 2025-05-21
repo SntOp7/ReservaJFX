@@ -53,7 +53,7 @@ public class AlojamientoClienteControlador {
     @FXML
     private Text descripcionText;
     @FXML
-    private Rectangle imagen3;
+    private ImageView imagen3;
     @FXML
     private Tab ofertasEspecialesTab;
     @FXML
