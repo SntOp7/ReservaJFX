@@ -2,6 +2,8 @@ package co.edu.uniquindio.reservasfx.controladores;
 
 import co.edu.uniquindio.reservasfx.modelo.AlojamientoSelect;
 import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Reserva;
+import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Administrador;
+import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Usuario;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -68,6 +70,9 @@ public class ListaReseniasControlador {
 
             String idAlojamiento = alojamiento.getId();
             String cedulaCliente = controlador.getSesion().getUsuario().getCedula();
+
+            boolean Uadmin = controlador.getSesion().getUsuario() instanceof Administrador;
+            if (Uadmin) controlador.crearAlerta("El administrador no puede agregar reseñas",  Alert.AlertType.ERROR);
 
             ArrayList<Reserva> reservasCliente = controlador.getEmpresa().getModuloComercialServicios().obtenerReservasCliente(cedulaCliente);
 
