@@ -12,12 +12,12 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.paint.*?>
 
-<Pane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.ListaHabitacionesAlojamientoControlador">
+<Pane prefHeight="565.0" prefWidth="1902.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.ListaHabitacionesAlojamientoControlador">
    <children>
-      <StackPane>
+      <StackPane prefHeight="562.0" prefWidth="1902.0">
           <children>
 
-              <Rectangle height="599.0" width="945.0">
+              <Rectangle height="599.0" width="1902.0">
                   <fill>
                       <LinearGradient endX="1.0" endY="1.0">
                           <stops>
@@ -121,7 +121,7 @@
                               <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="429.0" prefWidth="456.0">
                                   <children>
 
-                                      <Rectangle arcHeight="15.0" arcWidth="15.0" height="391.0" width="456.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <Rectangle arcHeight="15.0" arcWidth="15.0" height="395.0" width="457.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                           <fill>
                                               <LinearGradient endY="1.0">
                                                   <stops>
@@ -258,7 +258,7 @@
                                           </VBox.margin>
                                       </VBox>
       
-                                              <Button fx:id="agregarHabitacionBtn" mnemonicParsing="false" onAction="#agregarHabitacionBtnAction" style="-fx-background-color: #1a5fb4; -fx-text-fill: white;" text="Agregar">
+                                                          <Button fx:id="agregarHabitacionBtn" mnemonicParsing="false" onAction="#agregarHabitacionBtnAction" style="-fx-background-color: #1a5fb4; -fx-text-fill: white;" text="Agregar">
                                             <font>
                                                 <Font name="Berlin Sans FB" size="13.0" />
                                             </font>

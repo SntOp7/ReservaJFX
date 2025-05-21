@@ -355,7 +355,7 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="60.0" prefWidth="1900.0" spacing="20.0" style="-fx-background-color: #ffffff;">
                                             <children>
-                                                <TabPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="1902.0" tabClosingPolicy="UNAVAILABLE">
+                                                <TabPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="1902.0" tabClosingPolicy="UNAVAILABLE">
                                                     <tabs>
                                                         <Tab fx:id="adicionalTab" text="Información Adicional">
                                                             <content>
