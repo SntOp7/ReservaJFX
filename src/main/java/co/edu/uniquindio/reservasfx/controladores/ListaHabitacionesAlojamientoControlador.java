@@ -16,6 +16,7 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ListaHabitacionesAlojamientoControlador {
     @FXML
@@ -173,5 +174,9 @@ public class ListaHabitacionesAlojamientoControlador {
         descripcionTxt.clear();
         capacidadTxt.clear();
         imagenHabitacion.setImage(null);
+    }
+
+    public ArrayList<Habitacion> getHabitaciones() {
+        return Objects.requireNonNullElseGet(habitaciones, ArrayList::new);
     }
 }
