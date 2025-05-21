@@ -135,11 +135,11 @@
                                                 <Circle fill="#4d94ff" layoutX="300.0" layoutY="50.0" opacity="0.1" radius="30.0" />
 
 
-                                                <TableView layoutX="15.0" layoutY="20.0" prefHeight="200.0" prefWidth="335.0" style="-fx-background-radius: 10px; -fx-border-radius: 10px; -fx-border-color: #99c2ff; -fx-border-width: 1.5px;">
+                                                <TableView fx:id="tablaOfertas" layoutX="15.0" layoutY="20.0" prefHeight="200.0" prefWidth="335.0" style="-fx-background-radius: 10px; -fx-border-radius: 10px; -fx-border-color: #99c2ff; -fx-border-width: 1.5px;">
                                                     <columns>
-                                                        <TableColumn prefWidth="110.0" style="-fx-font-family: 'Berlin Sans FB';" text="Nombre" />
-                                                        <TableColumn prefWidth="110.0" style="-fx-font-family: 'Berlin Sans FB';" text="Tipo Oferta" />
-                                                        <TableColumn prefWidth="110.0" style="-fx-font-family: 'Berlin Sans FB';" text="Estado Oferta" />
+                                                        <TableColumn fx:id="clmNombre" prefWidth="110.0" style="-fx-font-family: 'Berlin Sans FB';" text="Nombre" />
+                                                        <TableColumn fx:id="clmTipoOferta" prefWidth="110.0" style="-fx-font-family: 'Berlin Sans FB';" text="Tipo Oferta" />
+                                                        <TableColumn fx:id="clmEstadoOferta" prefWidth="110.0" style="-fx-font-family: 'Berlin Sans FB';" text="Estado Oferta" />
                                                     </columns>
                                                 </TableView>
                                             </children>
