@@ -4,11 +4,13 @@ import co.edu.uniquindio.reservasfx.modelo.entidades.Calificacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Notificacion;
 import co.edu.uniquindio.reservasfx.repositorios.NotificacionRepositorio;
 import co.edu.uniquindio.reservasfx.servicios.ModuloUsuarioServicios;
+import lombok.Getter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+@Getter
 public class NotificacionServicios {
 
     private final NotificacionRepositorio notificacionRepositorio;

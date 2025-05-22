@@ -1,8 +1,12 @@
 package co.edu.uniquindio.reservasfx.controladores;
 
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoAlojamiento;
+import co.edu.uniquindio.reservasfx.repositorios.AlojamientoRepositorio;
+import co.edu.uniquindio.reservasfx.repositorios.UsuarioRepositorio;
+import co.edu.uniquindio.reservasfx.servicios.EmpresaServicio;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
@@ -10,28 +14,32 @@ import javafx.scene.control.Tab;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class PanePrincipalControlador {
+public class PanePrincipalControlador implements Initializable {
     @FXML
     private StackPane inicioInferiorStack;
     @FXML
     private StackPane inicioSuperiorStack;
 
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
+    EmpresaServicio empresaAlojamiento = controlador.getEmpresa();
+    AlojamientoRepositorio alojamientoRepositorio = controlador.getEmpresa().getModuloAlojamientoServicios().getAlojamientoServicios()
 
     private static PanePrincipalControlador instancia;
 
     private PanePrincipalControlador() {}
 
-    public static PanePrincipalControlador getInstancia(){
+    public static PanePrincipalControlador getInstancia() {
         if(instancia == null){
             instancia = new PanePrincipalControlador();
         }
         return instancia;
     }
 
-    @FXML
-    private void initialize() {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             controlador.getEmpresa().getModuloComercialServicios().actualizarEstadoOfertas();
             controlador.getEmpresa().getModuloComercialServicios().actualizarEstadoReservas();
@@ -40,6 +48,11 @@ public class PanePrincipalControlador {
         }
         actualizar("/co/edu/uniquindio/reservasfx/headerPrincipal.fxml",
                 "/co/edu/uniquindio/reservasfx/recomendadoAlojamiento.fxml");
+
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+
+            System.out.println("Datos guardados automáticamente al cerrar el programa.");
+        }));
     }
 
     public void limpiarInferior() {

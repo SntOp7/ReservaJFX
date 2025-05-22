@@ -8,12 +8,14 @@ import co.edu.uniquindio.reservasfx.modelo.enums.OfertaEspecial;
 import co.edu.uniquindio.reservasfx.repositorios.OfertaRepositorio;
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.NotificacionServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.UsuarioServicios;
+import lombok.Getter;
 import org.simplejavamail.api.internal.clisupport.model.Cli;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.UUID;
 
+@Getter
 public class OfertaServicios {
 
     private final OfertaRepositorio ofertaRepositorio;

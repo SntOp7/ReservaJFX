@@ -10,11 +10,13 @@ import co.edu.uniquindio.reservasfx.repositorios.DeseoRepositorio;
 import co.edu.uniquindio.reservasfx.repositorios.UsuarioRepositorio;
 import co.edu.uniquindio.reservasfx.servicios.EmpresaServicio;
 import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.AlojamientoServicios;
+import lombok.Getter;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.UUID;
 
+@Getter
 public class UsuarioServicios {
 
     private final UsuarioRepositorio usuarioRepositorio;

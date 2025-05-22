@@ -21,6 +21,7 @@ import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.HabitacionServi
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.NotificacionServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.UsuarioServicios;
 import co.edu.uniquindio.reservasfx.utils.EnvioEmail;
+import lombok.Getter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -28,6 +29,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.UUID;
 
+@Getter
 public class ReservaServicios {
 
     private final ReservaRepositorio reservaRepositorio;

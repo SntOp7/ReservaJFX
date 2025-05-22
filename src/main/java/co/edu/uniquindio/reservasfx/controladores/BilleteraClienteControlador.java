@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.text.DecimalFormat;
 import java.util.UUID;
 
 public class BilleteraClienteControlador {
@@ -43,7 +44,12 @@ public class BilleteraClienteControlador {
             cliente.setBilletera(new BilleteraVirtual(UUID.randomUUID().toString(), 0));
         }
 
-        saldo_Lbl.setText("Saldo Disponible: " + cliente.getBilletera().getSaldo());
+        saldo_Lbl.setText("Saldo Disponible: " + obtenerValorCadena(cliente.getBilletera().getSaldo()));
+    }
+
+    public static String obtenerValorCadena(double valor) {
+        DecimalFormat df = new DecimalFormat("#.##############################");
+        return df.format(valor);
     }
 
     @FXML

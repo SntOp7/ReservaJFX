@@ -17,9 +17,11 @@ import co.edu.uniquindio.reservasfx.modelo.factory.Casa;
 import co.edu.uniquindio.reservasfx.repositorios.AlojamientoRepositorio;
 import co.edu.uniquindio.reservasfx.repositorios.ImagenRepositorio;
 import co.edu.uniquindio.reservasfx.repositorios.ServicioRepositorio;
+import lombok.Getter;
 
 import java.util.*;
 
+@Getter
 public class AlojamientoServicios {
 
     private final AlojamientoRepositorio alojamientoRepositorio;

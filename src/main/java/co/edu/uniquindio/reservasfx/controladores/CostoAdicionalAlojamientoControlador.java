@@ -22,8 +22,10 @@ public class CostoAdicionalAlojamientoControlador {
         if (alojamiento != null) {
             if (alojamiento instanceof Casa) {
                 costoAdicionalTxt.setText(((Casa) alojamiento).getCostoAseoYMantenimiento() + "");
+                costoAdicional = costoAdicionalTxt.getText();
             } else {
                 costoAdicionalTxt.setText(((Apartamento) alojamiento).getCostoAseoYMantenimiento() + "");
+                costoAdicional = costoAdicionalTxt.getText();
             }
         }
         agregarListener();

@@ -7,9 +7,12 @@ import co.edu.uniquindio.reservasfx.modelo.enums.EstadoReserva;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.repositorios.CalificacionRepositorio;
 import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.AlojamientoServicios;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
+@Getter
 public class CalificacionServicios {
 
     private final CalificacionRepositorio calificacionRepositorio;

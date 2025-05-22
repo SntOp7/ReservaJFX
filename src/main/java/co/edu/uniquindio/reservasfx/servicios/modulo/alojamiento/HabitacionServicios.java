@@ -2,9 +2,11 @@ package co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento;
 
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
 import co.edu.uniquindio.reservasfx.repositorios.HabitacionRepositorio;
+import lombok.Getter;
 
 import java.util.ArrayList;
 
+@Getter
 public class HabitacionServicios  {
 
     private final HabitacionRepositorio habitacionRepositorio;
