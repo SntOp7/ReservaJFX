@@ -29,17 +29,17 @@ public class HeaderSesionControlador {
     @FXML
     private Button cuentaBtn;
     @FXML
-    public static ImageView imagenNotificacion;
+    private ImageView imagenNotificacion;
 
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
     PanePrincipalControlador panePrincipalControlador = PanePrincipalControlador.getInstancia();
 
     @FXML
     void initialize() {
-        cargarImagenNotificacion(controlador, imagenNotificacion);
+        cargarImagenNotificacion();
     }
 
-    public static void cargarImagenNotificacion(ControladorPrincipal controlador, ImageView imagenNotificacion) {
+    public void cargarImagenNotificacion() {
         try {
             ArrayList<Notificacion> notificacionesNoLeidas = controlador.getEmpresa().getModuloUsuarioServicios()
                     .obtenerNotificacionesNoLeidas(controlador.getSesion().getUsuario().getCedula());
