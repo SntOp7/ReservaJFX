@@ -40,9 +40,9 @@
                   <Image url="@img/notificacionCliente.png" />
                </image>
             </ImageView>
-            <Label fx:id="tituloLbl" layoutX="187.0" layoutY="14.0" text="Título ">
+            <Label fx:id="tituloLbl" layoutX="189.0" layoutY="23.0" text="Título ">
                <font>
-                  <Font name="Berlin Sans FB" size="36.0" />
+                  <Font name="Berlin Sans FB" size="26.0" />
                </font>
             </Label>
             <Label fx:id="asuntoLbl" layoutX="195.0" layoutY="71.0" prefWidth="250" text="Asunto" wrapText="true">
@@ -55,7 +55,7 @@
                   <Image url="@img/bookYourStay.png" />
                </image>
             </ImageView>
-            <Button fx:id="marcarLeidoBtn" layoutX="436.0" layoutY="22.0" mnemonicParsing="false" onAction="#marcarLeidoBtnAction" style="-fx-background-radius: 50px; -fx-background-color: transparent;" text="Marcar Leída" />
+            <Button fx:id="marcarLeidoBtn" layoutX="489.0" layoutY="101.0" mnemonicParsing="false" onAction="#marcarLeidoBtnAction" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff);" text="Marcar Leída" textFill="WHITE" />
          </children>
       </Pane>
    </children>

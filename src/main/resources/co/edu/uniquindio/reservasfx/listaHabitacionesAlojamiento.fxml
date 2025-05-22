@@ -296,7 +296,7 @@
       
                                             <HBox alignment="CENTER" prefHeight="61.0" prefWidth="456.0">
                                           <children>
-                                              <ImageView fitHeight="72.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                                              <ImageView fitHeight="63.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                                                   <image>
                                                       <Image url="@img/bookYourStay.png" />
                                                   </image>
@@ -318,8 +318,18 @@
                                           </VBox.margin>
                                       </HBox>
       
-                                            <VBox alignment="CENTER" prefHeight="404.0" prefWidth="456.0" spacing="20.0">
+                                            <VBox alignment="CENTER" prefHeight="404.0" prefWidth="456.0" spacing="10.0">
                                           <children>
+                                    <Label text="*Si estas editando el alojamiento, debes dar click al boton de editar de la parte superior" textFill="#aeaeae">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="para guardar los cambios." textFill="#aeaeae">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="12.0" />
+                                       </font>
+                                    </Label>
                                               <StackPane>
                                                   <children>
       
@@ -355,7 +365,7 @@
                                     </HBox>
                                           </children>
                                           <VBox.margin>
-                                              <Insets bottom="15.0" top="10.0" />
+                                              <Insets bottom="15.0" />
                                           </VBox.margin>
                                       </VBox>
                                   </children>

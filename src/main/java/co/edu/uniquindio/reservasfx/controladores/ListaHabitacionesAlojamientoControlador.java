@@ -163,8 +163,27 @@ public class ListaHabitacionesAlojamientoControlador {
         String capacidad = capacidadTxt.getText();
         String urlImagen = imagenHabitacion.getImage() == null ? null : imagenHabitacion.getImage().getUrl();
         try {
-            Habitacion habitacionEditada = controlador.getEmpresa().getModuloAlojamientoServicios().verificarEdicionHabitacion(habitacionAntigua,
-                    numeroHabitacion, precioAdicional, capacidad, descripcion, urlImagen);
+            Habitacion habitacionEditada = controlador.getEmpresa().getModuloAlojamientoServicios()
+                    .verificarEdicionHabitacion(habitacionAntigua, numeroHabitacion, precioAdicional,
+                            capacidad, descripcion, urlImagen);
+
+            for (Habitacion habitacion : habitaciones) {
+                if (habitacion.getNumero() == habitacionEditada.getNumero()) {
+                    if (habitacionAntigua.getNumero() == habitacionEditada.getNumero()) {
+                        habitaciones.remove(habitacionAntigua);
+                        habitaciones.add(habitacionEditada);
+                        habitacionesTabla.setAll(habitaciones);
+                        tableHabitacionesAgregadas.setItems(habitacionesTabla);
+                        controlador.crearAlerta("Se ha editado correctamente la habitación", Alert.AlertType.INFORMATION);
+                        tableHabitacionesAgregadas.getSelectionModel().clearSelection();
+                        limpiarCampos();
+                        return;
+                    }
+                    controlador.crearAlerta("Ya existe una habitación con el mismo número", Alert.AlertType.WARNING);
+                    return;
+                }
+            }
+
             habitaciones.remove(habitacionAntigua);
             habitaciones.add(habitacionEditada);
             habitacionesTabla.setAll(habitaciones);

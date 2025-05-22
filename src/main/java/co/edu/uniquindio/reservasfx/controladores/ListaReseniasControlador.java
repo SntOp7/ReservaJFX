@@ -19,26 +19,26 @@ import java.util.ArrayList;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Calificacion;
 
 public class ListaReseniasControlador {
-
     @FXML
     private TextField comentarioTxt;
-
     @FXML
     private TextField valoracionTxt;
-
     @FXML
     private Button anteriorBtn, siguienteBtn, enviarReseniaBtn;
-
     @FXML
-    private VBox vboxResenias;
+    private StackPane primerStack;
+    @FXML
+    private StackPane segundoStack;
+    @FXML
+    private StackPane tercerStack;
+    @FXML
+    private StackPane cuartoStack;
+    @FXML
+    private StackPane quintoStack;
+    @FXML
+    private Label numeroPaginalbl;
 
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
-    @FXML private StackPane primerStack;
-    @FXML private StackPane segundoStack;
-    @FXML private StackPane tercerStack;
-    @FXML private StackPane cuartoStack;
-    @FXML private StackPane quintoStack;
-    @FXML private Label numeroPaginalbl;
 
     Alojamiento alojamiento = AlojamientoSelect.getInstancia().getAlojamiento();
 
