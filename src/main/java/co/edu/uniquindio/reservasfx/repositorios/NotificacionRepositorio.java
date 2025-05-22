@@ -4,10 +4,12 @@ import co.edu.uniquindio.reservasfx.config.Constantes;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Notificacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
 import co.edu.uniquindio.reservasfx.utils.Persistencia;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+@Getter
 public class NotificacionRepositorio {
     private ArrayList<Notificacion> notificaciones;
 
@@ -17,7 +19,6 @@ public class NotificacionRepositorio {
 
     public void agregar(Notificacion notificacion) {
         notificaciones.add(notificacion);
-        //guardarDatos(notificaciones);
     }
 
     public ArrayList<Notificacion> obtenerNotificacionesPorCedula(String cedulaCliente) {

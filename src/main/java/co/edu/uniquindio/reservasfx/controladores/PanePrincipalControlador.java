@@ -24,8 +24,6 @@ public class PanePrincipalControlador implements Initializable {
     private StackPane inicioSuperiorStack;
 
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
-    EmpresaServicio empresaAlojamiento = controlador.getEmpresa();
-    AlojamientoRepositorio alojamientoRepositorio = controlador.getEmpresa().getModuloAlojamientoServicios().getAlojamientoServicios().getAlojamientoRepositorio();
 
     private static PanePrincipalControlador instancia;
 
@@ -48,11 +46,6 @@ public class PanePrincipalControlador implements Initializable {
         }
         actualizar("/co/edu/uniquindio/reservasfx/headerPrincipal.fxml",
                 "/co/edu/uniquindio/reservasfx/recomendadoAlojamiento.fxml");
-
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-
-            System.out.println("Datos guardados automáticamente al cerrar el programa.");
-        }));
     }
 
     public void limpiarInferior() {

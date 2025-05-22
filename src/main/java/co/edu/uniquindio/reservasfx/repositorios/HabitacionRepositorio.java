@@ -5,10 +5,12 @@ import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.utils.Persistencia;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+@Getter
 public class HabitacionRepositorio {
     private ArrayList<Habitacion> habitaciones;
     
@@ -18,17 +20,14 @@ public class HabitacionRepositorio {
 
     public void agregar(Habitacion habitacion) {
         habitaciones.add(habitacion);
-        //guardarDatos(habitaciones);
     }
 
     public void editar(Habitacion habitacion) {
         habitaciones.set(habitaciones.indexOf(habitacion), habitacion);
-        //guardarDatos(habitaciones);
     }
 
     public void eliminar(Habitacion habitacion) {
         habitaciones.remove(habitacion);
-        //guardarDatos(habitaciones);
     }
 
     public Habitacion buscarHabitacion(String idHotel, int numero) {

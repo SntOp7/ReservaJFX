@@ -1,7 +1,6 @@
 package co.edu.uniquindio.reservasfx.repositorios;
 
 import co.edu.uniquindio.reservasfx.config.Constantes;
-import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Servicio;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Administrador;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Usuario;
@@ -10,7 +9,6 @@ import lombok.Getter;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.EnumMap;
 
 @Getter
 public class UsuarioRepositorio {
@@ -19,24 +17,21 @@ public class UsuarioRepositorio {
 
     public UsuarioRepositorio() {
         this.clientes = leerDatosCl();
-        administradores = new ArrayList<>();
+        this.administradores = leerDatosAd();
         listarCliente();
         listarAdministrador();
     }
 
     public void agregar(Cliente cliente) {
         clientes.add(cliente);
-        //guardarDatosCl(clientes);
     }
 
     public void editar(Cliente cliente) {
         clientes.set(clientes.indexOf(cliente), cliente);
-        //guardarDatosCl(clientes);
     }
 
     public void eliminar(Cliente cliente) {
         clientes.remove(cliente);
-        //guardarDatosCl(clientes);
     }
 
     public void listarCliente() {
@@ -53,9 +48,9 @@ public class UsuarioRepositorio {
 
     public void listarAdministrador() {
         Administrador admin1 = new Administrador("123456789", "AdminApp",
-                "987654321", "Calarca - Quindio","juansediscord13@gmail.com", "admin", true);
+                "987654321", "Calarca - Quindio","hernandezguevarajuansebastian@gmail.com",
+                "admin", true);
         administradores.add(admin1);
-        //guardarDatosAd(administradores);
     }
 
     public Cliente buscarCliente(String cedula) {
@@ -96,5 +91,25 @@ public class UsuarioRepositorio {
         }
         return new ArrayList<>();
     }
-    
+
+    public void guardarDatosAd(ArrayList<Administrador> administradores) {
+        try {
+            Persistencia.serializarObjeto(Constantes.RUTA_ADMINISTRADORES, administradores);
+        } catch (IOException e) {
+            System.err.println("Error guardando administradores: " + e.getMessage());
+        }
+    }
+
+
+    public ArrayList<Administrador> leerDatosAd() {
+        try {
+            Object datos = Persistencia.deserializarObjeto(Constantes.RUTA_ADMINISTRADORES);
+            if (datos != null) {
+                return (ArrayList<Administrador>) datos;
+            }
+        } catch (Exception e) {
+            System.err.println("Error cargando administradores: " + e.getMessage());
+        }
+        return new ArrayList<>();
+    }
 }

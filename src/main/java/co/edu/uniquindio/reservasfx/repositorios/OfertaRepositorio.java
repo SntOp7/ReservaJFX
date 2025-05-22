@@ -21,17 +21,14 @@ public class OfertaRepositorio {
 
     public void agregar(Oferta oferta) {
         ofertas.add(oferta);
-        //guardarDatos(ofertas);
     }
 
     public void editar(Oferta oferta) {
         ofertas.set(ofertas.indexOf(oferta), oferta);
-        //guardarDatos(ofertas);
     }
 
     public void eliminar(Oferta oferta) {
         ofertas.remove(oferta);
-        //guardarDatos(ofertas);
     }
 
     public Oferta buscarOfertaPorId(String id){
@@ -69,7 +66,6 @@ public class OfertaRepositorio {
                 oferta.setEstado(EstadoOferta.CADUCADA);
             }
         }
-        guardarDatos(ofertas);
     }
 
     public void guardarDatos(ArrayList<Oferta> ofertas) {

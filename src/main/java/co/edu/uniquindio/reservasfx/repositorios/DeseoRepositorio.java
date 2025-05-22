@@ -3,10 +3,12 @@ package co.edu.uniquindio.reservasfx.repositorios;
 import co.edu.uniquindio.reservasfx.config.Constantes;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
 import co.edu.uniquindio.reservasfx.utils.Persistencia;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+@Getter
 public class DeseoRepositorio {
 
     private ArrayList<Deseo> deseos;
@@ -17,12 +19,10 @@ public class DeseoRepositorio {
 
     public void agregar(Deseo deseo) {
         deseos.add(deseo);
-        //guardarDatos(deseos);
     }
 
     public void eliminar(Deseo deseo) {
         deseos.remove(deseo);
-        //guardarDatos(deseos);
     }
 
     public Deseo buscarDeseo(String cedula, String idAlojamiento) {
