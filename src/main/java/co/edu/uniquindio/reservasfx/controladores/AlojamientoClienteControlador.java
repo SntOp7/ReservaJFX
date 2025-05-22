@@ -128,6 +128,7 @@ public class AlojamientoClienteControlador {
 
     @FXML
     void initialize() {
+        imagenes = new ImageView[] { imagen1, imagen2, imagen3 };
         cargarInformacionAlojamiento();
         cargarTabsDinamicamente();
         cargarImagenesDelAlojamiento();
