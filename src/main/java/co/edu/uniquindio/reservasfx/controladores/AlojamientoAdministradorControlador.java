@@ -160,17 +160,23 @@ public class AlojamientoAdministradorControlador {
         String urlPrincipal = rutaImagenPrincipal == null ? imagenPrincipal : rutaImagenPrincipal;
         ArrayList<Imagen> imagenesAlojamiento = controlador.getEmpresa()
                 .getModuloAlojamientoServicios().obtenerImagenesAlojamiento(alojamiento.getId());
+
         ArrayList<String> rutaImagenesAlojamiento = new ArrayList<>();
         for (Imagen imagen : imagenesAlojamiento) {
             rutaImagenesAlojamiento.add(imagen.getRuta());
         }
-        String urlSecundaria1 = rutaImagenSecundaria1 == null ? rutaImagenesAlojamiento.get(0) : rutaImagenSecundaria1;
-        String urlSecundaria2 = rutaImagenSecundaria2 == null ? rutaImagenesAlojamiento.get(1) : rutaImagenSecundaria2;
-        String urlSecundaria3 = rutaImagenSecundaria3 == null ? rutaImagenesAlojamiento.get(2) : rutaImagenSecundaria3;
+
+        String urlSecundaria1 = rutaImagenSecundaria1 == null && rutaImagenesAlojamiento.size() > 0
+                ? rutaImagenesAlojamiento.get(0) : rutaImagenSecundaria1;
+        String urlSecundaria2 = rutaImagenSecundaria2 == null && rutaImagenesAlojamiento.size() > 1
+                ? rutaImagenesAlojamiento.get(1) : rutaImagenSecundaria2;
+        String urlSecundaria3 = rutaImagenSecundaria3 == null && rutaImagenesAlojamiento.size() > 2
+                ? rutaImagenesAlojamiento.get(2) : rutaImagenSecundaria3;
+
         ArrayList<String> imagenes = new ArrayList<>();
-        imagenes.add(urlSecundaria1);
-        imagenes.add(urlSecundaria2);
-        imagenes.add(urlSecundaria3);
+        if (urlSecundaria1 != null) imagenes.add(urlSecundaria1);
+        if (urlSecundaria2 != null) imagenes.add(urlSecundaria2);
+        if (urlSecundaria3 != null) imagenes.add(urlSecundaria3);
         TipoAlojamiento tipoAlojamiento = null;
         if (alojamiento instanceof Hotel) {
             tipoAlojamiento = TipoAlojamiento.HOTEL;
@@ -188,6 +194,9 @@ public class AlojamientoAdministradorControlador {
         ObservableList<TipoServicio> serviciosSeleccionados = tablaServiciosIncluidos.getSelectionModel()
                 .getSelectedItems();
         ArrayList<TipoServicio> servicios = new ArrayList<>(serviciosSeleccionados);
+            System.out.println("Secundaria 1: " + urlSecundaria1);
+            System.out.println("Secundaria 2: " + urlSecundaria2);
+            System.out.println("Secundaria 3: " + urlSecundaria3);
         if (alojamiento instanceof Hotel) {
             controlador.getEmpresa().getModuloAlojamientoServicios().editarAlojamiento(alojamiento.getId(),
                     tipoAlojamiento, nombre, descripcion, precioNoche, capacidad, servicios,
@@ -200,7 +209,8 @@ public class AlojamientoAdministradorControlador {
         }
             controlador.crearAlerta("Alojamiento editado con exito",Alert.AlertType.INFORMATION);
         } catch (Exception e) {
-            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
+            e.printStackTrace();
+            controlador.crearAlerta("Error al editar el alojamiento: " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 

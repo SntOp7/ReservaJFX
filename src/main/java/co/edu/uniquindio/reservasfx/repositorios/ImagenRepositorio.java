@@ -28,11 +28,7 @@ public class ImagenRepositorio {
     }
 
     public void eliminarImagenesAlojamiento(String idAlojamiento) {
-        for (Imagen imagen : imagenes) {
-            if (imagen.getIdAlojamiento().equals(idAlojamiento)) {
-                eliminar(imagen);
-            }
-        }
+        imagenes.removeIf(imagen -> imagen.getIdAlojamiento().equals(idAlojamiento));
         //guardarDatos(imagenes);
     }
 

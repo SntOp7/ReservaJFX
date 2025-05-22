@@ -27,11 +27,7 @@ public class ServicioRepositorio {
     }
 
     public void eliminarServiciosAlojamiento(String idAlojamiento) {
-        for (Servicio servicio : servicios) {
-            if (servicio.getIdAlojamiento().equals(idAlojamiento)) {
-                eliminar(servicio);
-            }
-        }
+        servicios.removeIf(servicio -> servicio.getIdAlojamiento().equals(idAlojamiento));
         //guardarDatos(servicios);
     }
 
