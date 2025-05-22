@@ -5,10 +5,12 @@ import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Servicio;
 import co.edu.uniquindio.reservasfx.modelo.enums.TipoServicio;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.utils.Persistencia;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+@Getter
 public class ServicioRepositorio {
     private ArrayList<Servicio> servicios;
 
@@ -18,17 +20,14 @@ public class ServicioRepositorio {
 
     public void agregar(Servicio servicio) {
         servicios.add(servicio);
-        //guardarDatos(servicios);
     }
 
     public void eliminar(Servicio servicio) {
         servicios.remove(servicio);
-        //guardarDatos(servicios);
     }
 
     public void eliminarServiciosAlojamiento(String idAlojamiento) {
         servicios.removeIf(servicio -> servicio.getIdAlojamiento().equals(idAlojamiento));
-        //guardarDatos(servicios);
     }
 
     public ArrayList<Servicio> obtenerServiciosAlojamientoPorId(String idAlojamiento) {

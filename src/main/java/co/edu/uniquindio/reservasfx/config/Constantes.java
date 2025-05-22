@@ -102,4 +102,5 @@ public class Constantes {
 
     public static final String RUTA_CLIENTES = "data/clientes.data";
 
+    public static final String RUTA_ADMINISTRADORES  = "data/administradores.data";
 }

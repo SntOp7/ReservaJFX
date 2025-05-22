@@ -14,10 +14,12 @@ import co.edu.uniquindio.reservasfx.servicios.modulo.comercial.OfertaServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.comercial.ReservaServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.NotificacionServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.UsuarioServicios;
+import lombok.Getter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+@Getter
 public class ModuloComercialServicios implements IComercial {
 
     private final ReservaServicios reservaServicios;

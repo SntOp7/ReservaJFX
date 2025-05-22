@@ -6,10 +6,12 @@ import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Servicio;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Deseo;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.utils.Persistencia;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+@Getter
 public class ImagenRepositorio {
     private ArrayList<Imagen> imagenes;
 
@@ -19,17 +21,14 @@ public class ImagenRepositorio {
 
     public void agregar(Imagen imagen) {
         imagenes.add(imagen);
-        //guardarDatos(imagenes);
     }
 
     public void eliminar(Imagen imagen) {
         imagenes.remove(imagen);
-        //guardarDatos(imagenes);
     }
 
     public void eliminarImagenesAlojamiento(String idAlojamiento) {
         imagenes.removeIf(imagen -> imagen.getIdAlojamiento().equals(idAlojamiento));
-        //guardarDatos(imagenes);
     }
 
     public ArrayList<Imagen> obtenerImagenesAlojamientoPorId(String idAlojamiento) {

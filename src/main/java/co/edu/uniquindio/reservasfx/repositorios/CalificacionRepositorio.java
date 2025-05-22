@@ -3,12 +3,13 @@ package co.edu.uniquindio.reservasfx.repositorios;
 import co.edu.uniquindio.reservasfx.config.Constantes;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Calificacion;
 import co.edu.uniquindio.reservasfx.utils.Persistencia;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+@Getter
 public class CalificacionRepositorio {
-
     private ArrayList<Calificacion> calificaciones;
 
     public CalificacionRepositorio() {
@@ -18,7 +19,6 @@ public class CalificacionRepositorio {
 
     public void agregar(Calificacion calificacion) {
         calificaciones.add(calificacion);
-        //guardarDatos(calificaciones);
     }
 
     public ArrayList<Calificacion> obtenerCalificacionesPorId(String id) {
