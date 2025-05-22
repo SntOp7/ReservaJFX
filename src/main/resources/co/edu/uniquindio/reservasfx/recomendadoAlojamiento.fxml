@@ -29,11 +29,11 @@
                                             </image>
                                         </ImageView>
                                     </graphic>
-                           <font>
-                              <Font name="Berlin Sans FB" size="15.0" />
-                           </font>
+                                    <font>
+                                        <Font name="Berlin Sans FB" size="15.0" />
+                                    </font>
                                 </Button>
-                                <Label fx:id="numeroPaginaLbl" text="Página" />
+                                <Label fx:id="numeroPaginalbl" text="Página" />
                                 <Button fx:id="siguientePaginaBtn" mnemonicParsing="false" onAction="#siguientePaginaAction" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Siguiente Página">
                                     <graphic>
                                         <ImageView fitHeight="29.0" fitWidth="27.0" preserveRatio="true">
