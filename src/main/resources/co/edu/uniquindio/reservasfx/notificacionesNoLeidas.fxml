@@ -59,7 +59,7 @@
                <children>
                   <ScrollPane prefHeight="342.0" prefWidth="620.0">
                      <content>
-                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="646.0" prefWidth="590.0">
+                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="590.0">
                            <children>
                               <GridPane prefHeight="500.0" prefWidth="570.0" vgap="100.0">
                                  <children>
