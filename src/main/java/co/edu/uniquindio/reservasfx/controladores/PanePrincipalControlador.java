@@ -25,7 +25,7 @@ public class PanePrincipalControlador implements Initializable {
 
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
     EmpresaServicio empresaAlojamiento = controlador.getEmpresa();
-    AlojamientoRepositorio alojamientoRepositorio = controlador.getEmpresa().getModuloAlojamientoServicios().getAlojamientoServicios()
+    AlojamientoRepositorio alojamientoRepositorio = controlador.getEmpresa().getModuloAlojamientoServicios().getAlojamientoServicios().getAlojamientoRepositorio();
 
     private static PanePrincipalControlador instancia;
 

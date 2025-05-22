@@ -111,7 +111,6 @@ public class AlojamientoAdministradorControlador {
     void initialize() {
         cargarInformacionAlojamiento();
         cargarTabsDinamicamente();
-        cargarImagenesDelAlojamiento();
         initTabla();
         initData();
         tablaServiciosIncluidos.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -233,6 +232,7 @@ public class AlojamientoAdministradorControlador {
             txtPrecioNoche.setText(Double.toString(alojamiento.getPrecioPorNoche()));
             System.out.println(alojamiento.getImagenPrincipal());
             controlador.cargarImagen(alojamiento.getImagenPrincipal(), imagenPrincipal);
+            cargarImagenesDelAlojamiento();
         }
     }
 
