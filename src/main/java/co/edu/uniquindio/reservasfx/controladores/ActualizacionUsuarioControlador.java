@@ -70,6 +70,7 @@ public class ActualizacionUsuarioControlador {
 
             if(Objects.equals(contrasenia, cliente.getContrasenia())){
                 controlador.getEmpresa().getModuloUsuarioServicios().editarCliente(cliente, cedula, nombre, telefono, direccion, correo);
+                controlador.crearAlerta("Se ha actualizado los datos correctamente", Alert.AlertType.INFORMATION);
             } else {
                 controlador.crearAlerta("La contraseña es incorrecta", Alert.AlertType.ERROR);
             }
