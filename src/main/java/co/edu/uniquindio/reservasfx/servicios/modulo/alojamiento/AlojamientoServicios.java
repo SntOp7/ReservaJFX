@@ -180,8 +180,8 @@ public class AlojamientoServicios {
         }
     }
 
-    public void eliminarAlojamiento(String nombre) throws Exception {
-        Alojamiento alojamiento = buscarAlojamiento(nombre);
+    public void eliminarAlojamiento(String idAlojamiento) throws Exception {
+        Alojamiento alojamiento = buscarAlojamientoPorId(idAlojamiento);
         if (alojamiento == null) throw new Exception("El alojamiento no existe");
         alojamientoRepositorio.eliminar(alojamiento);
         eliminarServicios(alojamiento.getId());

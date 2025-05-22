@@ -117,6 +117,7 @@ public class RecomendadoAlojamientoControlador {
         try {
             ArrayList<Oferta> ofertas = controlador.getEmpresa().getModuloComercialServicios().obtenerOfertas();
             alojamientosOferta = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerAlojamientosOfertados(ofertas);
+            limpiarAlojamientos();
             cargarDatosPanelConAlojamientos(alojamientosOferta);
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);

@@ -216,11 +216,17 @@ public class AlojamientoAdministradorControlador {
 
     @FXML
     void eliminarBtnAction(ActionEvent event) {
-        try{
+        if (alojamiento == null) {
+            controlador.crearAlerta("No hay alojamiento seleccionado", Alert.AlertType.ERROR);
+            return;
+        }
+
+        try {
             controlador.getEmpresa().getModuloAlojamientoServicios().eliminarAlojamiento(alojamiento.getId());
-            controlador.crearAlerta("Alojamiento eliminado con exito",Alert.AlertType.INFORMATION);
-        }catch(Exception e){
-            controlador.crearAlerta(e.getMessage(),Alert.AlertType.ERROR);
+            controlador.crearAlerta("Alojamiento eliminado con éxito", Alert.AlertType.INFORMATION);
+            panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/recomendadoAlojamiento.fxml");
+        } catch(Exception e) {
+            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
