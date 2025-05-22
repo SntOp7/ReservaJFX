@@ -21,13 +21,13 @@
 
                 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="140.0" prefWidth="444.0">
                     <children>
-                        <ImageView fx:id="imagenAlojamiento" fitHeight="176.0" fitWidth="432.0" pickOnBounds="true" style="-fx-border-radius: 15 15 0 0; -fx-background-radius: 15 15 0 0;">
+                        <ImageView fx:id="imagenAlojamiento" fitHeight="176.0" fitWidth="427.0" pickOnBounds="true" style="-fx-border-radius: 50px; -fx-background-radius: 50px;">
                             <effect>
                                 <ColorAdjust brightness="0.05" contrast="0.1" />
                             </effect>
                         </ImageView>
             
-                                    <Rectangle arcHeight="15.0" arcWidth="15.0" height="171.0" opacity="0.2" width="444.0">
+                                    <Rectangle arcHeight="15.0" arcWidth="15.0" height="192.0" opacity="0.2" width="444.0">
                             <fill>
                                 <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
                                     <stops>
