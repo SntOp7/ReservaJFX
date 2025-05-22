@@ -44,7 +44,14 @@ public class ReservasApplication extends Application {
         loader.setController(PanePrincipalControlador.getInstancia());
         Parent parent = loader.load();
 
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.setTitle("Reservación de Alojamientos");
+        stage.setResizable(false);
+        stage.setMaximized(true);
+        stage.show();
+
+        stage.setOnCloseRequest(e -> {
             alojamientoRepositorio.guardarDatos(alojamientoRepositorio.getAlojamientos());
             calificacionRepositorio.guardarDatos(calificacionRepositorio.getCalificaciones());
             deseoRepositorio.guardarDatos(deseoRepositorio.getDeseos());
@@ -57,14 +64,7 @@ public class ReservasApplication extends Application {
             usuarioRepositorio.guardarDatosCl(usuarioRepositorio.getClientes());
             usuarioRepositorio.guardarDatosAd(usuarioRepositorio.getAdministradores());
             System.out.println("Datos guardados automáticamente al cerrar el programa.");
-        }));
-
-        Scene scene = new Scene(parent);
-        stage.setScene(scene);
-        stage.setTitle("Reservación de Alojamientos");
-        stage.setResizable(false);
-        stage.setMaximized(true);
-        stage.show();
+        });
     }
 
     public static void main(String[] args) {
