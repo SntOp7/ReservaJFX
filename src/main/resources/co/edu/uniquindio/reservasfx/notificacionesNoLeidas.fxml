@@ -50,18 +50,18 @@
                   </LinearGradient>
                </fill>
             </Circle>
-            <ImageView fitHeight="126.0" fitWidth="133.0" layoutX="784.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="126.0" fitWidth="133.0" layoutX="1010.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/noLeida.png" />
                </image>
             </ImageView>
-            <HBox layoutX="51.0" layoutY="208.0">
+            <HBox layoutX="50.0" layoutY="181.0">
                <children>
-                  <ScrollPane prefHeight="240.0" prefWidth="592.0">
+                  <ScrollPane prefHeight="342.0" prefWidth="620.0">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="590.0">
+                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="646.0" prefWidth="590.0">
                            <children>
-                              <GridPane prefHeight="500.0" prefWidth="570.0" vgap="10.0">
+                              <GridPane prefHeight="500.0" prefWidth="570.0" vgap="100.0">
                                  <children>
                                     <StackPane fx:id="primerStack" prefHeight="150.0" prefWidth="200.0" />
                                     <StackPane fx:id="segundoStack" prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1" />
@@ -91,27 +91,27 @@
                   <Font name="Berlin Sans FB" size="49.0" />
                </font>
             </Label>
-            <Button fx:id="siguienteBtn" layoutX="916.0" layoutY="449.0" mnemonicParsing="false" onAction="#siguienteBtnAction" style="-fx-background-color: #00913F; -fx-background-radius: 50px;" text="Siguiente" textFill="WHITE">
+            <Button fx:id="siguienteBtn" layoutX="1092.0" layoutY="459.0" mnemonicParsing="false" onAction="#siguienteBtnAction" style="-fx-background-color: #00913F; -fx-background-radius: 50px;" text="Siguiente" textFill="WHITE">
                <font>
                   <Font name="Berlin Sans FB" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="anteriorBtn" layoutX="828.0" layoutY="449.0" mnemonicParsing="false" onAction="#anteriorBtnAction" style="-fx-background-color: #FF0000; -fx-background-radius: 50px;" text="Anterior" textFill="#e8e8e8">
+            <Button fx:id="anteriorBtn" layoutX="1003.0" layoutY="459.0" mnemonicParsing="false" onAction="#anteriorBtnAction" style="-fx-background-color: #FF0000; -fx-background-radius: 50px;" text="Anterior" textFill="#e8e8e8">
                <font>
                   <Font name="Berlin Sans FB" size="17.0" />
                </font>
             </Button>
-            <Label fx:id="numeroPaginalbl" layoutX="868.0" layoutY="497.0" text="Página 1 de 1">
+            <Label fx:id="numeroPaginalbl" layoutX="769.0" layoutY="341.0" text="Página 1 de 1">
                <font>
                   <Font name="Berlin Sans FB" size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="293.0" fitWidth="265.0" layoutX="793.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="293.0" fitWidth="265.0" layoutX="966.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/noLeido.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="126.0" fitWidth="164.0" layoutX="853.0" layoutY="508.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="126.0" fitWidth="164.0" layoutX="1036.0" layoutY="498.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/BookYourStay.png" />
                </image>
