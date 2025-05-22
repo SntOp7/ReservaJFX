@@ -194,9 +194,6 @@ public class AlojamientoAdministradorControlador {
             ObservableList<TipoServicio> serviciosSeleccionados = tablaServiciosIncluidos.getSelectionModel()
                     .getSelectedItems();
             ArrayList<TipoServicio> servicios = new ArrayList<>(serviciosSeleccionados);
-            System.out.println("Secundaria 1: " + urlSecundaria1);
-            System.out.println("Secundaria 2: " + urlSecundaria2);
-            System.out.println("Secundaria 3: " + urlSecundaria3);
             if (alojamiento instanceof Hotel) {
                 controlador.getEmpresa().getModuloAlojamientoServicios().editarAlojamiento(alojamiento.getId(),
                         tipoAlojamiento, nombre, descripcion, precioNoche, capacidad, servicios,
@@ -237,7 +234,6 @@ public class AlojamientoAdministradorControlador {
             txtDescripcion.setText(alojamiento.getDescripcion());
             txtCapacidad.setText(Integer.toString(alojamiento.getCapacidadMaxima()));
             txtPrecioNoche.setText(Double.toString(alojamiento.getPrecioPorNoche()));
-            System.out.println(alojamiento.getImagenPrincipal());
             controlador.cargarImagen(alojamiento.getImagenPrincipal(), imagenPrincipal);
             cargarImagenesDelAlojamiento();
         }
