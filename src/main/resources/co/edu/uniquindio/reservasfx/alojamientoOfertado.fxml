@@ -35,8 +35,8 @@
                                         <Insets left="-20.0" top="-20.0" />
                                     </StackPane.margin>
                                     <children>
-                                        <Rectangle fill="#ff5252" height="40.0" width="133.0" />
-                                        <Label fx:id="ofertalbl" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="103.0" text="EN OFERTA!!!" textFill="WHITE">
+                                        <Rectangle fill="#ff5252" height="40.0" rotate="30.0" width="210.0" />
+                                        <Label fx:id="ofertalbl" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="199.0" rotate="30.0" text="EN OFERTA!!!" textFill="WHITE">
                                             <font>
                                                 <Font name="System Bold" size="14.0" />
                                             </font>

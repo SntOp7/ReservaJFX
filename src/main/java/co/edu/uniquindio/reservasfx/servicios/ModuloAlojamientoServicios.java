@@ -54,10 +54,10 @@ public class ModuloAlojamientoServicios implements IAlojamiento {
         alojamientoServicios.editarAlojamiento(id, tipoAlojamiento, nombre, descripcion, precioPorNoche, capacidadMaxima,
                 servicios, imagenPrincipal, imagenes, costoAseoYMantenimiento);
         if (tipoAlojamiento.equals(TipoAlojamiento.HOTEL)) {
-            if (habitaciones == null || habitaciones.isEmpty())
-                throw new Exception("Debe quedar registrado al menos una Habitación para el Hotel");
-            for (Habitacion habitacion : habitaciones) {
-                editarHabitacion(id, habitacion);
+            if (habitaciones != null) {
+                for (Habitacion habitacion : habitaciones) {
+                    editarHabitacion(id, habitacion);
+                }
             }
         }
     }

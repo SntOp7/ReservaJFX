@@ -162,12 +162,17 @@ public class ListaOfertasAlojamientoControlador {
             controlador.crearAlerta("Debes seleccionar una oferta", Alert.AlertType.WARNING);
             return;
         }
-        ofertas.remove(oferta);
-        ofertasTabla.setAll(ofertas);
-        tablaOfertas.setItems(ofertasTabla);
-        controlador.crearAlerta("Se ha eliminado la oferta de la lista", Alert.AlertType.INFORMATION);
-        tablaOfertas.getSelectionModel().clearSelection();
-        limpiarCampos();
+        try {
+            controlador.getEmpresa().getModuloComercialServicios().eliminarOferta(oferta.getId());
+            ofertas.remove(oferta);
+            ofertasTabla.setAll(ofertas);
+            tablaOfertas.setItems(ofertasTabla);
+            controlador.crearAlerta("Se ha eliminado la oferta de la lista", Alert.AlertType.INFORMATION);
+            tablaOfertas.getSelectionModel().clearSelection();
+            limpiarCampos();
+        } catch (Exception e) {
+            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 
     private void limpiarCampos() {

@@ -104,7 +104,7 @@ public class AlojamientoAdministradorControlador {
     ObservableList<TipoServicio> tipoServiciosAlojamiento = FXCollections.observableArrayList();
 
     Alojamiento alojamiento = AlojamientoSelect.getInstancia().getAlojamiento();
-
+    ArrayList<Habitacion> habitacionesIniciales = new ArrayList<>();
     ImageView[] imagenes = {imagen1, imagen2, imagen3};
 
     @FXML
@@ -195,11 +195,17 @@ public class AlojamientoAdministradorControlador {
                     .getSelectedItems();
             ArrayList<TipoServicio> servicios = new ArrayList<>(serviciosSeleccionados);
             if (alojamiento instanceof Hotel) {
-                controlador.getEmpresa().getModuloAlojamientoServicios().editarAlojamiento(alojamiento.getId(),
-                        tipoAlojamiento, nombre, descripcion, precioNoche, capacidad, servicios,
-                        urlPrincipal, imagenes, null, listaHabitacionesAlojamientoControlador
-                                .getHabitaciones());
-            } else {
+                if (habitacionesIniciales != listaHabitacionesAlojamientoControlador.getHabitaciones()) {
+                    controlador.getEmpresa().getModuloAlojamientoServicios().editarAlojamiento(alojamiento.getId(),
+                            tipoAlojamiento, nombre, descripcion, precioNoche, capacidad, servicios,
+                            urlPrincipal, imagenes, null, listaHabitacionesAlojamientoControlador
+                                    .getHabitaciones());
+                } else {
+                    controlador.getEmpresa().getModuloAlojamientoServicios().editarAlojamiento(alojamiento.getId(),
+                            tipoAlojamiento, nombre, descripcion, precioNoche, capacidad, servicios,
+                            urlPrincipal, imagenes, null, null);
+                }
+            } else if (alojamiento instanceof Casa || alojamiento instanceof Apartamento) {
                 controlador.getEmpresa().getModuloAlojamientoServicios().editarAlojamiento(alojamiento.getId(),
                         tipoAlojamiento, nombre, descripcion, precioNoche, capacidad, servicios,
                         urlPrincipal, imagenes, costoAdicionalAlojamientoControlador.getCostoAdicional(), null);
@@ -305,6 +311,7 @@ public class AlojamientoAdministradorControlador {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaFXML));
             Node contenido = loader.load();
             listaHabitacionesAlojamientoControlador = loader.getController();
+            habitacionesIniciales = listaHabitacionesAlojamientoControlador.getHabitaciones();
             tab.setContent(contenido);
         } catch (IOException e) {
             e.printStackTrace();

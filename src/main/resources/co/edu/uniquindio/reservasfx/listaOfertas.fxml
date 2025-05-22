@@ -112,9 +112,9 @@
                         <Font name="Berlin Sans FB" size="26.0" />
                     </font>
                 </Label>
-                <Label fx:id="tipoOfertaLbl" layoutX="64.0" layoutY="158.0" text="Tipo de Oferta : ">
+                <Label fx:id="tipoOfertaLbl" layoutX="24.0" layoutY="159.0" text="Tipo de Oferta : ">
                     <font>
-                        <Font name="Berlin Sans FB" size="24.0" />
+                        <Font name="Berlin Sans FB" size="20.0" />
                     </font>
                 </Label>
                 <CubicCurve controlX1="-50.0" controlX2="50.0" controlY1="-100.0" controlY2="100.0" endX="150.0" layoutX="836.0" startX="-150.0" stroke="TRANSPARENT">
@@ -197,14 +197,14 @@
                         </LinearGradient>
                     </fill>
                 </Circle>
-            <Label fx:id="descripcionLbl" layoutX="64.0" layoutY="200.0" text="Descripción : ">
+            <Label fx:id="descripcionLbl" layoutX="24.0" layoutY="200.0" text="Descripción : ">
                <font>
-                  <Font name="Berlin Sans FB" size="24.0" />
+                  <Font name="Berlin Sans FB" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="descuentoLbl" layoutX="64.0" layoutY="240.0" text="Descuento : ">
+            <Label fx:id="descuentoLbl" layoutX="23.0" layoutY="240.0" text="Descuento : ">
                <font>
-                  <Font name="Berlin Sans FB" size="24.0" />
+                  <Font name="Berlin Sans FB" size="20.0" />
                </font>
             </Label>
             <ImageView fitHeight="80.0" fitWidth="100.0" layoutX="633.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true">

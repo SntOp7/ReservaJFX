@@ -210,8 +210,21 @@ public class ControladorPrincipal {
         }
     }
 
+    public void cargarListaAlojamientosOfertas(ArrayList<Alojamiento> alojamientos, StackPane[] stacks) {
+        String rutaFXML = "/co/edu/uniquindio/reservasfx/alojamientoOfertado.fxml";
+
+        for (int i = 0; i < alojamientos.size() && i < stacks.length; i++) {
+            cargarAlojamientoOferta(rutaFXML, stacks[i], alojamientos.get(i));
+        }
+    }
+
     public void cargarAlojamiento(String rutaFXML, StackPane stack, Alojamiento alojamiento) {
         Parent node = cargarPanelAlojamiento(rutaFXML, alojamiento);
+        stack.getChildren().setAll(node);
+    }
+
+    public void cargarAlojamientoOferta(String rutaFXML, StackPane stack, Alojamiento alojamiento) {
+        Parent node = cargarPanelAlojamientoOferta(rutaFXML, alojamiento);
         stack.getChildren().setAll(node);
     }
 
@@ -221,6 +234,19 @@ public class ControladorPrincipal {
             Parent node = loader.load();
             AlojamientoControlador alojamientoControlador = loader.getController();
             alojamientoControlador.inicializarValores(alojamiento);
+            return node;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Parent cargarPanelAlojamientoOferta(String fxmlFile, Alojamiento alojamiento) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Parent node = loader.load();
+            AlojamientoOfertadoControlador alojamientoOfertadoControlador = loader.getController();
+            alojamientoOfertadoControlador.inicializarValores(alojamiento);
             return node;
         } catch (Exception e) {
             e.printStackTrace();

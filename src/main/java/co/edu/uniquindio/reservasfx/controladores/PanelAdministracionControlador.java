@@ -241,7 +241,7 @@ public class PanelAdministracionControlador {
                 controlador.getEmpresa().getModuloAlojamientoServicios().registrarAlojamiento(tipoAlojamiento, nombre,
                         ciudad, descripcion, precioNoche, capacidad, servicios, urlPrincipal, imagenes,
                         null, listaHabitacionesAlojamientoControlador.habitaciones);
-            } else {
+            } else if (tipoAlojamiento.equals(TipoAlojamiento.APARTAMENTO) || tipoAlojamiento.equals(TipoAlojamiento.CASA)) {
                 controlador.getEmpresa().getModuloAlojamientoServicios().registrarAlojamiento(tipoAlojamiento, nombre,
                         ciudad, descripcion, precioNoche, capacidad, servicios, urlPrincipal, imagenes,
                         costoAdicionalAlojamientoControlador.costoAdicional, null);
