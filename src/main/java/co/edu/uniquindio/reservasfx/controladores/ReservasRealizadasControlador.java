@@ -104,7 +104,6 @@ public class ReservasRealizadasControlador {
         Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
         confirmacion.setTitle("Confirmar cancelación");
         confirmacion.setHeaderText("¿Estás seguro de que deseas cancelar esta reserva?");
-        confirmacion.setContentText("Reserva: " + reservaSeleccionada.getId());
 
         if (confirmacion.showAndWait().get() != javafx.scene.control.ButtonType.OK) {
             return;

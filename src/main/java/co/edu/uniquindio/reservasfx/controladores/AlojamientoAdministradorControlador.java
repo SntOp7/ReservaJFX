@@ -217,7 +217,13 @@ public class AlojamientoAdministradorControlador {
             controlador.crearAlerta("No hay alojamiento seleccionado", Alert.AlertType.ERROR);
             return;
         }
+        Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmacion.setTitle("Confirmar eliminacion");
+        confirmacion.setHeaderText("¿Estás seguro de que deseas eliminar este alojamiento?");
 
+        if (confirmacion.showAndWait().get() != javafx.scene.control.ButtonType.OK) {
+            return;
+        }
         try {
             controlador.getEmpresa().getModuloAlojamientoServicios().eliminarAlojamiento(alojamiento.getId());
             controlador.crearAlerta("Alojamiento eliminado con éxito", Alert.AlertType.INFORMATION);
