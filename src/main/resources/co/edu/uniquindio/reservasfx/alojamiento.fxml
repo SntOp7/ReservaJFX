@@ -21,7 +21,7 @@
 
                 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="140.0" prefWidth="444.0">
                     <children>
-                        <ImageView fx:id="imagenAlojamiento" fitHeight="190.0" fitWidth="444.0" pickOnBounds="true" style="-fx-border-radius: 15 15 0 0; -fx-background-radius: 15 15 0 0;">
+                        <ImageView fx:id="imagenAlojamiento" fitHeight="176.0" fitWidth="432.0" pickOnBounds="true" style="-fx-border-radius: 15 15 0 0; -fx-background-radius: 15 15 0 0;">
                             <effect>
                                 <ColorAdjust brightness="0.05" contrast="0.1" />
                             </effect>
