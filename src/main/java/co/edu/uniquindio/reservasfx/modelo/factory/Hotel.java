@@ -5,11 +5,12 @@ import co.edu.uniquindio.reservasfx.modelo.enums.TipoServicio;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 @Getter
 @Setter
-public class Hotel extends Alojamiento {
+public class Hotel extends Alojamiento implements Serializable {
 
     public static class HotelBuilder {
         private final Hotel hotel = new Hotel();

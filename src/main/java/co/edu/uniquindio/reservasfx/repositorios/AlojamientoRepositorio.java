@@ -25,7 +25,7 @@ public class AlojamientoRepositorio {
 
     public AlojamientoRepositorio() {
         this.alojamientos = leerDatosAlojamiento();
-        listarAlojamientos();
+        //listarAlojamientos();
     }
 
     public void agregar(Alojamiento alojamiento) {

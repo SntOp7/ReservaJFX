@@ -8,12 +8,13 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Getter
 @Setter
 @Builder
-public class Reserva {
+public class Reserva implements Serializable {
     private String id;
     private String cedulaCliente;
     private String idAlojamiento;

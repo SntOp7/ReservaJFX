@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
 @AllArgsConstructor
-public abstract class Usuario {
+public abstract class Usuario implements Serializable {
     private String cedula;
     private String nombre;
     private String telefono;

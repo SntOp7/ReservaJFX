@@ -4,9 +4,11 @@ import co.edu.uniquindio.reservasfx.modelo.enums.Ciudad;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
-public abstract class Alojamiento {
+public abstract class Alojamiento implements Serializable {
     private String id;
     private String nombre;
     private Ciudad ciudad;

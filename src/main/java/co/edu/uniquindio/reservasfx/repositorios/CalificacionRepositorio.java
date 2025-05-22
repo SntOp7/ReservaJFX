@@ -13,7 +13,6 @@ public class CalificacionRepositorio {
     private ArrayList<Calificacion> calificaciones;
 
     public CalificacionRepositorio() {
-
         this.calificaciones = leerDatos();
     }
 

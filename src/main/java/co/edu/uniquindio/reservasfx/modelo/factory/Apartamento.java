@@ -5,11 +5,12 @@ import co.edu.uniquindio.reservasfx.modelo.enums.TipoServicio;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 @Getter
 @Setter
-public class Apartamento extends Alojamiento {
+public class Apartamento extends Alojamiento implements Serializable {
     private double costoAseoYMantenimiento;
 
     public static class ApartamentoBuilder {

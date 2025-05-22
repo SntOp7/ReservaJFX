@@ -18,8 +18,8 @@ public class UsuarioRepositorio {
     public UsuarioRepositorio() {
         this.clientes = leerDatosCl();
         this.administradores = leerDatosAd();
-        listarCliente();
-        listarAdministrador();
+        //listarCliente();
+        //listarAdministrador();
     }
 
     public void agregar(Cliente cliente) {
