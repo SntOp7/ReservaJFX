@@ -1,6 +1,7 @@
 package co.edu.uniquindio.reservasfx.servicios.modulo.comercial;
 
 import co.edu.uniquindio.reservasfx.config.Constantes;
+import co.edu.uniquindio.reservasfx.modelo.entidades.BilleteraVirtual;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
 import co.edu.uniquindio.reservasfx.modelo.entidades.reserva.Factura;
@@ -75,6 +76,10 @@ public class ReservaServicios {
 
         double subtotal = calcularSubtotal(alojamiento, numeroHabitacion, fechaInicio, fechaFin);
         double total = calcularTotalConOfertas(subtotal, ofertasAlojamiento);
+
+        if (cliente.getBilletera() == null) {
+            cliente.setBilletera(new BilleteraVirtual(UUID.randomUUID().toString(), 0.0));
+        }
 
         if (cliente.getBilletera().getSaldo() < total) {
             throw new Exception("El cliente no tiene saldo suficiente en su billetera para realizar la reserva");

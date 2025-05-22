@@ -86,7 +86,7 @@
                <content>
                   <TableView fx:id="tablaHabitaciones" layoutX="416.0" layoutY="72.0" prefHeight="260.0" prefWidth="510.0">
                     <columns>
-                      <TableColumn fx:id="nombreColumn" minWidth="170.0" prefWidth="75.0" text="Nombre" />
+                      <TableColumn fx:id="numeroColumn" minWidth="170.0" prefWidth="75.0" text="Nro de Habitación" />
                       <TableColumn fx:id="precioColumn" minWidth="170.0" prefWidth="75.0" text="Precio" />
                         <TableColumn fx:id="capacidadColumn" minWidth="170.0" prefWidth="75.0" text="Capacidad" />
                     </columns>

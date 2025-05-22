@@ -23,7 +23,11 @@ public class HabitacionRepositorio {
     }
 
     public void editar(Habitacion habitacion) {
-        habitaciones.set(habitaciones.indexOf(habitacion), habitacion);
+        if (!habitaciones.contains(habitacion)) {
+            agregar(habitacion);
+        } else {
+            habitaciones.set(habitaciones.indexOf(habitacion), habitacion);
+        }
     }
 
     public void eliminar(Habitacion habitacion) {

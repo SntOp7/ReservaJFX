@@ -136,12 +136,18 @@ public class ListaHabitacionesAlojamientoControlador {
             controlador.crearAlerta("Debes seleccionar una habitación", Alert.AlertType.WARNING);
             return;
         }
-        habitaciones.remove(habitacion);
-        habitacionesTabla.remove(habitacion);
-        tableHabitacionesAgregadas.setItems(habitacionesTabla);
-        controlador.crearAlerta("Se ha eliminado la habitación de la lista", Alert.AlertType.INFORMATION);
-        tableHabitacionesAgregadas.getSelectionModel().clearSelection();
-        limpiarCampos();
+        try {
+            String idAlojamiento = controlador.getAlojamientoSelect().getAlojamiento().getId();
+            controlador.getEmpresa().getModuloAlojamientoServicios().eliminarHabitacion(idAlojamiento, habitacion.getNumero());
+            habitaciones = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerHabitacionesHotel(idAlojamiento);
+            habitacionesTabla.setAll(habitaciones);
+            tableHabitacionesAgregadas.setItems(habitacionesTabla);
+            controlador.crearAlerta("Se ha eliminado la habitación de la lista", Alert.AlertType.INFORMATION);
+            tableHabitacionesAgregadas.getSelectionModel().clearSelection();
+            limpiarCampos();
+        } catch (Exception e) {
+            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 
     @FXML
