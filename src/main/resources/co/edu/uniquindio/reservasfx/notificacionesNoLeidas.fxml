@@ -14,6 +14,26 @@
    <children>
       <Pane>
          <children>
+            <Circle layoutX="817.0" layoutY="352.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#1f93ff35" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Circle>
+            <Circle layoutX="1073.0" layoutY="194.0" radius="93.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#1f93ff35" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Circle>
             <Ellipse layoutX="620.0" layoutY="402.0" radiusX="84.0" radiusY="80.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
                <fill>
                   <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
@@ -59,7 +79,7 @@
                <children>
                   <ScrollPane prefHeight="342.0" prefWidth="620.0">
                      <content>
-                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="590.0">
+                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="1010.0" prefWidth="590.0">
                            <children>
                               <GridPane prefHeight="500.0" prefWidth="570.0" vgap="100.0">
                                  <children>
@@ -106,7 +126,7 @@
                   <Font name="Berlin Sans FB" size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="293.0" fitWidth="265.0" layoutX="966.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="293.0" fitWidth="265.0" layoutX="952.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/noLeido.png" />
                </image>
