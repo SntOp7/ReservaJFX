@@ -138,7 +138,7 @@ public class AlojamientoAdministradorControlador {
 
     public void initTabla() {
         serviviosIncluidosColumn.setCellValueFactory(cellData ->
-                    new SimpleStringProperty(cellData.getValue().getNombre()));
+                new SimpleStringProperty(cellData.getValue().getNombre()));
     }
 
     @FXML
@@ -156,51 +156,61 @@ public class AlojamientoAdministradorControlador {
     @FXML
     void editarBtnAction(ActionEvent event) {
         try {
-        String imagenPrincipal = alojamiento.getImagenPrincipal();
-        String urlPrincipal = rutaImagenPrincipal == null ? imagenPrincipal : rutaImagenPrincipal;
-        ArrayList<Imagen> imagenesAlojamiento = controlador.getEmpresa()
-                .getModuloAlojamientoServicios().obtenerImagenesAlojamiento(alojamiento.getId());
-        ArrayList<String> rutaImagenesAlojamiento = new ArrayList<>();
-        for (Imagen imagen : imagenesAlojamiento) {
-            rutaImagenesAlojamiento.add(imagen.getRuta());
-        }
-        String urlSecundaria1 = rutaImagenSecundaria1 == null && !rutaImagenesAlojamiento.isEmpty() ? rutaImagenesAlojamiento.get(0) : rutaImagenSecundaria1;
-        String urlSecundaria2 = rutaImagenSecundaria2 == null && rutaImagenesAlojamiento.size() > 1 ? rutaImagenesAlojamiento.get(1) : rutaImagenSecundaria2;
-        String urlSecundaria3 = rutaImagenSecundaria3 == null && rutaImagenesAlojamiento.size() > 2 ? rutaImagenesAlojamiento.get(2) : rutaImagenSecundaria3;
-        ArrayList<String> imagenes = new ArrayList<>();
-        imagenes.add(urlSecundaria1);
-        imagenes.add(urlSecundaria2);
-        imagenes.add(urlSecundaria3);
-        TipoAlojamiento tipoAlojamiento = null;
-        if (alojamiento instanceof Hotel) {
-            tipoAlojamiento = TipoAlojamiento.HOTEL;
-        }
-        if (alojamiento instanceof Casa) {
-            tipoAlojamiento = TipoAlojamiento.CASA;
-        }
-        if (alojamiento instanceof Apartamento) {
-            tipoAlojamiento = TipoAlojamiento.APARTAMENTO;
-        }
-        String nombre = txtNombre.getText();
-        String descripcion = txtDescripcion.getText();
-        String capacidad = txtCapacidad.getText();
-        String precioNoche = txtPrecioNoche.getText();
-        ObservableList<TipoServicio> serviciosSeleccionados = tablaServiciosIncluidos.getSelectionModel()
-                .getSelectedItems();
-        ArrayList<TipoServicio> servicios = new ArrayList<>(serviciosSeleccionados);
-        if (alojamiento instanceof Hotel) {
-            controlador.getEmpresa().getModuloAlojamientoServicios().editarAlojamiento(alojamiento.getId(),
-                    tipoAlojamiento, nombre, descripcion, precioNoche, capacidad, servicios,
-                    urlPrincipal, imagenes, null, listaHabitacionesAlojamientoControlador
-                            .getHabitaciones());
-        } else {
-            controlador.getEmpresa().getModuloAlojamientoServicios().editarAlojamiento(alojamiento.getId(),
-                    tipoAlojamiento, nombre, descripcion, precioNoche, capacidad, servicios,
-                    urlPrincipal, imagenes, costoAdicionalAlojamientoControlador.getCostoAdicional(), null);
-        }
+            String imagenPrincipal = alojamiento.getImagenPrincipal();
+            String urlPrincipal = rutaImagenPrincipal == null ? imagenPrincipal : rutaImagenPrincipal;
+            ArrayList<Imagen> imagenesAlojamiento = controlador.getEmpresa()
+                    .getModuloAlojamientoServicios().obtenerImagenesAlojamiento(alojamiento.getId());
+
+            ArrayList<String> rutaImagenesAlojamiento = new ArrayList<>();
+            for (Imagen imagen : imagenesAlojamiento) {
+                rutaImagenesAlojamiento.add(imagen.getRuta());
+            }
+
+            String urlSecundaria1 = rutaImagenSecundaria1 == null && rutaImagenesAlojamiento.size() > 0
+                    ? rutaImagenesAlojamiento.get(0) : rutaImagenSecundaria1;
+            String urlSecundaria2 = rutaImagenSecundaria2 == null && rutaImagenesAlojamiento.size() > 1
+                    ? rutaImagenesAlojamiento.get(1) : rutaImagenSecundaria2;
+            String urlSecundaria3 = rutaImagenSecundaria3 == null && rutaImagenesAlojamiento.size() > 2
+                    ? rutaImagenesAlojamiento.get(2) : rutaImagenSecundaria3;
+
+            ArrayList<String> imagenes = new ArrayList<>();
+            if (urlSecundaria1 != null) imagenes.add(urlSecundaria1);
+            if (urlSecundaria2 != null) imagenes.add(urlSecundaria2);
+            if (urlSecundaria3 != null) imagenes.add(urlSecundaria3);
+            TipoAlojamiento tipoAlojamiento = null;
+            if (alojamiento instanceof Hotel) {
+                tipoAlojamiento = TipoAlojamiento.HOTEL;
+            }
+            if (alojamiento instanceof Casa) {
+                tipoAlojamiento = TipoAlojamiento.CASA;
+            }
+            if (alojamiento instanceof Apartamento) {
+                tipoAlojamiento = TipoAlojamiento.APARTAMENTO;
+            }
+            String nombre = txtNombre.getText();
+            String descripcion = txtDescripcion.getText();
+            String capacidad = txtCapacidad.getText();
+            String precioNoche = txtPrecioNoche.getText();
+            ObservableList<TipoServicio> serviciosSeleccionados = tablaServiciosIncluidos.getSelectionModel()
+                    .getSelectedItems();
+            ArrayList<TipoServicio> servicios = new ArrayList<>(serviciosSeleccionados);
+            System.out.println("Secundaria 1: " + urlSecundaria1);
+            System.out.println("Secundaria 2: " + urlSecundaria2);
+            System.out.println("Secundaria 3: " + urlSecundaria3);
+            if (alojamiento instanceof Hotel) {
+                controlador.getEmpresa().getModuloAlojamientoServicios().editarAlojamiento(alojamiento.getId(),
+                        tipoAlojamiento, nombre, descripcion, precioNoche, capacidad, servicios,
+                        urlPrincipal, imagenes, null, listaHabitacionesAlojamientoControlador
+                                .getHabitaciones());
+            } else {
+                controlador.getEmpresa().getModuloAlojamientoServicios().editarAlojamiento(alojamiento.getId(),
+                        tipoAlojamiento, nombre, descripcion, precioNoche, capacidad, servicios,
+                        urlPrincipal, imagenes, costoAdicionalAlojamientoControlador.getCostoAdicional(), null);
+            }
             controlador.crearAlerta("Alojamiento editado con exito",Alert.AlertType.INFORMATION);
         } catch (Exception e) {
-            controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
+            e.printStackTrace();
+            controlador.crearAlerta("Error al editar el alojamiento: " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
