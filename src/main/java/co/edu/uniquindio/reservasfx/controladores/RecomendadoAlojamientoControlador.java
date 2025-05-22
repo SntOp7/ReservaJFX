@@ -63,6 +63,7 @@ public class RecomendadoAlojamientoControlador {
                     sextoStack, septimoStack, octavoStack, novenoStack, decimoStack
             };
             paginaActual = 1;
+
             if (controlador.getSesion().getUsuario() == null) {
                 alojamientosCliente = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerAlojamientosAleatorios();
                 cargarDatosPanelConAlojamientos(alojamientosCliente);
