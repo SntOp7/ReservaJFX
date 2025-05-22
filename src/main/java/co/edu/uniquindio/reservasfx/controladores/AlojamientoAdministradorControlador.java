@@ -36,6 +36,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -195,7 +196,8 @@ public class AlojamientoAdministradorControlador {
                     .getSelectedItems();
             ArrayList<TipoServicio> servicios = new ArrayList<>(serviciosSeleccionados);
             if (alojamiento instanceof Hotel) {
-                if (habitacionesIniciales != listaHabitacionesAlojamientoControlador.getHabitaciones()) {
+                if (!new HashSet<>(habitacionesIniciales).equals(new HashSet<>(
+                        listaHabitacionesAlojamientoControlador.getHabitaciones()))){
                     controlador.getEmpresa().getModuloAlojamientoServicios().editarAlojamiento(alojamiento.getId(),
                             tipoAlojamiento, nombre, descripcion, precioNoche, capacidad, servicios,
                             urlPrincipal, imagenes, null, listaHabitacionesAlojamientoControlador

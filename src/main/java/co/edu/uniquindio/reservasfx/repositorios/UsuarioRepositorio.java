@@ -20,6 +20,8 @@ public class UsuarioRepositorio {
         this.administradores = leerDatosAd();
         //listarCliente();
         //listarAdministrador();
+        System.out.println("Clientes cargados desde archivo: " + clientes.size());
+        System.out.println("Administradores cargados desde archivo: " + administradores.size());
     }
 
     public void agregar(Cliente cliente) {
@@ -74,6 +76,7 @@ public class UsuarioRepositorio {
     public void guardarDatosCl(ArrayList<Cliente> clientes) {
         try {
             Persistencia.serializarObjeto(Constantes.RUTA_CLIENTES, clientes);
+            System.out.println("Clientes guardados en archivo: " + clientes.size());
         } catch (IOException e) {
             System.err.println("Error guardando clientes: " + e.getMessage());
         }
@@ -95,6 +98,7 @@ public class UsuarioRepositorio {
     public void guardarDatosAd(ArrayList<Administrador> administradores) {
         try {
             Persistencia.serializarObjeto(Constantes.RUTA_ADMINISTRADORES, administradores);
+            System.out.println("Administradores guardados en archivo: " + administradores.size());
         } catch (IOException e) {
             System.err.println("Error guardando administradores: " + e.getMessage());
         }

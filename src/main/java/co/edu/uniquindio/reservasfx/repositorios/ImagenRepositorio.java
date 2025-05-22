@@ -17,6 +17,7 @@ public class ImagenRepositorio {
 
     public ImagenRepositorio() {
         this.imagenes = leerDatos();
+        System.out.println("Imagenes cargados desde archivo: " + imagenes.size());
     }
 
     public void agregar(Imagen imagen) {
@@ -44,6 +45,7 @@ public class ImagenRepositorio {
     public void guardarDatos(ArrayList<Imagen> imagenes) {
         try {
             Persistencia.serializarObjeto(Constantes.RUTA_IMAGENES, imagenes);
+            System.out.println("Imagenes guardados en archivo: " + imagenes.size());
         } catch (IOException e) {
             System.err.println("Error guardando imagenes: " + e.getMessage());
         }

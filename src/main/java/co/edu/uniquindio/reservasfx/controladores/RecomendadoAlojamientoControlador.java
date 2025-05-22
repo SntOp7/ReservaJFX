@@ -70,7 +70,11 @@ public class RecomendadoAlojamientoControlador {
                 cedulaCliente = controlador.getSesion().getUsuario().getCedula();
                 ArrayList<Reserva> reservasCliente = controlador.getEmpresa().getModuloComercialServicios().obtenerReservasCliente(cedulaCliente);
                 alojamientosCliente = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerAlojamientosPreferenciasCliente(reservasCliente);
-                alojamientosCliente.addAll(controlador.getEmpresa().getModuloAlojamientoServicios().obtenerAlojamientosAleatorios());
+                for (Alojamiento alojamiento : controlador.getEmpresa().getModuloAlojamientoServicios().obtenerAlojamientosAleatorios()) {
+                    if (!alojamientosCliente.contains(alojamiento)) {
+                        alojamientosCliente.add(alojamiento);
+                    }
+                }
                 cargarDatosPanelConAlojamientos(alojamientosCliente);
             }
         } catch (Exception e) {

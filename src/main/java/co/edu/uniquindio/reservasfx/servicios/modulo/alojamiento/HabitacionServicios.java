@@ -42,7 +42,8 @@ public class HabitacionServicios  {
     }
 
     public Habitacion verificarEdicionHabitacion(Habitacion habitacionAntigua, String numeroString, String precioString,
-                                           String capacidadString, String descripcion, String imagen) throws Exception {
+                                           String capacidadString, String descripcion, String imagen,
+                                                 ArrayList<Habitacion> habitaciones) throws Exception {
 
         verificarCampos(numeroString, precioString, capacidadString, descripcion, imagen);
         int numero = 0;
@@ -54,6 +55,11 @@ public class HabitacionServicios  {
             precio = Double.parseDouble(precioString);
         } catch (NumberFormatException e) {
             throw new Exception("Los campos de precio, capacidad y numero de habitacion deben ser números");
+        }
+        for (Habitacion h : habitaciones) {
+            if (!h.equals(habitacionAntigua) && h.getNumero() == numero) {
+                throw new Exception("Ya existe una habitación con el número " + numero);
+            }
         }
         verificarNumeros(numero, capacidad, precio);
         habitacionAntigua.setNumero(numero);

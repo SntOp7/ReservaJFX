@@ -16,6 +16,7 @@ public class HabitacionRepositorio {
     
     public HabitacionRepositorio() {
         this.habitaciones = leerDatos();
+        System.out.println("Habitaciones cargados desde archivo: " + habitaciones.size());
     }
 
     public void agregar(Habitacion habitacion) {
@@ -23,11 +24,7 @@ public class HabitacionRepositorio {
     }
 
     public void editar(Habitacion habitacion) {
-        if (!habitaciones.contains(habitacion)) {
-            agregar(habitacion);
-        } else {
-            habitaciones.set(habitaciones.indexOf(habitacion), habitacion);
-        }
+        habitaciones.set(habitaciones.indexOf(habitacion), habitacion);
     }
 
     public void eliminar(Habitacion habitacion) {
@@ -54,6 +51,7 @@ public class HabitacionRepositorio {
     public void guardarDatos(ArrayList<Habitacion> habitaciones) {
         try {
             Persistencia.serializarObjeto(Constantes.RUTA_HABITACIONES, habitaciones);
+            System.out.println("Habitaciones guardados en archivo: " + habitaciones.size());
         } catch (IOException e) {
             System.err.println("Error guardando habitaciones: " + e.getMessage());
         }

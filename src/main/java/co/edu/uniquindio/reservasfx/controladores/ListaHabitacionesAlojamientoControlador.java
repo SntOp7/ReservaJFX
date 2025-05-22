@@ -2,6 +2,7 @@ package co.edu.uniquindio.reservasfx.controladores;
 
 import co.edu.uniquindio.reservasfx.modelo.AlojamientoSelect;
 import co.edu.uniquindio.reservasfx.modelo.entidades.alojamiento.Habitacion;
+import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -116,8 +117,12 @@ public class ListaHabitacionesAlojamientoControlador {
         String capacidad = capacidadTxt.getText();
         String urlImagen = rutaImagen == null ? null : rutaImagen.isEmpty() ? null : rutaImagen;
         try {
+            Alojamiento alojamiento = controlador.getAlojamientoSelect().getAlojamiento();
             Habitacion habitacion = controlador.getEmpresa().getModuloAlojamientoServicios().crearHabitacion(numeroHabitacion,
                     precioAdicional, capacidad, descripcion, urlImagen);
+            if (alojamiento != null) {
+                controlador.getEmpresa().getModuloAlojamientoServicios().registrarHabitacion(alojamiento.getId(), habitacion);
+            }
             habitaciones.add(habitacion);
             habitacionesTabla.setAll(habitaciones);
             tableHabitacionesAgregadas.setItems(habitacionesTabla);
@@ -165,25 +170,7 @@ public class ListaHabitacionesAlojamientoControlador {
         try {
             Habitacion habitacionEditada = controlador.getEmpresa().getModuloAlojamientoServicios()
                     .verificarEdicionHabitacion(habitacionAntigua, numeroHabitacion, precioAdicional,
-                            capacidad, descripcion, urlImagen);
-
-            for (Habitacion habitacion : habitaciones) {
-                if (habitacion.getNumero() == habitacionEditada.getNumero()) {
-                    if (habitacionAntigua.getNumero() == habitacionEditada.getNumero()) {
-                        habitaciones.remove(habitacionAntigua);
-                        habitaciones.add(habitacionEditada);
-                        habitacionesTabla.setAll(habitaciones);
-                        tableHabitacionesAgregadas.setItems(habitacionesTabla);
-                        controlador.crearAlerta("Se ha editado correctamente la habitación", Alert.AlertType.INFORMATION);
-                        tableHabitacionesAgregadas.getSelectionModel().clearSelection();
-                        limpiarCampos();
-                        return;
-                    }
-                    controlador.crearAlerta("Ya existe una habitación con el mismo número", Alert.AlertType.WARNING);
-                    return;
-                }
-            }
-
+                            capacidad, descripcion, urlImagen, habitaciones);
             habitaciones.remove(habitacionAntigua);
             habitaciones.add(habitacionEditada);
             habitacionesTabla.setAll(habitaciones);

@@ -89,6 +89,7 @@ public class PanelAdministracionControlador {
         estadisticasTipoAlojamiento = FXCollections.observableArrayList();
         tipoServicios = FXCollections.observableArrayList();
         tablaTipoServicios.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        controlador.getAlojamientoSelect().reiniciar();
 
         initTablaServicios();
         initTablaRentabilidad();

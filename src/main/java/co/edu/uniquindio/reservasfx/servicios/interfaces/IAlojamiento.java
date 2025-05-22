@@ -53,7 +53,7 @@ public interface IAlojamiento {
     void registrarHabitacion(String idHotel, Habitacion habitacion) throws Exception;
 
     Habitacion verificarEdicionHabitacion(Habitacion habitacionAntigua, String numero, String precio,
-                                    String capacidad, String descripcion, String imagen) throws Exception;
+                                    String capacidad, String descripcion, String imagen, ArrayList<Habitacion> habitaciones) throws Exception;
 
     void editarHabitacion(String idHotel, Habitacion habitacion) throws Exception;
 

@@ -15,6 +15,7 @@ public class NotificacionRepositorio {
 
     public NotificacionRepositorio() {
         this.notificaciones = leerDatos();
+        System.out.println("Notificaciones cargados desde archivo: " + notificaciones.size());
     }
 
     public void agregar(Notificacion notificacion) {
@@ -34,6 +35,7 @@ public class NotificacionRepositorio {
     public void guardarDatos(ArrayList<Notificacion> notificaciones) {
         try {
             Persistencia.serializarObjeto(Constantes.RUTA_NOTIFICACIONES, notificaciones);
+            System.out.println("Notificaciones guardados en archivo: " + notificaciones.size());
         } catch (IOException e) {
             System.err.println("Error guardando notificaciones: " + e.getMessage());
         }

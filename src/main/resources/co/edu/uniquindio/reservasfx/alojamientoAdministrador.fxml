@@ -217,7 +217,7 @@
                                             <children>
                                                 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="588.0" prefWidth="438.0">
                                                     <children>
-                                                        <Rectangle arcHeight="15.0" arcWidth="15.0" height="492.0" width="462.0">
+                                                        <Rectangle arcHeight="15.0" arcWidth="15.0" height="543.0" width="755.0">
                                                             <fill>
                                                                 <LinearGradient endX="0.0" endY="1.0" startX="0.0" startY="0.0">
                                                                     <stops>
@@ -231,7 +231,7 @@
                                                             </effect>
                                                         </Rectangle>
 
-                                                          <VBox alignment="CENTER" minWidth="-Infinity" prefHeight="512.0" prefWidth="462.0" spacing="10.0" style="-fx-background-color: transparent;">
+                                                          <VBox alignment="CENTER" minWidth="-Infinity" prefHeight="543.0" prefWidth="721.0" spacing="10.0" style="-fx-background-color: transparent;">
                                                               <children>
 
                                                                   <Text fx:id="NombreText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
@@ -241,12 +241,15 @@
                                                                       <effect>
                                                                           <DropShadow color="#00000080" height="3.0" radius="1.0" width="3.0" />
                                                                       </effect>
+                                                   <VBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </VBox.margin>
                                                                   </Text>
 
 
                                                                   <VBox alignment="CENTER" spacing="15.0">
                                                                       <children>
-                                                                          <HBox alignment="CENTER_LEFT" spacing="40.0">
+                                                                          <HBox alignment="CENTER_LEFT" spacing="50.0">
                                                                               <children>
                                                                                   <Circle fill="WHITE" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
                                                                                   <Text fx:id="nombreText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
@@ -254,11 +257,14 @@
                                                                                           <Font name="Berlin Sans FB" size="17.0" />
                                                                                       </font>
                                                                                   </Text>
-                                                            <TextField fx:id="txtNombre" promptText="Nombre" style="-fx-background-radius: 50px;" />
+                                                            <TextField fx:id="txtNombre" prefHeight="31.0" prefWidth="275.0" promptText="Nombre" style="-fx-background-radius: 50px;" />
                                                                               </children>
+                                                         <padding>
+                                                            <Insets left="80.0" />
+                                                         </padding>
                                                                           </HBox>
 
-                                                                          <HBox alignment="CENTER_LEFT" spacing="27.0">
+                                                                          <HBox alignment="CENTER_LEFT" spacing="37.0">
                                                                               <children>
                                                                                   <Circle fill="WHITE" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
                                                                                   <Text fx:id="descripcionText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripción" wrappingWidth="86.0">
@@ -266,11 +272,14 @@
                                                                                           <Font name="Berlin Sans FB" size="17.0" />
                                                                                       </font>
                                                                                   </Text>
-                                                            <TextField fx:id="txtDescripcion" promptText="Descripción" style="-fx-background-radius: 50px;" />
+                                                            <TextField fx:id="txtDescripcion" prefHeight="31.0" prefWidth="273.0" promptText="Descripción" style="-fx-background-radius: 50px;" />
                                                                               </children>
+                                                         <padding>
+                                                            <Insets left="80.0" />
+                                                         </padding>
                                                                           </HBox>
 
-                                                                          <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                                          <HBox alignment="CENTER_LEFT" spacing="20.0">
                                                                               <children>
                                                                                   <Circle fill="WHITE" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
                                                                                   <Text fx:id="precioText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio por noche" wrappingWidth="119.728515625">
@@ -278,11 +287,14 @@
                                                                                           <Font name="Berlin Sans FB" size="17.0" />
                                                                                       </font>
                                                                                   </Text>
-                                                            <TextField fx:id="txtPrecioNoche" promptText="Precio por noche" style="-fx-background-radius: 50px;" />
+                                                            <TextField fx:id="txtPrecioNoche" prefHeight="31.0" prefWidth="272.0" promptText="Precio por noche" style="-fx-background-radius: 50px;" />
                                                                               </children>
+                                                         <padding>
+                                                            <Insets left="80.0" />
+                                                         </padding>
                                                                           </HBox>
 
-                                                                          <HBox alignment="CENTER_LEFT" spacing="32.0">
+                                                                          <HBox alignment="CENTER_LEFT" spacing="40.0">
                                                                               <children>
                                                                                   <Circle fill="WHITE" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
                                                                                   <Text fx:id="capacidadText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacidad">
@@ -290,9 +302,17 @@
                                                                                           <Font name="Berlin Sans FB" size="17.0" />
                                                                                       </font>
                                                                                   </Text>
-                                                            <TextField fx:id="txtCapacidad" promptText="Capacidad" style="-fx-background-radius: 50px;" />
+                                                            <TextField fx:id="txtCapacidad" prefHeight="31.0" prefWidth="275.0" promptText="Capacidad" style="-fx-background-radius: 50px;" />
                                                                               </children>
+                                                         <padding>
+                                                            <Insets left="80.0" />
+                                                         </padding>
                                                                           </HBox>
+                                                      <Label alignment="CENTER" prefHeight="19.0" prefWidth="804.0" style="-fx-font-family: 'Segoe UI'; -fx-text-fill: #7f8c8d;" text="*Si el Alojamiento es un Hotel la Capacidad Máxima y el Precio varían automáticamente según la Habitación" textFill="WHITE">
+                                                         <font>
+                                                            <Font size="16.0" />
+                                                         </font>
+                                                      </Label>
                                                                       </children>
                                                                   </VBox>
                                                 <Label text="Servicios" textFill="WHITE">
@@ -331,7 +351,7 @@
                                                                   </HBox>
                                                               </children>
                                                               <padding>
-                                                                  <Insets bottom="20.0" left="20.0" right="20.0" top="5.0" />
+                                                                  <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
                                                               </padding>
                                                           </VBox>
                                                     </children>

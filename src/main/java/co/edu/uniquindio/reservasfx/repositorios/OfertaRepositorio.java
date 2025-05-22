@@ -17,6 +17,7 @@ public class OfertaRepositorio {
 
     public OfertaRepositorio() {
         this.ofertas = leerDatos();
+        System.out.println("Ofertas cargados desde archivo: " + ofertas.size());
     }
 
     public void agregar(Oferta oferta) {
@@ -71,6 +72,7 @@ public class OfertaRepositorio {
     public void guardarDatos(ArrayList<Oferta> ofertas) {
         try {
             Persistencia.serializarObjeto(Constantes.RUTA_OFERTAS, ofertas);
+            System.out.println("Ofertas guardados en archivo: " + ofertas.size());
         } catch (IOException e) {
             System.err.println("Error guardando ofertas: " + e.getMessage());
         }

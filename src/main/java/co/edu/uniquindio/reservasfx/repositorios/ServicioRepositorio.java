@@ -16,6 +16,7 @@ public class ServicioRepositorio {
 
     public ServicioRepositorio() {
         this.servicios = leerDatos();
+        System.out.println("Servicios cargados desde archivo: " + servicios.size());
     }
 
     public void agregar(Servicio servicio) {
@@ -43,6 +44,7 @@ public class ServicioRepositorio {
     public void guardarDatos(ArrayList<Servicio> servicios) {
         try {
             Persistencia.serializarObjeto(Constantes.RUTA_SERVICIOS, servicios);
+            System.out.println("Servicios cargados desde archivo: " + servicios.size());
         } catch (IOException e) {
             System.err.println("Error guardando servicios: " + e.getMessage());
         }

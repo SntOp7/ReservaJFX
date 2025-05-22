@@ -25,6 +25,7 @@ public class AlojamientoRepositorio {
 
     public AlojamientoRepositorio() {
         this.alojamientos = leerDatosAlojamiento();
+        System.out.println("Alojamientos cargados desde archivo: " + alojamientos.size());
         //listarAlojamientos();
     }
 
@@ -348,6 +349,7 @@ public class AlojamientoRepositorio {
     public void guardarDatos(ArrayList<Alojamiento> alojamientos) {
         try {
             Persistencia.serializarObjeto(Constantes.RUTA_ALOJAMIENTOS, alojamientos);
+            System.out.println("Alojamientos guardados en archivo: " + alojamientos.size());
         } catch (IOException e) {
             System.err.println("Error guardando alojamientos: " + e.getMessage());
         }

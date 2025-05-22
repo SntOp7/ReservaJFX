@@ -15,6 +15,7 @@ public class DeseoRepositorio {
 
     public DeseoRepositorio() {
         this.deseos = leerDatos();
+        System.out.println("Deseos cargados desde archivo: " + deseos.size());
     }
 
     public void agregar(Deseo deseo) {
@@ -45,6 +46,7 @@ public class DeseoRepositorio {
     public void guardarDatos(ArrayList<Deseo> deseos) {
         try {
             Persistencia.serializarObjeto(Constantes.RUTA_DESEOS, deseos);
+            System.out.println("Deseos guardados en archivo: " + deseos.size());
         } catch (IOException e) {
             System.err.println("Error guardando deseos: " + e.getMessage());
         }

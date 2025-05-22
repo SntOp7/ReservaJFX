@@ -14,6 +14,7 @@ public class CalificacionRepositorio {
 
     public CalificacionRepositorio() {
         this.calificaciones = leerDatos();
+        System.out.println("Calificaciones cargados desde archivo: " + calificaciones.size());
     }
 
     public void agregar(Calificacion calificacion) {
@@ -33,6 +34,7 @@ public class CalificacionRepositorio {
     public void guardarDatos(ArrayList<Calificacion> calificaciones) {
         try {
             Persistencia.serializarObjeto(Constantes.RUTA_CALIFICACIONES, calificaciones);
+            System.out.println("Calificaciones guardados en archivo: " + calificaciones.size());
         } catch (IOException e) {
             System.err.println("Error guardando calificaciones: " + e.getMessage());
         }

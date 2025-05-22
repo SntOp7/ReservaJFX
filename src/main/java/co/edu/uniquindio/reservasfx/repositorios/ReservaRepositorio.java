@@ -19,6 +19,7 @@ public class ReservaRepositorio {
 
     public ReservaRepositorio() {
         this.reservas = leerDatos();
+        System.out.println("Reservas cargados desde archivo: " + reservas.size());
     }
 
     public void agregar(Reserva reserva) {
@@ -67,6 +68,7 @@ public class ReservaRepositorio {
     public void guardarDatos(ArrayList<Reserva> reservas) {
         try {
             Persistencia.serializarObjeto(Constantes.RUTA_RESERVAS, reservas);
+            System.out.println("Reservas guardados en archivo: " + reservas.size());
         } catch (IOException e) {
             System.err.println("Error guardando reservas: " + e.getMessage());
         }
