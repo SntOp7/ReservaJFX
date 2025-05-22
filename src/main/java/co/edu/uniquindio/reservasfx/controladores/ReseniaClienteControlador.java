@@ -21,13 +21,12 @@ public class ReseniaClienteControlador {
 
     ControladorPrincipal controlador = ControladorPrincipal.getInstancia();
 
-    private ArrayList<Cliente> clientes = controlador.getEmpresa().getModuloUsuarioServicios().getUsuarioServicios().obtenerClientes();
-
     public void inicializarValores(Calificacion calificacion) {
-        String cedula = calificacion.getCedulaCliente();
-        String nombre = clientes.stream().filter(a -> a.equals(cedula)).findFirst().get().getNombre();
+        Cliente cliente = controlador.getEmpresa().getModuloUsuarioServicios().getUsuarioServicios()
+                .buscarClientePorCedula(calificacion.getCedulaCliente());
+        String nombre = cliente.getNombre();
         nombreLbl.setText(nombre);
-        estrellasLbl.setText(String.valueOf(calificacion.getValoracion()));
+        estrellasLbl.setText(calificacion.getValoracion() + "");
         comentariosLbl.setText(calificacion.getComentario());
     }
 }

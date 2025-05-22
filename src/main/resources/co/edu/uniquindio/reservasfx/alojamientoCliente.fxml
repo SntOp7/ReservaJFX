@@ -228,7 +228,7 @@
                                                                 <VBox alignment="CENTER" minWidth="-Infinity" prefHeight="628.0" prefWidth="819.0" spacing="10.0" style="-fx-background-color: #240046;">
                                                                     <children>
 
-                                                                        <Text fx:id="nombreText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
+                                                                        <Text fx:id="nombreText" fill="#2a00ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
                                                                             <font>
                                                                                 <Font name="Berlin Sans FB" size="24.0" />
                                                                             </font>
@@ -243,7 +243,7 @@
                                                                                 <HBox alignment="CENTER_LEFT" spacing="10.0">
                                                                                     <children>
                                                                                         <Circle fill="#e8e8e8" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
-                                                                                        <Text fx:id="ciudadText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad">
+                                                                                        <Text fx:id="ciudadText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad" wrappingWidth="735.53125">
                                                                                             <font>
                                                                                                 <Font name="Berlin Sans FB" size="17.0" />
                                                                                             </font>
@@ -257,7 +257,7 @@
                                                                                 <HBox alignment="CENTER_LEFT" spacing="10.0">
                                                                                     <children>
                                                                                         <Circle fill="WHITE" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
-                                                                                        <Text fx:id="descripcionText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripción" wrappingWidth="300.0">
+                                                                                        <Text fx:id="descripcionText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripción" wrappingWidth="728.0">
                                                                                             <font>
                                                                                                 <Font name="Berlin Sans FB" size="17.0" />
                                                                                             </font>
@@ -271,7 +271,7 @@
                                                                                 <HBox alignment="CENTER_LEFT" spacing="10.0">
                                                                                     <children>
                                                                                         <Circle fill="WHITE" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
-                                                                                        <Text fx:id="precioText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio">
+                                                                                        <Text fx:id="precioText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio" wrappingWidth="736.728515625">
                                                                                             <font>
                                                                                                 <Font name="Berlin Sans FB" size="17.0" />
                                                                                             </font>
@@ -285,7 +285,7 @@
                                                                                 <HBox alignment="CENTER_LEFT" spacing="10.0">
                                                                                     <children>
                                                                                         <Circle fill="WHITE" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
-                                                                                        <Text fx:id="capacidadText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacidad">
+                                                                                        <Text fx:id="capacidadText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacidad" wrappingWidth="733.4130859375">
                                                                                             <font>
                                                                                                 <Font name="Berlin Sans FB" size="17.0" />
                                                                                             </font>
@@ -295,15 +295,15 @@
                                                                   <Insets left="30.0" />
                                                                </VBox.margin>
                                                                                 </HBox>
-                                                            <Label alignment="CENTER" prefHeight="19.0" prefWidth="804.0" style="-fx-font-family: 'Segoe UI'; -fx-text-fill: #7f8c8d;" text="*Si el Alojamiento es un Hotel la Capacidad Máxima y el Precio varían automáticamente según la Habitación" textFill="WHITE">
+                                                            <Label alignment="CENTER" prefHeight="19.0" prefWidth="804.0" text="*Si el Alojamiento es un Hotel la Capacidad Máxima y el Precio varían automáticamente según la Habitación" textFill="WHITE">
                                                                <font>
-                                                                  <Font size="16.0" />
+                                                                  <Font name="Berlin Sans FB" size="12.0" />
                                                                </font>
                                                             </Label>
                                                                             </children>
                                                                         </VBox>
 
-                                                                        <Label text="Realiza tu Reserva" textFill="WHITE">
+                                                                        <Label text="Realiza tu Reserva" textFill="#2a00ff">
                                                                             <font>
                                                                                 <Font name="Berlin Sans FB" size="24.0" />
                                                                             </font>

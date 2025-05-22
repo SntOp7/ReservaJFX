@@ -141,14 +141,16 @@ public class ReservaServicios {
 
     public double calcularSubtotal(Alojamiento alojamiento, int numeroHabitacion, LocalDate inicio, LocalDate fin) throws Exception {
         long dias = ChronoUnit.DAYS.between(inicio, fin);
+        if (dias == 0) {
+            dias ++;
+        }
         Habitacion habitacion = habitacionServicios.buscarHabitacion(alojamiento.getId(), numeroHabitacion);
         double subtotal = 0;
-        if (alojamiento instanceof Hotel) {
-            subtotal = dias * habitacion.getPrecio();
-        } else if (alojamiento instanceof Casa) {
-            subtotal = dias * alojamiento.getPrecioPorNoche() + ((Casa)alojamiento).getCostoAseoYMantenimiento();
-        } else if (alojamiento instanceof Apartamento) {
-            subtotal = dias * alojamiento.getPrecioPorNoche() + ((Apartamento) alojamiento).getCostoAseoYMantenimiento();
+        switch (alojamiento) {
+            case Casa casa -> subtotal = dias * alojamiento.getPrecioPorNoche() + casa.getCostoAseoYMantenimiento();
+            case Apartamento apartamento ->
+                    subtotal = dias * alojamiento.getPrecioPorNoche() + apartamento.getCostoAseoYMantenimiento();
+            default -> subtotal = dias * habitacion.getPrecio();
         }
         return subtotal;
     }

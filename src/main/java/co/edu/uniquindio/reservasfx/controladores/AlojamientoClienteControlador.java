@@ -106,11 +106,16 @@ public class AlojamientoClienteControlador {
             int numeroHabitacion = 0;
             if (alojamiento instanceof Hotel) {
                 Habitacion habitacion = SeleccionReserva.getInstancia().getHabitacionSeleccionada();
+                if (habitacion == null) {
+                    controlador.crearAlerta("Debes seleccionar una habitación", Alert.AlertType.ERROR);
+                    return;
+                }
                 numeroHabitacion = habitacion.getNumero();
             }
             controlador.getEmpresa().getModuloComercialServicios()
                     .realizarReserva(cedula, idAlojamiento, inicio, fin, numHuespedes, numeroHabitacion);
             controlador.crearAlerta("Reserva realizada exitosamente", Alert.AlertType.INFORMATION);
+            SeleccionReserva.getInstancia().reiniciar();
         } catch (Exception e) {
             controlador.crearAlerta("Error al reservar: " + e.getMessage(), Alert.AlertType.ERROR);
         }

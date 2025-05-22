@@ -115,7 +115,7 @@ public class ListaReseniasControlador {
     }
 
     public void cargarListaResenias(ArrayList<Calificacion> resenias) {
-        String rutaFXML = "/co/edu/uniquindio/reservasfx/resenia.fxml";
+        String rutaFXML = "/co/edu/uniquindio/reservasfx/reseniaCliente.fxml";
         StackPane[] stacks = {
                 primerStack, segundoStack, tercerStack, cuartoStack, quintoStack
         };
@@ -124,7 +124,6 @@ public class ListaReseniasControlador {
             cargarResenia(rutaFXML, stacks[i], resenias.get(i));
         }
 
-        // Limpiar los StackPane restantes si no hay suficientes reseñas
         for (int i = resenias.size(); i < stacks.length; i++) {
             stacks[i].getChildren().clear();
         }

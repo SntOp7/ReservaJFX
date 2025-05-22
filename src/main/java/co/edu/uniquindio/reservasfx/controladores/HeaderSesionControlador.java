@@ -46,6 +46,9 @@ public class HeaderSesionControlador {
             if (!notificacionesNoLeidas.isEmpty()) {
                 Image imagen = ControladorPrincipal.cargarImagenSeleccionada("notificacionNovedad.png");
                 imagenNotificacion.setImage(imagen);
+            } else {
+                Image imagen = ControladorPrincipal.cargarImagenSeleccionada("notificacion.png");
+                imagenNotificacion.setImage(imagen);
             }
         } catch (Exception e) {
             controlador.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
@@ -99,5 +102,6 @@ public class HeaderSesionControlador {
     @FXML
     void notificacionAction(ActionEvent event) {
         panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/notificacionesNoLeidas.fxml");
+        cargarImagenNotificacion();
     }
 }

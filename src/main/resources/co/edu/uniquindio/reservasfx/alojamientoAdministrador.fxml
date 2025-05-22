@@ -308,9 +308,9 @@
                                                             <Insets left="80.0" />
                                                          </padding>
                                                                           </HBox>
-                                                      <Label alignment="CENTER" prefHeight="19.0" prefWidth="804.0" style="-fx-font-family: 'Segoe UI'; -fx-text-fill: #7f8c8d;" text="*Si el Alojamiento es un Hotel la Capacidad Máxima y el Precio varían automáticamente según la Habitación" textFill="WHITE">
+                                                      <Label alignment="CENTER" prefHeight="19.0" prefWidth="804.0" text="*Si el Alojamiento es un Hotel la Capacidad Máxima y el Precio varían automáticamente según la Habitación" textFill="WHITE">
                                                          <font>
-                                                            <Font size="16.0" />
+                                                            <Font name="Berlin Sans FB" size="12.0" />
                                                          </font>
                                                       </Label>
                                                                       </children>

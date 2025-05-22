@@ -115,7 +115,7 @@ public class AlojamientoControlador {
                 panePrincipalControlador.actualizarInferior("/co/edu/uniquindio/reservasfx/alojamientoCliente.fxml");
             }
         } else {
-            controlador.crearAlerta("Debe estar logueado para consultar el alojamiento", Alert.AlertType.ERROR);
+            controlador.crearAlerta("Inicia Sesion o registrate para consultar el alojamiento!", Alert.AlertType.ERROR);
         }
     }
 
