@@ -31,7 +31,7 @@ public class ModuloComercialServicios implements IComercial {
         HabitacionServicios habitacionServicios = empresaServicio.getModuloAlojamientoServicios().getHabitacionServicios();
         NotificacionServicios notificacionServicios = empresaServicio.getModuloUsuarioServicios().getNotificacionServicios();
         reservaServicios = new ReservaServicios(usuarioServicio, alojamientoServicios, habitacionServicios, notificacionServicios);
-        ofertaServicios = new OfertaServicios(usuarioServicio, notificacionServicios);
+        ofertaServicios = new OfertaServicios(usuarioServicio, notificacionServicios, alojamientoServicios);
     }
 
     @Override

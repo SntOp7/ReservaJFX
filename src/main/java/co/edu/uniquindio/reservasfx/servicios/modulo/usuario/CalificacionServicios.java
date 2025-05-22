@@ -31,7 +31,12 @@ public class CalificacionServicios {
         Alojamiento alojamiento = alojamientoServicios.buscarAlojamientoPorId(idAlojamiento);
         if (comentario == null || comentario.trim().isEmpty()) throw new Exception("El comentario es obligatorio");
         if (valoracion == null || valoracion.isEmpty()) throw new  Exception("El valoracion es obligatoria");
-        int valoraciones = Integer.parseInt(valoracion);
+        int valoraciones = -1;
+        try {
+            valoraciones = Integer.parseInt(valoracion);
+        } catch (NumberFormatException e) {
+            throw new Exception("La valoracion debe ser un numero");
+        }
         if (valoraciones < 0 || valoraciones > 5) throw new Exception("La valoración debe estar entre 0 y 5");
 
         if (!clienteTuvoReservaCompletadaEnAlojamiento(reservasCliente, idAlojamiento)) {

@@ -106,16 +106,11 @@ public class AlojamientoClienteControlador {
             int numeroHabitacion = 0;
             if (alojamiento instanceof Hotel) {
                 Habitacion habitacion = SeleccionReserva.getInstancia().getHabitacionSeleccionada();
-                if (habitacion == null) throw new Exception("Habitacion no seleccionada");
-                numeroHabitacion = (habitacion != null) ? habitacion.getNumero() : -1;
+                numeroHabitacion = habitacion.getNumero();
             }
-
             controlador.getEmpresa().getModuloComercialServicios()
                     .realizarReserva(cedula, idAlojamiento, inicio, fin, numHuespedes, numeroHabitacion);
-
             controlador.crearAlerta("Reserva realizada exitosamente", Alert.AlertType.INFORMATION);
-        } catch (NumberFormatException e) {
-            controlador.crearAlerta("Número de huéspedes inválido", Alert.AlertType.WARNING);
         } catch (Exception e) {
             controlador.crearAlerta("Error al reservar: " + e.getMessage(), Alert.AlertType.ERROR);
         }
@@ -139,8 +134,6 @@ public class AlojamientoClienteControlador {
         try {
             serviviosIncluidosColumn.setCellValueFactory(cellData ->
                     new SimpleStringProperty(cellData.getValue().getTipo().getNombre()));
-
-
             ArrayList<Servicio> servicios = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerServiciosAlojamiento(alojamiento.getId());
             listaServicios.setAll(servicios);
             tablaServiciosIncluidos.setItems(listaServicios);

@@ -24,28 +24,20 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ReservasRealizadasControlador {
-
     @FXML
     private TableColumn<Reserva, Integer> huespedesColumn;
-
     @FXML
     private TableColumn<Reserva, String> fechaInicioColumn;
-
     @FXML
     private TableColumn<Reserva, String> fechaFinColumn;
-
     @FXML
     private TableColumn<Reserva, Double> totalPagadoColumn;
-
     @FXML
     private TableColumn<Reserva, String> estadoColumn;
-
     @FXML
     private TableView<Reserva> tablaReservas;
-
     @FXML
     private TableColumn<Reserva, String> nombreColumn;
-
     @FXML
     private Button cancelarReservaBtn;
 
@@ -81,7 +73,7 @@ public class ReservasRealizadasControlador {
                 new SimpleStringProperty(cellData.getValue().getEstado().getNombre()));
     }
 
-    public void initData(){
+    public void initData() {
         try {
             String cedula = sesion.getUsuario().getCedula();
             ArrayList<Reserva> reservas = controlador.getEmpresa().getModuloComercialServicios().obtenerReservasCliente(cedula);

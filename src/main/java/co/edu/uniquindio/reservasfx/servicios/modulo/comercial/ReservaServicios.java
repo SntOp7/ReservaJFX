@@ -55,9 +55,13 @@ public class ReservaServicios {
         if (fechaFin == null) throw new Exception("La fecha de fin es obligatoria");
         if (fechaInicio.isBefore(LocalDate.now())) throw new Exception("La fecha de inicio no puede ser en el pasado");
         if (fechaFin.isBefore(fechaInicio)) throw new Exception("La fecha de fin no puede ser anterior a la fecha de inicio");
-        if (numeroHuespedes ==null || numeroHuespedes.isEmpty()) throw new Exception("El número de huéspedes es obligatorio");
-
-        int huespedes = Integer.parseInt(numeroHuespedes);
+        if (numeroHuespedes == null || numeroHuespedes.isEmpty()) throw new Exception("El número de huéspedes es obligatorio");
+        int huespedes = 0;
+        try {
+            huespedes = Integer.parseInt(numeroHuespedes);
+        } catch (NumberFormatException e) {
+            throw new Exception("El numero de huespedes debe ser un numero");
+        }
         if (huespedes <= 0) throw new  Exception("El mumero de huespedes debe ser mayor a 0");
 
         Alojamiento alojamiento = alojamientoServicios.buscarAlojamientoPorId(idAlojamiento);
@@ -69,7 +73,8 @@ public class ReservaServicios {
         Reserva reservaConflicto = obtenerReservaConflicto(alojamiento.getId(), fechaInicio, fechaFin);
         if (reservaConflicto != null) {
             LocalDate fechaDisponible = reservaConflicto.getFechaFin().plusDays(1);
-            throw new Exception("El alojamiento ya está reservado en las fechas seleccionadas. Estará disponible a partir del " + fechaDisponible);
+            throw new Exception("El alojamiento ya está reservado en las fechas seleccionadas. " +
+                    "Estará disponible a partir del " + fechaDisponible);
         }
 
         Cliente cliente = usuarioServicios.buscarClientePorCedula(cedulaCliente);
@@ -176,8 +181,9 @@ public class ReservaServicios {
         if (reserva.getEstado() == EstadoReserva.FINALIZADA) throw new Exception("La reserva ya fue finalizada");
         if (reserva.getEstado() == EstadoReserva.CANCELADA) throw new Exception("La reserva ya fue cancelada");
         reservaRepositorio.cancelar(reserva);
+        Alojamiento alojamiento = alojamientoServicios.buscarAlojamientoPorId(reserva.getIdAlojamiento());
         notificacionServicios.enviarNotificacion(reserva.getCedulaCliente(), "Reserva Cancelada",
-                Constantes.RESERVA_CANCELADA_POR_CLIENTE(reserva.getIdAlojamiento()));
+                Constantes.RESERVA_CANCELADA_POR_CLIENTE(alojamiento.getNombre()));
     }
 
     public ArrayList<Reserva> obtenerReservasCliente(String cedulaCliente) {
@@ -198,7 +204,7 @@ public class ReservaServicios {
         long diasTotalesPeriodo = ChronoUnit.DAYS.between(inicioPeriodo, hoy.plusDays(1));
 
         for (Reserva reserva : reservas) {
-            if (reserva.getEstado() != EstadoReserva.FINALIZADA) continue;
+            if (reserva.getEstado() == EstadoReserva.CANCELADA) continue;
 
             long dias = ChronoUnit.DAYS.between(reserva.getFechaInicio(), reserva.getFechaFin());
             diasOcupados += dias;
@@ -211,7 +217,7 @@ public class ReservaServicios {
         double gananciasTotalesGlobales = 0;
 
         for (Reserva reserva : todasLasReservas) {
-            if (reserva.getEstado() != EstadoReserva.FINALIZADA) continue;
+            if (reserva.getEstado() == EstadoReserva.CANCELADA) continue;
 
             Alojamiento al = alojamientoServicios.buscarAlojamientoPorId(reserva.getIdAlojamiento());
             if (al == null) continue;
@@ -238,7 +244,7 @@ public class ReservaServicios {
         double totalHotel = 0;
 
         for (Reserva reserva : reservas) {
-            if (reserva.getEstado() != EstadoReserva.FINALIZADA) continue;
+            if (reserva.getEstado() == EstadoReserva.CANCELADA) continue;
             if (reserva.getFechaInicio().getMonthValue() != mes) continue;
 
             Alojamiento alojamiento = alojamientoServicios.buscarAlojamientoPorId(reserva.getIdAlojamiento());

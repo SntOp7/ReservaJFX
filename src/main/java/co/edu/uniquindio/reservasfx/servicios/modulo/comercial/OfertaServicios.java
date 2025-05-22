@@ -5,7 +5,9 @@ import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
 import co.edu.uniquindio.reservasfx.modelo.entidades.usuario.Cliente;
 import co.edu.uniquindio.reservasfx.modelo.enums.EstadoOferta;
 import co.edu.uniquindio.reservasfx.modelo.enums.OfertaEspecial;
+import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import co.edu.uniquindio.reservasfx.repositorios.OfertaRepositorio;
+import co.edu.uniquindio.reservasfx.servicios.modulo.alojamiento.AlojamientoServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.NotificacionServicios;
 import co.edu.uniquindio.reservasfx.servicios.modulo.usuario.UsuarioServicios;
 import lombok.Getter;
@@ -21,11 +23,14 @@ public class OfertaServicios {
     private final OfertaRepositorio ofertaRepositorio;
     private final UsuarioServicios usuarioServicios;
     private final NotificacionServicios notificacionServicios;
+    private final AlojamientoServicios alojamientoServicios;
 
-    public OfertaServicios(UsuarioServicios usuarioServicios, NotificacionServicios notificacionServicios) {
+    public OfertaServicios(UsuarioServicios usuarioServicios, NotificacionServicios notificacionServicios,
+                           AlojamientoServicios alojamientoServicios) {
         ofertaRepositorio = new OfertaRepositorio();
         this.usuarioServicios = usuarioServicios;
         this.notificacionServicios = notificacionServicios;
+        this.alojamientoServicios = alojamientoServicios;
     }
 
     public void registrarOferta(String ofertaEspecialString, String idAlojamiento, String nombre, String descripcion,
@@ -45,11 +50,11 @@ public class OfertaServicios {
         Oferta oferta = Oferta.builder().ofertaEspecial(ofertaEspecial).id(UUID.randomUUID().toString()).
                 idAlojamiento(idAlojamiento).nombre(nombre).descripcion(descripcion).fechaInicio(fechaInicio).
                 fechaFin(fechaFin).porcentajeDescuento(porcentaje).estado(estadoOferta).build();
-
+        Alojamiento alojamiento = alojamientoServicios.buscarAlojamientoPorId(idAlojamiento);
         ofertaRepositorio.agregar(oferta);
         for (Cliente cliente : usuarioServicios.obtenerClientes()) {
             notificacionServicios.enviarNotificacion(cliente.getCedula(), "Nueva Oferta",
-                    Constantes.NUEVA_OFERTA(idAlojamiento));
+                    Constantes.NUEVA_OFERTA(alojamiento.getNombre()));
         }
     }
 
