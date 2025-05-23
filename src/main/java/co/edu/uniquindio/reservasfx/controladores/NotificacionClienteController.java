@@ -8,15 +8,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class NotificacionClienteController {
-
     @FXML
     private Label tituloLbl;
-
     @FXML
     private Label asuntoLbl;
-
     @FXML
     private Button marcarLeidoBtn;
+    @FXML
+    private Label fechaLbl;
 
     Notificacion notificacionActual;
 
@@ -25,6 +24,7 @@ public class NotificacionClienteController {
     public void inicializarValores(Notificacion notificacion) {
         tituloLbl.setText(notificacion.getTitulo());
         asuntoLbl.setText(notificacion.getMensaje());
+        fechaLbl.setText("Fecha: " + notificacion.getFecha().toString());
         this.notificacionActual = notificacion;
     }
 

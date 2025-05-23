@@ -56,6 +56,11 @@
                </image>
             </ImageView>
             <Button fx:id="marcarLeidoBtn" layoutX="489.0" layoutY="101.0" mnemonicParsing="false" onAction="#marcarLeidoBtnAction" style="-fx-background-radius: 50px; -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2f2c79, #00bfff);" text="Marcar Leída" textFill="WHITE" />
+            <Label fx:id="fechaLbl" layoutX="195.0" layoutY="107.0" prefWidth="250" text="Fecha" wrapText="true">
+               <font>
+                  <Font name="Berlin Sans FB" size="16.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
