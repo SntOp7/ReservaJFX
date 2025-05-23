@@ -142,11 +142,18 @@ public class ListaHabitacionesAlojamientoControlador {
             return;
         }
         try {
-            String idAlojamiento = controlador.getAlojamientoSelect().getAlojamiento().getId();
-            controlador.getEmpresa().getModuloAlojamientoServicios().eliminarHabitacion(idAlojamiento, habitacion.getNumero());
-            habitaciones = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerHabitacionesHotel(idAlojamiento);
-            habitacionesTabla.setAll(habitaciones);
-            tableHabitacionesAgregadas.setItems(habitacionesTabla);
+            Alojamiento alojamiento = controlador.getAlojamientoSelect().getAlojamiento();
+            if (alojamiento == null) {
+                habitaciones.remove(habitacion);
+                habitacionesTabla.setAll(habitaciones);
+                tableHabitacionesAgregadas.setItems(habitacionesTabla);
+            } else {
+                String idAlojamiento = alojamiento.getId();
+                controlador.getEmpresa().getModuloAlojamientoServicios().eliminarHabitacion(idAlojamiento, habitacion.getNumero());
+                habitaciones = controlador.getEmpresa().getModuloAlojamientoServicios().obtenerHabitacionesHotel(idAlojamiento);
+                habitacionesTabla.setAll(habitaciones);
+                tableHabitacionesAgregadas.setItems(habitacionesTabla);
+            }
             controlador.crearAlerta("Se ha eliminado la habitación de la lista", Alert.AlertType.INFORMATION);
             tableHabitacionesAgregadas.getSelectionModel().clearSelection();
             limpiarCampos();
