@@ -48,7 +48,7 @@ public class BilleteraClienteControlador {
     }
 
     public static String obtenerValorCadena(double valor) {
-        DecimalFormat df = new DecimalFormat("#.##############################");
+        DecimalFormat df = new DecimalFormat("0.00");
         return df.format(valor);
     }
 

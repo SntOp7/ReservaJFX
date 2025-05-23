@@ -61,7 +61,7 @@ public class OfertaRepositorio {
 
     public void actualizarEstadoOfertas() {
         for (Oferta oferta : ofertas) {
-            if (oferta.getFechaInicio().isEqual(LocalDate.now()) || oferta.getFechaInicio().isAfter(LocalDate.now())) {
+            if (oferta.getFechaInicio().isEqual(LocalDate.now())) {
                 oferta.setEstado(EstadoOferta.ACTIVA);
             } else if (LocalDate.now().isAfter(oferta.getFechaFin())) {
                 oferta.setEstado(EstadoOferta.CADUCADA);

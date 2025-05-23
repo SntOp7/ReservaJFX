@@ -2,6 +2,7 @@ package co.edu.uniquindio.reservasfx.controladores;
 
 import co.edu.uniquindio.reservasfx.modelo.AlojamientoSelect;
 import co.edu.uniquindio.reservasfx.modelo.entidades.Oferta;
+import co.edu.uniquindio.reservasfx.modelo.enums.EstadoOferta;
 import co.edu.uniquindio.reservasfx.modelo.factory.Alojamiento;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -29,6 +30,8 @@ public class ListaOfertasControlador {
     private TableColumn<Oferta, String> nombreColumn;
     @FXML
     private TableView<Oferta> tablaOfertas;
+    @FXML
+    private TableColumn<Oferta, String> estadoColumn;
 
     private final ObservableList<Oferta> listaOfertas = FXCollections.observableArrayList();
 
@@ -45,6 +48,8 @@ public class ListaOfertasControlador {
                 new SimpleStringProperty(cellData.getValue().getFechaInicio().toString()));
         fechaFinColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getFechaFin().toString()));
+        estadoColumn.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getEstado().getNombre()));
 
         cargarOfertas();
 
@@ -52,9 +57,9 @@ public class ListaOfertasControlador {
 
         tablaOfertas.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
-                tipoOfertaLbl.setText(tipoOfertaLbl.getText() + newSelection.getOfertaEspecial().getNombre());
-                descripcionLbl.setText(descripcionLbl.getText() + newSelection.getDescripcion());
-                descuentoLbl.setText(descuentoLbl.getText() + newSelection.getPorcentajeDescuento() + "%");
+                tipoOfertaLbl.setText("Tipo de Oferta: " + newSelection.getOfertaEspecial().getNombre());
+                descripcionLbl.setText("Descripción: " + newSelection.getDescripcion());
+                descuentoLbl.setText("Descuento: " + newSelection.getPorcentajeDescuento() + "%");
             }
         });
     }
@@ -63,11 +68,15 @@ public class ListaOfertasControlador {
         try {
             if (alojamiento != null) {
                 String idAlojamiento = alojamiento.getId();
-                ArrayList<Oferta> ofertas = controlador.getEmpresa().getModuloComercialServicios().obtenerOfertasAlojamiento(idAlojamiento);
-                listaOfertas.addAll(ofertas);
+                ArrayList<Oferta> ofertas = controlador.getEmpresa().getModuloComercialServicios()
+                        .obtenerOfertasAlojamiento(idAlojamiento);
+                for (Oferta oferta : ofertas) {
+                    if (oferta.getEstado() != EstadoOferta.CADUCADA) {
+                        listaOfertas.add(oferta);
+                    }
+                }
             }
         } catch (Exception e) {
-            // Manejar excepción y mostrar alerta si quieres
             System.err.println("Error cargando ofertas: " + e.getMessage());
         }
     }

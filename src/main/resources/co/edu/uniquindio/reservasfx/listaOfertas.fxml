@@ -25,26 +25,6 @@
                         </LinearGradient>
                     </fill>
                 </Arc>
-                <Arc layoutX="741.0" layoutY="369.0" length="270.0" radiusX="31.0" radiusY="30.0" rotate="180.0" startAngle="45.0" stroke="TRANSPARENT" strokeType="INSIDE" type="ROUND">
-                    <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                            <stops>
-                                <Stop color="#1f93ff79" />
-                                <Stop color="WHITE" offset="1.0" />
-                            </stops>
-                        </LinearGradient>
-                    </fill>
-                </Arc>
-                <Arc layoutX="611.0" layoutY="369.0" length="270.0" radiusX="31.0" radiusY="30.0" startAngle="45.0" stroke="TRANSPARENT" strokeType="INSIDE" type="ROUND">
-                    <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                            <stops>
-                                <Stop color="#1f93ff79" />
-                                <Stop color="WHITE" offset="1.0" />
-                            </stops>
-                        </LinearGradient>
-                    </fill>
-                </Arc>
                 <Polygon layoutX="93.0" layoutY="-525.0" opacity="0.43" scaleX="2.0" scaleY="2.0" scaleZ="2.0" stroke="TRANSPARENT">
                     <fill>
                         <LinearGradient endX="1.0" endY="1.0">
@@ -65,7 +45,7 @@
                         <Double fx:value="750.0" />
                     </points>
                 </Polygon>
-                <Path layoutX="258.0" layoutY="245.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                <Path layoutX="751.0" layoutY="-80.0" stroke="TRANSPARENT" strokeType="INSIDE">
                     <elements>
                         <MoveTo x="100.0" />
                         <LineTo x="150.0" y="50.0" />
@@ -83,18 +63,19 @@
                     </fill>
                 </Path>
                 <ImageView fitHeight="260.0" fitWidth="510.0" layoutX="416.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" />
-                <ScrollPane layoutX="416.0" layoutY="72.0" prefViewportHeight="260.0" prefViewportWidth="510.0">
-                    <content>
-                        <TableView fx:id="tablaOfertas" layoutX="416.0" layoutY="72.0" prefHeight="260.0" prefWidth="510.0">
+                <ScrollPane layoutX="151.0" layoutY="79.0" prefHeight="193.0" prefViewportHeight="260.0" prefViewportWidth="510.0" prefWidth="686.0">
+               <content>
+                        <TableView fx:id="tablaOfertas" prefHeight="195.0" prefWidth="687.0">
                             <columns>
                                 <TableColumn fx:id="nombreColumn" minWidth="170.0" prefWidth="75.0" text="Nombre" />
                                 <TableColumn fx:id="fechaInicioColumn" minWidth="170.0" prefWidth="75.0" text="Fecha Inicio" />
                                 <TableColumn fx:id="fechaFinColumn" minWidth="170.0" prefWidth="75.0" text="Fecha Fin" />
+                        <TableColumn fx:id="estadoColumn" prefWidth="161.0" text="Estado Oferta" />
                             </columns>
                         </TableView>
-                    </content>
+               </content>
                 </ScrollPane>
-                <Label layoutX="440.0" layoutY="9.0" text="Ofertas">
+                <Label layoutX="433.0" layoutY="14.0" prefHeight="44.0" prefWidth="121.0" text="Ofertas">
                     <font>
                         <Font name="Berlin Sans FB" size="33.0" />
                     </font>
@@ -107,12 +88,12 @@
                         </LinearGradient>
                     </textFill>
                 </Label>
-                <Label layoutX="64.0" layoutY="102.0" text="Ofertas Disponibles !!!" textFill="RED">
+                <Label layoutX="266.0" layoutY="286.0" text="Selecciona alguna oferta para consultar!" textFill="#4dabe1">
                     <font>
                         <Font name="Berlin Sans FB" size="26.0" />
                     </font>
                 </Label>
-                <Label fx:id="tipoOfertaLbl" layoutX="24.0" layoutY="159.0" text="Tipo de Oferta : ">
+                <Label fx:id="tipoOfertaLbl" layoutX="153.0" layoutY="332.0" prefHeight="22.0" prefWidth="383.0" text="Tipo de Oferta : ">
                     <font>
                         <Font name="Berlin Sans FB" size="20.0" />
                     </font>
@@ -157,57 +138,17 @@
                         </LinearGradient>
                     </fill>
                 </CubicCurve>
-                <Circle layoutX="784.0" layoutY="369.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
-                    <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                            <stops>
-                                <Stop color="#1f93ff50" />
-                                <Stop color="#1f93ff5d" offset="1.0" />
-                            </stops>
-                        </LinearGradient>
-                    </fill>
-                </Circle>
-                <Circle layoutX="823.0" layoutY="369.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
-                    <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                            <stops>
-                                <Stop color="#1f93ff50" />
-                                <Stop color="#1f93ff5d" offset="1.0" />
-                            </stops>
-                        </LinearGradient>
-                    </fill>
-                </Circle>
-                <Circle layoutX="560.0" layoutY="369.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
-                    <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                            <stops>
-                                <Stop color="#1f93ff50" />
-                                <Stop color="#1f93ff5d" offset="1.0" />
-                            </stops>
-                        </LinearGradient>
-                    </fill>
-                </Circle>
-                <Circle layoutX="525.0" layoutY="369.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
-                    <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                            <stops>
-                                <Stop color="#1f93ff50" />
-                                <Stop color="#1f93ff5d" offset="1.0" />
-                            </stops>
-                        </LinearGradient>
-                    </fill>
-                </Circle>
-            <Label fx:id="descripcionLbl" layoutX="24.0" layoutY="200.0" text="Descripción : ">
+            <Label fx:id="descripcionLbl" layoutX="153.0" layoutY="394.0" prefHeight="22.0" prefWidth="647.0" text="Descripción : ">
+               <font>
+                  <Font name="Berlin Sans FB" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="descuentoLbl" layoutX="153.0" layoutY="364.0" prefHeight="22.0" prefWidth="383.0" text="Descuento : ">
                <font>
                   <Font name="Berlin Sans FB" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="descuentoLbl" layoutX="23.0" layoutY="240.0" text="Descuento : ">
-               <font>
-                  <Font name="Berlin Sans FB" size="20.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="80.0" fitWidth="100.0" layoutX="633.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="80.0" fitWidth="100.0" layoutX="823.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/bookYourStay.png" />
                </image>
@@ -227,29 +168,29 @@
                   </LinearGradient>
                </fill>
             </CubicCurve>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="78.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="69.0" fitWidth="59.0" layoutX="24.0" layoutY="401.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/oferta1.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="80.0" fitWidth="89.0" layoutX="105.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="44.0" fitWidth="53.0" layoutX="378.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/oferta2.png" />
                </image>
             </ImageView>
+                <QuadCurve controlX="-50.0" controlY="-100.0" endX="50.0" layoutX="164.0" layoutY="477.0" startX="-50.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                    <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                            <stops>
+                                <Stop color="#1f93ff4c" />
+                                <Stop color="WHITE" offset="1.0" />
+                            </stops>
+                        </LinearGradient>
+                    </fill>
+                </QuadCurve>
             </children>
          <StackPane.margin>
             <Insets left="475.0" />
          </StackPane.margin></Pane>
-          <QuadCurve controlX="-50.0" controlY="-100.0" endX="50.0" startX="-50.0" stroke="TRANSPARENT" strokeType="INSIDE">
-              <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                      <stops>
-                          <Stop color="#1f93ff4c" />
-                          <Stop color="WHITE" offset="1.0" />
-                      </stops>
-                  </LinearGradient>
-              </fill>
-          </QuadCurve>
     </children>
 </StackPane>

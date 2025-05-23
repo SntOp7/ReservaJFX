@@ -38,7 +38,7 @@ public class ModuloComercialServicios implements IComercial {
     public void realizarReserva(String cedulaCliente, String idAlojamiento, LocalDate fechaInicio, LocalDate fechaFin,
                                 String numeroHuespedes, int numeroHabitacion) throws Exception {
         reservaServicios.realizarReserva(cedulaCliente, idAlojamiento, fechaInicio, fechaFin, numeroHuespedes,
-                obtenerOfertasAlojamiento(idAlojamiento), numeroHabitacion);
+                obtenerOfertasActivasAlojamiento(idAlojamiento), numeroHabitacion);
     }
 
     @Override
