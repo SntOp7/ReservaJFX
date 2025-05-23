@@ -26,7 +26,7 @@ public class ReseniaClienteControlador {
                 .buscarClientePorCedula(calificacion.getCedulaCliente());
         String nombre = cliente.getNombre();
         nombreLbl.setText(nombre);
-        estrellasLbl.setText(calificacion.getValoracion() + "");
-        comentariosLbl.setText(calificacion.getComentario());
+        estrellasLbl.setText("Valoración: " + calificacion.getValoracion());
+        comentariosLbl.setText("Comentario: " + calificacion.getComentario());
     }
 }

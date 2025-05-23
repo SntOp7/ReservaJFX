@@ -14,16 +14,6 @@
    <children>
       <Pane prefHeight="228.0" prefWidth="816.0">
          <children>
-            <Circle layoutX="692.0" layoutY="111.0" radius="68.0" stroke="TRANSPARENT" strokeType="INSIDE">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#1265b2" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Circle>
             <Polygon layoutX="320.0" layoutY="122.0" rotate="270.0" strokeType="INSIDE">
               <points>
                 <Double fx:value="-50.0" />
@@ -60,19 +50,19 @@
                   </LinearGradient>
                </fill>
             </Arc>
-            <Label fx:id="nombreLbl" layoutX="197.0" layoutY="14.0" text="Nombre">
+            <Label fx:id="nombreLbl" layoutX="197.0" layoutY="22.0" text="Nombre" textFill="#2c95ff">
                <font>
-                  <Font name="Berlin Sans FB" size="43.0" />
+                  <Font name="Berlin Sans FB" size="35.0" />
                </font>
             </Label>
-            <Label fx:id="estrellasLbl" layoutX="197.0" layoutY="81.0" text="Estrellas :">
+            <Label fx:id="estrellasLbl" layoutX="197.0" layoutY="65.0" text="Estrellas :">
                <font>
-                  <Font name="Berlin Sans FB" size="26.0" />
+                  <Font name="Berlin Sans FB" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="comentariosLbl" layoutX="197.0" layoutY="117.0" text="Comentarios">
+            <Label fx:id="comentariosLbl" layoutX="197.0" layoutY="95.0" prefHeight="30.0" prefWidth="554.0" text="Comentarios">
                <font>
-                  <Font name="Berlin Sans FB" size="26.0" />
+                  <Font name="Berlin Sans FB" size="18.0" />
                </font>
             </Label>
             <Circle layoutX="7.0" layoutY="111.0" radius="123.0" stroke="TRANSPARENT" strokeType="INSIDE">
@@ -100,36 +90,7 @@
                   <Image url="@img/usuario.png" />
                </image>
             </ImageView>
-            <Circle layoutX="399.0" layoutY="117.0" radius="24.0" stroke="TRANSPARENT" strokeType="INSIDE">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#1f93ff94" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill></Circle>
-            <Circle layoutX="455.0" layoutY="117.0" radius="24.0" stroke="TRANSPARENT" strokeType="INSIDE">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#1f93ff94" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Circle>
-            <Circle layoutX="509.0" layoutY="117.0" radius="24.0" stroke="TRANSPARENT" strokeType="INSIDE">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#1f93ff94" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Circle>
-            <QuadCurve controlX="-50.0" controlY="-100.0" endX="50.0" layoutX="795.0" layoutY="223.0" startX="-50.0" stroke="TRANSPARENT" strokeType="INSIDE">
+            <QuadCurve controlX="-50.0" controlY="-100.0" endX="50.0" layoutX="838.0" layoutY="223.0" startX="-50.0" stroke="TRANSPARENT" strokeType="INSIDE">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -139,52 +100,12 @@
                   </LinearGradient>
                </fill>
             </QuadCurve>
-            <ImageView fitHeight="120.0" fitWidth="120.0" layoutX="632.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="81.0" fitWidth="85.0" layoutX="764.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/bookYourStay.png" />
                </image>
             </ImageView>
-            <Circle layoutX="596.0" layoutY="117.0" radius="14.0" stroke="TRANSPARENT" strokeType="INSIDE">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#1f93ff94" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Circle>
-            <Circle layoutX="556.0" layoutY="117.0" radius="14.0" stroke="TRANSPARENT" strokeType="INSIDE">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#1f93ff94" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Circle>
-            <Circle layoutX="610.0" layoutY="172.0" radius="14.0" stroke="TRANSPARENT" strokeType="INSIDE">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#1f93ff94" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Circle>
-            <Circle layoutX="610.0" layoutY="62.0" radius="14.0" stroke="TRANSPARENT" strokeType="INSIDE">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#1f93ff94" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Circle>
-            <Polygon layoutX="759.0" layoutY="-615.0" opacity="0.43" stroke="TRANSPARENT">
+            <Polygon layoutX="728.0" layoutY="-704.0" opacity="0.43" stroke="TRANSPARENT">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
