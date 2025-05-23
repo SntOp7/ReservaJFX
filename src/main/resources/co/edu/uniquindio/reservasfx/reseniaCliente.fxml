@@ -139,26 +139,6 @@
                   </LinearGradient>
                </fill>
             </QuadCurve>
-            <CubicCurve controlX1="-50.0" controlX2="50.0" controlY1="-100.0" controlY2="100.0" endX="150.0" layoutX="692.0" layoutY="223.0" startX="-150.0" stroke="TRANSPARENT">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#1f93ff90" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </CubicCurve>
-            <CubicCurve controlX1="-50.0" controlX2="50.0" controlY1="-100.0" controlY2="100.0" endX="150.0" layoutX="693.0" rotate="180.0" startX="-150.0" stroke="TRANSPARENT">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#1f93ff90" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </CubicCurve>
             <ImageView fitHeight="120.0" fitWidth="120.0" layoutX="632.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/bookYourStay.png" />

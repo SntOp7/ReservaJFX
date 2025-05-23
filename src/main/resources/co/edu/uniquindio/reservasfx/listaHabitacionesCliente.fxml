@@ -10,11 +10,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane prefHeight="481.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.LIstaHabitacionesClienteControlador">
+<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="481.0" prefWidth="1902.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasfx.controladores.LIstaHabitacionesClienteControlador">
    <children>
-      <Pane prefHeight="200.0" prefWidth="200.0">
+      <Pane>
          <children>
-            <Arc layoutX="935.0" layoutY="72.0" length="270.0" radiusX="34.0" radiusY="34.0" rotate="138.0" startAngle="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" type="ROUND">
+            
+            <Arc layoutX="951.0" layoutY="72.0" length="270.0" radiusX="34.0" radiusY="34.0" rotate="138.0" startAngle="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" type="ROUND">
                <fill>
                   <LinearGradient endX="1.0" endY="0.029126213592232997" startX="0.2087378640776699" startY="0.41262135922330095">
                      <stops>
@@ -24,7 +25,7 @@
                   </LinearGradient>
                </fill>
             </Arc>
-            <Arc layoutX="741.0" layoutY="369.0" length="270.0" radiusX="31.0" radiusY="30.0" rotate="180.0" startAngle="45.0" stroke="TRANSPARENT" strokeType="INSIDE" type="ROUND">
+            <Arc layoutX="1258.0" layoutY="368.0" length="270.0" radiusX="31.0" radiusY="30.0" rotate="180.0" startAngle="45.0" stroke="TRANSPARENT" strokeType="INSIDE" type="ROUND">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -34,7 +35,7 @@
                   </LinearGradient>
                </fill>
             </Arc>
-            <Arc layoutX="611.0" layoutY="369.0" length="270.0" radiusX="31.0" radiusY="30.0" startAngle="45.0" stroke="TRANSPARENT" strokeType="INSIDE" type="ROUND">
+            <Arc layoutX="1070.0" layoutY="369.0" length="270.0" radiusX="31.0" radiusY="30.0" startAngle="45.0" stroke="TRANSPARENT" strokeType="INSIDE" type="ROUND">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -44,7 +45,67 @@
                   </LinearGradient>
                </fill>
             </Arc>
-            <Polygon layoutX="93.0" layoutY="-525.0" opacity="0.43" scaleX="2.0" scaleY="2.0" scaleZ="2.0" stroke="TRANSPARENT">
+
+
+            <Label layoutX="676.0" layoutY="14.0" text="Habitaciones del Hotel">
+               <font>
+                  <Font name="Berlin Sans FB" size="33.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="BLACK" />
+                        <Stop color="#9e913d" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+
+
+            <HBox alignment="CENTER" layoutX="200.0" layoutY="70.0" prefWidth="1502.0" spacing="50.0">
+               <children>
+
+                  <VBox alignment="TOP_LEFT" prefWidth="350.0" spacing="15.0">
+                     <children>
+                        <Label fx:id="numeroHabitacionLbl" text="Habitación Nro°" textFill="#9fa125">
+                           <font>
+                              <Font name="Berlin Sans FB" size="26.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="181.0" fitWidth="203.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/habitacion.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="descripcionLbl" text="Descripción : ">
+                           <font>
+                              <Font name="Berlin Sans FB" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+      
+
+                  <VBox alignment="CENTER" prefWidth="600.0" spacing="20.0">
+                     <children>
+                        <ScrollPane prefViewportHeight="260.0" prefViewportWidth="580.0">
+                           <content>
+                              <TableView fx:id="tablaHabitaciones" prefHeight="260.0" prefWidth="580.0">
+                                 <columns>
+                                    <TableColumn fx:id="numeroColumn" minWidth="190.0" prefWidth="190.0" text="Nro de Habitación" />
+                                    <TableColumn fx:id="precioColumn" minWidth="190.0" prefWidth="190.0" text="Precio" />
+                                    <TableColumn fx:id="capacidadColumn" minWidth="190.0" prefWidth="190.0" text="Capacidad" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+
+
+            <Polygon layoutX="100.0" layoutY="-525.0" opacity="0.43" scaleX="1.5" scaleY="1.5" scaleZ="1.5" stroke="TRANSPARENT">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -64,14 +125,15 @@
                   <Double fx:value="750.0" />
                </points>
             </Polygon>
-            <Path layoutX="258.0" layoutY="245.0" stroke="TRANSPARENT" strokeType="INSIDE">
-                <elements>
-                    <MoveTo x="100.0" />
-                    <LineTo x="150.0" y="50.0" />
-                    <ArcTo radiusX="30.0" radiusY="25" x="200.0" y="100.0" />
-                    <QuadCurveTo controlX="300.0" controlY="300.0" y="150.0" />
-                    <ClosePath />
-                </elements>
+
+            <Path layoutX="1653.0" layoutY="108.0" stroke="TRANSPARENT" strokeType="INSIDE">
+               <elements>
+                  <MoveTo x="100.0" />
+                  <LineTo x="150.0" y="50.0" />
+                  <ArcTo radiusX="30.0" radiusY="25" x="200.0" y="100.0" />
+                  <QuadCurveTo controlX="300.0" controlY="300.0" y="150.0" />
+                  <ClosePath />
+               </elements>
                <fill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -81,62 +143,8 @@
                   </LinearGradient>
                </fill>
             </Path>
-            <ImageView fitHeight="260.0" fitWidth="510.0" layoutX="416.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" />
-            <ScrollPane layoutX="416.0" layoutY="72.0" prefViewportHeight="260.0" prefViewportWidth="510.0">
-               <content>
-                  <TableView fx:id="tablaHabitaciones" layoutX="416.0" layoutY="72.0" prefHeight="260.0" prefWidth="510.0">
-                    <columns>
-                      <TableColumn fx:id="numeroColumn" minWidth="170.0" prefWidth="75.0" text="Nro de Habitación" />
-                      <TableColumn fx:id="precioColumn" minWidth="170.0" prefWidth="75.0" text="Precio" />
-                        <TableColumn fx:id="capacidadColumn" minWidth="170.0" prefWidth="75.0" text="Capacidad" />
-                    </columns>
-                  </TableView>
-               </content>
-            </ScrollPane>
-            <Label layoutX="335.0" layoutY="14.0" text="Habitaciones del Hotel">
-               <font>
-                  <Font name="Berlin Sans FB" size="33.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="BLACK" />
-                        <Stop color="#9e913d" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-            <ImageView fitHeight="181.0" fitWidth="203.0" layoutX="89.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@img/habitacion.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="numeroHabitacionLbl" layoutX="91.0" layoutY="96.0" text="Habitación Nro°" textFill="#9fa125">
-               <font>
-                  <Font name="Berlin Sans FB" size="26.0" />
-               </font>
-            </Label>
-            <Label fx:id="descripcionLbl" layoutX="89.0" layoutY="369.0" text="Descripción : ">
-               <font>
-                  <Font name="Berlin Sans FB" size="24.0" />
-               </font>
-            </Label>
-            <Button fx:id="seleccionarBtn" layoutX="623.0" layoutY="354.0" mnemonicParsing="false" onAction="#seleccionarBtnAction" style="-fx-background-radius: 50px; -fx-background-color: #00913F;" text="Seleccionar" textFill="WHITE">
-               <font>
-                  <Font name="Berlin Sans FB" size="16.0" />
-               </font>
-            </Button>
-            <QuadCurve controlX="-50.0" controlY="-100.0" endX="50.0" layoutX="50.0" layoutY="481.0" startX="-50.0" stroke="TRANSPARENT" strokeType="INSIDE">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#1f93ff4c" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </QuadCurve>
-            <CubicCurve controlX1="-50.0" controlX2="50.0" controlY1="-100.0" controlY2="100.0" endX="150.0" layoutX="836.0" startX="-150.0" stroke="TRANSPARENT">
+
+            <CubicCurve controlX1="-50.0" controlX2="50.0" controlY1="-100.0" controlY2="100.0" endX="150.0" layoutX="951.0" startX="-150.0" stroke="TRANSPARENT">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -146,37 +154,9 @@
                   </LinearGradient>
                </fill>
             </CubicCurve>
-            <QuadCurve controlX="-50.0" controlY="-100.0" endX="50.0" layoutX="930.0" layoutY="481.0" startX="-50.0" stroke="TRANSPARENT" strokeType="INSIDE">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#1f93ff79" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </QuadCurve>
-            <CubicCurve controlX1="-50.0" controlX2="50.0" controlY1="-100.0" controlY2="100.0" endX="150.0" layoutX="823.0" layoutY="481.0" startX="-150.0" stroke="BLACK" strokeWidth="0.0">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#1f93ff50" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </CubicCurve>
-            <CubicCurve controlX1="-50.0" controlX2="50.0" controlY1="-100.0" controlY2="100.0" endX="150.0" layoutX="974.0" layoutY="322.0" rotate="90.0" startX="-150.0" stroke="BLACK" strokeWidth="0.0">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#1f93ff50" />
-                        <Stop color="#1f93ff75" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </CubicCurve>
-            <Circle layoutX="784.0" layoutY="369.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+
+
+            <Circle layoutX="976.0" layoutY="369.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -186,7 +166,7 @@
                   </LinearGradient>
                </fill>
             </Circle>
-            <Circle layoutX="823.0" layoutY="369.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+            <Circle layoutX="1015.0" layoutY="369.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -196,7 +176,7 @@
                   </LinearGradient>
                </fill>
             </Circle>
-            <Circle layoutX="560.0" layoutY="369.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+            <Circle layoutX="1305.0" layoutY="368.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -206,7 +186,7 @@
                   </LinearGradient>
                </fill>
             </Circle>
-            <Circle layoutX="525.0" layoutY="369.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+            <Circle layoutX="1343.0" layoutY="368.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -216,6 +196,12 @@
                   </LinearGradient>
                </fill>
             </Circle>
-         </children></Pane>
+            <Button fx:id="seleccionarBtn" layoutX="1084.0" layoutY="353.0" mnemonicParsing="false" onAction="#seleccionarBtnAction" prefWidth="150.0" style="-fx-background-radius: 50px; -fx-background-color: #00913F;" text="Seleccionar" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </StackPane>
